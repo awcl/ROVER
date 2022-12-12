@@ -19,4 +19,3 @@ TODO
 Tie up loose ends, build presentation materials
 ## 22 DEC 2022
 PRESENTATION SUSPENSE
-
