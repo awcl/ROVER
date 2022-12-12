@@ -7,8 +7,9 @@ There is not a central location for government vehicles and users with a license
   * [Locally](#locally)
   * [Online](#online)
 - [ERD](#erd)
-- [Wireframe](#wireframe)
 - [User Stories](#user-stories)
+- [Wireframe](#wireframe)
+- [Contributions](#contributions)
 ## Team 4
 [@Rosslore](https://github.com/Rosslore) [@jzoeller1](https://github.com/jzoeller1) [@Teenaortega](https://github.com/Teenaortega) [@awcl](https://github.com/awcl) [@armandbringas](https://github.com/armandbringas)
 ## Running
@@ -27,8 +28,6 @@ docker compose down
 The production application is hosted by [render](https://render.com/)
 ## ERD
 ![ERD](https://github.com/awcl/ROVER/blob/main/blueprint/ERD.png?raw=true)
-## Wireframe
-TODO TODO TODO
 ## User Stories
 1. As an ***inventory manager*** I want to be able to create an account so that I can track my inventory.
     - The user credentials must be salted and hashed before being stored.
@@ -52,5 +51,7 @@ When the user deletes the item they should be redirected to their inventory of i
    - Unauthenticated users should be able to view all items, and any single item.
 10. As an ***inventory manager*** I want to be able to view all items created by every inventory manager so that I can browse every item.
     - Unauthenticated users should be able to view all items, and any single item.
+## Wireframe
+TODO TODO TODO
 ## Contributions
 Please fork, then use integrated GitHub Pull Requests
