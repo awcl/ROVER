@@ -2,13 +2,13 @@
 ## Overview
 There is not a central location for government vehicles and users with a license to be tracked.  There is not an application that allows users to see what vehicles will be available for specific dates and request use.  Our application will track all information for the vehicle including maintenance, fuel, miles, recent drivers, type, number of seats, accidents/damage, plate number and parked location.  Users will contain type of license (and expiration/type), damage reports, and up-coming reservations.  CSV for overall count of vehicles and a list of reservations by date. and automate phone calls to request extended warranties
 ## Table of Contents
-- [Team](#team)
+- [Team](#team-4)
 - [Running](#running)
   * [Locally](#locally)
   * [Online](#online)
 - [ERD](#erd)
 - [User Stories](#user-stories)
-## Team
+## Team 4
 [@Rosslore](https://github.com/Rosslore) [@jzoeller1](https://github.com/jzoeller1) [@Teenaortega](https://github.com/Teenaortega) [@awcl](https://github.com/awcl) [@armandbringas](https://github.com/armandbringas)
 ## Running
 ### Locally
