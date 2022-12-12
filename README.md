@@ -8,6 +8,8 @@ There is not a central location for government vehicles and users with a license
   * [Online](#online)
 - [ERD](#erd)
 - [User Stories](#user-stories)
+## Team
+[@Rosslore](https://github.com/Rosslore) [@jzoeller1](https://github.com/jzoeller1) [@Teenaortega](https://github.com/Teenaortega) [@Edward-Alkimie] [@awcl](https://github.com/awcl) (https://github.com/armandbringas)
 ## Running
 ### Locally
   Requires Docker, also requires patience
