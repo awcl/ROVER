@@ -55,11 +55,11 @@ When the user deletes the item they should be redirected to their inventory of i
 ![Home](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Home.png)
 ![Login](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Login.png)
 ![Create](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Create.png)
-![Available Reserved](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Available Reserved.png)
-![MY Vehicles](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/My Vehicles.png)
+![Available Reserved](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Available%20Reserved.png)
+![MY Vehicles](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/My%20Vehicles.png)
 ![Queue](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Queue.png)
 ![Vehicle](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Vehicle.png)
-![Reservation Info](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reservation Info.png)
+![Reservation Info](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reservation%20Info.png)
 ![Reserve](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reserve.png)
 ## Contributions
 Please fork, then use integrated GitHub Pull Requests
