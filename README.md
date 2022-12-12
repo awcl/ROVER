@@ -52,14 +52,14 @@ When the user deletes the item they should be redirected to their inventory of i
 10. As an ***inventory manager*** I want to be able to view all items created by every inventory manager so that I can browse every item.
     - Unauthenticated users should be able to view all items, and any single item.
 ## Wireframe
-![Home]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Home.png}
-![Login]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Login.png}
-![Create]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Create.png}
-![Available Reserved]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Available Reserved.png}
-![MY Vehicles]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/My Vehicles.png}
-![Queue]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Queue.png}
-![Vehicle]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Vehicle.png}
-![Reservation Info]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reservation Info.png}
-![Reserve]{https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reserve.png}
+![Home](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Home.png)
+![Login](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Login.png)
+![Create](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Create.png)
+![Available Reserved](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Available Reserved.png)
+![MY Vehicles](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/My Vehicles.png)
+![Queue](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Queue.png)
+![Vehicle](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Vehicle.png)
+![Reservation Info](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reservation Info.png)
+![Reserve](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Reserve.png)
 ## Contributions
 Please fork, then use integrated GitHub Pull Requests
