@@ -23,7 +23,7 @@ docker compose up
 ### Online
 The production application is hosted by [render](https://render.com/)
 ## ERD
-![ERD](ERD.png?raw=true)
+![ERD](https://github.com/awcl/ROVER/blob/main/blueprint/ERD.png?raw=true)
 ## User Stories
 1. As an ***inventory manager*** I want to be able to create an account so that I can track my inventory.
     - The user credentials must be salted and hashed before being stored.
