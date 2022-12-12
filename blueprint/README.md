@@ -1,4 +1,4 @@
-# SCRUM
+# SCRUM -- Update Daily
 ## 12 DEC 2022
 Project Start Planning/Framing
 ## 13 DEC 2022
