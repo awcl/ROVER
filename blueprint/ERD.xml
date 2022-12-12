@@ -57,6 +57,9 @@
 <datatype>INTEGER</datatype>
 <default>NULL</default><relation table="Organization" row="id" />
 </row>
+<row name="is Admin" null="1" autoincrement="0">
+<datatype>CHAR</datatype>
+<default>NULL</default></row>
 <key type="PRIMARY" name="">
 <part>id</part>
 </key>
