@@ -17,6 +17,8 @@ There is not a central location for government vehicles and users with a license
 git clone git@github.com:awcl/ROVER.git
 cd ROVER
 docker compose up
+# once done
+docker compose down
 ```
 * [Frontend Default](http://localhost:3000/)
 * [Backend Default](https://localhost:8080/)
