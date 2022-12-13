@@ -5,7 +5,11 @@ const app = express();
 const config = require('./knexfile')[process.env.NODE_ENV || 'development']
 const knex = require('knex')(config);
 
-app.use(express.json()).use(cors());
+app.use(express.json()).use(cors({
+    origin: ['http://localhost:3000'],
+    methods: ['GET', 'POST', 'PUT', 'PATCH', 'DELETE'],
+    credentials: true // enable set cookie
+}));
 const { hash, compare } = bcrypt;
 const SALTS = 12;
 
@@ -52,5 +56,16 @@ app.get('/report', (req, res) => { // Display all Incidents from incident_report
             res.set("Access-Control-Allow-Origin", "*").status(200).send(items);
         });
 });
+
+app.post('/login', async (req, res) => { // Authentication
+    let hashed = await (knex('member').where('username', req.body.username.toLowerCase()).select('password_hash'));
+    try {
+      hashed = hashed[0].password_hash;
+      compare(req.body.password, hashed)
+        .then(match =>  match ? res.status(200).end() : res.status(403).end())
+    } catch (e) {
+      res.status(500).end();
+    }
+  });
 
 module.exports = app;

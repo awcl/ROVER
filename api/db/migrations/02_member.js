@@ -11,6 +11,7 @@ exports.up = function (knex) {
     table.string('username', 60).notNullable().unique();
     table.string('password_hash', 60).notNullable();
     table.integer('organization_id');
+    table.boolean('admin').notNullable();
     table.foreign('organization_id').references('organization.id');
     table.boolean('is_van_cert').notNullable().defaultTo(false);
     table.boolean('is_sedan_cert').notNullable().defaultTo(false);
