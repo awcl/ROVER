@@ -19,7 +19,7 @@ Back End
   - cd api
   - npm init -y
   - touch DOCKER
-  - npm i --save express && npm i --save knex && npm i --save cors && npm i --save nodemon && npm i --save postgres && npm i --save bcrypt
+  - npm i --save express && npm i --save knex && npm i --save cors && npm i --save nodemon && npm i --save postgres && npm i --save bcrypt && npm i --save pg
   - touch server.js
   - touch index.js
   - npx knex init
