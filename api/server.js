@@ -5,7 +5,7 @@ const app = express();
 const config = require('./knexfile')[process.env.NODE_ENV || 'development']
 const knex = require('knex')(config);
 
-app.use(express.json());
+app.use(express.json()).use(cors());
 const { hash, compare } = bcrypt;
 const SALTS = 12;
 

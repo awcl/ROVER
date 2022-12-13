@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "unroll": "cd ui && npm i && cd ../api && npm i",
+    "help": "# npm run unroll will run npm i in targeted subdirs"
+  }
+}
