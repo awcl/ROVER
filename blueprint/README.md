@@ -7,11 +7,13 @@ create file structure
 clean up default react boilerplate
 - cd ROVER
 - docker-compose:up
+
 Front End
   - create-react-app ui
   - install material ui
   - install react-router-dom
   - touch DOCKER 
+  
 Back End
   - mkdir api
   - cd api
