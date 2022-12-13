@@ -37,16 +37,16 @@ app.get('/reservation', (req, res) => { // Display all Reservations from reserva
         });
 });
 
-app.get('/vehicles', (req, res) => { // Display all Vehicles from vehicles table in browser
-    knex('vehicles')
+app.get('/vehicle', (req, res) => { // Display all Vehicles from vehicles table in browser
+    knex('vehicle')
         .select('*')
         .then(items => {
             res.set("Access-Control-Allow-Origin", "*").status(200).send(items);
         });
 });
 
-app.get('/reports', (req, res) => { // Display all Incidents from incident_reports table in browser
-    knex('incident_reports')
+app.get('/report', (req, res) => { // Display all Incidents from incident_reports table in browser
+    knex('incident_report')
         .select('*')
         .then(items => {
             res.set("Access-Control-Allow-Origin", "*").status(200).send(items);
