@@ -2,7 +2,7 @@
 ## 12 DEC 2022
 Project Start Planning/Framing
 ## 13 DEC 2022
-Clay 1300 PM CST Nav
+Project initialize/folder structure/knex/etc., Clay 1300 PM CST Nav
 ## 14 DEC 2022
 TODO
 ## 15 DEC 2022

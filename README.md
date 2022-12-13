@@ -18,9 +18,15 @@ There is not a central location for government vehicles and users with a license
 ```bash
 git clone git@github.com:awcl/ROVER.git
 cd ROVER
+npm run unroll
 docker compose up
 # once done
+## non-destructive
 docker compose down
+## destructive
+# docker compose down --volumes
+# docker rmi $(docker images -a -q)
+# cd .. && rm -rf ROVER
 ```
 * [Frontend Default](http://localhost:3000/)
 * [Backend Default](https://localhost:8080/)
