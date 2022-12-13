@@ -1,0 +1,52 @@
+version: '3'
+volumes:
+  store:
+networks:
+  net:
+    driver: bridge
+services:
+  db:
+    image: postgres
+    restart: always
+    ports:
+      - '5432:5432'
+    networks:
+      - net
+    volumes:
+      - store:/var/lib/postgresql/data
+    environment:
+      - DATABASE_HOST=127.0.0.1
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=ROVER_db
+      - POSTGRES_PORT=5432
+  api:
+    build: api/
+    ports:
+      - '8080:8082'
+    networks:
+      - net
+    depends_on:
+      - 'db'
+    volumes:
+      - type: bind
+        source: ./api
+        target: /app
+    environment:
+      - DATABASE_HOST=db
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=ROVER_db
+      - POSTGRES_PORT=5432
+  ui:
+    build: ui/
+    ports:
+    - '3000:3000'
+    networks:
+      - net
+    depends_on:
+      - 'db'
+    volumes:
+      - type: bind
+        source: ./ui/src
+        target: /app/src
