@@ -23,13 +23,13 @@ const LoginPage = () => {
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
-    const [errorMessage, setErrorMessage] = useState('');
+    // const [errorMessage, setErrorMessage] = useState('');
 
 
-    const formReset = () => {
-        setUsername('');
-        setPassword('');
-    }
+    // const formReset = () => {
+    //     setUsername('');
+    //     setPassword('');
+    // }
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
     };

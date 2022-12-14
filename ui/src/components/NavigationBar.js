@@ -1,14 +1,7 @@
 import React, { useState } from 'react';
-import Box from '@mui/material/Box';
-import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import { useNavigate, useLocation } from 'react-router-dom';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import MenuItem from '@mui/material/MenuItem';
-import Menu from '@mui/material/Menu';
-import IconButton from '@mui/material/IconButton';
 import AccountCircle from '@mui/icons-material/AccountCircle';
+import { AppBar, Box, IconButton, Menu, MenuItem, Tab, Tabs, Toolbar } from '@mui/material';
 
 
 const NavigationBar = () => {
@@ -33,10 +26,10 @@ const NavigationBar = () => {
     };
 
     const LeftSections = [
-      { value: '/home/', label: 'Home', callback: () => { navigate('/home/'); } },
-      { value: '/vehicles/', label: 'All Vehicles', callback: () => { navigate('/vehicles/'); } },
-      { value: '/reservations/', label: 'Reservations', callback: () => { navigate('/reservations/'); } },
-      { value: '/schedule/', label: 'Schedule', callback: () => { navigate('/reservations/'); } },
+      { value: '/home/', label: 'Home', callback: () => { navigate('/home'); } },
+      { value: '/vehicles/', label: 'All Vehicles', callback: () => { navigate('/vehicles'); } },
+      { value: '/reservations/', label: 'Reservations', callback: () => { navigate('/reservations'); } },
+      { value: '/schedule/', label: 'Schedule', callback: () => { navigate('/reservations'); } },
     ];
 
 
@@ -48,12 +41,12 @@ const NavigationBar = () => {
           width="100%">
           <Toolbar variant="dense">
             <Tabs
-              value={value}
+              value={`${value}/`}
               onChange={handleChange}
               variant="scrollable"
               scrollButtons="auto"
             >
-              {LeftSections.map((tab, index) => <Tab sx={{ color: '#d2d2d2' }} value={tab.value} label={tab.label} key={`tab${index}`} />)}
+              {LeftSections.map((tab, index) => <Tab sx={{ color: '#d2d2d2' }} value={tab.value} label={tab.label} key={`${index}`} />)}
 
 
             {/* {auth && ( */}
@@ -85,7 +78,7 @@ const NavigationBar = () => {
                   onClose={handleClose}
                 >
                   <MenuItem sx={{ color: 'gray' }} onClick={handleClose}>Profile</MenuItem>
-                  <MenuItem sx={{ color: 'gray' }} onClick={handleClose}>My account</MenuItem>
+                  <MenuItem sx={{ color: 'gray' }} onClick={handleClose}>My Account</MenuItem>
                   <MenuItem sx={{ color: 'gray' }} onClick={handleClose}>Log Out</MenuItem>
                 </Menu></div>
             {/* )} */}</Tabs>
