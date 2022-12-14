@@ -1,9 +1,10 @@
 /**
  * @param { import("knex").Knex } knex
- * @returns { Promise<void> } 
+ * @returns { Promise<void> }
  */
 exports.seed = async function (knex) {
   // Deletes ALL existing entries
+
   await knex('organization').del()
   await knex('organization').insert([
     { id: 1, unit_name: '123 POPS', base: 'North Pole' },

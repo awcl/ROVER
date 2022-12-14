@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import LoginPage from './Views/LoginPage';
 import RegisterPage from './Views/RegisterPage';
 import LandingPage from './Views/LandingPage';
+import Home from './Views/Home';
+import NavigationLayout from "./Views/NavigationLayout";
 
 function App() {
   return (
@@ -12,6 +14,9 @@ function App() {
           <Route path="/" element={<LandingPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
+          <Route element={<NavigationLayout/>}>
+            <Route path="/home" element={<Home />} />
+            </Route>
         </Routes>
       </header>
     </div>
