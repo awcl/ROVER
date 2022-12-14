@@ -41,7 +41,7 @@ const NavigationBar = () => {
           width="100%">
           <Toolbar variant="dense">
             <Tabs
-              value={`${value}/`}
+              value={`${value}`}
               onChange={handleChange}
               variant="scrollable"
               scrollButtons="auto"
