@@ -31,7 +31,6 @@ app.get('/:id', (req, res) => {
 app.post('/login', async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  console.log(typeof req.body.password)
   const user = await knex('member')
     .select('*')
     .where('username', username)
