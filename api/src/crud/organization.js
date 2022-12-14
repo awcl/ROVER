@@ -8,6 +8,6 @@ app.get('/', (req, res) => { // Display all Organizations from organizations tab
       .select('*')
       .then(items => {
           res.status(200).send(items);
-      });
+      }).catch(e => res.status(500).end())
   // http://localhost:8080/organization
 });

@@ -6,38 +6,36 @@ const { hash, compare } = bcrypt;
 const SALTS = 12;
 const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || 'development']);
 
-app.get('/', (req, res) => { // Display all Members from members table in browser
+// GET All Members from member table
+app.get('/', (req, res) => {
   knex('member')
       .select('*')
       .then(items => {
           res.status(200).send(items);
-      });
+      }).catch(e => res.status(500).end())
   // http://localhost:8080/member
 });
 
+// GET All Incident Reports from incident_reports table by ID
 app.get('/:id', (req, res) => {
   let { id } = req.params;
   knex('member')
       .where('id', id)
       .then(items => {
           res.status(200).send(items);
-      }).catch(e => console.log(e))
+      }).catch(e => res.status(500).end())
   // http://localhost:8080/member/1
-})
+});
 
+// POST username and password for check against user table password_hash, 200 code = match
 app.post('/login', async (req, res) => {
   const username = req.body.username;
   const password = req.body.password;
-  // console.log('Cookies: ', req.cookies)
-  // console.log('Session: ', req.session)
-  // console.log('Body: ', req.body)
-  // console.log('Signed Cookies: ', req.signedCookies)
   const user = await knex('member')
       .select('*')
       .where('username', username)
       .catch(err => { console.log(err) });
   if (user.length > 0) {
-      //console.log(`${password} and ${user[0].password_hash}`)
       compare(password, user[0].password_hash, (error, response) => {
           if (response) {
               req.session.user = user;
@@ -47,10 +45,10 @@ app.post('/login', async (req, res) => {
               res.status(403).send({ message: "Username or password incorrect" });
               console.log('403 triggered')
           }
-      });
+      }).catch((e) => res.status(500).end());
   }
   // http://localhost:8080/member/login
-})
+});
 
 // POST New Account >>>> TODO Validate + Connect
 app.post('/new', async (req, res) => {
@@ -75,4 +73,4 @@ app.post('/new', async (req, res) => {
       .then(res.status(201).end())
       .catch((e) => res.status(500).end())
   // http://localhost:8080/member/new
-})
+});

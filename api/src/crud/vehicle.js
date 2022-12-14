@@ -19,9 +19,9 @@ app.get('/:id', (req, res) => {
     .where('id', id)
     .then(items => {
       res.status(200).send(items);
-    }).catch(e => console.log(e))
+    }).catch(e => res.status(500).end())
   // http://localhost:8080/vehicle/1
-})
+});
 
 // Query Vehicle by Org ID >>>> TODO Validate + Connect
 app.get('/organization/:id', (req, res) => {
@@ -30,6 +30,6 @@ app.get('/organization/:id', (req, res) => {
     .where('organization_id', id)
     .then(items => {
       res.status(200).send(items);
-    }).catch(e => console.log(e))
+    }).catch(e => res.status(500).end())
   // http://localhost:8080/vehicle/organization/1
-})
+});

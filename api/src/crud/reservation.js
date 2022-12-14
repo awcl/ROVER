@@ -30,6 +30,6 @@ app.get('/vehicle/:id', (req, res) => {
       .where('vehicle_id', id)
       .then(items => {
           res.status(200).send(items);
-      }).catch(e => console.log(e))
+      }).catch(e => res.status(500).end())
   // http://localhost:8080/reservation/vehicle/1
-})
+});

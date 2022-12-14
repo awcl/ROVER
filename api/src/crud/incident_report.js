@@ -3,13 +3,13 @@ const app = express.Router();
 module.exports = app;
 const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || 'development']);
 
-// PATH/incident_report
-app.get('/', (req, res) => { // Display all Incidents from incident_reports table in browser
+// GET All Incident Reports from incident_report table
+app.get('/', (req, res) => {
   knex('incident_report')
       .select('*')
       .then(items => {
           res.status(200).send(items);
-      });
+      }).catch(e => res.status(500).end())
   // http://localhost:8080/incident_report
 });
 
@@ -20,6 +20,6 @@ app.get('/vehicle/:id', (req, res) => {
       .where('vehicle_id', id)
       .then(items => {
           res.status(200).send(items);
-      }).catch(e => console.log(e))
+      }).catch(e => res.status(500).end())
   // http://localhost:8080/incident_report/vehicle/1
-})
+});
