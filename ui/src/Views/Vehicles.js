@@ -1,21 +1,20 @@
 import NavigationBar from "../components/NavigationBar";
 import * as React from 'react';
-import { Button, Card, CardContent, CardMedia, Typography } from '@mui/material';
-
-
-
+import { Button, Card, CardContent, CardMedia, Typography, Grid } from '@mui/material';
 
 const Vehicles = () => {
 
     return (
         <>
             <NavigationBar />
+            <Grid sx={{ flexGrow: 1 }} container spacing={2}>
+
 
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
                     height="140"
-                    image="CAR IMAGE"
+                    image="../assets/19ChevroletExpress.jpg"
                     alt="CAR 1"
                 />
                 <Button size="small"><CardContent>
@@ -27,12 +26,14 @@ const Vehicles = () => {
                         -MAZDA M5 -
                         TOTAL AVAILABLE: 5
                     </Typography>
-
-
-
                 </CardContent>
                 </Button>
             </Card>
+
+            </Grid>
+
+            <Grid sx={{ flexGrow: 1}} container spacing={2}>
+
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
@@ -49,12 +50,13 @@ const Vehicles = () => {
                         -MAZDA M5 -
                         TOTAL AVAILABLE: 2
                     </Typography>
-
-
-
-                </CardContent>
+                    </CardContent>
                 </Button>
-            </Card>
+                </Card>
+            </Grid>
+
+            <Grid sx={{ flexGrow: 1}} container spacing={2}>
+
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
@@ -77,6 +79,11 @@ const Vehicles = () => {
                 </CardContent>
                 </Button>
             </Card>
+            </Grid>
+
+
+            <Grid sx={{ flexGrow: 1}} container spacing={2}>
+
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
@@ -93,12 +100,16 @@ const Vehicles = () => {
                         -MAZDA M5 -
                         TOTAL AVAILABLE: 2
                     </Typography>
-
-
-
                 </CardContent>
                 </Button>
             </Card>
+            </Grid>
+
+
+
+
+            <Grid sx={{ flexGrow: 1}} container spacing={2}>
+
             <Card sx={{ maxWidth: 345 }}>
                 <CardMedia
                     component="img"
@@ -121,6 +132,7 @@ const Vehicles = () => {
                 </CardContent>
                 </Button>
             </Card>
+            </Grid>
 
         </>
     );
