@@ -6,10 +6,10 @@ const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || '
 // GET All Incident Reports from incident_report table
 app.get('/', (req, res) => {
   knex('incident_report')
-      .select('*')
-      .then(items => {
-          res.status(200).send(items);
-      }).catch(e => res.status(500).end())
+    .select('*')
+    .then(items => {
+      res.status(200).send(items);
+    }).catch(e => res.status(500).end())
   // http://localhost:8080/incident_report
 });
 
@@ -17,9 +17,9 @@ app.get('/', (req, res) => {
 app.get('/vehicle/:id', (req, res) => {
   let { id } = req.params;
   knex('incident_report')
-      .where('vehicle_id', id)
-      .then(items => {
-          res.status(200).send(items);
-      }).catch(e => res.status(500).end())
+    .where('vehicle_id', id)
+    .then(items => {
+      res.status(200).send(items);
+    }).catch(e => res.status(500).end())
   // http://localhost:8080/incident_report/vehicle/1
 });

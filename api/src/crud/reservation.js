@@ -5,10 +5,10 @@ const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || '
 
 app.get('/', (req, res) => { // Display all Reservations from reservations table in browser
   knex('reservation')
-      .select('*')
-      .then(items => {
-          res.status(200).send(items);
-      });
+    .select('*')
+    .then(items => {
+      res.status(200).send(items);
+    });
   // http://localhost:8080/reservation
 });
 
@@ -16,10 +16,10 @@ app.get('/', (req, res) => { // Display all Reservations from reservations table
 app.get('/member/:id', (req, res) => {
   let { id } = req.params;
   knex('reservation')
-      .where('member_id', id)
-      .then(items => {
-          res.status(200).send(items);
-      }).catch(e => console.log(e))
+    .where('member_id', id)
+    .then(items => {
+      res.status(200).send(items);
+    }).catch(e => console.log(e))
   // http://localhost:8080/reservation/member/1
 })
 
@@ -27,9 +27,9 @@ app.get('/member/:id', (req, res) => {
 app.get('/vehicle/:id', (req, res) => {
   let { id } = req.params;
   knex('reservation')
-      .where('vehicle_id', id)
-      .then(items => {
-          res.status(200).send(items);
-      }).catch(e => res.status(500).end())
+    .where('vehicle_id', id)
+    .then(items => {
+      res.status(200).send(items);
+    }).catch(e => res.status(500).end())
   // http://localhost:8080/reservation/vehicle/1
 });
