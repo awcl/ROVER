@@ -5,12 +5,13 @@
 exports.up = function (knex) {
   return knex.schema.createTable('reservation', (table) => {
     table.increments('id');
-    table.integer('vehicle_id', 50).notNullable();
+    table.integer('vehicle_id').notNullable();
     table.foreign('vehicle_id').references('vehicle.id');
-    table.integer('member_id', 50).notNullable();
+    table.integer('member_id').notNullable();
     table.foreign('member_id').references('member.id');
-    table.date('start_date', 50).notNullable();
-    table.date('end_date', 60).notNullable();
+    table.date('start_date').notNullable();
+    table.date('end_date').notNullable();
+    table.boolean('approved').notNullable().defaultTo(false);
   });
 };
 

@@ -10,9 +10,9 @@ exports.up = function (knex) {
     table.string('incident_date', 50).notNullable();
     table.string('incident_time', 50).notNullable();
     table.string('incident_description', 50).notNullable();
-    table.integer('vehicle_id', 50).notNullable();
+    table.integer('vehicle_id').notNullable();
     table.foreign('vehicle_id').references('vehicle.id');
-    table.integer('member_id', 50).notNullable();
+    table.integer('member_id').notNullable();
     table.foreign('member_id').references('member.id');
   });
 };

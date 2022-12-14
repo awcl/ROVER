@@ -10,7 +10,7 @@ exports.up = function (knex) {
     table.string('miles', 50).notNullable();
     table.string('plate_number', 60).notNullable().unique();
     table.string('location', 60).notNullable();
-    table.integer('organization_id', 60).notNullable();
+    table.integer('organization_id').notNullable();
     table.foreign('organization_id').references('organization.id');
   });
 };

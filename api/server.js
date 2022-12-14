@@ -98,13 +98,15 @@ app.post('/login', async (req, res) => {
         .where('username', username)
         .catch(err => { console.log(err) });
     if (user.length > 0) {
-        bcrypt.compare(password, user[0].password, (error, response) => {
+        //console.log(`${password} and ${user[0].password_hash}`)
+        bcrypt.compare(password, user[0].password_hash, (error, response) => {
             if (response) {
                 req.session.user = user;
                 console.log(req.session.user);
-                res.send({ message: "User authenticated" });
+                res.status(200).send({ message: "User authenticated" });
             } else {
-                res.send({ message: "Username or password incorrect" });
+                res.status(403).send({ message: "Username or password incorrect" });
+                console.log('403 triggered')
             }
         });
     }
@@ -117,7 +119,8 @@ app.post('/user', async (req, res) => {
     let hashed = await hash(req.body.password, SALTS);
     knex('member')
         .insert(
-            {   id: num,
+            {
+                id: num,
                 first_name: req.body.first_name,
                 last_name: req.body.last_name,
                 rank: req.body.rank,
@@ -127,7 +130,8 @@ app.post('/user', async (req, res) => {
                 admin: req.body.admin,
                 is_van_cert: req.body.van,
                 is_sedan_cert: req.body.sedan,
-                is_truck_cert: req.body.truck}
+                is_truck_cert: req.body.truck
+            }
         )
         .then(res.status(201).end())
         .catch((e) => res.status(500).end())

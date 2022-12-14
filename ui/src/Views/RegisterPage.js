@@ -22,7 +22,7 @@ const RegisterPage = () => {
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [rank, setRank] = useState('');
-    // const [email, setEmail] = useState('');
+    const [email, setEmail] = useState('');
     const [organization, setOrganization] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const navigate = useNavigate();
@@ -32,7 +32,7 @@ const RegisterPage = () => {
     const formReset = () => {
         setFirstName('');
         setLastName('');
-        // setEmail('');
+        setEmail('');
         setRank('');
         setOrganization('');
         setUsername('');
@@ -50,7 +50,7 @@ const RegisterPage = () => {
         //         const response = await fetch('http://localhost:8080/register', {
         //             method: 'POST',
         //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify({ username, password, firstName, lastName, email })
+        //             body: JSON.stringify({ username, password, firstName, lastName, email, rank, organization })
         //         });
         //         const data = await response.json();
         //         if (data.error) {
@@ -111,6 +111,15 @@ const RegisterPage = () => {
                                             variant="outlined"
                                             value={organization}
                                             onChange={(e) => setOrganization(e.target.value)}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            label="Email"
+                                            variant="outlined"
+                                            value={email}
+                                            onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
