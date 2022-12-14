@@ -188,7 +188,7 @@ const RegisterPage = () => {
                                         <Button
                                             fullWidth
                                             variant="contained"
-                                            onClick={() => navigate('/')}
+                                            onClick={() => navigate('/login')}
                                         >
                                             Have an account? Log in
                                         </Button>
