@@ -29,36 +29,38 @@ app.get('/:id', (req, res) => {
 
 // POST username and password for check against user table password_hash, 200 code = match
 app.post('/login', async (req, res) => {
-  // const username = req.body.username;
-  // const password = req.body.password;
-  // const user = await knex('member')
-  //   .select('*')
-  //   .where('username', username)
-  //   .catch(err => { console.log(err) });
-  // if (user.length > 0) {
-  //   compare(password, user[0].password_hash, (error, response) => {
-  //     if (response) {
-  //       req.session.user = user;
-  //       console.log(req.session.user);
-  //       res.status(200).send({ message: "User authenticated" });
-  //     } else {
-  //       res.status(403).send({ message: "Username or password incorrect" });
-  //       console.log('403 triggered')
-  //     }
-  //   })
-  // }
-  let hashed = await (knex('member').where('username', req.body.username).select('password_hash'));
-  try {
-    hashed = hashed[0].password_hash;
-    console.log(hashed, '///', req.body.password)
-    compare(req.body.password, hashed)
-      .then(match => {
-        match ? res.status(200).end()
-          : res.status(403).end()
-      })
-  } catch (e) {
-    res.status(500).end();
+  const username = req.body.username;
+  const password = req.body.password;
+  console.log(typeof req.body.password)
+  const user = await knex('member')
+    .select('*')
+    .where('username', username)
+    .catch(err => { console.log(err) });
+  if (user.length > 0) {
+    bcrypt.compare(password, user[0].password_hash, (error, response) => {
+      if (response) {
+        req.session.user = user;
+        console.log(req.session.user);
+        res.status(200).send({ message: "User authenticated" });
+      } else {
+        res.status(403).send({ message: "Username or password incorrect" });
+        console.log('403 triggered')
+      }
+    })
   }
+  // let hashed = await (knex('member').where('username', req.body.username).select('password_hash'));
+  // try {
+  //   //hashed = hashed[0].password_hash;
+  //   console.log(hashed[0].password_hash, '///', req.body.password)
+  //   compare(req.body.password, hashed[0].password_hash)
+  //     .then(match => {
+  //       console.log(match)
+  //       match ? res.status(200).end()
+  //         : res.status(403).end()
+  //     })
+  // } catch (e) {
+  //   res.status(500).end();
+  // }
   // http://localhost:8080/member/login
 });
 
