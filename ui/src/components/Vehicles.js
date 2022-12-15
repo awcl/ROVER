@@ -3,6 +3,8 @@ import * as React from 'react';
 import { useEffect } from 'react';
 import {  Grid, Container } from '@mui/material';
 import VehicleCard from './VehicleCard';
+import config from '../config';
+const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 // const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -10,7 +12,7 @@ const Vehicles = () => {
     const [vehicles, setVehicles] = React.useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:8080/vehicle')
+        fetch(`${API_URL}/vehicle`)
             .then(response => response.json())
             .then(data => setVehicles(data));
     }, []);
