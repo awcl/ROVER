@@ -1,5 +1,5 @@
-import React, { useState, } from 'react';
-
+import React, { useState, useContext } from 'react';
+import Context from './Context';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -145,6 +145,7 @@ const drawerWidth = 240;
 const Layout = ({ children }) => {
     //that junk lives in app.js f/now
     const navigate = useNavigate();
+    const { session } = useContext(Context);
 
     return (
         <div>
@@ -161,7 +162,7 @@ const Layout = ({ children }) => {
                 >
                     <Toolbar>
                         <Typography variant="h6" noWrap component="div">
-                            ROVER
+                            ROVER {session.username && <>Hello {session.username} 🙂</>}
                         </Typography>
                     </Toolbar>
                 </AppBar>
@@ -182,16 +183,16 @@ const Layout = ({ children }) => {
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => navigate(`/home`)}>
-                            Home
+                        Home
                     </ListItemButton>
                     <ListItemButton
-                    sx={{
-                        justifyContent: 'center',
-                        py: 2,
-                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                    }}
-                    onClick={() => navigate('/vehicles')}>
-                    Vehicles
+                        sx={{
+                            justifyContent: 'center',
+                            py: 2,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => navigate('/vehicles')}>
+                        Vehicles
                     </ListItemButton>
                     <ListItemButton>Reservations</ListItemButton>
                     <ListItemButton>Schedule</ListItemButton>
