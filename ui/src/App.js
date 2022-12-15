@@ -17,14 +17,12 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 
 
-function App() {
+function App() { 
   const [session, setSession] = useState({});
-  const [id, setID] = useState();
-  useEffect(() => {
-    try {
+  useEffect(() => { // Checks for cookie, if so use the ID stored in it to populate session
+    try {           // session can drive isLoggedIn/admin/etc states via session.whatever
       if (document.cookie.split('=')[0] === 'ROVERid') {
-        setID(document.cookie.split('=')[1]);
-        fetch(`${API_URL}/member/${id}`)
+        fetch(`${API_URL}/member/${document.cookie.split('=')[1]}`)
           .then(res => res.json())
           .then(data => {
             setSession(data[0])
