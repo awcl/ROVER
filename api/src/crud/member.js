@@ -47,9 +47,9 @@ app.get('/:id', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     let { username, password } = req.body;
-    const hashed = await knex('member').where('username', username).select('password_hash');
+    const hashed = await knex('member').where('username', username).select('password_hash, username, admin');
     const match = await compare(password, hashed[0].password_hash);
-    match ? res.status(200).end() : res.status(403).end()
+    match ? res.status(200).send({user: username, isAdmin: hashed[0].admin}) : res.status(403).end()
   } catch (e) { res.status(500).send(e) }
   // http://localhost:8080/member/login
 });

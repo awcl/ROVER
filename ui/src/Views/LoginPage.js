@@ -12,6 +12,10 @@ import {
 } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import Context from '../components/Context';
+import { useContext } from 'react';
+
+
 // import Context from '../context/Context';
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
@@ -24,7 +28,7 @@ const LoginPage = () => {
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     // const [errorMessage, setErrorMessage] = useState('');
-
+    const { user, setUser, isAdmin, setIsAdmin } = useContext(Context);
 
     // const formReset = () => {
     //     setUsername('');
@@ -47,11 +51,15 @@ const LoginPage = () => {
                 body: JSON.stringify({ username: username, password: password })
                 // , credentials: 'include'
             }).catch(err => { console.log(err) });
-            
+
             console.log(response)
             if (response.status === 200) {
                 console.log('SUCCESS 🥳')
                 // do login things and/or stuff
+                
+                console.log(response.user, response.isAdmin)
+                // setIsAdmin(response.isAdmin);
+                // setUser(response.user);
                 navigate('/home')
             } else {
                 console.log('WRONG 🤬')

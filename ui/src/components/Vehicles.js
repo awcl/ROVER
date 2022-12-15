@@ -28,7 +28,7 @@ const Vehicles = () => {
 
 
             <Container>
-                <Grid container>
+                <Grid container spacing={4}>
                     {vehicles.map(vehicle => (
                         <Grid item key={vehicle.id} xs={12} md={4} lg={3}>
                             <VehicleCard vehicle={vehicle} />
