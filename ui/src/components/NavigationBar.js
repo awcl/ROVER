@@ -9,7 +9,7 @@ const NavigationBar = () => {
     const [value, setValue] = useState(`${location.pathname}`);
     const navigate = useNavigate();
 
-      const [auth, setAuth] = React.useState(true);
+      // const [auth, setAuth] = React.useState(true);
       const [anchorEl, setAnchorEl] = React.useState(null);
 
     const handleChange = (event, newValue) => {

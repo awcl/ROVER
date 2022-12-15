@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import { Container, Button, Grid, Paper, TextField, IconButton, InputAdornment} from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import config from '../config';
+const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 
 
@@ -36,24 +38,24 @@ const RegisterPage = () => {
     };
     const handleRegister = async (e) => {
         e.preventDefault();
-        // if (username && password && password === confirmPassword) {
-        //     try {
+        if (username && password && password === confirmPassword) {
+            try {
 
-        //         const response = await fetch('http://localhost:8080/register', {
-        //             method: 'POST',
-        //             headers: { 'Content-Type': 'application/json' },
-        //             body: JSON.stringify({ username, password, firstName, lastName, email, rank, organization })
-        //         });
-        //         const data = await response.json();
-        //         if (data.error) {
-        //             setErrorMessage(data.error);
-        //         } else {
-        //             navigate('/login');
-        //         }
-        //     } catch (error) {
-        //         console.log(error);
-        //     }
-        // }
+                const response =await fetch(`${API_URL}/member/new`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ username, password, firstName, lastName, email, rank, organization })
+                });
+                const data = await response.json();
+                if (data.error) {
+                    setErrorMessage(data.error);
+                } else {
+                    navigate('/login');
+                }
+            } catch (error) {
+                console.log(error);
+            }
+        }
     }
 
     return (
