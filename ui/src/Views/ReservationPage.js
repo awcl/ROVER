@@ -2,21 +2,13 @@ import React, { useState } from 'react';
 import { Container, Button, Grid, Paper, TextField } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import NavigationBar from '../components/NavigationBar';
-import { AdapterDayjs, DatePicker } from '@mui/x-date-pickers/AdapterDayjs';
+import { AdapterMoment } from '@mui/x-date-pickers/AdapterMoment';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
+import { DesktopDatePicker, DatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from '@date-io/dayjs';
-
-
-
-
-
-
-
 
 const ReservationPage = () => {
   let { id } = useParams();
-  console.log(id)
   // define initial state
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -24,17 +16,16 @@ const ReservationPage = () => {
   const [type, setType] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
   const [firstName, setFirstName] = useState('');
   const [lastName, setLastName] = useState('');
   const [rank, setRank] = useState('');
   const [email, setEmail] = useState('');
-  const [start, setStart] = useState('');
-  const [end, setEnd] = useState('');
+  //const [start, setStart] = useState(dayjs(new Date()));
+  //const [end, setEnd] = useState(dayjs(new Date()));
   const [organization, setOrganization] = useState('');
   const [passengers, setpassengers] = useState('');
   const [notes, setNotes] = useState(false);
-  const [value, setValue] = useState(dayjs('2014-08-18T21:11:54'));
+
   const navigate = useNavigate()
 
   // handle changes to form fields
@@ -117,11 +108,11 @@ const ReservationPage = () => {
                       onChange={(e) => { }}
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
                       <DesktopDatePicker
                         label="Start Date"
-                        value={value}
+                        value={start}
                         onChange={(picked) => {
                           setStart(picked);
                         }}
@@ -131,16 +122,16 @@ const ReservationPage = () => {
                   </Grid>
                   <Grid item xs={12}>
                     <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DesktopDatePicker
+                      <DatePicker
                         label="End Date"
-                        value={value}
+                        value={end}
                         onChange={(picked) => {
                           setEnd(picked);
                         }}
                         renderInput={(params) => <TextField {...params} />}
                       />
                     </LocalizationProvider>
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
@@ -150,15 +141,15 @@ const ReservationPage = () => {
                       onChange={(e) => { }}
                     />
                   </Grid>
-                  {/* <Grid item xs={12}>
+                  <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Additional Notes/Justification"
                       variant="outlined"
                       value={notes}
                       onChange={(e) => { }}
-                    /> */}
-                  {/* </Grid> */}
+                    />
+                  </Grid>
                   <Grid item xs={12}>
                     <Button
                       fullWidth
