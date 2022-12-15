@@ -50,7 +50,7 @@ const ReservationPage = () => {
   return (
     <>
       <div>
-        <NavigationBar />
+        {/* <NavigationBar /> */}
       </div>
       <Container maxWidth="sm">
         <Grid container spacing={2}
