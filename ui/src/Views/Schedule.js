@@ -39,11 +39,5 @@
 
 // //     < working.push({title: `${member.id}`})>
 // // })
-
-
-
-
-const Schedule = () => {}
- export default Schedule;
-
-
+const Schedule = () => {return(<></>)}
+export default Schedule;

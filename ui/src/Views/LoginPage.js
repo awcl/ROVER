@@ -25,6 +25,7 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [session, setSession] = useState();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     // const [errorMessage, setErrorMessage] = useState('');
@@ -43,28 +44,29 @@ const LoginPage = () => {
         if (username === '' || password === '') {
             window.alert('bro you left some stuff blank')
         } else if (username && password) {
-            const response = await fetch(`${API_URL}/member/login`, {
+            await fetch(`${API_URL}/member/login`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ username: username, password: password })
                 // , credentials: 'include'
-            }).catch(err => { console.log(err) });
-
-            console.log(response)
-            if (response.status === 200) {
-                console.log('SUCCESS 🥳')
-                // do login things and/or stuff
-                
-                console.log(response.user, response.isAdmin)
-                // setIsAdmin(response.isAdmin);
-                // setUser(response.user);
-                navigate('/home')
-            } else {
-                console.log('WRONG 🤬')
-            }
-
+            }).then(res => res.json())
+                .then(data => {
+                    setSession(data)
+                    if (data.password_hash) {
+                        console.log('SUCCESS 🥳')
+                        setIsAdmin(data.admin)
+                        setUser(data.username)
+                    } else {
+                        console.log('WRONG 🤬')
+                    }
+                })
+                .catch(err => {
+                    console.log('Connectivity Issue(s) 🤬')
+                    setSession({});
+                });
+            console.log(isAdmin, user)
         }
     }
 

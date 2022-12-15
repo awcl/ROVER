@@ -11,6 +11,7 @@ import QueueingPage from './Views/QueueingPage';
 import Context from './components/Context';
 // import NavigationLayout from "./Views/NavigationLayout";
 import React, { useState, useContext } from 'react';
+import Layout from './components/Layout';
 
 function App() {
   const [isAdmin, setIsAdmin] = useState(false);
@@ -21,6 +22,8 @@ function App() {
       <Context.Provider value={{ isAdmin, setIsAdmin, user, setUser }}>
         <div className="App">
           <header className="App-header">
+            <Router>
+              <Layout>
             <Routes>
               <Route path="/" element={<LandingPage />} />
               <Route path="/login" element={<LoginPage />} />
@@ -32,6 +35,8 @@ function App() {
               <Route path="/schedule" element={<Schedule />} />
               {isAdmin && <Route path="/queue" element={<QueueingPage />} />}
             </Routes>
+            </Layout>
+            </Router>
           </header>
         </div>
       </Context.Provider>
