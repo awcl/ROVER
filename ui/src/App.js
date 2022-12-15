@@ -27,8 +27,7 @@ function App() {
         fetch(`${API_URL}/member/${id}`)
           .then(res => res.json())
           .then(data => {
-            console.log('session @ app', session)
-            console.log(id)
+            setSession(data[0])
           }).catch(e => e)
       }
     } catch (e) { console.log(e) }

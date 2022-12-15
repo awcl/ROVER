@@ -104,7 +104,21 @@ const RoverNav = styled(List)({
                             mr: -1,
                             opacity: 0,
                             transform: open ? 'rotate(-180deg)' : 'rotate(0deg)',
-                            
+                            transition: 'all 300ms',
+                        }}
+                    />
+                    </ListItemButton>
+                    {open &&
+                        data.map((item) => (
+                            <ListItemButton key={item.label} component="a" href="#"
+                            sx={{ py:0, minHeight: 32, color: 'rgba(255,255,255,0.5)' }}
+                            >
+                                <ListItemIcon>{item.icon}</ListItemIcon>
+                                <ListItemText primary={item.label} />
+                            </ListItemButton>
+                        ))}
+
+                    }
 
 
 
