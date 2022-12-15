@@ -45,15 +45,16 @@ const LoginPage = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ username: username, password: password })
-                , credentials: 'include'
+                // , credentials: 'include'
             }).catch(err => { console.log(err) });
-
+            
             console.log(response)
             if (response.status === 200) {
+                console.log('SUCCESS 🥳')
                 // do login things and/or stuff
-                //navigate('/dashboard')
+                navigate('/home')
             } else {
-                window.alert('WRONG')
+                console.log('WRONG 🤬')
             }
 
         }

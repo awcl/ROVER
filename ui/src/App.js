@@ -5,6 +5,7 @@ import RegisterPage from './Views/RegisterPage';
 import LandingPage from './Views/LandingPage';
 import Home from './Views/Home';
 import Vehicles from './components/Vehicles';
+import ReservationPage from './Views/ReservationPage';
 // import NavigationLayout from "./Views/NavigationLayout";
 
 function App() {
@@ -18,6 +19,7 @@ function App() {
             <Route path="/register" element={<RegisterPage />} />
             <Route path="/home" element={<Home />} />
             <Route path="/vehicles" element={<Vehicles />} />
+            <Route path="/reservations/:id" element={<ReservationPage />} />
           </Routes>
         </header>
       </div>

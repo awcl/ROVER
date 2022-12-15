@@ -1,15 +1,18 @@
 // import NavigationBar from "./NavigationBar";
 import * as React from 'react';
 import { useEffect } from 'react';
-import {  Grid, Container } from '@mui/material';
+import { useNavigate } from 'react-router-dom';
+import { Grid, Container } from '@mui/material';
 import VehicleCard from './VehicleCard';
 import config from '../config';
+import NavigationBar from '../components/NavigationBar';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 // const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Vehicles = () => {
     const [vehicles, setVehicles] = React.useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${API_URL}/vehicle`)
@@ -18,19 +21,28 @@ const Vehicles = () => {
     }, []);
 
 
-    return  (
-        <Container>
-            <Grid container item xs={12} spacing={3} >
-            {vehicles.map(vehicle => (
-                <Grid item key={vehicle.id} >
-                    <VehicleCard vehicle={vehicle} />
+    return (
+        <>
+
+            <div>
+                <NavigationBar />
+            </div>
+
+
+            <Container>
+                <Grid container>
+                    {vehicles.map(vehicle => (
+                        <Grid item key={vehicle.id} xs={12} md={4} lg={3}>
+                            <VehicleCard vehicle={vehicle} onClick={() => navigate(`/reservations/${vehicle.id}`)} />
+                        </Grid>
+                    ))}
                 </Grid>
-            ))}
-            </Grid>
-        </Container>
+            </Container>
+
+        </>
     );
 }
-    
+
 
 
 export default Vehicles;

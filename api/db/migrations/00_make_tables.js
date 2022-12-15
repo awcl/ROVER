@@ -4,8 +4,8 @@
  */
 
 
-  exports.up = function (knex) {
-    return knex.schema
+exports.up = function (knex) {
+  return knex.schema
     .createTable('organization', (table) => {
       table.increments('id');
       table.string('unit_name', 50).notNullable();
@@ -31,6 +31,7 @@
       table.string('vehicle_type', 50).notNullable();
       table.string('miles', 50).notNullable();
       table.string('plate_number', 60).notNullable().unique();
+      table.string('description', 250).notNullable();
       table.string('location', 60).notNullable();
       table.integer('organization_id').notNullable();
       table.foreign('organization_id').references('organization.id').onDelete('CASCADE').onUpdate('CASCADE');
@@ -57,28 +58,28 @@
       table.integer('member_id').notNullable();
       table.foreign('member_id').references('member.id').onDelete('CASCADE').onUpdate('CASCADE');
     });
-  };
+};
 
 /**
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
 exports.down = function (knex) {
-    return knex.schema
+  return knex.schema
     .alterTable('member', (table) => {
-        table.dropForeign('organization_id');
-        })
+      table.dropForeign('organization_id');
+    })
     .alterTable('vehicle', (table) => {
-        table.dropForeign('organization_id');
-        })
+      table.dropForeign('organization_id');
+    })
     .alterTable('reservation', (table) => {
-        table.dropForeign('vehicle_id');
-        table.dropForeign('member_id');
-        })
+      table.dropForeign('vehicle_id');
+      table.dropForeign('member_id');
+    })
     .alterTable('incident_report', (table) => {
-        table.dropForeign('vehicle_id');
-        table.dropForeign('member_id');
-        })
+      table.dropForeign('vehicle_id');
+      table.dropForeign('member_id');
+    })
     .dropTableIfExists('organization')
     .dropTableIfExists('member')
     .dropTableIfExists('vehicle')

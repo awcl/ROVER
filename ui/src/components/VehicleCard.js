@@ -5,18 +5,18 @@ import { Card, CardContent, CardHeader, CardMedia, Typography, Container } from 
 const VehicleCard = ({ vehicle }) => {
     return (
         <div>
-        <Card elevation={3}>
-            <CardHeader 
-            title={vehicle.vehicle_type}
-            subheader={vehicle.plate_number}
-             />
-           
-            <CardContent>
-                <Typography variant="body2" color="text.secondary">
-                    NEED TO ADD VEHICLE_DESCRIPTIONS TO DB
-                </Typography>
-            </CardContent>
-        </Card>
+            <Card elevation={3}>
+                <CardHeader
+                    title={vehicle.vehicle_type}
+                    subheader={vehicle.plate_number}
+                />
+
+                <CardContent>
+                    <Typography variant="body2" color="text.secondary">
+                        {vehicle.description}
+                    </Typography>
+                </CardContent>
+            </Card>
         </div>
 
     )

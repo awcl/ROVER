@@ -6,6 +6,22 @@ const { hash, compare } = bcrypt;
 const SALTS = 12;
 const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || 'development']);
 
+
+// const encryptPassword = async (password) => {
+//   const hash = await bcrypt.hash(password, SALTS);
+//   return hash;
+// }
+
+// const comparePassword = async (password, hash) => {
+//   try {
+//     const isMatch = await bcrypt.compare(password, hash);
+//     return isMatch;
+//   } catch (error) {
+//     console.log(error)
+//     throw "Error comparing password";
+//   }
+
+//}
 // GET All Members from member table
 app.get('/', (req, res) => {
   knex('member')
@@ -27,39 +43,14 @@ app.get('/:id', (req, res) => {
   // http://localhost:8080/member/1
 });
 
-// POST username and password for check against user table password_hash, 200 code = match
+// POST username and password for check against user table password_hash, 200 = match, 403 = wrong, 500 = server issue
 app.post('/login', async (req, res) => {
-  const username = req.body.username;
-  const password = req.body.password;
-  const user = await knex('member')
-    .select('*')
-    .where('username', username)
-    .catch(err => { console.log(err) });
-  if (user.length > 0) {
-    bcrypt.compare(password, user[0].password_hash, (error, response) => {
-      if (response) {
-        req.session.user = user;
-        console.log(req.session.user);
-        res.status(200).send({ message: "User authenticated" });
-      } else {
-        res.status(403).send({ message: "Username or password incorrect" });
-        console.log('403 triggered')
-      }
-    })
-  }
-  // let hashed = await (knex('member').where('username', req.body.username).select('password_hash'));
-  // try {
-  //   //hashed = hashed[0].password_hash;
-  //   console.log(hashed[0].password_hash, '///', req.body.password)
-  //   compare(req.body.password, hashed[0].password_hash)
-  //     .then(match => {
-  //       console.log(match)
-  //       match ? res.status(200).end()
-  //         : res.status(403).end()
-  //     })
-  // } catch (e) {
-  //   res.status(500).end();
-  // }
+  try {
+    let { username, password } = req.body;
+    const hashed = await knex('member').where('username', username).select('password_hash');
+    const match = await compare(password, hashed[0].password_hash);
+    match ? res.status(200).end() : res.status(403).end()
+  } catch (e) { res.status(500).send(e) }
   // http://localhost:8080/member/login
 });
 
