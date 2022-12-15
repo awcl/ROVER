@@ -162,7 +162,7 @@ const Layout = ({ children }) => {
                 >
                     <Toolbar>
                         <Typography variant="h6" noWrap component="div">
-                            ROVER {session.username && <>Hello {session.username} 🙂</>}
+                            ROVER {session.username && <> --- Hello {session.username} 🙂</>}
                         </Typography>
                     </Toolbar>
                 </AppBar>
