@@ -92,6 +92,21 @@ const RoverNav = styled(List)({
                         secondary="Vehicle, Reservation, Schedule, Pending Reservations"
                         secondaryTypographyProps={{
                             noWrap: true,
+                            fontSize: 13,
+                            lineHeight: '20px',
+                            color: open ? 'rgba(0,0,0,0)' : 'rgba(255,255,255,0.5)',
+                            transition: 'color 300ms',
+                        }}
+                        sx={{ my: 0.5 }}
+                    />
+                    <KeyboardArrowDown
+                        sx={{
+                            mr: -1,
+                            opacity: 0,
+                            transform: open ? 'rotate(-180deg)' : 'rotate(0deg)',
+                            
+
+
 
 
 
