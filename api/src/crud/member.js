@@ -47,7 +47,7 @@ app.get('/:id', (req, res) => {
 app.post('/login', async (req, res) => {
   try {
     let { username, password } = req.body;
-    const hashed = await knex('member').where('username', username).select('password_hash', 'admin', 'username');
+    const hashed = await knex('member').where('username', username).select('*');
     console.log(hashed[0])
     const match = await compare(password, hashed[0].password_hash);
     match ? res.status(200).send(hashed[0]) : res.status(403).end()

@@ -25,11 +25,10 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const LoginPage = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [session, setSession] = useState();
     const navigate = useNavigate();
     const [showPassword, setShowPassword] = useState(false);
     // const [errorMessage, setErrorMessage] = useState('');
-    const { user, setUser, isAdmin, setIsAdmin } = useContext(Context);
+    const { session, setSession } = useContext(Context);
 
     // const formReset = () => {
     //     setUsername('');
@@ -53,20 +52,21 @@ const LoginPage = () => {
                 // , credentials: 'include'
             }).then(res => res.json())
                 .then(data => {
-                    setSession(data)
-                    if (data.password_hash) {
+                    if (data.admin && data.username) {
                         console.log('SUCCESS 🥳')
-                        setIsAdmin(data.admin)
-                        setUser(data.username)
+                        setSession(data)
+                        console.log(data)
+                        document.cookie=`ROVERid=${data.id}; Path=/;`
+                        navigate('/Home')
                     } else {
-                        console.log('WRONG 🤬')
+                        console.log('Connectivity Issues 🤬')
+                        setSession({})
                     }
                 })
                 .catch(err => {
-                    console.log('Connectivity Issue(s) 🤬')
-                    setSession({});
+                    console.log('Wrong 🤬')
+                    setSession({})
                 });
-            console.log(isAdmin, user)
         }
     }
 

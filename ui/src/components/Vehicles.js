@@ -23,7 +23,7 @@ const Vehicles = () => {
         <>
 
             <div>
-                <NavigationBar />
+                {/* <NavigationBar /> */}
             </div>
 
 
