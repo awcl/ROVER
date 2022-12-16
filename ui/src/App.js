@@ -10,9 +10,11 @@ import Schedule from './Views/Schedule';
 import Context from './components/Context';
 import ReservationList from "./components/ReservationList";
 import React, { useState, useContext, useEffect } from 'react';
-import Layout from './components/Layout';
+import ContentLayout from './components/ContentLayout';
+import LandingLayout from './components/LandingLayout';
 import config from './config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
+
 
 
 
@@ -30,23 +32,6 @@ function App() {
     } catch (e) { console.log(e) }
   }, [])
 
-/*
-
-<Routes>
-  <Route path="/" element={<Home />} />
-  <Route path="/books" element={<BooksLayout />}>
-    <Route index element={<BookList />} />
-    <Route path=":id" element={<Book />} />
-    <Route path="new" element={<NewBook />} />
-  </Route>
-  <Route element={<OtherLayout />}>
-    <Route path="/contact" element={<Contact />} />
-    <Route path="/about" element={<About />} />
-  </Route>
-  <Route path="*" element={<NotFound />} />
-</Routes>
-*/
-
 
 
   return (
@@ -54,10 +39,13 @@ function App() {
       <Context.Provider value={{ session, setSession }}>
         <div className="App">
           <header className="App-header">
-            <Router>
-              {/* <Layout> */}
-                <Routes>
-                  <Route path="/" element={<LandingPage />} />
+
+            <Routes>
+
+              <Route element =  {<LandingLayout />}>
+                <Route path="/" element={<LandingPage />} />
+                </Route>
+                  <Route element = {<ContentLayout />} >
                   <Route path="/login" element={<LoginPage />} />
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/home" element={<Home />} />
@@ -65,9 +53,9 @@ function App() {
                   <Route path="/reservations" element={<ReservationList />} />
                   <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                   <Route path="/schedule" element={<Schedule />} />
-                </Routes>
-              {/* </Layout> */}
-            </Router>
+                </Route>
+
+            </Routes>
           </header>
         </div>
       </Context.Provider>

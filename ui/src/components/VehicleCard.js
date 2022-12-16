@@ -4,11 +4,6 @@ import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import { useNavigate } from 'react-router-dom';
 import Context from './Context';
 
-
-
-
-
-
 const VehicleCard = ({ vehicle }) => {
     const navigate = useNavigate();
     const { session } = useContext(Context);

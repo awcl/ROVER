@@ -14,15 +14,14 @@ import { useNavigate } from 'react-router';
 
 const drawerWidth = 200;
 
-const Layout = ({ children }) => {
+const Navbar = () => {
     const navigate = useNavigate();
     const { session, setSession } = useContext(Context);
 
     return (
         <div>
-            APP BAR
 
-            <Box sx={{ display: 'flex' }}>
+            <Box>
                 <CssBaseline />
                 <AppBar
                     position="fixed"
@@ -50,7 +49,7 @@ const Layout = ({ children }) => {
                     <ListItemButton
                         sx={{
                             justifyContent: 'center',
-                            py: 2,
+                            py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => navigate(`/home`)}>
@@ -59,7 +58,7 @@ const Layout = ({ children }) => {
                     <ListItemButton
                         sx={{
                             justifyContent: 'center',
-                            py: 2,
+                            py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => navigate('/vehicles')}>
@@ -67,27 +66,27 @@ const Layout = ({ children }) => {
                     </ListItemButton>
                     <ListItemButton sx={{
                             justifyContent: 'center',
-                            py: 2,
+                            py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => navigate(`/reservations`)}>Reservations</ListItemButton>
                     <ListItemButton
                     sx={{
                         justifyContent: 'center',
-                        py: 2,
+                        py: .5,
                         '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                     }}
                     onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
                     <Divider />
                     {session.username && <ListItemButton sx={{
                             justifyContent: 'center',
-                            py: 2,
+                            py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => navigate('/account')}>Account</ListItemButton>}
                     {session.username && <ListItemButton sx={{
                             justifyContent: 'center',
-                            py: 2,
+                            py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => {
@@ -98,7 +97,7 @@ const Layout = ({ children }) => {
                     {!session.username && <ListItemButton
                             sx={{
                             justifyContent: 'center',
-                            py: 2,
+                            py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                         }}
                         onClick={() => navigate('/login')}>Log In</ListItemButton>}
@@ -106,16 +105,17 @@ const Layout = ({ children }) => {
                 </Drawer>
                 <Box
                     component="main"
-                    sx={{ flexGrow: 1, p: 3 }}
+                    sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }
+                    }}
                 >
+                    }
                     <Toolbar />
-                    {children}
                 </Box>
             </Box>
         </div>
     );
 }
 
-export default Layout;
+export default Navbar;
 
 

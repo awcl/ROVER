@@ -136,7 +136,8 @@ const ReservationList = () => {
   const [tablePageSize, setTablePageSize] = useState(5);
   return (
     <>
-      <div style={{ height: 400, width: '100%' }}>
+      <div style={{ height: 400, width: '75%', display: 'flex', alignItems: 'center', justifyContent: 'center'
+    }}>
         <DataGrid
           className="Result-Table"
           rows={reservations.filter(x=>!x.approved)}
