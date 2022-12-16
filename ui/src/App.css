@@ -29,6 +29,7 @@
   background-color: #1976d2;
   color: #FFFFFF;
   font-size: calc(6px + 1vmin);
+
 }
 .MuiDataGrid-row:nth-child(odd){
   background-color: #10477e;

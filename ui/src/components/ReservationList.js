@@ -139,7 +139,7 @@ const ReservationList = () => {
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid
           className="Result-Table"
-          rows={reservations.filter(x=>x.approved)}
+          rows={reservations.filter(x=>!x.approved)}
           columns={columns}
           pageSize={tablePageSize}
           initialState={{ pagination: { pageSize: tablePageSize } }}

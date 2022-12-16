@@ -15,7 +15,9 @@ const VehicleCard = ({ vehicle }) => {
             <Card elevation={3}>
                 <CardHeader
                     action={
-                        <IconButton onClick={() => navigate(`/reservations/vehicle/${vehicle.id}`)}>
+                        <IconButton
+                        sx={{ color: '#1976d2' }}
+                         onClick={() => navigate(`/reservations/vehicle/${vehicle.id}`)}>
                             <CalendarMonthTwoToneIcon />
                         </IconButton>
                     }

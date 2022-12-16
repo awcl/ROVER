@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
 import { Container, Button, Grid, Paper, TextField } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
 import NavigationBar from '../components/NavigationBar';
@@ -7,14 +7,11 @@ import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from 'dayjs';
 import config from '../config';
+import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const ReservationPage = () => {
   let { vehID } = useParams();
-
-
-
-
   // define initial state
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -31,8 +28,12 @@ const ReservationPage = () => {
   const [organization, setOrganization] = useState('');
   const [passengers, setpassengers] = useState('');
   const [notes, setNotes] = useState();
-
+  const { session } = useContext(Context);
   const navigate = useNavigate()
+
+  useEffect(() => {
+    !session.username && navigate('/Home')
+  }, [])
 
   // handle changes to form fields
   const handleDateChange = (event) => {
@@ -84,7 +85,8 @@ const ReservationPage = () => {
                       fullWidth
                       label="First Name"
                       variant="outlined"
-                      value={firstName}
+                      value={session.first_name}
+                      //defaultValue="ee"
                       onChange={(e) => { }}
                     />
                   </Grid>
@@ -93,7 +95,7 @@ const ReservationPage = () => {
                       fullWidth
                       label="Last Name"
                       variant="outlined"
-                      value={lastName}
+                      value={session.last_name}
                       onChange={(e) => { }}
                     />
                   </Grid>
@@ -111,7 +113,7 @@ const ReservationPage = () => {
                       fullWidth
                       label="Organization"
                       variant="outlined"
-                      value={organization}
+                      value={session.organization_id}
                       onChange={(e) => { }}
                     />
                   </Grid>
@@ -120,7 +122,7 @@ const ReservationPage = () => {
                       fullWidth
                       label="POC Email"
                       variant="outlined"
-                      value={email}
+                      value={session.email}
                       onChange={(e) => { }}
                     />
                   </Grid>
