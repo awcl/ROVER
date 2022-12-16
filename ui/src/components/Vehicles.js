@@ -30,7 +30,7 @@ const Vehicles = () => {
             <Container>
                 <Grid container spacing={4}>
                     {vehicles.map(vehicle => (
-                        <Grid item key={vehicle.id} xs={12} md={4} lg={3}>
+                        <Grid item key={vehicle.id} xs={10} md={4} lg={5}>
                             <VehicleCard vehicle={vehicle} />
                         </Grid>
                     ))}

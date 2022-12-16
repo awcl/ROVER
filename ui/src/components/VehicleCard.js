@@ -15,7 +15,7 @@ const VehicleCard = ({ vehicle }) => {
             <Card elevation={3}>
                 <CardHeader
                     action={
-                        <IconButton onClick={() => navigate(`/reservations/${vehicle.id}`)}>
+                        <IconButton onClick={() => navigate(`/reservations/vehicle/${vehicle.id}`)}>
                             <CalendarMonthTwoToneIcon />
                         </IconButton>
                     }
@@ -26,7 +26,7 @@ const VehicleCard = ({ vehicle }) => {
                     component="img"
                     height="194"
                     image={require(`../assets/vehicle_${vehicle.id}.jpg`)}
-                    
+
                 />
                 <CardContent>
                     <Typography variant="body2" color="text.secondary">

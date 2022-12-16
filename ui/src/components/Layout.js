@@ -142,7 +142,7 @@ import { useNavigate } from 'react-router';
 // export default Layout;
 
 
-const drawerWidth = 240;
+const drawerWidth = 200;
 
 const Layout = ({ children }) => {
     //that junk lives in app.js f/now
@@ -209,12 +209,6 @@ const Layout = ({ children }) => {
                         '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                     }}
                     onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
-                    <ListItemButton sx={{
-                            justifyContent: 'center',
-                            py: 2,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
-                        onClick={() => navigate(`/queue`)}>Pending Reservations</ListItemButton>
                     <Divider />
                     {session.username && <ListItemButton sx={{
                             justifyContent: 'center',

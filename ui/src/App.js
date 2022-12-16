@@ -7,7 +7,6 @@ import Home from './Views/Home';
 import Vehicles from './components/Vehicles';
 import ReservationPage from './Views/ReservationPage';
 import Schedule from './Views/Schedule';
-import QueueingPage from './Views/QueueingPage';
 import Context from './components/Context';
 import ReservationList from "./components/ReservationList";
 import React, { useState, useContext, useEffect } from 'react';
@@ -47,7 +46,6 @@ function App() {
                   <Route path="/reservations" element={<ReservationList />} />
                   <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                   <Route path="/schedule" element={<Schedule />} />
-                  <Route path="/queue" element={<QueueingPage />} />
                 </Routes>
               </Layout>
             </Router>

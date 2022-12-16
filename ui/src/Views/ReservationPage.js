@@ -56,8 +56,8 @@ const ReservationPage = () => {
       body: JSON.stringify({
         vehicle_id: vehID,
         member_id: document.cookie.split('=')[2],
-        // start_date: /*REFERENCE START DATE FIELD*/,
-        // end_date: /*REFERENCE END DATE FIELD*/
+        start_date: start,
+        end_date: end
       })
     })
   } catch (e) {console.log(e)}
@@ -130,7 +130,9 @@ const ReservationPage = () => {
                         label="Start Date"
                         value={start}
                         onChange={(picked) => {
-                          setStart(picked);
+                          if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                            setStart(`${picked.$y}-${picked.$M}-${picked.$D}`);
+                          }
                         }}
                         renderInput={(params) => <TextField fullWidth {...params} />}
                       />
@@ -142,8 +144,9 @@ const ReservationPage = () => {
                         label="End Date"
                         value={end}
                         onChange={(picked) => {
-                          setEnd(picked);
-                          console.log(picked)
+                          if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                            setEnd(`${picked.$y}-${picked.$M}-${picked.$D}`);
+                          }
                         }}
                         renderInput={(params) => <TextField fullWidth {...params} />}
                       />
