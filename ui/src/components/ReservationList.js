@@ -29,13 +29,39 @@ const handleDeny = (id) => {
 ///would a join query query be the best way to do this?
 //
 const columns = [
-  { field: 'id', headerName: 'ID', flex: .2, width: 50 },
+  // "id": 1,
+// "vehicle_id": 1,
+// "member_id": 1,
+// "start_date": "2023-11-25T00:00:00.000Z",
+// "end_date": "2024-12-11T00:00:00.000Z",
+// "approved": true,
+// "first_name": "Santa",
+// "last_name": "Claus",
+// "email": "s.claus1@email.com",
+// "rank": "SPC1",
+// "username": "bbb",
+// "password_hash": "$2b$12$hig73jSR/ccryE0pNivX7.SqN4DeovW1jXK7Drnq9QxxIKQgiTnA6",
+// "organization_id": 1,
+// "admin": true,
+// "is_van_cert": true,
+// "is_sedan_cert": false,
+// "is_truck_cert": false,
+// "vehicle_type": "van",
+// "miles": "63400",
+// "plate_number": "G34989",
+// "description": "8 passenger van",
+// "location": "P67-1"
+  { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
+  { field: 'vehicle_id', headerName: 'Veh ID', flex: .4, minWidth: 50 },
+  { field: 'plate_number', headerName: 'Plate', flex: .4, minWidth: 50 },
+  { field: 'description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
+  { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .4, minWidth: 50 },
+  { field: 'location', headerName: 'Parking Lot', flex: .5, minWidth: 50 },
   { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
-  { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .4, width: 120 },
-  { field: 'description', headerName: 'Vehicle Description', flex: .5, width: 130 },
-  { field: 'lastName', headerName: 'Last name', flex: .3, width: 130 },
-  { field: 'start_date', headerName: 'Start Date', flex: .3, width: 130 },
-  { field: 'end_date', headerName: 'End Date', flex: .3, width: 100 },
+  { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
+  { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
+  { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
+  { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
   {
     field: 'Actions', flex: .3, width: 130, renderCell: (cellValues) => {
       return (
@@ -74,28 +100,7 @@ const ReservationList = () => {
         setReservations(data)
       });
   }, [])
-// "id": 1,
-// "vehicle_id": 1,
-// "member_id": 1,
-// "start_date": "2023-11-25T00:00:00.000Z",
-// "end_date": "2024-12-11T00:00:00.000Z",
-// "approved": true,
-// "first_name": "Santa",
-// "last_name": "Claus",
-// "email": "s.claus1@email.com",
-// "rank": "SPC1",
-// "username": "bbb",
-// "password_hash": "$2b$12$hig73jSR/ccryE0pNivX7.SqN4DeovW1jXK7Drnq9QxxIKQgiTnA6",
-// "organization_id": 1,
-// "admin": true,
-// "is_van_cert": true,
-// "is_sedan_cert": false,
-// "is_truck_cert": false,
-// "vehicle_type": "van",
-// "miles": "63400",
-// "plate_number": "G34989",
-// "description": "8 passenger van",
-// "location": "P67-1"
+
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc"}]);
   return (
     <>
