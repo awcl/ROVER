@@ -10,11 +10,12 @@ import { useContext, useEffect } from 'react';
 
 
 const Home = () => {
+  const { session } = useContext(Context);
 
   return (
     <>
       <div>
-        {/* content */}
+        Home Page Loads
       </div>
 
     </>

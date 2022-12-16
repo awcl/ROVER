@@ -30,13 +30,32 @@ function App() {
     } catch (e) { console.log(e) }
   }, [])
 
+/*
+
+<Routes>
+  <Route path="/" element={<Home />} />
+  <Route path="/books" element={<BooksLayout />}>
+    <Route index element={<BookList />} />
+    <Route path=":id" element={<Book />} />
+    <Route path="new" element={<NewBook />} />
+  </Route>
+  <Route element={<OtherLayout />}>
+    <Route path="/contact" element={<Contact />} />
+    <Route path="/about" element={<About />} />
+  </Route>
+  <Route path="*" element={<NotFound />} />
+</Routes>
+*/
+
+
+
   return (
     <>
       <Context.Provider value={{ session, setSession }}>
         <div className="App">
           <header className="App-header">
             <Router>
-              <Layout>
+              {/* <Layout> */}
                 <Routes>
                   <Route path="/" element={<LandingPage />} />
                   <Route path="/login" element={<LoginPage />} />
@@ -47,7 +66,7 @@ function App() {
                   <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                   <Route path="/schedule" element={<Schedule />} />
                 </Routes>
-              </Layout>
+              {/* </Layout> */}
             </Router>
           </header>
         </div>

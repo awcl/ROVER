@@ -77,7 +77,7 @@ const ReservationPage = () => {
           <Grid item xs={12}>
             <Paper elevation={3} sx={{ p: 5 }}>
               <form onSubmit={() => handleSubmit()}>
-                <h1>Reservation</h1>
+                <h1>Create Reservation</h1>
                 {errorMessage && <div className='failed'>{errorMessage}</div>}
                 <Grid container spacing={2}>
                   <Grid item xs={12}>
@@ -86,8 +86,7 @@ const ReservationPage = () => {
                       label="First Name"
                       variant="outlined"
                       value={session.first_name}
-                      //defaultValue="ee"
-                      onChange={(e) => { }}
+                      disabled
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -96,7 +95,7 @@ const ReservationPage = () => {
                       label="Last Name"
                       variant="outlined"
                       value={session.last_name}
-                      onChange={(e) => { }}
+                      disabled
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -104,8 +103,8 @@ const ReservationPage = () => {
                       fullWidth
                       label="Rank"
                       variant="outlined"
-                      value={rank}
-                      onChange={(e) => { }}
+                      value={session.rank}
+                      disabled
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -114,7 +113,7 @@ const ReservationPage = () => {
                       label="Organization"
                       variant="outlined"
                       value={session.organization_id}
-                      onChange={(e) => { }}
+                      disabled
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -123,7 +122,7 @@ const ReservationPage = () => {
                       label="POC Email"
                       variant="outlined"
                       value={session.email}
-                      onChange={(e) => { }}
+                      disabled
                     />
                   </Grid>
                   <Grid item xs={12}>

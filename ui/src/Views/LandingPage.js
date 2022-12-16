@@ -11,6 +11,7 @@ const LandingPage = () => {
             <video src={landingBG} autoPlay loop muted poster={landingBGP}/>
             <div className="content">
                 <h1>ROVER : NOW</h1>
+                <p>ROVER is a platform that allows you to connect with your friends and family in real time. </p>
                 <Button variant="contained" color="primary" href="/login">Login</Button>
             </div>
         </div>
