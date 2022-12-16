@@ -16,3 +16,29 @@
 .App-link {
   color: #61dafb;
 }
+
+.Result-Table {
+  background-color: #222222;
+  font-size: calc(8px + 2vmin);
+  color: #FFFFFF;
+  width: 75vw;
+  opacity: 85%;
+}
+
+.MuiDataGrid-columnHeaders {
+  background-color: #1976d2;
+}
+
+.MuiDataGrid-row:nth-child(odd){
+  background-color: #363636;
+}
+
+.MuiDataGrid-row:nth-child(even){
+  background-color: #2c2c2c;
+}
+
+.MuiDataGrid-cellContent, .MuiTablePagination-displayedRows,
+.MuiDataGrid-columnHeaderTitle, .MuiSvgIcon-root {
+  color: #FFFFFF;
+  font-size: calc(7px + 1vmin);
+}

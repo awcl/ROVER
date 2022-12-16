@@ -35,28 +35,12 @@ The production application is hosted by [render](https://render.com/)
 ## ERD
 ![ERD](https://github.com/awcl/ROVER/blob/main/blueprint/ERD.png?raw=true)
 ## User Stories
-1. As an ***inventory manager*** I want to be able to create an account so that I can track my inventory.
-    - The user credentials must be salted and hashed before being stored.
-2. As an ***inventory manager*** I want to be able to log into my account so that I can see my inventory of items.
-    - After logging in, the inventory manager should be redirected to their inventory of items.
-3. As an ***inventory manager*** I want to be able to create a new item so that I can share my item details with the world.
-    - After the item is created, the inventory manager should be redirected to their inventory of items.
-    - An item displays name, description, and quantity.
-4. As an ***inventory manager*** I want to be able to see my entire inventory of items.
-    - The inventory of items should display the first 100 characters of each item description, with “...” at the end if the description is longer than 100 characters.
-5. As an ***inventory manager*** I want to be able to see any individual item I have added.
-    - The full item information should be displayed.
-6. As an ***inventory manager*** I want to be able to edit an item so that I can fix any mistakes I made creating it.
-    - When the user toggles edit mode, the page remains the same and the fields become editable.
-7. As an ***inventory manager*** I want to be able to delete an item so that I can remove any unwanted content.
-When the user deletes the item they should be redirected to their inventory of items.
-8. As a ***visitor***, who is not logged in, I want to be able to view all items created by every inventory manager so that I can browse every item.
-    - Unauthenticated users should be able to view all items, and any single item.
-    - The items should only display the first 100 characters of its description with “...” at the end if it is longer than 100 characters.
-9. As a ***visitor***, who is not logged in, I want to be able to view a specific item created by any user so that I can see all of its details.
-   - Unauthenticated users should be able to view all items, and any single item.
-10. As an ***inventory manager*** I want to be able to view all items created by every inventory manager so that I can browse every item.
-    - Unauthenticated users should be able to view all items, and any single item.
+1. As an ***user*** I should be to make a request to check out a vehicle for use
+2. As an ***user*** I should be able to fill out a mishap report if a vehicle was in a accident
+3. As an ***admin*** I should be able to export all of my units vehicles to CSV file
+4. As an ***admin*** I should be able to approve pr deny vehicle request from users
+5. As an ***inventory manager***
+6. As an ***inventory manager***
 ## Wireframe
 ![Home](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Home.png)
 ![Login](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Login.png)

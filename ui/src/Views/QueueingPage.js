@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useContext, useEffect } from 'react';
+import{ useNavigate } from 'react-router';
 import Context from '../components/Context';
 
 function QueueingPage() {
   const [pendingRequests, setPendingRequests] = useState([]);
   const [newRequest, setNewRequest] = useState({});
+  const { session } = useContext(Context);
+  const navigate = useNavigate();
+
+  // useEffect(() => {
+  //   if (!(document.cookie.split('=')[0] === 'ROVERid') || session.admin !== true) {
+  //     console.log(session)
+  //     navigate('/Home')
+  //   }
+  // },[])
 
   const handleSubmit = event => {
     event.preventDefault();

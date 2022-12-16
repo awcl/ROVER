@@ -9,7 +9,7 @@ import ReservationPage from './Views/ReservationPage';
 import Schedule from './Views/Schedule';
 import QueueingPage from './Views/QueueingPage';
 import Context from './components/Context';
-// import NavigationLayout from "./Views/NavigationLayout";
+import ReservationList from "./components/ReservationList";
 import React, { useState, useContext, useEffect } from 'react';
 import Layout from './components/Layout';
 import config from './config';
@@ -17,11 +17,11 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 
 
-function App() { 
+function App() {
   const [session, setSession] = useState({});
   useEffect(() => { // Checks for cookie, if so use the ID stored in it to populate session
     try {           // session can drive isLoggedIn/admin/etc states via session.whatever
-      if (document.cookie.split('=')[0] === 'ROVERid') {
+      if (document.cookie.split('=')[0] === 'ROVERid' && !session.username) {
         fetch(`${API_URL}/member/${document.cookie.split('=')[1]}`)
           .then(res => res.json())
           .then(data => {
@@ -44,10 +44,10 @@ function App() {
                   <Route path="/register" element={<RegisterPage />} />
                   <Route path="/home" element={<Home />} />
                   <Route path="/vehicles" element={<Vehicles />} />
-                  {/* <Route path="/reservations" element={<ReservationPage />} /> */}
-                  <Route path="/reservations/:id" element={<ReservationPage />} />
+                  <Route path="/reservations" element={<ReservationList />} />
+                  <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                   <Route path="/schedule" element={<Schedule />} />
-                  {session.admin === true && <Route path="/queue" element={<QueueingPage />} />}
+                  <Route path="/queue" element={<QueueingPage />} />
                 </Routes>
               </Layout>
             </Router>

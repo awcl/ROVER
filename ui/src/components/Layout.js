@@ -11,6 +11,8 @@ import { ListItemButton, List, ListItemIcon, ListItemText, Paper } from '@mui/ma
 import { styled, ThemeProvider, createTheme } from '@mui/material/styles';
 import { ArrowRight, KeyboardArrowDown, Home, CarRental, BookOnline, CalendarMonth, PendingActions } from '@mui/icons-material';
 import { useNavigate } from 'react-router';
+
+
 /////NEEDS WORK, tomorrows problem////
 // const data = [
 //     { icon: <Home />, label: 'Home' },
@@ -131,7 +133,7 @@ import { useNavigate } from 'react-router';
 //             </ThemeProvider>
 //             <Box>
 //                     {children}
-//                 </Box>            
+//                 </Box>
 //         </Box>
 //     );
 // }
@@ -145,7 +147,7 @@ const drawerWidth = 240;
 const Layout = ({ children }) => {
     //that junk lives in app.js f/now
     const navigate = useNavigate();
-    const { session } = useContext(Context);
+    const { session, setSession } = useContext(Context);
 
     return (
         <div>
@@ -194,13 +196,49 @@ const Layout = ({ children }) => {
                         onClick={() => navigate('/vehicles')}>
                         Vehicles
                     </ListItemButton>
-                    <ListItemButton>Reservations</ListItemButton>
-                    <ListItemButton>Schedule</ListItemButton>
-                    <ListItemButton>Pending Reservations</ListItemButton>
+                    <ListItemButton sx={{
+                            justifyContent: 'center',
+                            py: 2,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => navigate(`/reservations`)}>Reservations</ListItemButton>
+                    <ListItemButton
+                    sx={{
+                        justifyContent: 'center',
+                        py: 2,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
+                    onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
+                    <ListItemButton sx={{
+                            justifyContent: 'center',
+                            py: 2,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => navigate(`/queue`)}>Pending Reservations</ListItemButton>
                     <Divider />
-                    <ListItemButton>Account</ListItemButton>
-                    <ListItemButton>Log Out</ListItemButton>
-                    <ListItemButton>Log In</ListItemButton>
+                    {session.username && <ListItemButton sx={{
+                            justifyContent: 'center',
+                            py: 2,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => navigate('/account')}>Account</ListItemButton>}
+                    {session.username && <ListItemButton sx={{
+                            justifyContent: 'center',
+                            py: 2,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => {
+                            document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+                            setSession({});
+                            navigate('/Home');
+                            }}>Log Out</ListItemButton>}
+                    {!session.username && <ListItemButton
+                            sx={{
+                            justifyContent: 'center',
+                            py: 2,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => navigate('/login')}>Log In</ListItemButton>}
 
                 </Drawer>
                 <Box

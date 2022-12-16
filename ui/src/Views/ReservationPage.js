@@ -6,9 +6,15 @@ import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
 import dayjs from 'dayjs';
+import config from '../config';
+const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const ReservationPage = () => {
-  let { id } = useParams();
+  let { vehID } = useParams();
+
+
+
+
   // define initial state
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -39,13 +45,23 @@ const ReservationPage = () => {
   const handleTypeChange = (event) => {
     setType(event.target.value);
   };
+
   // handle form submission
-  const handleSubmit = () => {
+  const handleSubmit = async () => {
     // send reservation details to server or database
-  };
-  const handleReservation = () => {
-    // send reservation details to server or database
-  };
+    try {
+      var res = await fetch(`${API_URL}/reservation`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        vehicle_id: vehID,
+        member_id: document.cookie.split('=')[2],
+        // start_date: /*REFERENCE START DATE FIELD*/,
+        // end_date: /*REFERENCE END DATE FIELD*/
+      })
+    })
+  } catch (e) {console.log(e)}
+}
 
   return (
     <>
@@ -59,7 +75,7 @@ const ReservationPage = () => {
           alignItems="center">
           <Grid item xs={12}>
             <Paper elevation={3} sx={{ p: 5 }}>
-              <form onSubmit={handleReservation}>
+              <form onSubmit={() => handleSubmit()}>
                 <h1>Reservation</h1>
                 {errorMessage && <div className='failed'>{errorMessage}</div>}
                 <Grid container spacing={2}>
