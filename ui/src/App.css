@@ -17,24 +17,20 @@
   color: #61dafb;
 }
 
-.Result-Table {
-  background-color: #222222;
+.Result-Table, .MuiDataGrid-columnHeaders {
+  background-color: #1976d2;
   font-size: calc(8px + 2vmin);
   color: #FFFFFF;
   width: 70vw;
   opacity: 85%;
 }
 
-.MuiDataGrid-columnHeaders {
-  background-color: #1976d2;
-}
-
 .MuiDataGrid-row:nth-child(odd){
-  background-color: #1976d2b2;
+  background-color: #10477e;
 }
 
 .MuiDataGrid-row:nth-child(even){
-  background-color: #1976d263;
+  background-color: #135ca5;
 }
 
 .MuiDataGrid-cellContent, .MuiTablePagination-displayedRows,

@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
+import { useNavigate } from "react-router";
 import { DataGrid } from '@mui/x-data-grid';
 import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
@@ -13,44 +14,25 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Tooltip from '@mui/material/Tooltip';
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
 // @mui/x-data-grid
 
-const handleApprove = (id) => {
-  console.log(id);
+const handleApprove = async (id) => {
+  console.log('approve: ', id);
+  //fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH'})
+  //.then(/* NAVIGATE TO THIS PAGE TO REFRESH POSSIBLY*/)
+  //.catch(e => console.log(e))
 }
 
-const handleDeny = (id) => {
-  console.log(id);
+const handleDeny = async (id) => {
+  console.log('deny: ', id);
+  //fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE'})
+  //.then(/* NAVIGATE TO THIS PAGE TO REFRESH POSSIBLY*/)
+  //.catch(e => console.log(e))
 }
-
-///  columns for table TODO: add functionality to approve/deny buttons//figure how to get member and vehicle infomation into the table.
 
 ///would a join query query be the best way to do this?
 //
 const columns = [
-  // "id": 1,
-// "vehicle_id": 1,
-// "member_id": 1,
-// "start_date": "2023-11-25T00:00:00.000Z",
-// "end_date": "2024-12-11T00:00:00.000Z",
-// "approved": true,
-// "first_name": "Santa",
-// "last_name": "Claus",
-// "email": "s.claus1@email.com",
-// "rank": "SPC1",
-// "username": "bbb",
-// "password_hash": "$2b$12$hig73jSR/ccryE0pNivX7.SqN4DeovW1jXK7Drnq9QxxIKQgiTnA6",
-// "organization_id": 1,
-// "admin": true,
-// "is_van_cert": true,
-// "is_sedan_cert": false,
-// "is_truck_cert": false,
-// "vehicle_type": "van",
-// "miles": "63400",
-// "plate_number": "G34989",
-// "description": "8 passenger van",
-// "location": "P67-1"
   { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
   { field: 'vehicle_id', headerName: 'Veh ID', flex: .4, minWidth: 50 },
   { field: 'plate_number', headerName: 'Plate', flex: .4, minWidth: 50 },
@@ -68,14 +50,14 @@ const columns = [
         <Stack direction="row" spacing={1}>
             <Tooltip title="Approve">
           <IconButton
-            onClick={() => handleApprove(cellValues.id)}
+            onClick={(e) => {handleApprove(cellValues.id)}}
           >
             <CheckCircleIcon sx={{ color: "#00D100" }} />
           </IconButton>
             </Tooltip>
             <Tooltip title="Deny">
           <IconButton
-            onClick={() => handleDeny(cellValues.id)}
+            onClick={(e) => {handleDeny(cellValues.id)}}
           >
             <CancelIcon sx={{ color: "#FF0000" }} />
           </IconButton>
@@ -102,6 +84,7 @@ const ReservationList = () => {
   }, [])
 
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc"}]);
+  const [tablePageSize, setTablePageSize] = useState(5);
   return (
     <>
       <div style={{ height: 400, width: '100%' }}>
@@ -109,12 +92,13 @@ const ReservationList = () => {
           className="Result-Table"
           rows={reservations}
           columns={columns}
-          pageSize={5}
-          initialState={{ pagination: { pageSize: 5 } }}
+          pageSize={tablePageSize}
+          initialState={{ pagination: { pageSize: tablePageSize } }}
+          onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
           rowPerPageOptions={[5, 10, 20]}
           onSortModelChange={(model) => setSortModel(model)}
           getRowHeight={() => 'auto'}
-          rowsPerPageOptions={[5]}
+          disableSelectionOnClick
           autoHeight
           // onCellClick={(params, event) => {
           //   console.log(params.row)
