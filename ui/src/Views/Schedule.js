@@ -14,7 +14,6 @@ const Schedule = () => {
 
   const { session } = useContext(Context);
   const [fevents, setfEvents] = useState([]);
-  const [viewModel, setViewModel] = useState();
 
   useEffect(() => {
     fetch(`${API_URL}/reservation`)
