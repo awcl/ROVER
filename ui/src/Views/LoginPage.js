@@ -1,5 +1,5 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import {
     Container,
@@ -25,6 +25,9 @@ const LoginPage = () => {
     // const [errorMessage, setErrorMessage] = useState('');
     const { session, setSession } = useContext(Context);
 
+    useEffect(() => {
+        document.cookie.split('=')[0] === 'ROVERid' && navigate('/Home')
+      }, [])
     // const formReset = () => {
     //     setUsername('');
     //     setPassword('');
