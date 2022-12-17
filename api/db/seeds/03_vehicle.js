@@ -10,7 +10,7 @@ exports.seed = async function (knex) {
     { id: 2, vehicle_type: 'truck', miles: 67421, plate_number: 'G5WYY0', description: '4 door full-size pickup', location: 'P67-3', organization_id: 2 },
     { id: 3, vehicle_type: 'sedan', miles: 68410, plate_number: 'G34779', description: '4 door full-size sedan', location: 'P61-2', organization_id: 3 },
     { id: 4, vehicle_type: '5-Ton', miles: 8410, plate_number: 'G34782', description: '5-Ton cargo vehicle', location: 'P61-3', organization_id: 1 },
-    { id: 5, vehicle_type: 'HMMWV;', miles: 20410, plate_number: 'G57821', description: 'High Mobility Multipurpose Wheeled Vehicle', location: 'P61-4', organization_id: 1 }
+    { id: 5, vehicle_type: 'HMMWV;', miles: 20410, plate_number: 'G57821', description: 'High Mobility Multipurpose Wheeled Vehicle', location: 'P61-4', organization_id: 1 },
     { id: 6, vehicle_type: 'Mobilizer', miles: 20410, plate_number: 'G3478', description: 'Standard tactical trailer', location: 'P67-4', organization_id: 2 },
     { id: 7, vehicle_type: 'AMRAP', miles: 20410, plate_number: 'G3452', description: 'Standard tactical trailer', location: 'P67-5', organization_id: 2 },
     { id: 8, vehicle_type: 'Patrol Vehicle', miles: 15875, plate_number: 'G3452', description: 'Standard ole patrol vehicle', location: 'P67-6', organization_id: 2 }
