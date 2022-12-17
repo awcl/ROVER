@@ -5,10 +5,6 @@ import Vehicles from '../components/Vehicles';
 import Context from '../components/Context';
 import { useContext, useEffect } from 'react';
 
-
-
-
-
 const Home = () => {
   const { session } = useContext(Context);
 
@@ -17,7 +13,6 @@ const Home = () => {
       <div>
         Home Page Loads
       </div>
-
     </>
   )
 }

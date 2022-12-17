@@ -12,6 +12,3 @@ exports.seed = async function (knex) {
     { id: 3, unit_name: '688 CW', base: 'JBSA Lackland' }
   ]);
 };
-
-
-

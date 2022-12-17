@@ -1,14 +1,11 @@
 import React from 'react';
 import { useState } from 'react';
 import { useNavigate } from "react-router-dom";
-import { Container, Button, Grid, Paper, TextField, IconButton, InputAdornment} from "@mui/material";
+import { Container, Button, Grid, Paper, TextField, IconButton, InputAdornment } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
-
-
 
 const RegisterPage = () => {
     const [username, setUsername] = useState('');
@@ -41,7 +38,7 @@ const RegisterPage = () => {
         if (username && password && password === confirmPassword) {
             try {
 
-                const response =await fetch(`${API_URL}/member/new`, {
+                const response = await fetch(`${API_URL}/member/new`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ username, password, firstName, lastName, email, rank, organization })
@@ -205,6 +202,5 @@ const RegisterPage = () => {
         </div>
     )
 }
-
 
 export default RegisterPage;

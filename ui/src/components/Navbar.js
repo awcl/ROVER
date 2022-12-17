@@ -65,37 +65,37 @@ const Navbar = () => {
                         Vehicles
                     </ListItemButton>
                     <ListItemButton sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
-                        onClick={() => navigate(`/reservations`)}>Reservations</ListItemButton>
-                    <ListItemButton
-                    sx={{
                         justifyContent: 'center',
                         py: .5,
                         '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                     }}
-                    onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
+                        onClick={() => navigate(`/reservations`)}>Reservations</ListItemButton>
+                    <ListItemButton
+                        sx={{
+                            justifyContent: 'center',
+                            py: .5,
+                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                        }}
+                        onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
                     <Divider />
                     {session.username && <ListItemButton sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
                         onClick={() => navigate('/account')}>Account</ListItemButton>}
                     {session.username && <ListItemButton sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
                         onClick={() => {
                             document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
                             setSession({});
                             navigate('/Home');
-                            }}>Log Out</ListItemButton>}
+                        }}>Log Out</ListItemButton>}
                     {!session.username && <ListItemButton
-                            sx={{
+                        sx={{
                             justifyContent: 'center',
                             py: .5,
                             '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
@@ -105,7 +105,8 @@ const Navbar = () => {
                 </Drawer>
                 <Box
                     component="main"
-                    sx={{ flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }
+                    sx={{
+                        flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }
                     }}
                 >
                     }

@@ -3,7 +3,6 @@ import landingBG from '../assets/landingBg.mp4';
 import landingBGP from '../assets/landingBG.png';
 import { Button } from '@mui/material';
 
-
 const LandingPage = () => {
     return (
         <div className='landing'>
@@ -19,4 +18,3 @@ const LandingPage = () => {
     }
 
 export default LandingPage;
-

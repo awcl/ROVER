@@ -14,13 +14,8 @@ import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import Context from '../components/Context';
 import { useContext } from 'react';
-
-
-// import Context from '../context/Context';
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
-
 
 const LoginPage = () => {
     const [username, setUsername] = useState('');
@@ -56,7 +51,7 @@ const LoginPage = () => {
                         console.log('SUCCESS 🥳')
                         setSession(data)
                         console.log(data)
-                        document.cookie=`ROVERid=${data.id}; Path=/;`
+                        document.cookie = `ROVERid=${data.id}; Path=/;`
                         navigate('/Home')
                     } else {
                         console.log('Connectivity Issues 🤬')
@@ -69,7 +64,6 @@ const LoginPage = () => {
                 });
         }
     }
-
 
     return (
         <div>
@@ -144,10 +138,5 @@ const LoginPage = () => {
         </div>
     )
 }
-
-
-
-
-
 
 export default LoginPage;

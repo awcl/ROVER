@@ -39,8 +39,6 @@ The production application is hosted by [render](https://render.com/)
 2. As an ***user*** I should be able to fill out a mishap report if a vehicle was in a accident
 3. As an ***admin*** I should be able to export all of my units vehicles to CSV file
 4. As an ***admin*** I should be able to approve pr deny vehicle request from users
-5. As an ***inventory manager***
-6. As an ***inventory manager***
 ## Wireframe
 ![Home](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Home.png)
 ![Login](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Login.png)

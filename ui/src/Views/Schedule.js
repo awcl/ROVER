@@ -4,14 +4,11 @@ import Scheduler, { SchedulerData, ViewTypes, DATE_FORMAT } from 'react-big-sche
 import 'react-big-scheduler/lib/css/style.css';
 import config from '../config';
 import Context from '../components/Context';
-
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import { DndProvider } from 'react-dnd';
-
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Schedule = () => {
-
   const { session } = useContext(Context);
   const [fevents, setfEvents] = useState([]);
 
@@ -27,12 +24,10 @@ const Schedule = () => {
         console.log(working)
       })
       .catch(e => console.log(e));
-
   }, []);
 
   let schedulerData = new SchedulerData(new moment().format(DATE_FORMAT), ViewTypes.Month, false, true);
-
-  moment.locale('en');
+  moment.locale('en-US');
   schedulerData.setLocaleMoment(moment);
   schedulerData.setResources([{ id: 'r0', name: 'Vehicle Reservations', groupOnly: true }]);
   schedulerData.setEvents(fevents);

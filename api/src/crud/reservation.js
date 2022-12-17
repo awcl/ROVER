@@ -21,6 +21,7 @@ app.get('/merged', (req, res) => { // List All Items With Merged Data from User 
     .then(items => {
       res.status(200).send(items);
     });
+    // http://localhost:8080/reservation/merged
 });
 
 // GET Reservation by Member ID  >>>> TODO Validate + Connect // TODO Add isApproved bool to table/logic
@@ -61,6 +62,7 @@ app.post('/', async (req, res) => {
   } catch (e){
     res.status(500).end();
   }
+  // http://localhost:8080/reservation
 })
 
 //Patch method for Admin users to approve pending reservations
@@ -78,6 +80,7 @@ app.delete('/:id', async (req, res) => {
   .then( data =>
     res.status(410).end()
   ).catch(e => res.status(500).end());
+  // http://localhost:8080/reservation/1
 })
 
 

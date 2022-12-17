@@ -1,4 +1,4 @@
-import React, {useContext} from 'react';
+import React, { useContext } from 'react';
 import { Card, CardContent, CardHeader, CardMedia, Typography, IconButton } from '@mui/material';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
 import { useNavigate } from 'react-router-dom';
@@ -14,8 +14,8 @@ const VehicleCard = ({ vehicle }) => {
                     action={(document.cookie.split('=')[0] === 'ROVERid') &&
                         <IconButton onClick={() => navigate(`/reservations/vehicle/${vehicle.id}`)}>
                             <CalendarMonthTwoToneIcon
-                            sx={{ color: '#1976d2' }}
-                             />
+                                sx={{ color: '#1976d2' }}
+                            />
                         </IconButton>
                     }
                     title={vehicle.vehicle_type}
@@ -34,7 +34,6 @@ const VehicleCard = ({ vehicle }) => {
                 </CardContent>
             </Card>
         </div>
-
     )
 }
 

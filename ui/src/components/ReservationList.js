@@ -74,16 +74,16 @@ const ReservationList = () => {
   let navigate = useNavigate();
   const handleApprove = async (id) => {
     console.log('approve: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH'})
-     .then(navigate('/reservations'))
-     .catch(e => console.log(e))
+    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
+      .then(navigate('/reservations'))
+      .catch(e => console.log(e))
   }
 
   const handleDeny = async (id) => {
     console.log('deny: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE'})
-     .then(navigate('/reservations'))
-     .catch(e => console.log(e))
+    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
+      .then(navigate('/reservations'))
+      .catch(e => console.log(e))
   }
 
   const columns = [
@@ -102,20 +102,20 @@ const ReservationList = () => {
       field: 'Actions', flex: .3, minWidth: 100, renderCell: (cellValues) => {
         return (
           <Stack direction="row" spacing={1}>
-              <Tooltip title="Approve">
-            <IconButton
-              onClick={(e) => {handleApprove(cellValues.id)}}
-            >
-              <CheckCircleIcon sx={{ color: "#00D100" }} />
-            </IconButton>
-              </Tooltip>
-              <Tooltip title="Deny">
-            <IconButton
-              onClick={(e) => {handleDeny(cellValues.id)}}
-            >
-              <CancelIcon sx={{ color: "#FF0000" }} />
-            </IconButton>
-              </Tooltip>
+            <Tooltip title="Approve">
+              <IconButton
+                onClick={(e) => { handleApprove(cellValues.id) }}
+              >
+                <CheckCircleIcon sx={{ color: "#00D100" }} />
+              </IconButton>
+            </Tooltip>
+            <Tooltip title="Deny">
+              <IconButton
+                onClick={(e) => { handleDeny(cellValues.id) }}
+              >
+                <CancelIcon sx={{ color: "#FF0000" }} />
+              </IconButton>
+            </Tooltip>
           </Stack>
         )
       }
@@ -124,7 +124,6 @@ const ReservationList = () => {
   ]
 
   const [reservations, setReservations] = useState([]);
-  // const [rows, setRows] = useState([]);
 
   useEffect(() => {
     fetch(`${API_URL}/reservation/merged`)
@@ -132,15 +131,16 @@ const ReservationList = () => {
       .then((data) => setReservations(data));
   }, [])
 
-  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc"}]);
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
   const [tablePageSize, setTablePageSize] = useState(5);
   return (
     <>
-      <div style={{ height: 400, width: '75%', display: 'flex', alignItems: 'center', justifyContent: 'center'
-    }}>
+      <div style={{
+        height: 400, width: '75%', display: 'flex', alignItems: 'center', justifyContent: 'center'
+      }}>
         <DataGrid
           className="Result-Table"
-          rows={reservations.filter(x=>!x.approved)}
+          rows={reservations.filter(x => !x.approved)}
           columns={columns}
           pageSize={tablePageSize}
           initialState={{ pagination: { pageSize: tablePageSize } }}
@@ -150,19 +150,16 @@ const ReservationList = () => {
           getRowHeight={() => 'auto'}
           disableSelectionOnClick
           autoHeight
-          // onCellClick={(params, event) => {
-          //   console.log(params.row)
-          //   if (!event.ctrlKey) {
-          //     event.defaultMuiPrevented = true;
-          //     navigate(`/Details/${params.row.item_id}`)
-          //   }
-          // }}
+        // onCellClick={(params, event) => {
+        //   console.log(params.row)
+        //   if (!event.ctrlKey) {
+        //     event.defaultMuiPrevented = true;
+        //     navigate(`/Details/${params.row.item_id}`)
+        //   }
+        // }}
         />
       </div>
-
-
     </>
-
   )
 }
 
