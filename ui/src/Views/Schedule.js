@@ -4,9 +4,11 @@ import Scheduler, { SchedulerData, ViewTypes, DATE_FORMAT } from 'react-big-sche
 import 'react-big-scheduler/lib/css/style.css';
 import config from '../config';
 import Context from '../components/Context';
+
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
-
 
 const Schedule = () => {
 
@@ -15,7 +17,7 @@ const Schedule = () => {
   const [viewModel, setViewModel] = useState();
 
   useEffect(() => {
-    fetch(`http://localhost:8080/reservation`)
+    fetch(`${API_URL}/reservation`)
       .then(response => response.json())
       .then(data => {
         let working = [];
@@ -29,7 +31,8 @@ const Schedule = () => {
 
   }, []);
 
-  let schedulerData = new SchedulerData(new moment().format(DATE_FORMAT), ViewTypes.Week);
+  let schedulerData = new SchedulerData(new moment().format(DATE_FORMAT), ViewTypes.Month, false, true);
+
   moment.locale('en');
   schedulerData.setLocaleMoment(moment);
   schedulerData.setResources([{ id: 'r0', name: 'Vehicle Reservations', groupOnly: true }]);
@@ -39,38 +42,32 @@ const Schedule = () => {
     schedulerData.prev();
     schedulerData.setEvents(fevents);
 }
-
   const nextClick = (schedulerData)=> {
     schedulerData.next();
     schedulerData.setEvents(fevents);
 }
-
   const onViewChange = (schedulerData, view) => {
     schedulerData.setViewType(view.viewType, view.showAgenda, view.isEventPerspective);
     schedulerData.setEvents(fevents);
 }
-
   const onSelectDate = (schedulerData, date) => {
     schedulerData.setDate(date);
     schedulerData.setEvents(fevents);
 }
-
   const eventClicked = (schedulerData, event) => {
-    alert(`You just clicked an event id ${event.id}`);
+    alert(`Clicked event id ${event.id}`);
 };
-
-
 
     return (
       <div>
-        {fevents.length > 0 && <Scheduler
+        {fevents.length > 0 && <DndProvider backend={HTML5Backend}><Scheduler
           schedulerData={schedulerData}
           prevClick={prevClick}
           nextClick={nextClick}
           onSelectDate={onSelectDate}
           onViewChange={onViewChange}
           eventClicked={eventClicked}
-        />}
+        /></DndProvider>}
       </div>
     )
   };

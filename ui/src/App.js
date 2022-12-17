@@ -13,16 +13,7 @@ import React, { useState, useContext, useEffect } from 'react';
 import ContentLayout from './components/ContentLayout';
 import LandingLayout from './components/LandingLayout';
 import config from './config';
-
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
-
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
-
-
-
-
 
 function App() {
   const [session, setSession] = useState({});
@@ -38,34 +29,27 @@ function App() {
     } catch (e) { console.log(e) }
   }, [])
 
-
-
   return (
     <>
       <Context.Provider value={{ session, setSession }}>
-      <DndProvider debugMode={true} backend={HTML5Backend}>
         <div className="App">
           <header className="App-header">
-
             <Routes>
-
-              <Route element =  {<LandingLayout />}>
+              <Route element={<LandingLayout />}>
                 <Route path="/" element={<LandingPage />} />
-                </Route>
-                  <Route element = {<ContentLayout />} >
-                  <Route path="/login" element={<LoginPage />} />
-                  <Route path="/register" element={<RegisterPage />} />
-                  <Route path="/home" element={<Home />} />
-                  <Route path="/vehicles" element={<Vehicles />} />
-                  <Route path="/reservations" element={<ReservationList />} />
-                  <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
-                  <Route path="/schedule" element={<Schedule />} />
-                </Route>
-
+              </Route>
+              <Route element={<ContentLayout />} >
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/vehicles" element={<Vehicles />} />
+                <Route path="/reservations" element={<ReservationList />} />
+                <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
+                <Route path="/schedule" element={<Schedule />} />
+              </Route>
             </Routes>
           </header>
         </div>
-        </DndProvider>
       </Context.Provider>
     </>
   );
