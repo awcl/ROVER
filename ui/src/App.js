@@ -13,7 +13,13 @@ import React, { useState, useContext, useEffect } from 'react';
 import ContentLayout from './components/ContentLayout';
 import LandingLayout from './components/LandingLayout';
 import config from './config';
+
+import { HTML5Backend } from 'react-dnd-html5-backend';
+import { DndProvider } from 'react-dnd';
+
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
+
+
 
 
 
@@ -37,6 +43,7 @@ function App() {
   return (
     <>
       <Context.Provider value={{ session, setSession }}>
+      <DndProvider debugMode={true} backend={HTML5Backend}>
         <div className="App">
           <header className="App-header">
 
@@ -58,6 +65,7 @@ function App() {
             </Routes>
           </header>
         </div>
+        </DndProvider>
       </Context.Provider>
     </>
   );

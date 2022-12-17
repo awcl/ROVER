@@ -2,8 +2,6 @@ import React, { useEffect, useContext, useState } from 'react';
 import moment from 'moment';
 import Scheduler, { SchedulerData, ViewTypes, DATE_FORMAT } from 'react-big-scheduler';
 import 'react-big-scheduler/lib/css/style.css';
-import { HTML5Backend } from 'react-dnd-html5-backend';
-import { DndProvider } from 'react-dnd';
 import config from '../config';
 import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
@@ -65,14 +63,14 @@ const Schedule = () => {
 
     return (
       <div>
-        {fevents.length > 0 && <DndProvider backend={HTML5Backend}><Scheduler
+        {fevents.length > 0 && <Scheduler
           schedulerData={schedulerData}
           prevClick={prevClick}
           nextClick={nextClick}
           onSelectDate={onSelectDate}
           onViewChange={onViewChange}
           eventClicked={eventClicked}
-        /></DndProvider>}
+        />}
       </div>
     )
   };
