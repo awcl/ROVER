@@ -50,7 +50,7 @@ const LoginPage = () => {
                 // , credentials: 'include'
             }).then(res => res.json())
                 .then(data => {
-                    if (data.admin && data.username) {
+                    if (data.username) {
                         console.log('SUCCESS 🥳')
                         setSession(data)
                         console.log(data)

@@ -37,21 +37,18 @@ const RegisterPage = () => {
         e.preventDefault();
         if (username && password && password === confirmPassword) {
             try {
-
                 const response = await fetch(`${API_URL}/member/new`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password, firstName, lastName, email, rank, organization })
+                    body: JSON.stringify({ first_name: firstName, last_name: lastName,rank: rank, email: email, username: username, password: password, organization_id: organization })
                 });
-                const data = await response.json();
-                if (data.error) {
-                    setErrorMessage(data.error);
+                if (response.status !== 201) {
+                    console.log('Error creating account')
                 } else {
+                    console.log('Created')
                     navigate('/login');
                 }
-            } catch (error) {
-                console.log(error);
-            }
+            } catch (e) {console.log(e)}
         }
     }
 

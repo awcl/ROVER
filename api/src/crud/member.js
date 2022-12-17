@@ -50,6 +50,7 @@ app.post('/login', async (req, res) => {
     const hashed = await knex('member').where('username', username).select('*');
     console.log(hashed[0])
     const match = await compare(password, hashed[0].password_hash);
+    console.log(match)
     match ? res.status(200).send(hashed[0]) : res.status(403).end()
   } catch (e) { res.status(500).send(e) }
   // http://localhost:8080/member/login
@@ -66,13 +67,14 @@ app.post('/new', async (req, res) => {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         rank: req.body.rank,
+        email: req.body.email,
         username: req.body.username,
         password_hash: hashed,
         organization_id: req.body.organization_id,
-        admin: req.body.admin,
-        is_van_cert: req.body.van,
-        is_sedan_cert: req.body.sedan,
-        is_truck_cert: req.body.truck
+        admin: false,
+        is_van_cert: false,
+        is_sedan_cert: false,
+        is_truck_cert: false
       }
     )
     .then(res.status(201).end())
