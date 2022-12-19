@@ -1,6 +1,5 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import NavigationBar from '../components/NavigationBar';
 import Vehicles from '../components/Vehicles';
 import Context from '../components/Context';
 import { useContext, useEffect } from 'react';
@@ -11,7 +10,7 @@ const Home = () => {
   return (
     <>
       <div>
-        Home Page Loads
+        TODO Notifications pane of transactions that involve curr user here
       </div>
     </>
   )

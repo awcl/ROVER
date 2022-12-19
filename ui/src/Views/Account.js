@@ -7,7 +7,8 @@ import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-const RegisterPage = () => {
+const Account = () => {
+    let { id } = useParams();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [firstName, setFirstName] = useState('');
@@ -39,16 +40,16 @@ const RegisterPage = () => {
             window.alert(`Your organization entry can only be numeric 🙁`); }
         else if (username && password && password === confirmPassword) {
             try {
-                const response = await fetch(`${API_URL}/member/new`, {
-                    method: 'POST',
+                const response = await fetch(`${API_URL}/member/`, {
+                    method: 'PATCH',
                     headers: { 'Content-Type': 'application/json' },
                     body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username, password: password, organization_id: organization })
                 });
                 if (response.status !== 201) {
-                    console.log('Error creating account')
+                    console.log('Error Saving Account Information')
                 } else {
-                    console.log('Created')
-                    navigate('/login');
+                    console.log('Saved')
+                    navigate('/home');
                 }
             } catch (e) { console.log(e) }
         }
@@ -64,7 +65,7 @@ const RegisterPage = () => {
                     <Grid item xs={12}>
                         <Paper elevation={3} sx={{ p: 5 }}>
                             <form onSubmit={handleRegister}>
-                                <h1>Register</h1>
+                                <h1>Account Information</h1>
                                 {errorMessage && <div className='failed'>{errorMessage}</div>}
                                 <Grid container spacing={2}>
                                     <Grid item xs={12}>
@@ -72,7 +73,7 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="First Name"
                                             variant="outlined"
-                                            value={firstName}
+                                            value={session.first_name}
                                             onChange={(e) => setFirstName(e.target.value)}
                                         />
                                     </Grid>
@@ -81,7 +82,7 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="Last Name"
                                             variant="outlined"
-                                            value={lastName}
+                                            value={session.lastName}
                                             onChange={(e) => setLastName(e.target.value)}
                                         />
                                     </Grid>
@@ -90,7 +91,7 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="Rank"
                                             variant="outlined"
-                                            value={rank}
+                                            value={session.rank}
                                             onChange={(e) => setRank(e.target.value)}
                                         />
                                     </Grid>
@@ -99,7 +100,7 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="Organization"
                                             variant="outlined"
-                                            value={organization}
+                                            value={session.organization}
                                             onChange={(e) => setOrganization(e.target.value)}
                                         />
                                     </Grid>
@@ -108,7 +109,7 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="Email"
                                             variant="outlined"
-                                            value={email}
+                                            value={session.email}
                                             onChange={(e) => setEmail(e.target.value)}
                                         />
                                     </Grid>
@@ -117,13 +118,13 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="Username"
                                             variant="outlined"
-                                            value={username}
+                                            value={session.username}
                                             onChange={(e) => setUsername(e.target.value)}
                                         />
                                     </Grid>
                                     <Grid item xs={12}>
                                         <TextField
-                                            value={password}
+                                            value={session.password}
                                             onChange={(e) => setPassword(e.target.value)}
                                             type={showPassword ? "text" : "password"}
                                             placeholder="password"
@@ -187,9 +188,9 @@ const RegisterPage = () => {
                                         <Button
                                             fullWidth
                                             variant="contained"
-                                            onClick={() => navigate('/login')}
+                                            onClick={() => navigate('/home')}
                                         >
-                                            Have an account? Log in
+                                            Save
                                         </Button>
                                     </Grid>
                                 </Grid>
@@ -202,4 +203,4 @@ const RegisterPage = () => {
     )
 }
 
-export default RegisterPage;
+export default Account;

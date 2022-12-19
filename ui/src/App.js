@@ -6,13 +6,16 @@ import LandingPage from './Views/LandingPage';
 import Home from './Views/Home';
 import Vehicles from './components/Vehicles';
 import ReservationPage from './Views/ReservationPage';
-import Schedule from './Views/Schedule';
+import Schedule from './components/NewSchedule';
 import Context from './components/Context';
 import ReservationList from "./components/ReservationList";
 import React, { useState, useContext, useEffect } from 'react';
 import ContentLayout from './components/ContentLayout';
 import LandingLayout from './components/LandingLayout';
 import config from './config';
+import AddedReservation from './Views/ReservationAdded';
+import ManageAdmins from './components/ManageAdmins';
+
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 function App() {
@@ -43,8 +46,10 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/vehicles" element={<Vehicles />} />
-                <Route path="/reservations" element={<ReservationList />} />
+                {session.admin && <Route path="/reservations" element={<ReservationList />} />}
+                <Route path="/reservations/added" element={<AddedReservation />} />
                 <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
+                <Route path="/manageadmins" element={<ManageAdmins />} />
                 <Route path="/schedule" element={<Schedule />} />
               </Route>
             </Routes>

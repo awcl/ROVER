@@ -7,6 +7,7 @@ const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || '
 app.get('/', (req, res) => {
   knex('incident_report')
     .select('*')
+    .orderBy('id', 'asc')
     .then(items => {
       res.status(200).send(items);
     }).catch(e => res.status(500).end())

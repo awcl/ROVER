@@ -26,9 +26,11 @@ const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || '
 app.get('/', (req, res) => {
   knex('member')
     .select('*')
+    .orderBy('id', 'asc')
     .then(items => {
       res.status(200).send(items);
-    }).catch(e => res.status(500).end())
+    })
+    .catch(e => res.status(500).end())
   // http://localhost:8080/member
 });
 
@@ -81,3 +83,109 @@ app.post('/new', async (req, res) => {
     .catch((e) => res.status(500).end())
   // http://localhost:8080/member/new
 });
+
+app.patch('/updatemember/:id', async (req, res) => {
+  let num = (await knex('member').max('id as max').first()).max + 1;
+  let hashed = await hash(req.body.password, SALTS);
+  knex('member')
+    .insert(
+      {
+        id: num,
+        first_name: req.body.first_name,
+        last_name: req.body.last_name,
+        rank: req.body.rank,
+        email: req.body.email,
+        username: req.body.username,
+        password_hash: hashed,
+        organization_id: req.body.organization_id,
+        admin: false,
+        is_van_cert: false,
+        is_sedan_cert: false,
+        is_truck_cert: false
+      }
+    )
+    .then(res.status(201).end())
+    .catch((e) => res.status(500).end())
+  // http://localhost:8080/member/new
+});
+
+// PATCH update member to admin
+app.patch('/admin/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ admin: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/admin/1
+})
+
+// PATCH update member to not admin
+app.patch('/unadmin/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ admin: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unadmin/1
+})
+
+// PATCH update member to van certed
+app.patch('/vancert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_van_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/admin/1
+})
+
+// PATCH update member to not van certed
+app.patch('/unvancert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_van_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unadmin/1
+})
+
+
+// PATCH update member to truck certed
+app.patch('/truckcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_truck_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/admin/1
+})
+
+// PATCH update member to not van certed
+app.patch('/untruckcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_truck_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unadmin/1
+})
+
+// PATCH update member to truck certed
+app.patch('/sedancert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_sedan_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/admin/1
+})
+
+// PATCH update member to not van certed
+app.patch('/unsedancert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_sedan_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unadmin/1
+})

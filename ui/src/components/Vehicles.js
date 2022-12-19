@@ -1,10 +1,8 @@
-// import NavigationBar from "./NavigationBar";
 import * as React from 'react';
 import { useEffect } from 'react';
 import { Grid, Container } from '@mui/material';
 import VehicleCard from './VehicleCard';
 import config from '../config';
-import NavigationBar from '../components/NavigationBar';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 // const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;

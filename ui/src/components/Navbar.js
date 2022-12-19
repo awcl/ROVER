@@ -8,112 +8,92 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { ListItemButton } from '@mui/material';
+import List from '@mui/material/List';
 
 import { useNavigate } from 'react-router';
 
 
-const drawerWidth = 200;
 
 const Navbar = () => {
     const navigate = useNavigate();
     const { session, setSession } = useContext(Context);
 
     return (
-        <div>
 
-            <Box>
-                <CssBaseline />
-                <AppBar
-                    position="fixed"
-                    sx={{
-                        width: { sm: `calc(100% - ${drawerWidth}px)` },
-                        ml: { sm: `${drawerWidth}px` },
-                    }}
-                >
-                    <Toolbar>
-                        <Typography variant="h6" noWrap component="div">
-                            ROVER {session.username && <> ➡️ Hello {session.username} 🙂</>}
-                        </Typography>
-                    </Toolbar>
-                </AppBar>
-                <Drawer
-                    variant="permanent"
-                    anchor='left'
-                    sx={{
-                        width: drawerWidth,
-                        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
-                    }}
-                >
-                    <Toolbar />
-                    <Divider />
-                    <ListItemButton
-                        sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
-                        onClick={() => navigate(`/home`)}>
-                        Home
-                    </ListItemButton>
-                    <ListItemButton
-                        sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
-                        onClick={() => navigate('/vehicles')}>
-                        Vehicles
-                    </ListItemButton>
-                    <ListItemButton sx={{
-                        justifyContent: 'center',
-                        py: .5,
-                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                    }}
-                        onClick={() => navigate(`/reservations`)}>Reservations</ListItemButton>
-                    <ListItemButton
-                        sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
-                        onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
-                    <Divider />
-                    {session.username && <ListItemButton sx={{
-                        justifyContent: 'center',
-                        py: .5,
-                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                    }}
-                        onClick={() => navigate('/account')}>Account</ListItemButton>}
-                    {session.username && <ListItemButton sx={{
-                        justifyContent: 'center',
-                        py: .5,
-                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                    }}
-                        onClick={() => {
-                            document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-                            setSession({});
-                            navigate('/Home');
-                        }}>Log Out</ListItemButton>}
-                    {!session.username && <ListItemButton
-                        sx={{
-                            justifyContent: 'center',
-                            py: .5,
-                            '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
-                        }}
-                        onClick={() => navigate('/login')}>Log In</ListItemButton>}
+        <Drawer
+            variant="permanent" sx={{
+                width: 240,
+                flexShrink: 0,
+                [`& .MuiDrawer-paper`]: { width: 240, boxSizing: 'border-box' },
+            }}>
 
-                </Drawer>
-                <Box
-                    component="main"
+            <List disablePadding>
+                <Divider />
+                <ListItemButton
                     sx={{
-                        flexGrow: 1, p: 3, width: { sm: `calc(100% - ${drawerWidth}px)` }
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                     }}
-                >
-                    }
-                    <Toolbar />
-                </Box>
-            </Box>
-        </div>
+                    onClick={() => navigate(`/home`)}>
+                    Home
+                </ListItemButton>
+                <ListItemButton
+                    sx={{
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
+                    onClick={() => navigate('/vehicles')}>
+                    Vehicles
+                </ListItemButton>
+                {session.admin && <ListItemButton sx={{
+                    justifyContent: 'center',
+                    py: .5,
+                    '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                }}
+                    onClick={() => navigate(`/reservations`)}>Admin: Queue</ListItemButton>}
+                {session.admin && <ListItemButton sx={{
+                    justifyContent: 'center',
+                    py: .5,
+                    '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                }}
+                    onClick={() => navigate(`/manageadmins`)}>Admin: Manage Admins</ListItemButton>}
+                <ListItemButton
+                    sx={{
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
+                    onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
+                <Divider />
+                {session.username && <ListItemButton sx={{
+                    justifyContent: 'center',
+                    py: .5,
+                    '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                }}
+                    onClick={() => navigate('/account')}>Account</ListItemButton>}
+                {session.username && <ListItemButton sx={{
+                    justifyContent: 'center',
+                    py: .5,
+                    '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                }}
+                    onClick={() => {
+                        document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+                        setSession({});
+                        navigate('/Home');
+                    }}>Log Out</ListItemButton>}
+                {!session.username && <ListItemButton
+                    sx={{
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
+                    onClick={() => navigate('/login')}>Log In</ListItemButton>}
+
+            </List>
+        </Drawer>
+
     );
 }
 

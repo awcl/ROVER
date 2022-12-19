@@ -6,6 +6,7 @@ const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || '
 app.get('/', (req, res) => { // Display all Vehicles from vehicles table in browser
   knex('vehicle')
     .select('*')
+    .orderBy('id', 'asc')
     .then(items => {
       res.status(200).send(items);
     }).catch(e => console.log(e))
@@ -28,6 +29,7 @@ app.get('/organization/:id', (req, res) => {
   let { id } = req.params;
   knex('vehicle')
     .where('organization_id', id)
+    .orderBy('id', 'asc')
     .then(items => {
       res.status(200).send(items);
     }).catch(e => res.status(500).end())

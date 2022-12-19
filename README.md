@@ -39,6 +39,12 @@ The production application is hosted by [render](https://render.com/)
 2. As an ***user*** I should be able to fill out a mishap report if a vehicle was in a accident
 3. As an ***admin*** I should be able to export all of my units vehicles to CSV file
 4. As an ***admin*** I should be able to approve pr deny vehicle request from users
+5. As a ***Unauthenticated-User*** When clicking on the reservation button I should be prompted to signup or login
+6. As an ***admin*** I should be able to type a justifcation for approval/denial of a vehicle request
+7. As a ***user*** I should see a banner on the home page that tells me if I have a vehicle request pending
+8. As a ***user*** I should see a banner on the home page that tells me if I have a vehicle request approved
+9. As a ***user*** I should see a banner on the home page that tells me if I have a vehicle request denied
+10. As a ***admin*** I should be able to click on an individual reservation and see the details of the reservation(approve, deny and comments)
 ## Wireframe
 ![Home](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Home.png)
 ![Login](https://github.com/awcl/ROVER/blob/main/blueprint/wireframe/Login.png)

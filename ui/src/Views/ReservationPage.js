@@ -1,7 +1,6 @@
 import React, { useState, useContext, useEffect } from 'react';
 import { Container, Button, Grid, Paper, TextField } from "@mui/material";
 import { useNavigate, useParams } from "react-router-dom";
-import NavigationBar from '../components/NavigationBar';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import { DesktopDatePicker } from '@mui/x-date-pickers/DesktopDatePicker';
@@ -11,7 +10,7 @@ import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const ReservationPage = () => {
-  let { vehID } = useParams();
+  let { id } = useParams();
   // define initial state
   const [date, setDate] = useState('');
   const [time, setTime] = useState('');
@@ -32,7 +31,7 @@ const ReservationPage = () => {
   const navigate = useNavigate()
 
   useEffect(() => {
-    !session.username && navigate('/Home')
+    !session.username && navigate('/home')
   }, [])
 
   // handle changes to form fields
@@ -48,21 +47,23 @@ const ReservationPage = () => {
   };
 
   // handle form submission
-  const handleSubmit = async () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     // send reservation details to server or database
-    console.log("vehID", vehID)
+    console.log("vehID", id)
     try {
       var res = await fetch(`${API_URL}/reservation`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          vehicle_id: +vehID,
-          member_id: document.cookie.split('=')[2],
+          vehicle_id: +id,
+          member_id: document.cookie.split('=')[1],
           start_date: start,
           end_date: end
         })
       })
     } catch (e) { console.log(e) }
+    navigate('/reservations/added')
   }
 
   return (
@@ -77,7 +78,7 @@ const ReservationPage = () => {
           alignItems="center">
           <Grid item xs={12}>
             <Paper elevation={3} sx={{ p: 5 }}>
-              <form onSubmit={() => handleSubmit()}>
+              <form onSubmit={handleSubmit}>
                 <h1>Create Reservation</h1>
                 {errorMessage && <div className='failed'>{errorMessage}</div>}
                 <Grid container spacing={2}>
@@ -88,6 +89,8 @@ const ReservationPage = () => {
                       variant="outlined"
                       value={session.first_name}
                       disabled
+
+
                     />
                   </Grid>
                   <Grid item xs={12}>
@@ -133,7 +136,8 @@ const ReservationPage = () => {
                         value={start}
                         onChange={(picked) => {
                           if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                            setStart(`${picked.$y}-${picked.$M}-${picked.$D}`);
+                            console.log(console.log(picked))
+                            setStart(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
                           }
                         }}
                         renderInput={(params) => <TextField fullWidth {...params} />}
@@ -147,7 +151,8 @@ const ReservationPage = () => {
                         value={end}
                         onChange={(picked) => {
                           if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                            setEnd(`${picked.$y}-${picked.$M}-${picked.$D}`);
+                            console.log(picked)
+                            setEnd(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
                           }
                         }}
                         renderInput={(params) => <TextField fullWidth {...params} />}

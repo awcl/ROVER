@@ -11,12 +11,12 @@ const VehicleCard = ({ vehicle }) => {
         <div>
             <Card elevation={3}>
                 <CardHeader
-                    action={(document.cookie.split('=')[0] === 'ROVERid') &&
+                    action={(document.cookie.split('=')[0] === 'ROVERid') ?
                         <IconButton onClick={() => navigate(`/reservations/vehicle/${vehicle.id}`)}>
                             <CalendarMonthTwoToneIcon
                                 sx={{ color: '#1976d2' }}
                             />
-                        </IconButton>
+                        </IconButton> : <>OTHER</>
                     }
                     title={vehicle.vehicle_type}
                     subheader={vehicle.plate_number}

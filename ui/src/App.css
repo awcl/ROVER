@@ -21,8 +21,7 @@
 .MuiDataGrid-columnHeaders {
   background-color: #1976d2;
   font-size: calc(8px + 2vmin);
-  color: #FFFFFF;
-  width: 70vw;
+  color: #FFFFFF;  
   opacity: 85%;
 }
 
@@ -30,12 +29,9 @@
   background-color: #1976d2;
   color: #FFFFFF;
   font-size: calc(6px + 1vmin);
-
 }
 
 .MuiDataGrid-row:nth-child(odd) {
-  margin-left: 30px;
-  padding: 0px;
   background-color: #10477e;
 }
 
@@ -50,4 +46,21 @@
 .MuiDataGrid-selectedRowCount {
   color: #FFFFFF;
   font-size: calc(6px + 1vmin);
+}
+
+.bodyContent {
+  flex-direction: row;
+  display: flex;
+  width: 100vw
+}
+
+.Navbar,
+.MuiDrawer-paper {
+  width: 20vw;
+}
+
+.bodyFlip {
+  flex-direction: column;
+  display: flex;
+  width: 80vw;
 }
