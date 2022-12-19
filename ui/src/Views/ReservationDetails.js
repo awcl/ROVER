@@ -15,39 +15,62 @@ function ReservationDetails() {
 
     useEffect(() => {
         fetch(`${API_URL}/reservation/merged/${id}`)
-          .then(res => res.json())
-          .then(data => setDetails(data[0]))
-            .catch(e => console.log(e))
+            .then((response) => response.json())
+            .then((data) => {
+                setDetails(data[0]);
+                console.log(data[0]);
+            });
+
+
     }, []);
 
 
 
     // useEffect(() => {
-    //     async function fetchData() {
+    //     const fetchData = async () => {
     //         const response = await fetch(`${API_URL}/reservation/merged/${id}`)
-    //             .then(res => res.json())
-    //             .then(data => setDetails(data))
-    //             .catch(e => console.log(e));
+    //         const data = await response.json();
+    //         setDetails(data);
+
     //     }
     //     fetchData();
     // }, []);
 
 
+
+
     return (
-        <div className="content">
-            <h1>Reservation Details</h1>
-            <p>Reservation ID: { details.id }  </p>
-            <p>Vehicle ID: { details.vehicle_id } </p>
-                <p>Start Date: { details.start_date } </p>
-                <p>End Date: { details.end_date } </p>
-                <p>Reservation Status: { details.reservation_status } </p>
-                <p>Reservation Type:  { details.reservation_type } </p>
-        </div>
-
-
-
+        <>
+        {/* <h1>TEST</h1>
+        {details.map((detail) => {
+            return (
+                <div>
+                    <h1>{detail.reservation_id}</h1>
+                    <h1>{detail.vehicle_id}</h1>
+                    <h1>{detail.start_date}</h1>
+                    <h1>{detail.end_date}</h1>
+                    <h1>{detail.first_name}</h1>
+                    <h1>{detail.last_name}</h1>
+                    <h1>{detail.email}</h1>
+                    </div>
+            )
+        })} */}
+        </>
     )
+                    
 
+    
+
+                    
+    
+
+
+
+        
+
+    
 }
 
 export default ReservationDetails;
+
+

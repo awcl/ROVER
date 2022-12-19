@@ -22,7 +22,6 @@ const Account = () => {
     const [errorMessage, setErrorMessage] = useState('');
     const [showPassword, setShowPassword] = useState(false);
     const { session } = useContext(Context);
-    console.log('session id', session.id)
 
     const formReset = () => {
         setFirstName('');
@@ -78,7 +77,7 @@ const Account = () => {
                                             variant="outlined"
                                             defaultValue={session.first_name}
                                             placeholder={session.first_name}
-                                            
+
                                             onChange={(e) => setFirstName(e.target.value)}
                                         />
                                     </Grid>
