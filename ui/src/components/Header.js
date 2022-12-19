@@ -24,50 +24,9 @@ const Header = (props) => {
     const navigate = useNavigate();
     const { session, setSession } = useContext(Context);
     return (
-        <>
-            <AppBar
-                component="div"
-                color="primary"
-                position="static"
-                elevation={0}
-                sx={{ zIndex: 0 }}
-            >
-                <Toolbar>
-                    <Grid container alignItems="left" spacing={1}>
-                        <Grid item xs>
-                            <Typography variant="h6" noWrap component="div">
-                                ROVER {session.username && <> ➡️ Hello {session.username} 🙂</>}
-                            </Typography>
-                        </Grid>
-                    </Grid>
-                </Toolbar>
-            </AppBar>
-
-
-
-            {/* <Box>
-                <AppBar
-                    position="sticky" elevation={1}>
-                    <Toolbar>
-                        <Grid container spacing={2} alignItems="center">
-                            <Grid sx={{ display: { sm: 'none', xs: 'block' } }} item>
-                                <Typography variant="h6" noWrap component="div">
-                                    ROVER {session.username && <> ➡️ Hello {session.username} 🙂</>}
-                                </Typography>
-                            </Grid>
-                            <Grid item>
-                                <Tooltip title="Alerts">
-                                    <IconButton>
-                                        <NotificationsIcon />
-                                    </IconButton>
-                                </Tooltip>
-                            </Grid>
-                        </Grid>
-                    </Toolbar>
-
-                </AppBar>
-            </Box> */}
-        </>
+        <div className="headerContent">
+            ROVER {session.username && <> ➡️ Hello {session.username} 🙂</>}
+        </div>
     )
 }
 

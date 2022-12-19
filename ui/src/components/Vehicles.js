@@ -17,11 +17,7 @@ const Vehicles = () => {
     }, []);
 
     return (
-        <>
-            <div>
-                {/* <NavigationBar /> */}
-            </div>
-            <Container>
+        <div className="content">
                 <Grid container spacing={4}>
                     {vehicles.map(vehicle => (
                         <Grid item key={vehicle.id} xs={10} md={4} lg={5}>
@@ -29,8 +25,7 @@ const Vehicles = () => {
                         </Grid>
                     ))}
                 </Grid>
-            </Container>
-        </>
+        </div>
     );
 }
 

@@ -1,27 +1,21 @@
 .App {
   text-align: center;
-}
-
-.App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  /* min-height: 100vh;
+  min-width: 100vw;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  /* justify-content: center; */
+  align-items: center; */
   font-size: calc(10px + 2vmin);
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 .Result-Table,
 .MuiDataGrid-columnHeaders {
+  /* margin: 2em; */
   background-color: #1976d2;
   font-size: calc(8px + 2vmin);
-  color: #FFFFFF;  
+  color: #FFFFFF;
   opacity: 85%;
 }
 
@@ -48,19 +42,51 @@
   font-size: calc(6px + 1vmin);
 }
 
-.bodyContent {
+.page {
   flex-direction: row;
   display: flex;
-  width: 100vw
 }
 
-.Navbar,
-.MuiDrawer-paper {
-  width: 20vw;
+.navContainer {
+  background-color: white;
+  color: black;
+  width: 15vw;
+  height: 100vh;
+}
+
+.Header,
+.headerContent {
+  width: 85vw;
+  justify-content: left;
+  height: 5vh;
+  display: block;
+  clear: both;
+  background-color: red;
+  font-size: calc(8px + 2vmin);
+}
+
+.Outlet,
+.content {
+  /* margin-top: 5vh;
+  margin-right: 5vw;
+  margin-bottom: 5vh;
+  margin-left: 5vw; */
+  overflow-y: auto;
+  width: 85vw;
+  height: 95vh;
+  position: fixed;
+  right: 0px;
+  bottom: 0px;
+  display: block;
+}
+
+.Container {
+  height: 95vh;
 }
 
 .bodyFlip {
   flex-direction: column;
   display: flex;
-  width: 80vw;
+  width: 85vw;
+  height: 100vh;
 }

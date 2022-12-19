@@ -18,15 +18,33 @@ app.get('/merged', (req, res) => { // List All Items With Merged Data from User 
   knex('reservation')
     .join('member', 'reservation.member_id', 'member.id')
     .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
-    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 
-    'vehicle.description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 
-    'member.first_name', 'member.last_name', 'reservation.start_date', 
-    'reservation.end_date', 'reservation.approved')
+    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number',
+      'vehicle.description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
+      'member.first_name', 'member.last_name', 'reservation.start_date',
+      'reservation.end_date', 'reservation.approved')
     .then(items => {
       res.status(200).send(items);
     });
   // http://localhost:8080/reservation/merged
 });
+// GET merged reservation by ID
+app.get('/merged/:id', (req, res) => {
+  let { id } = req.params;
+  knex('reservation')
+    .join('member', 'reservation.member_id', 'member.id')
+    .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
+    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number',
+      'vehicle.description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
+      'member.first_name', 'member.last_name', 'reservation.start_date',
+      'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert')
+    .where('reservation.id', id)
+    .then(items => {
+      res.status(200).send(items);
+    });
+  // http://localhost:8080/reservation/merged/1
+});
+
+
 // DELETE Merged Reservation by ID
 app.delete('/merged/:id', (req, res) => {
   let { id } = req.params;

@@ -27,7 +27,7 @@ const LoginPage = () => {
 
     useEffect(() => {
         document.cookie.split('=')[0] === 'ROVERid' && navigate('/Home')
-      }, [])
+    }, [])
     // const formReset = () => {
     //     setUsername('');
     //     setPassword('');
@@ -69,7 +69,7 @@ const LoginPage = () => {
     }
 
     return (
-        <div>
+        <div className="content">
             <Container maxWidth="sm">
                 <Grid container spacing={2}
                     direction="column"

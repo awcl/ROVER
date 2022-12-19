@@ -5,9 +5,9 @@ const AddedReservation = () => {
   // const { session } = useContext(Context);
 
   return (
-      <div>
-        Thank you, your reservation has been added to the queue for approval!
-      </div>
+    <div className="content">
+      Thank you, your reservation has been added to the queue for approval!
+    </div>
   )
 }
 

@@ -86,13 +86,7 @@ const Schedule = () => {
   
     return (
       <>
-       <Container>
       Approved Reservations
-        <div style={{
-          height: 'auto', width: '75vw', display: 'flex', alignItems: 'left', justifyContent: 'left',
-          marginLeft: 'auto', marginRight: 'auto'
-  
-        }}>
           <DataGrid
             align="left"
             className="Result-Table"
@@ -124,8 +118,6 @@ const Schedule = () => {
           //   }
           // }}
           />
-        </div>
-        </Container>
       </>
     )
     

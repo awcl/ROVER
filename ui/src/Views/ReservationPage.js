@@ -67,51 +67,48 @@ const ReservationPage = () => {
   }
 
   return (
-    <>
-      <div>
-        {/* <NavigationBar /> */}
-      </div>
-      <Container maxWidth="sm">
-        <Grid container spacing={2}
-          direction="column"
-          justifyContent="center"
-          alignItems="center">
-          <Grid item xs={12}>
-            <Paper elevation={3} sx={{ p: 5 }}>
-              <form onSubmit={handleSubmit}>
-                <h1>Create Reservation</h1>
-                {errorMessage && <div className='failed'>{errorMessage}</div>}
-                <Grid container spacing={2}>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="First Name"
-                      variant="outlined"
-                      value={session.first_name}
-                      disabled
+      <div className="content">
+        <Container maxWidth="sm">
+          <Grid container spacing={2}
+            direction="column"
+            justifyContent="center"
+            alignItems="center">
+            <Grid item xs={12}>
+              <Paper elevation={3} sx={{ p: 5 }}>
+                <form onSubmit={handleSubmit}>
+                  <h1>Create Reservation</h1>
+                  {errorMessage && <div className='failed'>{errorMessage}</div>}
+                  <Grid container spacing={2}>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        label="First Name"
+                        variant="outlined"
+                        value={session.first_name}
+                        disabled
 
 
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Last Name"
-                      variant="outlined"
-                      value={session.last_name}
-                      disabled
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="Rank"
-                      variant="outlined"
-                      value={session.rank}
-                      disabled
-                    />
-                  </Grid>
-                  {/* <Grid item xs={12}>
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        label="Last Name"
+                        variant="outlined"
+                        value={session.last_name}
+                        disabled
+                      />
+                    </Grid>
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        label="Rank"
+                        variant="outlined"
+                        value={session.rank}
+                        disabled
+                      />
+                    </Grid>
+                    {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Organization"
@@ -120,46 +117,46 @@ const ReservationPage = () => {
                       disabled
                     />
                   </Grid> */}
-                  <Grid item xs={12}>
-                    <TextField
-                      fullWidth
-                      label="POC Email"
-                      variant="outlined"
-                      value={session.email}
-                      disabled
-                    />
-                  </Grid>
-                  <Grid item xs={12}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DesktopDatePicker
-                        label="Start Date"
-                        value={start}
-                        onChange={(picked) => {
-                          if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                            console.log(console.log(picked))
-                            setStart(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
-                          }
-                        }}
-                        renderInput={(params) => <TextField fullWidth {...params} />}
+                    <Grid item xs={12}>
+                      <TextField
+                        fullWidth
+                        label="POC Email"
+                        variant="outlined"
+                        value={session.email}
+                        disabled
                       />
-                    </LocalizationProvider>
-                  </Grid>
-                  <Grid item xs={12}>
-                    <LocalizationProvider dateAdapter={AdapterDayjs}>
-                      <DesktopDatePicker
-                        label="End Date"
-                        value={end}
-                        onChange={(picked) => {
-                          if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                            console.log(picked)
-                            setEnd(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
-                          }
-                        }}
-                        renderInput={(params) => <TextField fullWidth {...params} />}
-                      />
-                    </LocalizationProvider>
-                  </Grid>
-                  {/* <Grid item xs={12}>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DesktopDatePicker
+                          label="Start Date"
+                          value={start}
+                          onChange={(picked) => {
+                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                              console.log(console.log(picked))
+                              setStart(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
+                            }
+                          }}
+                          renderInput={(params) => <TextField fullWidth {...params} />}
+                        />
+                      </LocalizationProvider>
+                    </Grid>
+                    <Grid item xs={12}>
+                      <LocalizationProvider dateAdapter={AdapterDayjs}>
+                        <DesktopDatePicker
+                          label="End Date"
+                          value={end}
+                          onChange={(picked) => {
+                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                              console.log(picked)
+                              setEnd(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
+                            }
+                          }}
+                          renderInput={(params) => <TextField fullWidth {...params} />}
+                        />
+                      </LocalizationProvider>
+                    </Grid>
+                    {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Number of Passengers"
@@ -168,7 +165,7 @@ const ReservationPage = () => {
                       onChange={(e) => {}}
                     />
                   </Grid> */}
-                  {/* <Grid item xs={12}>
+                    {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Additional Notes/Justification"
@@ -177,56 +174,25 @@ const ReservationPage = () => {
                       onChange={(e) => { }}
                     />
                   </Grid> */}
-                  <Grid item xs={12}>
-                    <Button
-                      fullWidth
-                      variant="contained"
-                      type="submit"
-                    // disabled={!username || !password || password !== confirmPassword}
-                    >
-                      Submit
-                    </Button>
+                    <Grid item xs={12}>
+                      <Button
+                        fullWidth
+                        variant="contained"
+                        type="submit"
+                      // disabled={!username || !password || password !== confirmPassword}
+                      >
+                        Submit
+                      </Button>
+                    </Grid>
+                    <Grid item xs={12}>
+                    </Grid>
                   </Grid>
-                  <Grid item xs={12}>
-                  </Grid>
-                </Grid>
-              </form>
-            </Paper>
+                </form>
+              </Paper>
+            </Grid>
           </Grid>
-        </Grid>
-      </Container>
-      {/* <form onFinish={handleSubmit}>
-        <input type="text"
-          label='Date'
-          rules={[{ required: true, message: 'Please enter a date for your reservation' }]}
-        >
-          <Input value={date} onChange={handleDateChange} />
-        </input>
-        <input type="text"
-          label='Time'
-          rules={[{ required: true, message: 'Please enter a time for your reservation' }]}
-        >
-          <Input value={time} onChange={handleTimeChange} />
-        </input>
-        <input type="text"
-          label='Guests'
-          rules={[{ required: true, message: 'Please enter the number of guests' }]}
-        >
-          <Input value={guests} onChange={handleGuestsChange} />
-        </input>
-        <input
-          label='Type'
-          rules={[{ required: true, message: 'Please select a type for your reservation' }]}
-        >
-          <Input value={type} onChange={handleTypeChange} />
-        </input>
-        <input>
-          <Button type='primary' htmlType='submit'>
-            Submit
-          </Button>
-        </input>
-      </form> */}
-    </>
+        </Container>
+      </div>
   );
 };
 export default ReservationPage;

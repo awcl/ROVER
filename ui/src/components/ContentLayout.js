@@ -6,10 +6,10 @@ import Header from '../components/Header';
 const ContentLayout = () => {
   return (
     <>
-      <div className="bodyContent">
+      <div className="page">
         <Navbar />
         <div className="bodyFlip">
-          <Header /><br />
+          <Header />
           <Outlet />
         </div>
       </div>

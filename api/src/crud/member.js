@@ -84,29 +84,30 @@ app.post('/new', async (req, res) => {
   // http://localhost:8080/member/new
 });
 
+//PATCH update member information
 app.patch('/updatemember/:id', async (req, res) => {
-  let num = (await knex('member').max('id as max').first()).max + 1;
-  let hashed = await hash(req.body.password, SALTS);
-  knex('member')
-    .insert(
-      {
-        id: num,
-        first_name: req.body.first_name,
-        last_name: req.body.last_name,
-        rank: req.body.rank,
-        email: req.body.email,
-        username: req.body.username,
-        password_hash: hashed,
-        organization_id: req.body.organization_id,
-        admin: false,
-        is_van_cert: false,
-        is_sedan_cert: false,
-        is_truck_cert: false
-      }
-    )
-    .then(res.status(201).end())
-    .catch((e) => res.status(500).end())
-  // http://localhost:8080/member/new
+
+  try {
+    let hashed = await hash(req.body.password, SALTS);
+    knex('member')
+      .where('id', req.params.id)
+      .update(
+        {
+          first_name: req.body.first_name,
+          last_name: req.body.last_name,
+          rank: req.body.rank,
+          email: req.body.email,
+          username: req.body.username,
+          password_hash: hashed,
+          organization_id: req.body.organization_id,
+        }
+      )
+      .then(data =>
+        res.status(200).end()
+      ).catch(e => res.status(403).end());
+  }
+  catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/updatemember/1
 });
 
 // PATCH update member to admin

@@ -15,6 +15,8 @@ import LandingLayout from './components/LandingLayout';
 import config from './config';
 import AddedReservation from './Views/ReservationAdded';
 import ManageAdmins from './components/ManageAdmins';
+import Account from './Views/Account';
+import ReservationDetails from './Views/ReservationDetails';
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -36,7 +38,6 @@ function App() {
     <>
       <Context.Provider value={{ session, setSession }}>
         <div className="App">
-          <header className="App-header">
             <Routes>
               <Route element={<LandingLayout />}>
                 <Route path="/" element={<LandingPage />} />
@@ -49,11 +50,12 @@ function App() {
                 {session.admin && <Route path="/reservations" element={<ReservationList />} />}
                 <Route path="/reservations/added" element={<AddedReservation />} />
                 <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
+                <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
                 <Route path="/manageadmins" element={<ManageAdmins />} />
                 <Route path="/schedule" element={<Schedule />} />
+                <Route path="/account/" element={<Account />} />
               </Route>
             </Routes>
-          </header>
         </div>
       </Context.Provider>
     </>

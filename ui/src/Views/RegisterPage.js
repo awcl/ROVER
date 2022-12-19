@@ -36,7 +36,8 @@ const RegisterPage = () => {
     const handleRegister = async (e) => {
         e.preventDefault();
         if (!(/^[0-9]+$/).test(organization)) {
-            window.alert(`Your organization entry can only be numeric 🙁`); }
+            window.alert(`Your organization entry can only be numeric 🙁`);
+        }
         else if (username && password && password === confirmPassword) {
             try {
                 const response = await fetch(`${API_URL}/member/new`, {
@@ -55,7 +56,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <div>
+        <div className="content">
             <Container maxWidth="sm">
                 <Grid container spacing={2}
                     direction="column"

@@ -8,11 +8,9 @@ const Home = () => {
   const { session } = useContext(Context);
 
   return (
-    <>
-      <div>
-        TODO Notifications pane of transactions that involve curr user here
-      </div>
-    </>
+    <div className="content">
+      TODO Notifications pane of transactions that involve curr user here
+    </div>
   )
 }
 

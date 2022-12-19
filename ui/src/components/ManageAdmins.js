@@ -85,22 +85,22 @@ const ManageAdmins = () => {
 
   return (
     <>
-        <DataGrid
-          align="left"
-          className="Result-Table"
-          rows={users}
-          columns={columns}
-          pageSize={tablePageSize}
-          // initialState={{ pagination: { pageSize: tablePageSize } }}
-          onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
-          rowsPerPageOptions={[5, 10, 25, 50, 100]}
-          pagination
-          {...users}
-          onSortModelChange={(model) => setSortModel(model)}
-          getRowHeight={() => 'auto'}
-          disableSelectionOnClick
-          autoHeight
-        />
+      Manage Administrators
+      <DataGrid
+        align="left"
+        className="Result-Table"
+        rows={users}
+        columns={columns}
+        pageSize={tablePageSize}
+        // initialState={{ pagination: { pageSize: tablePageSize } }}
+        onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
+        rowsPerPageOptions={[5, 10, 25, 50, 100]}
+        pagination
+        {...users}
+        onSortModelChange={(model) => setSortModel(model)}
+        getRowHeight={() => 'auto'}
+        disableSelectionOnClick
+      />
     </>
   )
 }
