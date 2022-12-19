@@ -50,19 +50,20 @@ const ReservationPage = () => {
   // handle form submission
   const handleSubmit = async () => {
     // send reservation details to server or database
+    console.log("vehID", vehID)
     try {
       var res = await fetch(`${API_URL}/reservation`, {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({
-        vehicle_id: vehID,
-        member_id: document.cookie.split('=')[2],
-        start_date: start,
-        end_date: end
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          vehicle_id: +vehID,
+          member_id: document.cookie.split('=')[2],
+          start_date: start,
+          end_date: end
+        })
       })
-    })
-  } catch (e) {console.log(e)}
-}
+    } catch (e) { console.log(e) }
+  }
 
   return (
     <>
@@ -107,7 +108,7 @@ const ReservationPage = () => {
                       disabled
                     />
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Organization"
@@ -115,7 +116,7 @@ const ReservationPage = () => {
                       value={session.organization_id}
                       disabled
                     />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <TextField
                       fullWidth
@@ -153,16 +154,16 @@ const ReservationPage = () => {
                       />
                     </LocalizationProvider>
                   </Grid>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Number of Passengers"
                       variant="outlined"
                       value={passengers}
-                      onChange={(e) => { }}
+                      onChange={(e) => {}}
                     />
-                  </Grid>
-                  <Grid item xs={12}>
+                  </Grid> */}
+                  {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Additional Notes/Justification"
@@ -170,7 +171,7 @@ const ReservationPage = () => {
                       value={notes}
                       onChange={(e) => { }}
                     />
-                  </Grid>
+                  </Grid> */}
                   <Grid item xs={12}>
                     <Button
                       fullWidth
