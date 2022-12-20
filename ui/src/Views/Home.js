@@ -14,7 +14,7 @@ const Home = () => {
   useEffect(() => {
     fetch(`${API_URL}/reservation/merged/${id}`)
       .then(response => response.json())
-      .then(data => setDetails(data[0]));
+      .then(data => setDetails(details[0]));
   }, [id]);
 
   return (
