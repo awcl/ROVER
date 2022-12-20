@@ -14,7 +14,7 @@ import CancelIcon from '@mui/icons-material/Cancel';
 import Tooltip from '@mui/material/Tooltip';
 import config from '../config';
 import { margin } from "@mui/system";
-import {Container } from '@mui/material';
+import { Container } from '@mui/material';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Schedule = () => {
@@ -24,7 +24,6 @@ const Schedule = () => {
       fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
         .then(navigate('/reservations'))
         .catch(e => console.log(e));
-      //navigate(0);
     }
 
     const handleDelete = async (id) => {
@@ -32,7 +31,6 @@ const Schedule = () => {
       fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
         .then(navigate('/reservations'))
         .catch(e => console.log(e));
-      //navigate(0);
     }
 
     const columns = [
