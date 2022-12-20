@@ -59,7 +59,7 @@ const Schedule = () => {
         }
 
       },
-      {field: 'status',flex: .3, operatorValue: 'is', value:true, hide:true}
+      {field: 'approved',flex: .3, operatorValue: 'is', value:true, hide:true}
     ]
 
     const [reservations, setReservations] = useState([]);

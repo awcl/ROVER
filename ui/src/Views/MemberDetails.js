@@ -65,52 +65,54 @@ const MemberDetails = () => {
     // };
 
     const handleChange2 = (event) => {
-        setChecked([event.target.checked]);
+        setChecked([event.target.checked, checked[1]]);
+        console.log(event)
     };
 
     const handleChange3 = (event) => {
         setChecked([event.target.checked, event.target.checked]);
     };
 
+
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-            {/* <FormControlLabel
-                label="Van"
-                control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
-            /> */}
-            {/* <FormControlLabel
-                label="Sedan"
-                control={<Checkbox checked={checked[1]} onChange={handleChange2} />}
-            /> */}
-                                              <FormControlLabel
+            <FormControlLabel
+            value = {van_cert}
                 label="Van"
                 control={<Checkbox checked={checked[9]} onChange={handleChange2} />}
             />
-                                  <FormControlLabel
+            <FormControlLabel
+            value = "sedan_cert"
                 label="Sedan"
                 control={<Checkbox checked={checked[8]} onChange={handleChange2} />}
             />
-                        <FormControlLabel
+            <FormControlLabel
+            value = "truck_cert"
                 label="Truck"
                 control={<Checkbox checked={checked[2]} onChange={handleChange2} />}
             />
-                        <FormControlLabel
+            <FormControlLabel
+            value = "ton_cert"
                 label="5-Ton Truck"
                 control={<Checkbox checked={checked[3]} onChange={handleChange2} />}
             />
-                        <FormControlLabel
+            <FormControlLabel
+            value = "hmmwv_cert"
                 label="HMMWV"
                 control={<Checkbox checked={checked[4]} onChange={handleChange2} />}
             />
-                        <FormControlLabel
+            <FormControlLabel
+            value = "mobilizer_cert"
                 label="MOBILIZER"
                 control={<Checkbox checked={checked[5]} onChange={handleChange2} />}
             />
-                        <FormControlLabel
+            <FormControlLabel
+            value = "amrap_cert"
                 label="AMRAP"
                 control={<Checkbox checked={checked[6]} onChange={handleChange2} />}
             />
-                        <FormControlLabel
+            <FormControlLabel
+            value = "patrol_cert"
                 label="Patrol Vehicle"
                 control={<Checkbox checked={checked[7]} onChange={handleChange2} />}
             />
@@ -210,7 +212,7 @@ const MemberDetails = () => {
                                     </Grid>
                                     <Grid item xs={12}>
                                         <div>
-                                        Certifications
+                                            Certifications
                                         </div>
                                         {/* <FormControlLabel
                                             label="Certified on All Vehicle Types"

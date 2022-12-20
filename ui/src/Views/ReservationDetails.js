@@ -54,6 +54,7 @@ function ReservationDetails() {
                 <CardContent>
                     <Typography variant="h6">Reservation ID: {details.id}</Typography>
                     <Typography variant="h6">Vehicle ID: {details.vehicle_id}</Typography>
+                    <Typography variant="h6">Vehicle ID: {details.vehicle_type}</Typography>
                     <Typography variant="h6">Start Date: {details.start_date}</Typography>
                     <Typography variant="h6">End Date: {details.end_date}</Typography>
                     <Typography variant="h6">First Name: {details.first_name}</Typography>
@@ -70,8 +71,6 @@ function ReservationDetails() {
                         <MenuItem value="denied">Denied</MenuItem>
                         <MenuItem value="pending">Pending</MenuItem>
                     </Select>
-
-
                     <TextField id="remark" label="Remarks" onChange={(e)=> setRemark(e.target.value)} onBlur={(e) => {e.target.value=e.target.value.trim()}} defaultValue={details.description}></TextField>
                     <Button onClick={()=>{handleApprove()}}>APPROVE</Button>
                     <Button onClick={()=>{handleDeny()}}>DENY</Button>
