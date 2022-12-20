@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
-import { useParams } from 'react-router-dom';
+// import { useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import Vehicles from '../components/Vehicles';
 import Context from '../components/Context';
@@ -9,13 +9,13 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const Home = () => {
   const [details, setDetails] = useState({});
   const { session } = useContext(Context);
-  let { id } = useParams();
+  // localhost:3000/home/X
 
   // useEffect(() => {
-  //   fetch(`${API_URL}/reservation/merged/${id}`)
+  //   session && fetch(`${API_URL}/reservation/merged/${session.id}`)
   //     .then(response => response.json())
   //     .then(data => setDetails(data[0]));
-  // }, [id]);
+  // }, [session]);
 
   return (
     <div className="content">

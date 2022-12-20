@@ -159,10 +159,10 @@ const ReservationPage = () => {
                     {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
-                      label="Number of Passengers"
+                      label="Status"
                       variant="outlined"
-                      value={passengers}
-                      onChange={(e) => {}}
+                      value="pending"
+                      disabled
                     />
                   </Grid> */}
                     {/* <Grid item xs={12}>

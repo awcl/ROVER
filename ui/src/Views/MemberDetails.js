@@ -60,28 +60,28 @@ const MemberDetails = () => {
             });
     });
 
-    const handleChange1 = (event) => {
-        setChecked([event.target.checked, event.target.checked]);
-    };
+    // const handleChange1 = (event) => {
+    //     setChecked([event.target.checked, event.target.checked]);
+    // };
 
     const handleChange2 = (event) => {
-        setChecked([event.target.checked, checked[1]]);
+        setChecked([event.target.checked]);
     };
 
     const handleChange3 = (event) => {
-        setChecked([checked[0], event.target.checked]);
+        setChecked([event.target.checked, event.target.checked]);
     };
 
     const children = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
-            <FormControlLabel
+            {/* <FormControlLabel
                 label="Van"
-                control={<Checkbox checked={checked[0]} onChange={handleChange3} />}
-            />
-            <FormControlLabel
+                control={<Checkbox checked={checked[0]} onChange={handleChange2} />}
+            /> */}
+            {/* <FormControlLabel
                 label="Sedan"
-                control={<Checkbox checked={checked[1]} onChange={handleChange3} />}
-            />
+                control={<Checkbox checked={checked[1]} onChange={handleChange2} />}
+            /> */}
                         <FormControlLabel
                 label="Truck"
                 control={<Checkbox checked={checked[2]} onChange={handleChange2} />}
@@ -204,16 +204,16 @@ const MemberDetails = () => {
                                         <div>
                                         Certifications
                                         </div>
-                                        <FormControlLabel
+                                        {/* <FormControlLabel
                                             label="Certified on All Vehicle Types"
                                             control={
                                                 <Checkbox
-                                                    checked={checked[0] && checked[1]}
+                                                    checked={checked[0] && checked[1] && checked[2]}
                                                     indeterminate={checked[0] !== checked[1]}
                                                     onChange={handleChange1}
                                                 />
                                             }
-                                        />
+                                        /> */}
                                         {children}
                                     </Grid>
 

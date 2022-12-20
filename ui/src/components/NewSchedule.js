@@ -59,7 +59,7 @@ const Schedule = () => {
         }
 
       },
-      {field: 'approved',flex: .3, operatorValue: 'is', value:true, hide:true}
+      {field: 'status',flex: .3, operatorValue: 'is', value:true, hide:true}
     ]
 
     const [reservations, setReservations] = useState([]);
@@ -88,14 +88,14 @@ const Schedule = () => {
           <DataGrid
             align="left"
             className="Result-Table"
-            rows={reservations.filter(x => x.approved)}
+            rows={reservations.filter(x => x.status === 'approved')}
             columns={columns}
             pageSize={tablePageSize}
             // initialState={{ pagination: { pageSize: tablePageSize } }}
             onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
             rowsPerPageOptions={[5, 10, 25, 50, 100]}
             pagination
-            {...reservations.filter(x => x.approved)}
+            {...reservations.filter(x => x.status === 'approved')}
             onSortModelChange={(model) => setSortModel(model)}
             getRowHeight={() => 'auto'}
             disableSelectionOnClick

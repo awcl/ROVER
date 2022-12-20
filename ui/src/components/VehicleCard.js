@@ -24,7 +24,7 @@ const VehicleCard = ({ vehicle }) => {
                 <CardMedia
                     component="img"
                     height="194"
-                    image={require(`../assets/vehicle_1.jpg`)}
+                    image={require(`../assets/vehicle_${vehicle.id}.jpg`)}
 
                 />
                 <CardContent>

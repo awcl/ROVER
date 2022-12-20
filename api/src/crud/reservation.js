@@ -18,7 +18,7 @@ app.get('/merged', (req, res) => { // List All Items With Merged Data from User 
   knex('reservation')
     .join('member', 'reservation.member_id', 'member.id')
     .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
-    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 'member.first_name', 'member.last_name', 'reservation.start_date', 'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description', 'member.is_5_ton_cert' , 'member.is_amrap_cert', 'member.is_hmmwv_cert', 'member.is_mobilizer_cert', 'member.is_patrol_cert', 'member.is_tank_cert', 'member.is_semitruck_cert', 'member.is_landrover_cert', 'member.is_forklift_cert')
+    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 'member.first_name', 'member.last_name', 'reservation.start_date', 'reservation.end_date', 'reservation.status', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description', 'member.is_5_ton_cert' , 'member.is_amrap_cert', 'member.is_hmmwv_cert', 'member.is_mobilizer_cert', 'member.is_patrol_cert', 'member.is_tank_cert', 'member.is_semitruck_cert', 'member.is_landrover_cert', 'member.is_forklift_cert')
     .then(items => {
       res.status(200).send(items);
     });
@@ -30,7 +30,7 @@ app.get('/merged/:id', (req, res) => {
   knex('reservation')
     .join('member', 'reservation.member_id', 'member.id')
     .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
-    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 'member.first_name', 'member.last_name', 'reservation.start_date', 'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description', 'member.is_5_ton_cert' , 'member.is_amrap_cert', 'member.is_hmmwv_cert', 'member.is_mobilizer_cert', 'member.is_patrol_cert', 'member.is_tank_cert', 'member.is_semitruck_cert', 'member.is_landrover_cert', 'member.is_forklift_cert')
+    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 'member.first_name', 'member.last_name', 'reservation.start_date', 'reservation.end_date', 'reservation.status', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description', 'member.is_5_ton_cert' , 'member.is_amrap_cert', 'member.is_hmmwv_cert', 'member.is_mobilizer_cert', 'member.is_patrol_cert', 'member.is_tank_cert', 'member.is_semitruck_cert', 'member.is_landrover_cert', 'member.is_forklift_cert')
     .where('reservation.id', id)
     .then(items => {
       res.status(200).send(items);
@@ -51,7 +51,7 @@ app.delete('/merged/:id', (req, res) => {
   // http://localhost:8080/reservation/merged/1
 })
 
-// GET Reservation by Member ID  >>>> TODO Validate + Connect // TODO Add isApproved bool to table/logic
+// GET Reservation by Member ID
 app.get('/member/:id', (req, res) => {
   let { id } = req.params;
   knex('reservation')
@@ -62,7 +62,7 @@ app.get('/member/:id', (req, res) => {
   // http://localhost:8080/reservation/member/1
 })
 
-// GET Reservation by Vehicle ID  >>>> TODO Validate + Connect // TODO Add isApproved bool to table/logic
+// GET Reservation by Vehicle ID
 app.get('/vehicle/:id', (req, res) => {
   let { id } = req.params;
   knex('reservation')
@@ -84,7 +84,6 @@ app.post('/', async (req, res) => {
       'member_id': req.body.member_id,
       'start_date': req.body.start_date,
       'end_date': req.body.end_date,
-      'approved': false,
       'status' : 'pending'
     }).then(data => res.status(201).end(data))
   } catch (e) {
