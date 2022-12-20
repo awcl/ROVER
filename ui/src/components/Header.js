@@ -25,7 +25,7 @@ const Header = (props) => {
     const { session, setSession } = useContext(Context);
     return (
         <div className="headerContent">
-            ROVER {session.username && <> ➡️ Hello "{session.username}" 🙂 You're {!session.admin && <> not</>} an admin</>}
+            ROVER {session.username && <> ➡️ Hello "{session.username}" 🙂 You're {!session.admin && <>not</>} an admin</>}
         </div>
     )
 }
