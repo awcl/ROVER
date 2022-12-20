@@ -44,8 +44,7 @@ const handleMemberUpdate = async (e) => {
         window.alert(`Your organization entry can only be numeric 🙁`);
     } else if (username && password && password === confirmPassword) {
         // console.log(firstName, lastName, rank, email, username, password, organization)
-        try {
-            const response = await fetch(`${API_URL}/member/updatemember/${session.id}`, {
+        try { const response = await fetch(`${API_URL}/member/updatemember/${session.id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username, password: password, organization_id: organization })
@@ -79,7 +78,6 @@ return (
                                         variant="outlined"
                                         defaultValue={session.first_name}
                                         placeholder={session.first_name}
-
                                         onBlur={(e) => setFirstName(e.target.value)}
                                     />
                                 </Grid>

@@ -13,6 +13,14 @@ app.get('/', (req, res) => { // Display all Vehicles from vehicles table in brow
   // http://localhost:8080/vehicle
 });
 
+app.get('/ids', (req, res) => { // List All Users Usernames
+  knex('vehicle')
+    .select('id')
+    .then(vids => {
+      res.status(200).send(vids);
+    });
+});
+
 // GET Query Vehicle by Vehicle ID >>>> TODO Validate + Connect
 app.get('/:id', (req, res) => {
   let { id } = req.params;

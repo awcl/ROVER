@@ -19,6 +19,7 @@ import ManageUsers from './components/ManageUsers';
 import Account from './Views/Account';
 import ReservationDetails from './Views/ReservationDetails';
 import IncidentReport from './components/IncidentReport';
+import IncidentReports from './components/IncidentReports';
 import MemberDetails from './Views/MemberDetails';
 import ApprovedList from './components/ApprovedList'
 
@@ -62,6 +63,8 @@ function App() {
                 <Route path="/schedule" element={<Schedule />} />
                 {session.id && <Route path="/account" element={<Account />} />}
                 <Route path="/IncidentReport" element={<IncidentReport/>}/>
+                <Route path="/IncidentReports" element={<IncidentReports/>}/>
+                {/* <Route path="/Incident/:id" element={<IncidentReports/>}/> */}
               </Route>
             </Routes>
         </div>

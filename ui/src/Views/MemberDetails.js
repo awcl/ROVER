@@ -31,7 +31,7 @@ const MemberDetails = () => {
     const [mobilizer_cert, setMobilizerCert] = useState('');
     const [amrap_cert, setAmrapCert] = useState('');
     const [patrol_cert, setPatrolCert] = useState('');
-    const [checked, setChecked] = React.useState([true, false]);
+    const [checked, setChecked] = React.useState('');
 
 
     useEffect(() => {
@@ -46,209 +46,236 @@ const MemberDetails = () => {
                 setEmail(data[0].email)
                 setOrganization(+data[0].organization_id)
                 setAdmin(data[0].admin)
-                setVanCert(data[0].van_cert)
-                setSedanCert(data[0].sedan_cert)
-                setTruckCert(data[0].truck_cert)
-                setTonCert(data[0].ton_cert)
-                setHmmwvCert(data[0].hmmwv_cert)
-                setMobilizerCert(data[0].mobilizer_cert)
-                setAmrapCert(data[0].amrap_cert)
-                setPatrolCert(data[0].patrol_cert)
-
+                setVanCert(data[0].is_van_cert)
+                setSedanCert(data[0].is_sedan_cert)
+                setTruckCert(data[0].is_truck_cert)
+                setTonCert(data[0].is_5_ton_cert)
+                setHmmwvCert(data[0].is_hmmwv_cert)
+                setMobilizerCert(data[0].is_mobilizer_cert)
+                setAmrapCert(data[0].is_amrap_cert)
+                setPatrolCert(data[0].is_patrol_cert)
                 console.log(data[0]);
-                console.log(rank)
             });
-    });
+    }, [id]);
+
+    console.log(admin)
+    console.log(van_cert)
+    console.log(sedan_cert)
+    console.log(ton_cert)
+    console.log(amrap_cert)
+    console.log(id)
 
     // const handleChange1 = (event) => {
     //     setChecked([event.target.checked, event.target.checked]);
     // };
 
-    const handleChange2 = (event) => {
+    const handleChangeAdmin = (event) => {
         setChecked([event.target.checked]);
         console.log(event)
-    };
-
-    const handleChange3 = (event) => {
-        setChecked([event.target.checked, event.target.checked]);
+        setAdmin(checked[0])
     };
 
 
-    const children = (
+
+    const AssignAdmin = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
             <FormControlLabel
-            value = {van_cert}
+                defaultValue={admin}
+                label="Admin Access"
+                control={<Checkbox checked={admin} onChange={handleChangeAdmin} />}
+
+            />
+        </Box>
+
+    );
+
+    const handleChangeVanCert = (event) => {
+        console.log('vancert', event.target.checked)
+        setChecked([event.target.checked]);
+        setVanCert(checked[0])
+    };
+    const handleChangeSedanCert = (event) => {
+        setChecked([event.target.checked]);
+        setSedanCert(checked[0])
+    };
+    const handleChangeTruckCert = (event) => {
+        setChecked([event.target.checked]);
+        setTruckCert(checked[0])
+    };
+    const handleChangeTonCert = (event) => {
+        setChecked([event.target.checked]);
+        setTonCert(checked[0])
+    };
+    const handleChangeHMMWVCert = (event) => {
+        setChecked([event.target.checked]);
+        setHmmwvCert(checked[0])
+    };
+    const handleChangeMobilizerCert = (event) => {
+        setChecked([event.target.checked]);
+        setMobilizerCert(checked[0])
+    };
+    const handleChangeAMRAPCert = (event) => {
+        setChecked([event.target.checked]);
+        setAmrapCert(checked[0])
+    };
+    const handleChangePatrolCert = (event) => {
+        setChecked([event.target.checked]);
+        setPatrolCert(checked[0])
+    };
+
+    const Certifications = (
+        <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
+            <FormControlLabel
+                defaultValue={van_cert}
                 label="Van"
-                control={<Checkbox checked={{van_cert}} onChange={handleChange3} />}
+                control={<Checkbox checked={van_cert} onChange={handleChangeVanCert} />}
             />
             <FormControlLabel
-            value = {sedan_cert}
+                defaultValue={sedan_cert}
                 label="Sedan"
-                control={<Checkbox checked={{sedan_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={sedan_cert} onChange={handleChangeSedanCert} />}
             />
             <FormControlLabel
-                value = {truck_cert}
+                defaultValue={truck_cert}
                 label="Truck"
-                control={<Checkbox checked={{truck_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={truck_cert} onChange={handleChangeTruckCert} />}
             />
             <FormControlLabel
-        value = {ton_cert}
+                defaultValue={ton_cert}
                 label="5-Ton Truck"
-                control={<Checkbox checked={{ton_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={ton_cert} onChange={handleChangeTonCert} />}
             />
             <FormControlLabel
-            value = {hmmwv_cert}
+                defaultValue={hmmwv_cert}
                 label="HMMWV"
-                control={<Checkbox checked={{hmmwv_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={hmmwv_cert} onChange={handleChangeHMMWVCert} />}
             />
             <FormControlLabel
-            value = {mobilizer_cert}
+                defaultValue={mobilizer_cert}
                 label="MOBILIZER"
-                control={<Checkbox checked={{mobilizer_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={mobilizer_cert} onChange={handleChangeMobilizerCert} />}
             />
             <FormControlLabel
-            value = {amrap_cert}
+                defaultValue={amrap_cert}
                 label="AMRAP"
-                control={<Checkbox checked={{amrap_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={amrap_cert} onChange={handleChangeAMRAPCert} />}
             />
             <FormControlLabel
-            value = {patrol_cert}
+                defaultValue={patrol_cert}
                 label="Patrol Vehicle"
-                control={<Checkbox checked={{patrol_cert}} onChange={handleChange2} />}
+                control={<Checkbox checked={patrol_cert} onChange={handleChangePatrolCert} />}
             />
         </Box>
     );
 
 
-    // const handleMemberUpdate = async (e) => {
-    //     e.preventDefault();
-    //     // console.log(firstName, lastName, rank, email, username, password, organization)
-    //     console.log(!(/^[0-9]+$/).test(organization))
-    //     if (!(/^[0-9]+$/).test(organization)) {
-    //         window.alert(`Your organization entry can only be numeric 🙁`);
-    // } else if({
-    //     // console.log(firstName, lastName, rank, email, username, password, organization)
-
-    //         response = await fetch(`${API_URL}/member/updatemember/${session.id}`, {
-    //             method: 'PATCH',
-    //             headers: { 'Content-Type': 'application/json' },
-    //             body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username,
-    //   organization_id: organization,
-    // admin: admin, is_van_cert: van_cert, is_sedan_cert: sedan_cert, is_truck_cert: truck_cert,
-    // is_5_Ton_cert: ton_cert, is_AMRAP_cert: amrap_cert, is_HMMWV_cert: hmmwv_cert,
-    // is_Mobilizer_cert: mobilizer_cert,  is_Patrol_cert: patrol_cert)
-    //         })
-    //         if (response.status !== 204) {
-    //             console.log(response.status)
-    //         } else {
-    //             console.log('Saved')
-    //             window.alert(`The Member Information Has Been Updated!`);
-    //         }
-    //      catch (e) { console.log(e) }
-    //     })
-    // }
-
-    return (
-        <div className="content">
-            <Container maxWidth="sm">
-                <Grid container spacing={2}
-                    direction="column"
-                    justifyContent="center"
-                    alignItems="center"
-                >
-
-                    <Grid item xs={12}>
-                        <Paper elevation={3} sx={{ p: 5 }}>
-                            <form
-                            //onSubmit={handleMemberUpdate}
-                            >
-                                <h1>Member Information</h1>
-                                {errorMessage && <div className='failed'>{errorMessage}</div>}
-                                <Grid container spacing={2}>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            defaultValue={firstName}
-                                            placeholder={firstName}
-                                            onBlur={(e) => setFirstName(e.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            defaultValue={lastName}
-                                            placeholder={lastName}
-                                            onBlur={(e) => setLastName(e.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            defaultValue={rank}
-                                            placeholder={rank}
-                                            onBlur={(e) => setRank(e.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            defaultValue={organization}
-                                            placeholder={organization}
-                                            onBlur={(e) => setOrganization(e.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <TextField
-                                            fullWidth
-                                            variant="outlined"
-                                            defaultValue={email}
-                                            placeholder={email}
-                                            onBlur={(e) => setEmail(e.target.value)}
-                                        />
-                                    </Grid>
-                                    <Grid item xs={12}>
-                                        <div>
-                                            Certifications
-                                        </div>
-                                        {/* <FormControlLabel
-                                            label="Certified on All Vehicle Types"
-                                            control={
-                                                <Checkbox
-                                                    checked={checked[0] && checked[1] && checked[2]}
-                                                    indeterminate={checked[0] !== checked[1]}
-                                                    onChange={handleChange1}
-                                                />
-                                            }
-                                        /> */}
-                                        {children}
-                                    </Grid>
+    const handleMemberUpdate = async (e) => {
+        e.preventDefault();
+        try {
+            const response = await fetch(`${API_URL}/member/updatemember/${id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username, organization_id: organization, admin: admin, is_van_cert: van_cert, is_sedan_cert: sedan_cert, is_truck_cert: truck_cert, is_5_Ton_cert: ton_cert, is_AMRAP_cert: amrap_cert, is_HMMWV_cert: hmmwv_cert, is_Mobilizer_cert: mobilizer_cert, is_Patrol_cert: patrol_cert })
+            })
+            if (response.status !== 204) {
+                console.log(response.status)
+            } else {
+                console.log('Saved')
+                window.alert(`The Member Information Has Been Updated!`);
+            }
+        } catch (e) { console.log(e) }
+    }
 
 
-
-
-
-                                    <Grid item xs={12}>
-                                        <Button
-                                            fullWidth
-                                            type="submit"
-                                            variant="contained"
-                                            onClick={() => navigate('/ManageUsers')}
-                                        >
-                                            Save
-                                        </Button>
-                                    </Grid>
+return (
+    <div className="content">
+        <Container maxWidth="sm">
+            <Grid container spacing={2}
+                direction="column"
+                justifyContent="center"
+                alignItems="center">
+                <Grid item xs={12}>
+                    <Paper elevation={3} sx={{ p: 5 }}>
+                        <form
+                        onSubmit={handleMemberUpdate}
+                        >
+                            <h1>Account Information</h1>
+                            {errorMessage && <div className='failed'>{errorMessage}</div>}
+                            <Grid container spacing={2}>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        variant="outlined"
+                                        value={firstName}
+                                        // placeholder={firstName}
+                                        onBlur={(e) => setFirstName(e.target.value)}
+                                    />
                                 </Grid>
-                            </form>
-                        </Paper>
-                    </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        variant="outlined"
+                                        value={lastName}
+                                        // placeholder={lastName}
+                                        onBlur={(e) => setLastName(e.target.value)}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        variant="outlined"
+                                        value={rank}
+                                        // placeholder={rank}
+                                        onBlur={(e) => setRank(e.target.value)}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        variant="outlined"
+                                        value={organization}
+                                        // placeholder={`${organization}`}
+                                        onBlur={(e) => setOrganization(e.target.value)}
+                                    />
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <TextField
+                                        fullWidth
+                                        variant="outlined"
+                                        value={email}
+                                        // placeholder={`${email}`}
+                                        onBlur={(e) => setEmail(e.target.value)}
+                                    >{email}</TextField>
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <div>
+                                        Assign Admin Access
+                                        {AssignAdmin}
+                                    </div>
+                                    <div>
+                                        Certifications
+                                    </div>
+
+                                    {Certifications}
+                                </Grid>
+                                <Grid item xs={12}>
+                                    <Button
+                                        fullWidth
+                                        type="submit"
+                                        variant="contained"
+                                        // onClick={() => navigate('/ManageUsers')}
+                                    >
+                                        Save
+                                    </Button>
+                                </Grid>
+                            </Grid>
+                        </form>
+                    </Paper>
                 </Grid>
-            </Container>
-        </div>
-    )
+            </Grid>
+        </Container>
+    </div>
+)
 }
 
 export default MemberDetails;

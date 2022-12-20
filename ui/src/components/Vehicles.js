@@ -4,7 +4,7 @@ import { Grid, Container } from '@mui/material';
 import VehicleCard from './VehicleCard';
 import config from '../config';
 
-  import Context from '../components/Context';
+import Context from '../components/Context';
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -19,13 +19,14 @@ const Vehicles = () => {
         fetch(`${API_URL}/vehicle`)
             .then(response => response.json())
             .then(data => {
-                setFiltered(data.filter(x=>x.organization_id===session.organization_id))
+                setFiltered(data.filter(x => x.organization_id === session.organization_id))
                 setVehicles(data)
+                setDisplay(data)
             })
     }, []);
 
     const filter = () => {
-        setFiltered(vehicles.filter(x=>x.organization_id===session.organization_id))
+        setFiltered(vehicles.filter(x => x.organization_id === session.organization_id))
         setDisplay(filtered)
     }
 
@@ -39,15 +40,15 @@ const Vehicles = () => {
 
     return (
         <div className="content">
-            <button onClick={() => {all()}}>All Vehicles</button>
-            <button onClick={() => {filter()}}>My Org's Vehicles</button><br/><br/>
-                <Grid container spacing={3}>
-                    {display.map(vehicle => (
-                        <Grid item key={vehicle.id} xs={10} md={4} lg={5}>
-                            <VehicleCard vehicle={vehicle} />
-                        </Grid>
-                    ))}
-                </Grid>
+            <button onClick={() => { all() }}>All Vehicles</button>
+            <button onClick={() => { filter() }}>My Org's Vehicles</button><br /><br />
+            <Grid container spacing={3}>
+                {display.map(vehicle => (
+                    <Grid item key={vehicle.id} xs={10} md={4} lg={5}>
+                        <VehicleCard vehicle={vehicle} />
+                    </Grid>
+                ))}
+            </Grid>
         </div>
     );
 }

@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  background-color: #FFF3B0;
+  background-color: #FFFFFF;
   /* min-height: 100vh;
   min-width: 100vw;
   display: flex;
@@ -26,7 +26,7 @@
 }
 
 .MuiList-root .MuiButtonBase-root {
-  height:9.95vh; /*TODO Math to max page, remember btn borders exist*/
+  height:9vh; /*TODO Math to max page, remember btn borders exist*/
 }
 
 .MuiDataGrid-row:nth-child(odd) {

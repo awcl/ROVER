@@ -4,6 +4,13 @@ import Context from '../components/Context';
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
+
+
+//implement cards for reservations of user
+
+
+
+
 const Home = () => {
   // const [details, setDetails] = useState({});
   // const { session } = useContext(Context);
