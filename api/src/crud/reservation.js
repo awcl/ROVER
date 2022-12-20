@@ -18,10 +18,7 @@ app.get('/merged', (req, res) => { // List All Items With Merged Data from User 
   knex('reservation')
     .join('member', 'reservation.member_id', 'member.id')
     .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
-    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number',
-      'vehicle.description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
-      'member.first_name', 'member.last_name', 'reservation.start_date',
-      'reservation.end_date', 'reservation.approved', 'reservation.status')
+    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 'member.first_name', 'member.last_name', 'reservation.start_date', 'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description', 'member.is_5_ton_cert' , 'member.is_amrap_cert', 'member.is_hmmwv_cert', 'member.is_mobilizer_cert', 'member.is_patrol_cert', 'member.is_tank_cert', 'member.is_semitruck_cert', 'member.is_landrover_cert', 'member.is_forklift_cert')
     .then(items => {
       res.status(200).send(items);
     });
@@ -33,10 +30,7 @@ app.get('/merged/:id', (req, res) => {
   knex('reservation')
     .join('member', 'reservation.member_id', 'member.id')
     .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
-    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number',
-      'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
-      'member.first_name', 'member.last_name', 'reservation.start_date',
-      'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description')
+    .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number', 'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank', 'member.first_name', 'member.last_name', 'reservation.start_date', 'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description', 'member.is_5_ton_cert' , 'member.is_amrap_cert', 'member.is_hmmwv_cert', 'member.is_mobilizer_cert', 'member.is_patrol_cert', 'member.is_tank_cert', 'member.is_semitruck_cert', 'member.is_landrover_cert', 'member.is_forklift_cert')
     .where('reservation.id', id)
     .then(items => {
       res.status(200).send(items);
