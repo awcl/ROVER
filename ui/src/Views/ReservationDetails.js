@@ -1,13 +1,14 @@
 import React, { useState, useEffect, } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import config from '../config';
-import { TextField,Button, Card, CardHeader, CardContent, Typography } from '@mui/material';
+import { TextField,Button, Card, CardHeader, CardContent, Typography, MenuItem, Select } from '@mui/material';
 // import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 function ReservationDetails() {
     const [details, setDetails] = useState({});
     const [remark, setRemark] = useState('');
+    const [status, setStatus] = useState('');
     let { id } = useParams();
     const navigate = useNavigate();
 
@@ -58,6 +59,19 @@ function ReservationDetails() {
                     <Typography variant="h6">First Name: {details.first_name}</Typography>
                     <Typography variant="h6">Last Name: {details.last_name}</Typography>
                     <Typography variant="h6">Email: {details.email}</Typography>
+                    <Select
+                        labelId="status"
+                        id="status"
+                        value={status}
+                        label="Status"
+                        onChange={(e)=> setStatus(e.target.value)}
+                        >
+                        <MenuItem value="approved">Approved</MenuItem>
+                        <MenuItem value="denied">Denied</MenuItem>
+                        <MenuItem value="pending">Pending</MenuItem>
+                    </Select>
+
+
                     <TextField id="remark" label="Remarks" onChange={(e)=> setRemark(e.target.value)} onBlur={(e) => {e.target.value=e.target.value.trim()}} defaultValue={details.description}></TextField>
                     <Button onClick={()=>{handleApprove()}}>APPROVE</Button>
                     <Button onClick={()=>{handleDeny()}}>DENY</Button>
