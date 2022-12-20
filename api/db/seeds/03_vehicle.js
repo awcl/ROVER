@@ -23,7 +23,7 @@ exports.seed = async function (knex) {
     { id: 15, vehicle_type: 'sedan', miles: 40321, plate_number: 'G34379', description: '4 door full-size  electric vehicle', location: 'P67-13', organization_id: 1 },
     { id: 16, vehicle_type: 'truck', miles: 65430, plate_number: 'G34882', description: '4 door full-size size pickup', location: 'P61-12', organization_id: 1 }
   ]);
-}
+};
 
 // https://asc.army.mil/web/wp-content/uploads/2018/10/Abrams_Image_WSH2020.jpg
 //http://media.wbur.org/wp/2022/04/IMG_2747-1000x750.jpg

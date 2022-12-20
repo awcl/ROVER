@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useContext} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Outlet } from 'react-router-dom';
 import Vehicles from '../components/Vehicles';
@@ -13,19 +13,21 @@ const Home = () => {
 
   useEffect(() => {
     fetch(`${API_URL}/reservation/merged/${id}`)
-        .then(response => response.json())
-        .then(data => setDetails(data[0]));
-}, []);
+      .then(response => response.json())
+      .then(data => setDetails(data[0]));
+  }, [id]);
 
   return (
     <div className="content">
       <h1> Notification's</h1>
+      <div>
+        <h2>{details.reservation_id}</h2>
+        <h2>{details.vehicle_id}</h2>
+        <h2>{details.start_date}</h2>
+        <h2>{details.end_date}</h2>
+        <h2>{details.description}</h2>
+      </div>
     </div>
-    <h2>{details.reservation_id}</h2>
-    <h2>{details.vehicle_id}</h2>
-    <h2>{details.start_date}</h2>
-    <h2>{details.end_date}</h2>
-
   )
 }
 
