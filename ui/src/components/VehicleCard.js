@@ -16,7 +16,7 @@ const VehicleCard = ({ vehicle }) => {
                             <CalendarMonthTwoToneIcon
                                 sx={{ color: '#1976d2' }}
                             />
-                        </IconButton> : <>OTHER</>
+                        </IconButton> : <button onClick={()=>{navigate('/login')}}>Login 👀</button>
                     }
                     title={vehicle.vehicle_type}
                     subheader={vehicle.plate_number}

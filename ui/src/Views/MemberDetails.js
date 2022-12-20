@@ -64,10 +64,8 @@ const MemberDetails = () => {
     //     setChecked([event.target.checked, event.target.checked]);
     // };
 
-    const handleChange2 = (event, checked) => {
-        setChecked([event.target.checked, checked[1]]);
-        checked = !checked;
-        console.log(checked)
+    const handleChange2 = (event) => {
+        setChecked([event.target.checked]);
         console.log(event)
     };
 
@@ -81,7 +79,7 @@ const MemberDetails = () => {
             <FormControlLabel
             value = {van_cert}
                 label="Van"
-                control={<Checkbox checked={{van_cert}} onChange={handleChange2()} />}
+                control={<Checkbox checked={{van_cert}} onChange={handleChange3} />}
             />
             <FormControlLabel
             value = {sedan_cert}
