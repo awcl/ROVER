@@ -105,6 +105,7 @@ const ReservationList = () => {
         onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         pagination
+        autoHeight
         {...reservations.filter(x => !x.approved)}
         onSortModelChange={(model) => setSortModel(model)}
         getRowHeight={() => 'auto'}

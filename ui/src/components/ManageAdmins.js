@@ -96,6 +96,7 @@ const ManageAdmins = () => {
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         pagination
         {...users}
+        autoHeight
         onSortModelChange={(model) => setSortModel(model)}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick

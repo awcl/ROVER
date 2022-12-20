@@ -67,10 +67,6 @@
 
 .Outlet,
 .content {
-  /* margin-top: 5vh;
-  margin-right: 5vw;
-  margin-bottom: 5vh;
-  margin-left: 5vw; */
   overflow-y: auto;
   width: 85vw;
   height: 95vh;
@@ -78,6 +74,40 @@
   right: 0px;
   bottom: 0px;
   display: block;
+}
+
+.landContent {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}
+
+
+.landing {
+  overflow: hidden;
+  width: 100%;
+  height: 100vh;
+}
+
+video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,.4);
 }
 
 .Container {
@@ -88,7 +118,8 @@
   /* flex-direction: column;
   display: flex; */
   width: 85vw;
-  height: 100vh;
+  display : inline-block;
+  /* height: 100vh; */
 }
 
 .MuiGrid-container {
