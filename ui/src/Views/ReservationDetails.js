@@ -1,7 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import config from '../config';
-import { TextField,Button, Card, CardContent, Typography } from '@mui/material';
+import { TextField,Button, Card, CardHeader, CardContent, Typography } from '@mui/material';
 // import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -48,10 +48,10 @@ function ReservationDetails() {
     return (
         <div>
             <Card elevation={3}>
-                <Card Header/>
-                    <Typography variant="h5">Request Details</Typography>
+                <CardHeader/>
+                    <Typography variant="h5">Reservation Details</Typography>
                 <CardContent>
-                    <Typography variant="h6">Reservation ID: {details.reservation_id}</Typography>
+                    <Typography variant="h6">Reservation ID: {details.id}</Typography>
                     <Typography variant="h6">Vehicle ID: {details.vehicle_id}</Typography>
                     <Typography variant="h6">Start Date: {details.start_date}</Typography>
                     <Typography variant="h6">End Date: {details.end_date}</Typography>

@@ -30,6 +30,10 @@ exports.up = function (knex) {
       table.boolean("is_hmmwv_cert").notNullable().defaultTo(false);
       table.boolean("is_mobilizer_cert").notNullable().defaultTo(false);
       table.boolean("is_patrol_cert").notNullable().defaultTo(false);
+      table.boolean("is_tank_cert").notNullable().defaultTo(false);
+      table.boolean("is_semitruck_cert").notNullable().defaultTo(false);
+      table.boolean("is_landrover_cert").notNullable().defaultTo(false);
+      table.boolean("is_forklift_cert").notNullable().defaultTo(false);
     })
     .createTable('vehicle', (table) => {
       table.increments('id');
