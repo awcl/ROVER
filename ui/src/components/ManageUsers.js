@@ -16,20 +16,20 @@ import config from '../config';
 import { margin } from "@mui/system";
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-const ManageAdmins = () => {
+const ManageUsers = () => {
   let navigate = useNavigate();
 
   const handleApprove = async (id) => {
     console.log('admin: ', id);
     fetch(`${API_URL}/member/admin/${id}`, { method: 'PATCH' })
-      .then(navigate('/manageadmins'))
+      .then(navigate('/ManageUsers'))
       .catch(e => console.log(e));
   }
 
   const handleDeny = async (id) => {
     console.log('unadmin: ', id);
     fetch(`${API_URL}/member/unadmin/${id}`, { method: 'PATCH' })
-      .then(navigate('/manageadmins'))
+      .then(navigate('/ManageUsers'))
       .catch(e => console.log(e));
   }
 
@@ -84,7 +84,7 @@ const ManageAdmins = () => {
 
   return (
     <div className="content">
-      Manage Administrators
+      Manage Users
       <DataGrid
         align="left"
         className="Result-Table"
@@ -105,4 +105,4 @@ const ManageAdmins = () => {
   )
 }
 
-export default ManageAdmins;
+export default ManageUsers;

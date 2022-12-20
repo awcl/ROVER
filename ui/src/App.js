@@ -14,7 +14,7 @@ import ContentLayout from './components/ContentLayout';
 import LandingLayout from './components/LandingLayout';
 import config from './config';
 import AddedReservation from './Views/ReservationAdded';
-import ManageAdmins from './components/ManageAdmins';
+import ManageUsers from './components/ManageUsers';
 import Account from './Views/Account';
 import ReservationDetails from './Views/ReservationDetails';
 
@@ -51,7 +51,7 @@ function App() {
                 <Route path="/reservations/added" element={<AddedReservation />} />
                 <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                 <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
-                {session.admin && <Route path="/manageadmins" element={<ManageAdmins />} />}
+                {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
                 <Route path="/schedule" element={<Schedule />} />
                 {session.id && <Route path="/account" element={<Account />} />}
               </Route>

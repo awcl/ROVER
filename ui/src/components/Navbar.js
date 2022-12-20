@@ -58,7 +58,7 @@ const Navbar = () => {
                 py: .5,
                 '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
             }}
-                onClick={() => navigate(`/manageadmins`)}>Manage Admins</ListItemButton>}
+                onClick={() => navigate(`/ManageUsers`)}>Manage Users</ListItemButton>}
             <ListItemButton
                 sx={{
                     justifyContent: 'center',

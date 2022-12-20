@@ -34,7 +34,7 @@ const RegisterPage = () => {
         setShowPassword(!showPassword);
     };
     const handleRegister = async (e) => {
-        console.log(e)
+
         e.preventDefault();
         if (!(/^[0-9]+$/).test(organization)) {
             window.alert(`Your organization entry can only be numeric 🙁`);
