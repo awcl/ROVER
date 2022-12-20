@@ -18,7 +18,7 @@ exports.seed = async function (knex) {
     { id: 10, vehicle_type: 'semi-truck', miles: 74238, plate_number: 'G38765', description: 'standard 18 wheeler', location: 'P67-8', organization_id: 2 }
     { id: 11, vehicle_type: 'land rover', miles: 12685, plate_number: 'G31225', description: 'standard land rover', location: 'P67-9', organization_id: 2 }
     {id: 12, vehicle_type: 'Forklift', miles: 20455, plate_number: 'G30023', description: 'standard Forklift', location: 'P67-10', organization_id: 2 }
-    {id: 13, vehicle_type: 'SUV', miles: 60249, plate_number: 'G339986', description: '4 door full-size SUV', location: 'P67-9', organization_id: 2 }
+    {id: 13, vehicle_type: 'SUV', miles: 60249, plate_number: 'G339986', description: '4 door full-size SUV', location: 'P67-11', organization_id: 1 }
   ]);
 }
 
