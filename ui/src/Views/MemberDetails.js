@@ -64,8 +64,10 @@ const MemberDetails = () => {
     //     setChecked([event.target.checked, event.target.checked]);
     // };
 
-    const handleChange2 = (event) => {
+    const handleChange2 = (event, checked) => {
         setChecked([event.target.checked, checked[1]]);
+        checked = !checked;
+        console.log(checked)
         console.log(event)
     };
 
@@ -79,42 +81,42 @@ const MemberDetails = () => {
             <FormControlLabel
             value = {van_cert}
                 label="Van"
-                control={<Checkbox checked={checked[9]} onChange={handleChange2} />}
+                control={<Checkbox checked={{van_cert}} onChange={handleChange2()} />}
             />
             <FormControlLabel
-            value = "sedan_cert"
+            value = {sedan_cert}
                 label="Sedan"
-                control={<Checkbox checked={checked[8]} onChange={handleChange2} />}
+                control={<Checkbox checked={{sedan_cert}} onChange={handleChange2} />}
             />
             <FormControlLabel
-            value = "truck_cert"
+                value = {truck_cert}
                 label="Truck"
-                control={<Checkbox checked={checked[2]} onChange={handleChange2} />}
+                control={<Checkbox checked={{truck_cert}} onChange={handleChange2} />}
             />
             <FormControlLabel
-            value = "ton_cert"
+        value = {ton_cert}
                 label="5-Ton Truck"
-                control={<Checkbox checked={checked[3]} onChange={handleChange2} />}
+                control={<Checkbox checked={{ton_cert}} onChange={handleChange2} />}
             />
             <FormControlLabel
-            value = "hmmwv_cert"
+            value = {hmmwv_cert}
                 label="HMMWV"
-                control={<Checkbox checked={checked[4]} onChange={handleChange2} />}
+                control={<Checkbox checked={{hmmwv_cert}} onChange={handleChange2} />}
             />
             <FormControlLabel
-            value = "mobilizer_cert"
+            value = {mobilizer_cert}
                 label="MOBILIZER"
-                control={<Checkbox checked={checked[5]} onChange={handleChange2} />}
+                control={<Checkbox checked={{mobilizer_cert}} onChange={handleChange2} />}
             />
             <FormControlLabel
-            value = "amrap_cert"
+            value = {amrap_cert}
                 label="AMRAP"
-                control={<Checkbox checked={checked[6]} onChange={handleChange2} />}
+                control={<Checkbox checked={{amrap_cert}} onChange={handleChange2} />}
             />
             <FormControlLabel
-            value = "patrol_cert"
+            value = {patrol_cert}
                 label="Patrol Vehicle"
-                control={<Checkbox checked={checked[7]} onChange={handleChange2} />}
+                control={<Checkbox checked={{patrol_cert}} onChange={handleChange2} />}
             />
         </Box>
     );

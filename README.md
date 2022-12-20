@@ -35,7 +35,7 @@ The production application is hosted by [render](https://render.com/)
 ## ERD
 ![ERD](https://github.com/awcl/ROVER/blob/main/blueprint/ERD.png?raw=true)
 ## User Stories
-1. As an ***user*** I should be to make a request to check out a vehicle for use
+1.  As an ***user*** I should be to make a request to check out a vehicle for use
 2. As an ***user*** I should be able to fill out a mishap report if a vehicle was in a accident
 3. As an ***admin*** I should be able to export all of my units vehicles to CSV file
 4. As an ***admin*** I should be able to approve pr deny vehicle request from users
