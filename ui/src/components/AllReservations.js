@@ -17,14 +17,13 @@ import { margin } from "@mui/system";
 import { Container } from '@mui/material';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-const ReservationList = () => {
+const AllReservations = () => {
   let navigate = useNavigate();
   const handleApprove = async (id) => {
     console.log('approved: ', id);
     fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
       .then(navigate('/reservations'))
       .catch(e => console.log(e));
-    //navigate(0);
   }
 
   const handleDeny = async (id) => {
@@ -32,7 +31,6 @@ const ReservationList = () => {
     fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
       .then(navigate('/reservations'))
       .catch(e => console.log(e));
-    //navigate(0);
   }
 
   const columns = [
@@ -47,29 +45,6 @@ const ReservationList = () => {
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
     { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
     { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
-    // {
-    //   field: 'Actions', flex: .4, renderCell: (cellValues) => {
-    //     return (
-    //       <Stack direction="row" spacing={1}>
-    //         <Tooltip title="Approve">
-    //           <IconButton
-    //             onClick={(e) => { handleApprove(cellValues.id) }}
-    //           >
-    //             <CheckCircleIcon sx={{ color: "#00D100" }} />
-    //           </IconButton>
-    //         </Tooltip>
-    //         <Tooltip title="Deny">
-    //           <IconButton
-    //             onClick={(e) => { handleDeny(cellValues.id) }}
-    //           >
-    //             <CancelIcon sx={{ color: "#FF0000" }} />
-    //           </IconButton>
-    //         </Tooltip>
-    //       </Stack>
-    //     )
-    //   }
-
-    // },
   ]
 
   const [reservations, setReservations] = useState([]);
@@ -84,6 +59,7 @@ const ReservationList = () => {
   function CustomToolbar() {
     return (
       <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        console.log('hello')
         <GridToolbarExport />
       </GridToolbarContainer>
     );
@@ -96,9 +72,12 @@ const ReservationList = () => {
     <div className="content">
       Manage Reservations
       <DataGrid
+      components={{
+        Toolbar: CustomToolbar
+        }}
         align="left"
         className="Result-Table"
-        rows={reservations.filter(x => !x.approved)}
+        rows={reservations}
         columns={columns}
         pageSize={tablePageSize}
         // initialState={{ pagination: { pageSize: tablePageSize } }}
@@ -111,9 +90,7 @@ const ReservationList = () => {
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         autoHeight
-        components={{
-          Toolbar: CustomToolbar
-        }}
+
         //autoPageSize
         onCellClick={(params, event) => {
           console.log(params.row)
@@ -128,13 +105,4 @@ const ReservationList = () => {
   )
 }
 
-export default ReservationList;
-
-// <TablePagination
-//   component="div"
-//   count={100}
-//   page={page}
-//   onPageChange={handleChangePage}
-//   rowsPerPage={rowsPerPage}
-//   onRowsPerPageChange={handleChangeRowsPerPage}
-// />
+export default AllReservations;

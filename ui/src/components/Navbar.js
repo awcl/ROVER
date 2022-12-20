@@ -45,7 +45,13 @@ const Navbar = () => {
                     py: .5,
                     '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                 }}
-                    onClick={() => navigate(`/reservations`)}>Queue</ListItemButton>}
+                    onClick={() => navigate(`/reservationqueue`)}>Queue</ListItemButton>}
+                                    {session.admin && <ListItemButton sx={{
+                    justifyContent: 'center',
+                    py: .5,
+                    '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                }}
+                    onClick={() => navigate(`/reservations`)}>All Res's</ListItemButton>}
                 {session.admin && <ListItemButton sx={{
                     justifyContent: 'center',
                     py: .5,

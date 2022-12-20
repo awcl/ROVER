@@ -8,7 +8,8 @@ import Vehicles from './components/Vehicles';
 import ReservationPage from './Views/ReservationPage';
 import Schedule from './components/NewSchedule';
 import Context from './components/Context';
-import ReservationList from "./components/ReservationList";
+import ReservationQueue from "./components/ReservationQueue";
+import AllReservations from './components/AllReservations'
 import React, { useState, useContext, useEffect } from 'react';
 import ContentLayout from './components/ContentLayout';
 import LandingLayout from './components/LandingLayout';
@@ -48,7 +49,8 @@ function App() {
                 <Route path="/register" element={<RegisterPage />} />
                 <Route path="/home" element={<Home />} />
                 <Route path="/vehicles" element={<Vehicles />} />
-                {session.admin && <Route path="/reservations" element={<ReservationList />} />}
+                {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
+                {session.admin && <Route path="/reservations" element={<AllReservations />} />}
                 <Route path="/reservations/added" element={<AddedReservation />} />
                 <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                 <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
