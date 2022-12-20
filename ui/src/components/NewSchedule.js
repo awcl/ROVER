@@ -103,7 +103,6 @@ const Schedule = () => {
             disableSelectionOnClick
             autoHeight
             components={{
-
               Toolbar: CustomToolbar
             }}
              filterModel={{
