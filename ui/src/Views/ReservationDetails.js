@@ -4,15 +4,12 @@ import config from '../config';
 // import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-
-
 function ReservationDetails() {
-    const [details, setDetails] = useState();
-    // const [error, setError] = useState();
+    const [details, setDetails] = useState({});
+    const [remark, setRemark] = useState('');
     let { id } = useParams();
+
     // fetch details of a single merged reservation
-
-
     useEffect(() => {
         fetch(`${API_URL}/reservation/merged/${id}`)
             .then((response) => response.json())
@@ -20,12 +17,19 @@ function ReservationDetails() {
                 setDetails(data[0]);
                 console.log(data[0]);
             });
-
-
     }, []);
 
+    const handleApprove = async () => {
+        console.log('approved: ', id);
+        fetch(`${API_URL}/reservation/approve/${id}`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ description: remark})})
+          .catch(e => console.log(e));
+      }
 
-
+      const handleDeny = async () => {
+        console.log('denied: ', id);
+        fetch(`${API_URL}/reservation/deny/${id}`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ description: remark})})
+          .catch(e => console.log(e));
+      }
     // useEffect(() => {
     //     const fetchData = async () => {
     //         const response = await fetch(`${API_URL}/reservation/merged/${id}`)
@@ -35,42 +39,25 @@ function ReservationDetails() {
     //     }
     //     fetchData();
     // }, []);
-
-
-
-
     return (
-        <>
-        {/* <h1>TEST</h1>
-        {details.map((detail) => {
-            return (
-                <div>
-                    <h1>{detail.reservation_id}</h1>
-                    <h1>{detail.vehicle_id}</h1>
-                    <h1>{detail.start_date}</h1>
-                    <h1>{detail.end_date}</h1>
-                    <h1>{detail.first_name}</h1>
-                    <h1>{detail.last_name}</h1>
-                    <h1>{detail.email}</h1>
-                    </div>
-            )
-        })} */}
-        </>
+        <div className="content">
+            <h1>Request Details</h1>
+            <div>
+                <h1>{details.reservation_id}</h1>
+                <h1>{details.vehicle_id}</h1>
+                <h1>{details.start_date}</h1>
+                <h1>{details.end_date}</h1>
+                <h1>{details.first_name}</h1>
+                <h1>{details.last_name}</h1>
+                <h1>{details.email}</h1>
+                <label for="remark">IM A LABEL</label>
+                <input id="remark" type="text" placeholder="Remarks" onChange={(e)=> setRemark(e.target.value)} onBlur={(e) => {e.target.value=e.target.value.trim()}} defaultValue={details.description}></input>
+                <button onClick={()=>{handleApprove()}}>APPROVE</button>
+                <button onClick={()=>{handleDeny()}}>DENY</button>
+            </div>
+        </div>
     )
-                    
-
-    
-
-                    
-    
-
-
-
-        
-
-    
 }
 
+
 export default ReservationDetails;
-
-

@@ -34,9 +34,9 @@ app.get('/merged/:id', (req, res) => {
     .join('member', 'reservation.member_id', 'member.id')
     .join('vehicle', 'reservation.vehicle_id', 'vehicle.id')
     .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number',
-      'vehicle.description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
+      'vehicle.description as vehicle_description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
       'member.first_name', 'member.last_name', 'reservation.start_date',
-      'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert')
+      'reservation.end_date', 'reservation.approved', 'member.is_van_cert', 'member.is_truck_cert', 'member.is_sedan_cert', 'reservation.description')
     .where('reservation.id', id)
     .then(items => {
       res.status(200).send(items);
@@ -99,16 +99,29 @@ app.post('/', async (req, res) => {
 })
 
 //Patch method for Admin users to approve pending reservations
-app.patch('/:id', async (req, res) => {
+app.patch('/approve/:id', async (req, res) => {
   console.log('Reservation patch has been called');
   // console.log('Reservation Patch Requested: Patched Reservation');
   // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
-    await knex('reservation').where('id', req.params.id).update({ approved: true }).then(data =>
+    await knex('reservation').where('id', req.params.id).update({ approved: true, description: req.body.description }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
 })
+
+//Deny reservation with description
+app.patch('/deny/:id', async (req, res) => {
+  console.log('Reservation patch has been called');
+  // console.log('Reservation Patch Requested: Patched Reservation');
+  // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
+  try {
+    await knex('reservation').where('id', req.params.id).update({ approved: false, description: req.body.description }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+})
+
 app.delete('/:id', async (req, res) => {
   await knex('reservation').where('id', req.params.id)
     .del()
