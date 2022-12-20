@@ -137,7 +137,7 @@ app.patch('/vancert/:id', async (req, res) => {
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
-  // http://localhost:8080/member/admin/1
+  // http://localhost:8080/member/vancert/1
 })
 
 // PATCH update member to not van certed
@@ -147,7 +147,7 @@ app.patch('/unvancert/:id', async (req, res) => {
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
-  // http://localhost:8080/member/unadmin/1
+  // http://localhost:8080/member/unvancert/1
 })
 
 
@@ -158,35 +158,215 @@ app.patch('/truckcert/:id', async (req, res) => {
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
-  // http://localhost:8080/member/admin/1
+  // http://localhost:8080/member/truckcert/1
 })
 
-// PATCH update member to not van certed
+// PATCH update member to not truck certed
 app.patch('/untruckcert/:id', async (req, res) => {
   try {
     await knex('member').where('id', req.params.id).update({ is_truck_cert: false }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
-  // http://localhost:8080/member/unadmin/1
+  // http://localhost:8080/member/untruckcert/1
 })
 
-// PATCH update member to truck certed
+// PATCH update member to sedan certed
 app.patch('/sedancert/:id', async (req, res) => {
   try {
     await knex('member').where('id', req.params.id).update({ is_sedan_cert: true }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
-  // http://localhost:8080/member/admin/1
+  // http://localhost:8080/member/sedancert/1
 })
 
-// PATCH update member to not van certed
+// PATCH update member to not sedan certed
 app.patch('/unsedancert/:id', async (req, res) => {
   try {
     await knex('member').where('id', req.params.id).update({ is_sedan_cert: false }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
-  // http://localhost:8080/member/unadmin/1
+  // http://localhost:8080/member/unsedancert/1
+})
+
+// PATCH update member to 5ton certed
+app.patch('/5toncert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_5_ton_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/5toncert/1
+})
+
+// PATCH update member to not 5ton certed
+app.patch('/un5toncert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_5_ton_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/un5toncert/1
+})
+
+// PATCH update member to amrap certed
+app.patch('/amrapcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_amrap_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/amrapcert/1
+})
+
+// PATCH update member to not amrap certed
+app.patch('/unamrapcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_amrap_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unamrapcert/1
+})
+
+// PATCH update member to hmmwv certed
+app.patch('/hmmwvcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_hmmwv_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/hmmwvcert/1
+})
+
+// PATCH update member to not hmmwv certed
+app.patch('/unhmmwvcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_hmmwv_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unhmmwvcert/1
+})
+
+// PATCH update member to mobilizer certed
+app.patch('/mobilizercert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_mobilizer_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/mobilizercert/1
+})
+
+// PATCH update member to not mobilizer certed
+app.patch('/unmobilizercert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_mobilizer_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unmobilizercert/1
+})
+
+// PATCH update member to patrol certed
+app.patch('/patrolcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_patrol_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/patrolcert/1
+})
+
+// PATCH update member to not patrol certed
+app.patch('/unpatrolcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_patrol_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unpatrolcert/1
+})
+
+// PATCH update member to patrol certed
+app.patch('/tankcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_tank_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/tankcert/1
+})
+
+// PATCH update member to not patrol certed
+app.patch('/untankcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_tank_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/untankcert/1
+})
+
+// PATCH update member to patrol certed
+app.patch('/semitruckcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_semitruck_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/semitruckcert/1
+})
+
+// PATCH update member to not patrol certed
+app.patch('/unsemitruckcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_semitruck_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unsemitruckcert/1
+})
+
+// PATCH update member to patrol certed
+app.patch('/forkliftcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_forklift_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/forkliftcert/1
+})
+
+// PATCH update member to not patrol certed
+app.patch('/unforkliftcert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_forklift_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unforkliftcert/1
+})
+
+// PATCH update member to patrol certed
+app.patch('/landrovercert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_landrover_cert: true }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/landrovercert/1
+})
+
+// PATCH update member to not patrol certed
+app.patch('/unlandrovercert/:id', async (req, res) => {
+  try {
+    await knex('member').where('id', req.params.id).update({ is_landrover_cert: false }).then(data =>
+      res.status(200).end()
+    ).catch(e => res.status(403).end());
+  } catch (e) { res.status(500).end(); }
+  // http://localhost:8080/member/unlandrovercert/1
 })

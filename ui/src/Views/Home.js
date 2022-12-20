@@ -11,11 +11,11 @@ const Home = () => {
   const { session } = useContext(Context);
   let { id } = useParams();
 
-  useEffect(() => {
-    fetch(`${API_URL}/reservation/merged/${id}`)
-      .then(response => response.json())
-      .then(data => setDetails(data[0]));
-  }, [id]);
+  // useEffect(() => {
+  //   fetch(`${API_URL}/reservation/merged/${id}`)
+  //     .then(response => response.json())
+  //     .then(data => setDetails(data[0]));
+  // }, [id]);
 
   return (
     <div className="content">
