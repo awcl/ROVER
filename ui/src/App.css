@@ -119,11 +119,9 @@ video {
 }
 
 .bodyFlip {
-  /* flex-direction: column;
-  display: flex; */
   width: 85vw;
   display : inline-block;
-  /* height: 100vh; */
+
 }
 
 .MuiGrid-container {

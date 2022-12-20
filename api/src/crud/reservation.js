@@ -90,7 +90,8 @@ app.post('/', async (req, res) => {
       'member_id': req.body.member_id,
       'start_date': req.body.start_date,
       'end_date': req.body.end_date,
-      'approved': false
+      'approved': false,
+      'status' : 'pending'
     }).then(data => res.status(201).end(data))
   } catch (e) {
     res.status(500).end();
@@ -104,7 +105,7 @@ app.patch('/approve/:id', async (req, res) => {
   // console.log('Reservation Patch Requested: Patched Reservation');
   // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
-    await knex('reservation').where('id', req.params.id).update({ approved: true, description: req.body.description }).then(data =>
+    await knex('reservation').where('id', req.params.id).update({ approved: true, description: req.body.description, status: 'processed' }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
@@ -116,7 +117,7 @@ app.patch('/deny/:id', async (req, res) => {
   // console.log('Reservation Patch Requested: Patched Reservation');
   // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
-    await knex('reservation').where('id', req.params.id).update({ approved: false, description: req.body.description }).then(data =>
+    await knex('reservation').where('id', req.params.id).update({ approved: false, description: req.body.description, status: 'processed' }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }

@@ -11,9 +11,9 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 // const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Vehicles = () => {
-    const [vehicles, setVehicles] = useState([]);
-    const [filtered, setFiltered] = useState([]);
-    const [display, setDisplay] = useState([]);
+    const [vehicles, setVehicles] = useState([]); // all
+    const [filtered, setFiltered] = useState([]); // mine
+    const [display, setDisplay] = useState([]); // bucket
     const { session } = useContext(Context);
     useEffect(() => {
         fetch(`${API_URL}/vehicle`)

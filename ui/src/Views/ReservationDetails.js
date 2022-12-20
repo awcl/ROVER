@@ -1,6 +1,7 @@
 import React, { useState, useEffect, } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import config from '../config';
+import { CardContent, Typography } from '@mui/material';
 // import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -45,34 +46,38 @@ function ReservationDetails() {
     //     fetchData();
     // }, []);
     return (
-        <div className="content">
-            <h1>Request Details</h1>
-            <div>
-                <h1>{details.reservation_id}</h1>
-                <h1>{details.vehicle_id}</h1>
-                <h1>{details.start_date}</h1>
-                <h1>{details.end_date}</h1>
-                <h1>{details.first_name}</h1>
-                <h1>{details.last_name}</h1>
-                <h1>{details.email}</h1>
-                <label for="remark">IM A LABEL</label>
-                <input id="remark" type="text" placeholder="Remarks" onChange={(e)=> setRemark(e.target.value)} onBlur={(e) => {e.target.value=e.target.value.trim()}} defaultValue={details.description}></input>
-                <button onClick={()=>{handleApprove()}}>APPROVE</button>
-                <button onClick={()=>{handleDeny()}}>DENY</button>
-            </div>
-        </div>
+        <>
+        <CardContent>
+            <Typography variant="h5" color="text.secondary" gutterBottom>
+                `Reservation ID: ${details.reservation_id}`
+            </Typography>
+</CardContent>
+
+
+
+        </>
     )
 }
 
-// navigate
-// onCellClick={(params, event) => {
-//     console.log(params.row)
-//     if (!event.ctrlKey) {
-//       event.defaultMuiPrevented = true;
-//       navigate(`/reservationdetails/${params.row.id}`)
-//     }
-//   }
-// }
-
-
 export default ReservationDetails;
+
+
+// return (
+//     <div className="content">
+//         <h1>Request Details</h1>
+//         <div>
+//             <h1>{details.reservation_id}</h1>
+//             <h1>{details.vehicle_id}</h1>
+//             <h1>{details.start_date}</h1>
+//             <h1>{details.end_date}</h1>
+//             <h1>{details.first_name}</h1>
+//             <h1>{details.last_name}</h1>
+//             <h1>{details.email}</h1>
+//             <label for="remark">IM A LABEL</label>
+//             <input id="remark" type="text" placeholder="Remarks" onChange={(e)=> setRemark(e.target.value)} onBlur={(e) => {e.target.value=e.target.value.trim()}} defaultValue={details.description}></input>
+//             <button onClick={()=>{handleApprove()}}>APPROVE</button>
+//             <button onClick={()=>{handleDeny()}}>DENY</button>
+//         </div>
+//     </div>
+// )
+// }

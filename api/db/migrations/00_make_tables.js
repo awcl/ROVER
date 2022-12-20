@@ -25,6 +25,11 @@ exports.up = function (knex) {
       table.boolean('is_van_cert').notNullable().defaultTo(false);
       table.boolean('is_sedan_cert').notNullable().defaultTo(false);
       table.boolean('is_truck_cert').notNullable().defaultTo(false);
+      table.boolean("is_5_ton_cert").notNullable().defaultTo(false);
+      table.boolean("is_amrap_cert").notNullable().defaultTo(false);
+      table.boolean("is_hmmwv_cert").notNullable().defaultTo(false);
+      table.boolean("is_mobilizer_cert").notNullable().defaultTo(false);
+      table.boolean("is_patrol_cert").notNullable().defaultTo(false);
     })
     .createTable('vehicle', (table) => {
       table.increments('id');

@@ -18,43 +18,72 @@ const MemberDetails = () => {
     const [organization, setOrganization] = useState('');
     const navigate = useNavigate();
     const [errorMessage, setErrorMessage] = useState('');
-    const [showPassword, setShowPassword] = useState(false);
+    const [admin, setAdmin] = useState('');
+    const [van_cert, setVanCert] =useState('');
+    const [sedan_cert, setSedanCert] =useState('');
+    const [truck_cert, setTruckCert] =useState('');
+    const [ton_cert, setTonCert] =useState('');
+    const [hmmwv_cert, setHmmwvCert ] =useState('');
+    const [mobilizer_cert, setMobilizerCert] =useState('');
+    const [amrap_cert, setAmrapCert] =useState('');
+    const [patrol_cert, setPatrolCert] = useState('');
+
+
     useEffect(()=>{
-        setUsername(id.username)
-        setFirstName(id.first_name)
-        setLastName(id.last_name)
-        setRank(id.rank)
-        setEmail(id.email)
-        setOrganization(+id.organization_id)
-    },[id])
+
+            fetch(`${API_URL}/member/${id}`)
+                .then((response) => response.json())
+                .then((data) => {
+                    setUsername(data[0].username)
+                    setFirstName(data[0].first_name)
+                    setLastName(data[0].last_name)
+                    setRank(data[0].rank)
+                    setEmail(data[0].email)
+                    setOrganization(+data[0].organization_id)
+                    setAdmin(data[0].admin)
+                    setVanCert(data[0].van_cert)
+                    setSedanCert(data[0].sedan_cert)
+                    setTruckCert(data[0].truck_cert)
+                    setTonCert(data[0].ton_cert)
+                    setHmmwvCert(data[0].hmmwv_cert)
+                    setMobilizerCert(data[0].mobilizer_cert)
+                    setAmrapCert(data[0].amrap_cert)
+                    setPatrolCert(data[0].patrol_cert)
+
+                    console.log(data[0]);
+                });
+        });
 
 
-const handleClickShowPassword = () => {
-    setShowPassword(!showPassword);
-};
+
+
 const handleMemberUpdate = async (e) => {
     e.preventDefault();
     // console.log(firstName, lastName, rank, email, username, password, organization)
     console.log(!(/^[0-9]+$/).test(organization))
     if (!(/^[0-9]+$/).test(organization)) {
         window.alert(`Your organization entry can only be numeric 🙁`);
-    } else if({
-        // console.log(firstName, lastName, rank, email, username, password, organization)
-        try {
-            const response = await fetch(`${API_URL}/member/updatemember/${session.id}`, {
-                method: 'PATCH',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username, organization_id: organization })
-            });
-            if (response.status !== 204) {
-                console.log(response.status)
-            } else {
-                console.log('Saved')
-                window.alert(`The Member Information Has Been Updated!`);
-            }
-        } catch (e) { console.log(e) }
-    })
-}
+    // } else if({
+    //     // console.log(firstName, lastName, rank, email, username, password, organization)
+
+    //         response = await fetch(`${API_URL}/member/updatemember/${session.id}`, {
+    //             method: 'PATCH',
+    //             headers: { 'Content-Type': 'application/json' },
+    //             body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username,
+    //   organization_id: organization,
+    // admin: admin, is_van_cert: van_cert, is_sedan_cert: sedan_cert, is_truck_cert: truck_cert,
+    // is_5_Ton_cert: ton_cert, is_AMRAP_cert: amrap_cert, is_HMMWV_cert: hmmwv_cert,
+    // is_Mobilizer_cert: mobilizer_cert,  is_Patrol_cert: patrol_cert)
+    //         })
+    //         if (response.status !== 204) {
+    //             console.log(response.status)
+    //         } else {
+    //             console.log('Saved')
+    //             window.alert(`The Member Information Has Been Updated!`);
+    //         }
+    //      catch (e) { console.log(e) }
+//     })
+// }
 
 return (
     <div className="content">
@@ -73,8 +102,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={session.first_name}
-                                        placeholder={session.first_name}
+                                        defaultValue={id.first_name}
+                                        placeholder={id.first_name}
 
                                         onBlur={(e) => setFirstName(e.target.value)}
                                     />
@@ -83,8 +112,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={session.last_name}
-                                        placeholder={session.last_name}
+                                        defaultValue={id.last_name}
+                                        placeholder={id.last_name}
                                         onBlur={(e) => setLastName(e.target.value)}
                                     />
                                 </Grid>
@@ -92,8 +121,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={session.rank}
-                                        placeholder={session.rank}
+                                        defaultValue={id.rank}
+                                        placeholder={id.rank}
                                         onBlur={(e) => setRank(e.target.value)}
                                     />
                                 </Grid>
@@ -101,8 +130,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={session.organization_id}
-                                        placeholder={`${session.organization_id}`}
+                                        defaultValue={id.organization_id}
+                                        placeholder={`${id.organization_id}`}
                                         onBlur={(e) => setOrganization(e.target.value)}
                                     />
                                 </Grid>
@@ -110,16 +139,16 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={session.email}
+                                        defaultValue={id.email}
                                         onBlur={(e) => setEmail(e.target.value)}
-                                    >{session.email}</TextField>
+                                    >{id.email}</TextField>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <TextField
                                         fullWidth
                                         required
                                         variant="outlined"
-                                        defaultValue={session.username}
+                                        defaultValue={id.username}
                                         placeholder="Username"
                                         onBlur={(e) => setUsername(e.target.value)}
                                     />
@@ -143,6 +172,6 @@ return (
         </Container>
     </div>
 )
-}
+}}}
 
 export default MemberDetails;

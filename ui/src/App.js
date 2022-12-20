@@ -18,7 +18,8 @@ import AddedReservation from './Views/ReservationAdded';
 import ManageUsers from './components/ManageUsers';
 import Account from './Views/Account';
 import ReservationDetails from './Views/ReservationDetails';
-import IncidentReport from './components/IncidentReport'
+import IncidentReport from './components/IncidentReport';
+import MemberDetails from './Views/MemberDetails';
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -50,6 +51,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/vehicles" element={<Vehicles />} />
                 {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
+                {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
                 {session.admin && <Route path="/reservations" element={<AllReservations />} />}
                 <Route path="/reservations/added" element={<AddedReservation />} />
                 <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
