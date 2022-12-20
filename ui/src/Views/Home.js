@@ -1,14 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
-// import { useParams } from 'react-router-dom';
-import { Outlet } from 'react-router-dom';
 import Vehicles from '../components/Vehicles';
 import Context from '../components/Context';
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Home = () => {
-  const [details, setDetails] = useState({});
-  const { session } = useContext(Context);
+  // const [details, setDetails] = useState({});
+  // const { session } = useContext(Context);
   // localhost:3000/home/X
 
   // useEffect(() => {
@@ -20,13 +18,13 @@ const Home = () => {
   return (
     <div className="content">
       <h1> Notification's</h1>
-      <div>
+      {/* <div>
         <h2>{details.reservation_id}</h2>
         <h2>{details.vehicle_id}</h2>
         <h2>{details.start_date}</h2>
         <h2>{details.end_date}</h2>
         <h2>{details.description}</h2>
-      </div>
+      </div> */}
     </div>
   )
 }

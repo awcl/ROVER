@@ -82,9 +82,13 @@ const MemberDetails = () => {
                 label="Sedan"
                 control={<Checkbox checked={checked[1]} onChange={handleChange2} />}
             /> */}
+                                              <FormControlLabel
+                label="Van"
+                control={<Checkbox checked={checked[9]} onChange={handleChange2} />}
+            />
                                   <FormControlLabel
                 label="Sedan"
-                control={<Checkbox checked={checked[1]} onChange={handleChange2} />}
+                control={<Checkbox checked={checked[8]} onChange={handleChange2} />}
             />
                         <FormControlLabel
                 label="Truck"
