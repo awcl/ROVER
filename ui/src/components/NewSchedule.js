@@ -26,7 +26,7 @@ const Schedule = () => {
         .catch(e => console.log(e));
       //navigate(0);
     }
-  
+
     const handleDelete = async (id) => {
       console.log('denied: ', id);
       fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
@@ -34,7 +34,7 @@ const Schedule = () => {
         .catch(e => console.log(e));
       //navigate(0);
     }
-  
+
     const columns = [
       { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
       { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
@@ -59,20 +59,20 @@ const Schedule = () => {
               </Tooltip>
           )
         }
-  
+
       },
       {field: 'approved',flex: .3, operatorValue: 'is', value:true, hide:true}
     ]
-  
+
     const [reservations, setReservations] = useState([]);
-  
+
     useEffect(() => {
       fetch(`${API_URL}/reservation/merged`)
         .then((res) => res.json())
         .then((data) => setReservations(data));
     }, [reservations])
-  
-  
+
+
   function CustomToolbar() {
         return (
           <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
@@ -80,12 +80,12 @@ const Schedule = () => {
           </GridToolbarContainer>
         );
   }
-  
+
     const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
     const [tablePageSize, setTablePageSize] = useState(15);
-  
+
     return (
-      <>
+      <div className="content">
       Approved Reservations
           <DataGrid
             align="left"
@@ -103,13 +103,13 @@ const Schedule = () => {
             disableSelectionOnClick
             autoHeight
             components={{
-  
+
               Toolbar: CustomToolbar
             }}
              filterModel={{
    items: [{ field: 'approved', operatorValue: 'is', value: true }],
 }}
-            //autoPageSize
+          //autoPageSize
           // onCellClick={(params, event) => {
           //   console.log(params.row)
           //   if (!event.ctrlKey) {
@@ -118,9 +118,9 @@ const Schedule = () => {
           //   }
           // }}
           />
-      </>
+      </div>
     )
-    
+
 }
 
 export default Schedule;

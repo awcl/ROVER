@@ -19,7 +19,6 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const ManageAdmins = () => {
   let navigate = useNavigate();
 
-
   const handleApprove = async (id) => {
     console.log('admin: ', id);
     fetch(`${API_URL}/member/admin/${id}`, { method: 'PATCH' })
@@ -84,7 +83,7 @@ const ManageAdmins = () => {
   const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
-    <>
+    <div className="content">
       Manage Administrators
       <DataGrid
         align="left"
@@ -101,7 +100,7 @@ const ManageAdmins = () => {
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
       />
-    </>
+    </div>
   )
 }
 

@@ -18,7 +18,7 @@ const Vehicles = () => {
 
     return (
         <div className="content">
-                <Grid container spacing={4}>
+                <Grid container spacing={3}>
                     {vehicles.map(vehicle => (
                         <Grid item key={vehicle.id} xs={10} md={4} lg={5}>
                             <VehicleCard vehicle={vehicle} />

@@ -90,3 +90,7 @@
   width: 85vw;
   height: 100vh;
 }
+
+.MuiGrid-container {
+  justify-content: center;
+}

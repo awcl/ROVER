@@ -93,7 +93,7 @@ const ReservationList = () => {
   const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
-    <>
+    <div className="content">
       Manage Reservations
       <DataGrid
         align="left"
@@ -123,7 +123,7 @@ const ReservationList = () => {
         }
         }
       />
-    </>
+    </div>
   )
 }
 
