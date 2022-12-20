@@ -125,8 +125,8 @@ app.patch('/updatecert/:id', async (req, res) => {
       .where('id', req.params.id)
       .update(
         {
-          admin: req.body.admin
-          is_van_cert: req.body.organization_id,
+          admin: req.body.admin,
+          is_van_cert: req.body.is_van_cert,
           is_sedan_cert: req.body.is_sedan_cert,
           is_truck_cert: req.body.is_truck_cert,
           is_5_ton_cert: req.body.is_5_ton_cert,
