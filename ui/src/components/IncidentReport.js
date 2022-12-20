@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import {
   Grid,
@@ -38,8 +38,17 @@ const IncidentReport = () => {
   const [vehicleId, setVehicleId] = useState('');
   const [incidentDescription, setIncidentDescription] = useState('');
   const navigate = useNavigate();
-
-  /*
+  const [vehicleIDs, setVehicleIDs] = useState([]);
+  useEffect(()=>{
+    fetch(`${API_URL}/vehicle/ids`)
+      .then(res => res.json())
+      .then(data => {
+        let working=[]
+        data.forEach(x=>working.push(x.id))
+        setVehicleIDs(working)
+        console.log(working)
+      })
+  },[])
 
   //handle form submit
   const handleSubmit = async (event) => {
@@ -63,7 +72,7 @@ const IncidentReport = () => {
   }
 
 
-  */
+
 
   // {
   //     "incident_type": "totaled",
@@ -77,7 +86,7 @@ const IncidentReport = () => {
 
   return (
     <>
-      <FormControl sx={{ m: 1, minWidth: 120 }}>
+      <form onSubmit={handleSubmit}>
         <Grid container spacing={2}
           direction="row"
           justifyContent="center"
@@ -123,38 +132,22 @@ const IncidentReport = () => {
                 onChange={event => setIncidentTime(event.target.value)}
               />
               <Grid container
-                direction="row"
+                direction="column"
                 justifyContent="center"
                 alignItems="center">
 
               <Grid item xs={6}>
-                <InputLabel id="label">Vehicle ID</InputLabel>
-                <Select sx={{ m: 1, minWidth: 120 }}
-                  labelId="vehicle ID"
-                  id="select"
+                <TextField select size='small' sx={{ m: 1, minWidth: 120 }}
                   label="Vehicle ID"
+                  id="select"
                   value={vehicleId}
                   onChange={event => setVehicleId(event.target.value)}
                 >
-                  <MenuItem value={1}>1</MenuItem>
-                  <MenuItem value={2}>2</MenuItem>
-                  <MenuItem value={3}>3</MenuItem>
-                  <MenuItem value={4}>4</MenuItem>
-                  <MenuItem value={5}>5</MenuItem>
-                  <MenuItem value={6}>6</MenuItem>
-                  <MenuItem value={7}>7</MenuItem>
-                  <MenuItem value={9}>9</MenuItem>
-                  <MenuItem value={10}>10</MenuItem>
-                  <MenuItem value={11}>11</MenuItem>
-                  <MenuItem value={12}>12</MenuItem>
-                  <MenuItem value={13}>13</MenuItem>
-                  <MenuItem value={14}>14</MenuItem>
-                  <MenuItem value={15}>15</MenuItem>
-                  <MenuItem value={16}>16</MenuItem>
-                  </Select>
-
-
-
+                  {vehicleIDs.map((id) => (
+                    <MenuItem key={id} value={id}>VEHICLE {id}</MenuItem>
+                  ))}
+                </TextField>
+              </Grid>
 
               <TextField
                 variant="outlined"
@@ -180,11 +173,10 @@ const IncidentReport = () => {
 
               </div>
                   </Grid>
-            </Grid>
             </Paper>
           </Grid>
         </Grid>
-      </FormControl>
+      </form>
     </>
 
   )

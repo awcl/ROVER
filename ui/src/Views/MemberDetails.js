@@ -39,7 +39,6 @@ const MemberDetails = () => {
         fetch(`${API_URL}/member/${id}`)
             .then((response) => response.json())
             .then((data) => {
-                setUsername(data[0].username)
                 setFirstName(data[0].first_name)
                 setLastName(data[0].last_name)
                 setRank(data[0].rank)
@@ -63,7 +62,6 @@ const MemberDetails = () => {
     console.log(sedan_cert)
     console.log(ton_cert)
     console.log(amrap_cert)
-    console.log(id)
 
     // const handleChange1 = (event) => {
     //     setChecked([event.target.checked, event.target.checked]);
@@ -175,7 +173,7 @@ const MemberDetails = () => {
             const response = await fetch(`${API_URL}/member/updatemember/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, username: username, organization_id: organization, admin: admin, is_van_cert: van_cert, is_sedan_cert: sedan_cert, is_truck_cert: truck_cert, is_5_Ton_cert: ton_cert, is_AMRAP_cert: amrap_cert, is_HMMWV_cert: hmmwv_cert, is_Mobilizer_cert: mobilizer_cert, is_Patrol_cert: patrol_cert })
+                body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, organization_id: organization, admin: admin, is_van_cert: van_cert, is_sedan_cert: sedan_cert, is_truck_cert: truck_cert, is_5_Ton_cert: ton_cert, is_AMRAP_cert: amrap_cert, is_HMMWV_cert: hmmwv_cert, is_Mobilizer_cert: mobilizer_cert, is_Patrol_cert: patrol_cert })
             })
             if (response.status !== 204) {
                 console.log(response.status)

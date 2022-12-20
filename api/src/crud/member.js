@@ -98,6 +98,14 @@ app.patch('/updatemember/:id', async (req, res) => {
           username: req.body.username,
           password_hash: hashed,
           organization_id: req.body.organization_id,
+          is_van_cert: req.body.organization_id,
+          is_sedan_cert: req.body.is_sedan_cert,
+          is_truck_cert: req.body.is_truck_cert,
+          is_5_ton_cert: req.body.is_5_ton_cert,
+          is_amrap_cert: req.body.is_amrap_cert,
+          is_hmmwv_cert: req.body.is_hmmwv_cert,
+          is_mobilizer_cert: req.body.is_mobilizer_cert,
+          is_patrol_cert: req.body.is_patrol_cert,
         }
       )
       .then(data =>
@@ -107,6 +115,7 @@ app.patch('/updatemember/:id', async (req, res) => {
   catch (e) { res.status(500).end(); }
   // http://localhost:8080/member/updatemember/1
 });
+
 
 // PATCH update member to admin
 app.patch('/admin/:id', async (req, res) => {
