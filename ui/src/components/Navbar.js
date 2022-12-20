@@ -45,7 +45,13 @@ const Navbar = () => {
                     '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                 }}
                     onClick={() => navigate(`/reservationqueue`)}>Queue</ListItemButton>}
-                                    {session.admin && <ListItemButton sx={{
+                {session.admin && <ListItemButton sx={{
+                    justifyContent: 'center',
+                    py: .5,
+                    '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                }}
+                    onClick={() => navigate(`/approvedreservations`)}>Approved Res's</ListItemButton>}
+                {session.admin && <ListItemButton sx={{
                     justifyContent: 'center',
                     py: .5,
                     '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
@@ -64,7 +70,7 @@ const Navbar = () => {
                         '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                     }}
                     onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
-                                    <ListItemButton
+                <ListItemButton
                     sx={{
                         justifyContent: 'center',
                         py: .5,

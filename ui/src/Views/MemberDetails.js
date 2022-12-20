@@ -1,6 +1,6 @@
-import React, { useContext, useEffect, useParams } from 'react';
+import React, { useContext, useEffect} from 'react';
 import { useState } from 'react';
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Container, Button, Grid, Paper, TextField, IconButton, InputAdornment } from "@mui/material";
 import VisibilityIcon from "@mui/icons-material/Visibility";
 import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
@@ -9,7 +9,7 @@ import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const MemberDetails = () => {
-    const { id } = useParams();
+    let { id } = useParams();
     const [username, setUsername] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
@@ -51,18 +51,19 @@ const MemberDetails = () => {
                     setPatrolCert(data[0].patrol_cert)
 
                     console.log(data[0]);
+                    console.log(rank)
                 });
         });
 
 
 
 
-const handleMemberUpdate = async (e) => {
-    e.preventDefault();
-    // console.log(firstName, lastName, rank, email, username, password, organization)
-    console.log(!(/^[0-9]+$/).test(organization))
-    if (!(/^[0-9]+$/).test(organization)) {
-        window.alert(`Your organization entry can only be numeric 🙁`);
+// const handleMemberUpdate = async (e) => {
+//     e.preventDefault();
+//     // console.log(firstName, lastName, rank, email, username, password, organization)
+//     console.log(!(/^[0-9]+$/).test(organization))
+//     if (!(/^[0-9]+$/).test(organization)) {
+//         window.alert(`Your organization entry can only be numeric 🙁`);
     // } else if({
     //     // console.log(firstName, lastName, rank, email, username, password, organization)
 
@@ -91,20 +92,23 @@ return (
             <Grid container spacing={2}
                 direction="column"
                 justifyContent="center"
-                alignItems="center">
+                alignItems="center"
+                >
+
                 <Grid item xs={12}>
                     <Paper elevation={3} sx={{ p: 5 }}>
-                        <form onSubmit={handleMemberUpdate}>
-                            <h1>Account Information</h1>
+                        <form
+                        //onSubmit={handleMemberUpdate}
+                        >
+                            <h1>Member Information</h1>
                             {errorMessage && <div className='failed'>{errorMessage}</div>}
                             <Grid container spacing={2}>
                                 <Grid item xs={12}>
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={id.first_name}
-                                        placeholder={id.first_name}
-
+                                        defaultValue = {firstName}
+                                        placeholder={firstName}
                                         onBlur={(e) => setFirstName(e.target.value)}
                                     />
                                 </Grid>
@@ -112,8 +116,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={id.last_name}
-                                        placeholder={id.last_name}
+                                        defaultValue={lastName}
+                                        placeholder={lastName}
                                         onBlur={(e) => setLastName(e.target.value)}
                                     />
                                 </Grid>
@@ -121,8 +125,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={id.rank}
-                                        placeholder={id.rank}
+                                        defaultValue={rank}
+                                        placeholder={rank}
                                         onBlur={(e) => setRank(e.target.value)}
                                     />
                                 </Grid>
@@ -130,8 +134,8 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={id.organization_id}
-                                        placeholder={`${id.organization_id}`}
+                                        defaultValue={organization}
+                                        placeholder={organization}
                                         onBlur={(e) => setOrganization(e.target.value)}
                                     />
                                 </Grid>
@@ -139,18 +143,9 @@ return (
                                     <TextField
                                         fullWidth
                                         variant="outlined"
-                                        defaultValue={id.email}
+                                        defaultValue={email}
+                                        placeholder = {email}
                                         onBlur={(e) => setEmail(e.target.value)}
-                                    >{id.email}</TextField>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        required
-                                        variant="outlined"
-                                        defaultValue={id.username}
-                                        placeholder="Username"
-                                        onBlur={(e) => setUsername(e.target.value)}
                                     />
                                 </Grid>
                                 <Grid item xs={12}>
@@ -158,7 +153,7 @@ return (
                                         fullWidth
                                         type="submit"
                                         variant="contained"
-                                        onClick={() => navigate('/account')}
+                                        onClick={() => navigate('/ManageUsers')}
                                     // disabled={!username || !password || password !== confirmPassword}
                                     >
                                         Save
@@ -172,6 +167,6 @@ return (
         </Container>
     </div>
 )
-}}}
+}
 
 export default MemberDetails;

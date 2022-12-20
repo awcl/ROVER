@@ -45,6 +45,7 @@ const AllReservations = () => {
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
     { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
     { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
+    { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 },
   ]
 
   const [reservations, setReservations] = useState([]);

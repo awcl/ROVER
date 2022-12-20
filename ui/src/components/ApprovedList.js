@@ -45,6 +45,7 @@ const ApprovedList = () => {
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
     { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
     { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
+    { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 },
   ]
 
   const [reservations, setReservations] = useState([]);
@@ -76,7 +77,7 @@ const ApprovedList = () => {
         }}
         align="left"
         className="Result-Table"
-        rows={reservations}
+        rows={reservations.filter(x => x.status === 'approved')}
         columns={columns}
         pageSize={tablePageSize}
         // initialState={{ pagination: { pageSize: tablePageSize } }}
@@ -84,7 +85,7 @@ const ApprovedList = () => {
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         pagination
         autoHeight
-        {...reservations.filter(x => !x.approved)}
+        {...reservations.filter(x => x.status === 'approved')}
         onSortModelChange={(model) => setSortModel(model)}
         sortModel={sortModel}
         getRowHeight={() => 'auto'}

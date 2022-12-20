@@ -21,7 +21,7 @@ app.get('/merged', (req, res) => { // List All Items With Merged Data from User 
     .select('reservation.id', 'vehicle.id as vehicle_id', 'vehicle.plate_number',
       'vehicle.description', 'vehicle.vehicle_type', 'vehicle.location', 'member.rank',
       'member.first_name', 'member.last_name', 'reservation.start_date',
-      'reservation.end_date', 'reservation.approved')
+      'reservation.end_date', 'reservation.approved', 'reservation.status')
     .then(items => {
       res.status(200).send(items);
     });
@@ -105,7 +105,7 @@ app.patch('/approve/:id', async (req, res) => {
   // console.log('Reservation Patch Requested: Patched Reservation');
   // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
-    await knex('reservation').where('id', req.params.id).update({ approved: true, description: req.body.description, status: 'processed' }).then(data =>
+    await knex('reservation').where('id', req.params.id).update({ description: req.body.description, status: 'approved' }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }
@@ -117,7 +117,7 @@ app.patch('/deny/:id', async (req, res) => {
   // console.log('Reservation Patch Requested: Patched Reservation');
   // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
-    await knex('reservation').where('id', req.params.id).update({ approved: false, description: req.body.description, status: 'processed' }).then(data =>
+    await knex('reservation').where('id', req.params.id).update({ description: req.body.description, status: 'denied' }).then(data =>
       res.status(200).end()
     ).catch(e => res.status(403).end());
   } catch (e) { res.status(500).end(); }

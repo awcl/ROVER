@@ -20,6 +20,7 @@ import Account from './Views/Account';
 import ReservationDetails from './Views/ReservationDetails';
 import IncidentReport from './components/IncidentReport';
 import MemberDetails from './Views/MemberDetails';
+import ApprovedList from './components/ApprovedList'
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -51,6 +52,7 @@ function App() {
                 <Route path="/home" element={<Home />} />
                 <Route path="/vehicles" element={<Vehicles />} />
                 {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
+                {session.admin && <Route path="/approvedreservations" element={<ApprovedList />} />}
                 {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
                 {session.admin && <Route path="/reservations" element={<AllReservations />} />}
                 <Route path="/reservations/added" element={<AddedReservation />} />
