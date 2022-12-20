@@ -59,6 +59,13 @@ const Navbar = () => {
                         '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
                     }}
                     onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
+                                    <ListItemButton
+                    sx={{
+                        justifyContent: 'center',
+                        py: .5,
+                        '&:hover, &:focus': { bgcolor: 'rgba(0,0,0,0.04)' },
+                    }}
+                    onClick={() => navigate(`/incidentreport`)}>Incident Report</ListItemButton>
                 <Divider />
                 {session.username && <ListItemButton sx={{
                     justifyContent: 'center',

@@ -1,24 +1,23 @@
 import React, { useState } from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import {
   Typography,
   TextField,
   Checkbox,
   FormControlLabel,
   Button
-} from '@material-ui/core';
+} from '@mui/material';
 
-const useStyles = makeStyles(theme => ({
-  root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
-    },
-  },
-}));
+// const useStyles = makeStyles(theme => ({
+//   root: {
+//     '& .MuiTextField-root': {
+//       margin: theme.spacing(1),
+//       width: 200,
+//     },
+//   },
+// }));
 
 export default function IncidentReport() {
-  const classes = useStyles();
+  // const classes = useStyles();
   const [incidentDetails, setIncidentDetails] = useState('');
   const [isDamage, setIsDamage] = useState(false);
 
@@ -29,7 +28,7 @@ export default function IncidentReport() {
 
   return (
     <div className="content">
-      <form className={classes.root} onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <Typography variant="h5" gutterBottom>
           Incident Report
         </Typography>

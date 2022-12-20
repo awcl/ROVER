@@ -17,6 +17,7 @@ import AddedReservation from './Views/ReservationAdded';
 import ManageUsers from './components/ManageUsers';
 import Account from './Views/Account';
 import ReservationDetails from './Views/ReservationDetails';
+import IncidentReport from './components/IncidentReport'
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -54,6 +55,7 @@ function App() {
                 {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
                 <Route path="/schedule" element={<Schedule />} />
                 {session.id && <Route path="/account" element={<Account />} />}
+                <Route path="/IncidentReport" element={<IncidentReport/>}/>
               </Route>
             </Routes>
         </div>
