@@ -51,9 +51,9 @@ function App() {
                 <Route path="/reservations/added" element={<AddedReservation />} />
                 <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
                 <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
-                <Route path="/manageadmins" element={<ManageAdmins />} />
+                {session.admin && <Route path="/manageadmins" element={<ManageAdmins />} />}
                 <Route path="/schedule" element={<Schedule />} />
-                <Route path="/account/" element={<Account />} />
+                {session.id && <Route path="/account" element={<Account />} />}
               </Route>
             </Routes>
         </div>

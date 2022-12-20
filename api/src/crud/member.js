@@ -103,7 +103,7 @@ app.patch('/updatemember/:id', async (req, res) => {
         }
       )
       .then(data =>
-        res.status(200).end()
+        res.status(204).end()
       ).catch(e => res.status(403).end());
   }
   catch (e) { res.status(500).end(); }
