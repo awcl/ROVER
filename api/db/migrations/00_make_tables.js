@@ -46,6 +46,7 @@ exports.up = function (knex) {
       table.date('end_date').notNullable();
       table.boolean('approved').notNullable().defaultTo(false);
       table.string('description', 1000);
+      table.string('status', 50);
     })
     .createTable('incident_report', (table) => {
       table.increments('id');

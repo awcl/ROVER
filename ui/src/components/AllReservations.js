@@ -69,7 +69,7 @@ const AllReservations = () => {
 
   return (
     <div className="content">
-      Manage Reservations
+      All Reservations
       <DataGrid
       components={{
         Toolbar: CustomToolbar
@@ -82,10 +82,11 @@ const AllReservations = () => {
         // initialState={{ pagination: { pageSize: tablePageSize } }}
         onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
+        onSortModelChange={(model) => setSortModel(model)}
+        sortModel={sortModel}
         pagination
         autoHeight
-        {...reservations.filter(x => !x.approved)}
-        onSortModelChange={(model) => setSortModel(model)}
+        {...reservations}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         autoHeight

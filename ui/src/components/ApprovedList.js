@@ -17,7 +17,7 @@ import { margin } from "@mui/system";
 import { Container } from '@mui/material';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-const ReservationList = () => {
+const ApprovedList = () => {
   let navigate = useNavigate();
   const handleApprove = async (id) => {
     console.log('approved: ', id);
@@ -59,7 +59,6 @@ const ReservationList = () => {
   function CustomToolbar() {
     return (
       <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
-        console.log('hello')
         <GridToolbarExport />
       </GridToolbarContainer>
     );
@@ -70,7 +69,7 @@ const ReservationList = () => {
 
   return (
     <div className="content">
-      Manage Reservations
+      Approved Reservations
       <DataGrid
       components={{
         Toolbar: CustomToolbar
@@ -87,6 +86,7 @@ const ReservationList = () => {
         autoHeight
         {...reservations.filter(x => !x.approved)}
         onSortModelChange={(model) => setSortModel(model)}
+        sortModel={sortModel}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         autoHeight
@@ -105,4 +105,4 @@ const ReservationList = () => {
   )
 }
 
-export default AllReservations;
+export default ApprovedList;

@@ -69,7 +69,7 @@ const ReservationQueue = () => {
 
   return (
     <div className="content">
-      Manage Reservations
+      Unapproved Reservations
       <DataGrid
       components={{
         Toolbar: CustomToolbar
@@ -86,10 +86,10 @@ const ReservationQueue = () => {
         autoHeight
         {...reservations.filter(x => !x.approved)}
         onSortModelChange={(model) => setSortModel(model)}
+        sortModel={sortModel}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         autoHeight
-
         //autoPageSize
         onCellClick={(params, event) => {
           console.log(params.row)

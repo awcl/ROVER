@@ -14,5 +14,6 @@ exports.seed = async function (knex) {
     { id: 6, vehicle_type: 'Mobilizer', miles: 20410, plate_number: 'G3478', description: 'Standard tactical trailer', location: 'P67-4', organization_id: 2 },
     { id: 7, vehicle_type: 'AMRAP', miles: 20410, plate_number: 'G3462', description: 'Standard tactical trailer', location: 'P67-5', organization_id: 2 },
     { id: 8, vehicle_type: 'Patrol Vehicle', miles: 15875, plate_number: 'G37652', description: 'Standard ole patrol vehicle', location: 'P67-6', organization_id: 2 }
+    { id: 9, vehicle_type: 't', miles: 15875, plate_number: 'G37652', description: 'Standard ole patrol vehicle', location: 'P67-6', organization_id: 2 }
   ]);
 }

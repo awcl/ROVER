@@ -1,5 +1,5 @@
 import React, { useState, useEffect, } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import config from '../config';
 // import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
@@ -8,6 +8,7 @@ function ReservationDetails() {
     const [details, setDetails] = useState({});
     const [remark, setRemark] = useState('');
     let { id } = useParams();
+    const navigate = useNavigate();
 
     // fetch details of a single merged reservation
     useEffect(() => {
@@ -23,12 +24,16 @@ function ReservationDetails() {
         console.log('approved: ', id);
         fetch(`${API_URL}/reservation/approve/${id}`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ description: remark})})
           .catch(e => console.log(e));
+          navigate('/reservationqueue')
+          // navigate to reservation queue page
+
       }
 
       const handleDeny = async () => {
         console.log('denied: ', id);
         fetch(`${API_URL}/reservation/deny/${id}`, { method: 'PATCH', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({ description: remark})})
           .catch(e => console.log(e));
+          navigate('/reservationqueue')
       }
     // useEffect(() => {
     //     const fetchData = async () => {
@@ -58,6 +63,16 @@ function ReservationDetails() {
         </div>
     )
 }
+
+// navigate
+// onCellClick={(params, event) => {
+//     console.log(params.row)
+//     if (!event.ctrlKey) {
+//       event.defaultMuiPrevented = true;
+//       navigate(`/reservationdetails/${params.row.id}`)
+//     }
+//   }
+// }
 
 
 export default ReservationDetails;

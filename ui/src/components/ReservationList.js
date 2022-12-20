@@ -85,6 +85,7 @@ const ReservationList = () => {
         autoHeight
         {...reservations.filter(x => !x.approved)}
         onSortModelChange={(model) => setSortModel(model)}
+        sortModel={sortModel}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         autoHeight
