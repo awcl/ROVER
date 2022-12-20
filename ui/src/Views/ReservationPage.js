@@ -52,7 +52,7 @@ const ReservationPage = () => {
     // send reservation details to server or database
     console.log("vehID", id)
     try {
-      var res = await fetch(`${API_URL}/reservation`, {
+       await fetch(`${API_URL}/reservation`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

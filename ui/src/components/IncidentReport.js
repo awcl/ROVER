@@ -58,7 +58,7 @@ const IncidentReport = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          // vehicle_id: +id,
+          vehicle_id: vehicleId,
           incident_type: incidentType,
           incident_location: incidentLocation,
           incident_date: incidentDate,
@@ -87,7 +87,7 @@ const IncidentReport = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Grid container spacing={2}
+        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           direction="row"
           justifyContent="center"
           alignItems="center">
@@ -99,37 +99,41 @@ const IncidentReport = () => {
                 label="Incident Type"
                 value={incidentType}
                 onChange={event => setIncidentType(event.target.value)}
+                fullWidth
               />
               <TextField
                 variant="outlined"
                 label="Incident Location"
                 value={incidentLocation}
                 onChange={event => setIncidentLocation(event.target.value)}
+                fullWidth
               />
-              {/* <LocalizationProvider dateAdapter={AdapterDayjs}>
+              <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker
-                          label="End Date"
-                          value={end}
+                          label="Incident Time and Date"
                           onChange={(picked) => {
-                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) { // have to buff that out
-                              console.log(picked)                                                  // specifically test output JSON to push to X and Y
-                              setEnd(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
+                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                              console.log(picked)
+                              setIncidentDate(`${picked.$y}-${picked.$M + 1}-${picked.$D}`)
+                              setIncidentTime(`${picked.$H}-${picked.$m}`)
                             }
                           }}
                           renderInput={(params) => <TextField fullWidth {...params} />}
                         />
-                      </LocalizationProvider> */}
+                      </LocalizationProvider>
               <TextField
                 variant="outlined"
                 label="Incident Date"
                 value={incidentDate}
                 onChange={event => setIncidentDate(event.target.value)}
+                fullWidth
               />
               <TextField
                 variant="outlined"
                 label="Incident Time"
                 value={incidentTime}
                 onChange={event => setIncidentTime(event.target.value)}
+                fullWidth
               />
               <Grid container
                 direction="column"
@@ -137,14 +141,15 @@ const IncidentReport = () => {
                 alignItems="center">
 
               <Grid item xs={6}>
-                <TextField select size='small' sx={{ m: 1, minWidth: 120 }}
+                <TextField select size='small' sx={{ m: 1, minWidth: 225 }}
                   label="Vehicle ID"
                   id="select"
                   value={vehicleId}
                   onChange={event => setVehicleId(event.target.value)}
+                  fullWidth
                 >
                   {vehicleIDs.map((id) => (
-                    <MenuItem key={id} value={id}>VEHICLE {id}</MenuItem>
+                    <MenuItem key={id} value={id}>{id}</MenuItem>
                   ))}
                 </TextField>
               </Grid>
@@ -154,6 +159,7 @@ const IncidentReport = () => {
                 label="Incident Description"
                 value={incidentDescription}
                 onChange={event => setIncidentDescription(event.target.value)}
+                fullWidth
               />
               <div>
                 <Button
@@ -172,7 +178,7 @@ const IncidentReport = () => {
                 </Button>
 
               </div>
-                  </Grid>
+              </Grid>
             </Paper>
           </Grid>
         </Grid>

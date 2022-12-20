@@ -166,15 +166,31 @@ const MemberDetails = () => {
         </Box>
     );
 
-
     const handleMemberUpdate = async (e) => {
         e.preventDefault();
+        console.log(`${API_URL}/member/updatemember/${id}`)
         try {
             const response = await fetch(`${API_URL}/member/updatemember/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({ first_name: firstName, last_name: lastName, rank: rank, email: email, organization_id: organization, admin: admin, is_van_cert: van_cert, is_sedan_cert: sedan_cert, is_truck_cert: truck_cert, is_5_Ton_cert: ton_cert, is_AMRAP_cert: amrap_cert, is_HMMWV_cert: hmmwv_cert, is_Mobilizer_cert: mobilizer_cert, is_Patrol_cert: patrol_cert })
-            })
+                body: JSON.stringify({
+                    first_name: firstName,
+                    last_name: lastName,
+                    rank: rank,
+                    email: email,
+                    organization_id: organization,
+                    admin: admin,
+                    is_van_cert: van_cert,
+                    is_sedan_cert: sedan_cert,
+                    is_truck_cert: truck_cert,
+                     is_5_Ton_cert: ton_cert,
+                     is_AMRAP_cert: amrap_cert,
+                     is_HMMWV_cert: hmmwv_cert,
+                     is_Mobilizer_cert: mobilizer_cert,
+                     is_patrol_cert: patrol_cert
+                    })
+            });
+
             if (response.status !== 204) {
                 console.log(response.status)
             } else {

@@ -24,7 +24,7 @@ const Home = () => {
 
   return (
     <div className="content">
-      <h1> Notification's</h1>
+      <h1> Notification's<br/>¯\_(ツ)_/¯</h1>
       {/* <div>
         <h2>{details.reservation_id}</h2>
         <h2>{details.vehicle_id}</h2>

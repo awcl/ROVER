@@ -127,3 +127,11 @@ video {
 .MuiGrid-container {
   justify-content: center;
 }
+
+.MuiList-root {
+  height:25vh;
+}
+
+.MuiList-root .MuiMenuItem-root {
+  height:4vh;
+}
