@@ -22,7 +22,6 @@ const Vehicles = () => {
                 setFiltered(data.filter(x=>x.organization_id===session.organization_id))
                 setVehicles(data)
             })
-
     }, []);
 
     const filter = () => {
@@ -33,6 +32,10 @@ const Vehicles = () => {
     const all = () => {
         setDisplay(vehicles);
     }
+
+    // if (display.length === 0) { // MAYBE THIS WILL FORCE DEFAULT?
+    //     setDisplay(vehicles)
+    // }
 
     return (
         <div className="content">
