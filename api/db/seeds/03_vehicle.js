@@ -15,9 +15,9 @@ exports.seed = async function (knex) {
     { id: 7, vehicle_type: 'AMRAP', miles: 20410, plate_number: 'G3462', description: 'Standard tactical trailer', location: 'P67-5', organization_id: 2 },
     { id: 8, vehicle_type: 'Patrol Vehicle', miles: 15875, plate_number: 'G37652', description: 'Standard ole patrol vehicle', location: 'P67-6', organization_id: 2 },
     { id: 9, vehicle_type: 'Tank', miles: 8645, plate_number: 'G39438', description: 'Abrams main battle tank', location: 'P67-7', organization_id: 2 },
-    { id: 10, vehicle_type: 'semi-truck', miles: 74238, plate_number: 'G38765', description: 'standard 18 wheeler', location: 'P67-8', organization_id: 2 }
-    { id: 11, vehicle_type: 'land rover', miles: 12685, plate_number: 'G31225', description: 'standard land rover', location: 'P67-9', organization_id: 2 }
-    { id: 12, vehicle_type: 'Forklift', miles: 20455, plate_number: 'G30023', description: 'standard Forklift', location: 'P67-10', organization_id: 2 }
+    { id: 10, vehicle_type: 'semi-truck', miles: 74238, plate_number: 'G38765', description: 'standard 18 wheeler', location: 'P67-8', organization_id: 2 },
+    { id: 11, vehicle_type: 'land rover', miles: 12685, plate_number: 'G31225', description: 'standard land rover', location: 'P67-9', organization_id: 2 },
+    { id: 12, vehicle_type: 'Forklift', miles: 20455, plate_number: 'G30023', description: 'standard Forklift', location: 'P67-10', organization_id: 2 },
     { id: 13, vehicle_type: 'SUV', miles: 60249, plate_number: 'G339986', description: '4 door full-size SUV', location: 'P67-11', organization_id: 1 }
   ]);
 }

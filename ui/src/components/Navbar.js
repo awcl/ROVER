@@ -21,7 +21,6 @@ const Navbar = () => {
         <div className="navContainer">
             <List disablePadding>
                 <Divider />
-                <ListItemButton/>{/*fake top button*/}
                 <ListItemButton
                     sx={{
                         justifyContent: 'center',
