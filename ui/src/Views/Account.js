@@ -38,10 +38,12 @@ const Account = () => {
     };
     const handleMemberUpdate = async (e) => {
         e.preventDefault();
+        // console.log(firstName, lastName, rank, email, username, password, organization)
         if (!(/^[0-9]+$/).test(organization)) {
             window.alert(`Your organization entry can only be numeric 🙁`);
         }
         else if (username && password && password === confirmPassword) {
+            // console.log(firstName, lastName, rank, email, username, password, organization)
             try {
                 const response = await fetch(`${API_URL}/member/updatemember/${session.id}`, {
                     method: 'PATCH',
@@ -67,7 +69,7 @@ const Account = () => {
                     alignItems="center">
                     <Grid item xs={12}>
                         <Paper elevation={3} sx={{ p: 5 }}>
-                            <form onSubmit={handleMemberUpdate}>
+                            <form onSubmit={(e) => handleMemberUpdate(e)}>
                                 <h1>Account Information</h1>
                                 {errorMessage && <div className='failed'>{errorMessage}</div>}
                                 <Grid container spacing={2}>
@@ -182,7 +184,7 @@ const Account = () => {
                                         <Button
                                             fullWidth
                                             variant="contained"
-                                            onClick={() => navigate('/account')}
+                                            // onClick={(e) => handleMemberUpdate(e)}
                                         >
                                             Save
                                         </Button>
