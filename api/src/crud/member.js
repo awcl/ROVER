@@ -86,7 +86,8 @@ app.post('/new', async (req, res) => {
 app.patch('/updatemember/:id', async (req, res) => {
 
   try {
-    let hashed = await hash(req.body.password, SALTS);
+    console.log('e')
+    let hashed = await hash(req.body.password, SALTS)
     knex('member')
       .where('id', req.params.id)
       .update(
@@ -112,8 +113,35 @@ app.patch('/updatemember/:id', async (req, res) => {
         res.status(204).end()
       ).catch(e => res.status(403).end());
   }
-  catch (e) { res.status(500).end(); }
+  catch (e) { res.status(500).send(e); }
   // http://localhost:8080/member/updatemember/1
+});
+
+app.patch('/updatecert/:id', async (req, res) => {
+
+  try {
+    console.log('e')
+    knex('member')
+      .where('id', req.params.id)
+      .update(
+        {
+          admin: req.body.admin
+          is_van_cert: req.body.organization_id,
+          is_sedan_cert: req.body.is_sedan_cert,
+          is_truck_cert: req.body.is_truck_cert,
+          is_5_ton_cert: req.body.is_5_ton_cert,
+          is_amrap_cert: req.body.is_amrap_cert,
+          is_hmmwv_cert: req.body.is_hmmwv_cert,
+          is_mobilizer_cert: req.body.is_mobilizer_cert,
+          is_patrol_cert: req.body.is_patrol_cert,
+        }
+      )
+      .then(data =>
+        res.status(204).end()
+      ).catch(e => res.status(403).end());
+  }
+  catch (e) { res.status(500).send(e); }
+  // http://localhost:8080/member/updatecert/1
 });
 
 

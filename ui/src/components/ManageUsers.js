@@ -41,33 +41,8 @@ const ManageUsers = () => {
     { field: 'email', headerName: 'Email', flex: .3, minWidth: 50 },
     { field: 'username', headerName: 'Username', flex: .3, minWidth: 50 },
     { field: 'admin', headerName: 'Admin?', flex: .3, minWidth: 50 },
-    {
-      field: 'Manage', flex: .4, renderCell: (cellValues) => {
-        return (
-          <Stack direction="row" spacing={1}>
-            <Tooltip title="Approve">
-              <IconButton
-                onClick={(e) => {
-                  console.log(cellValues.id)
-                  handleApprove(cellValues.id)
-                }}
-              >
-                <CheckCircleIcon sx={{ color: "#00D100" }} />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Deny">
-              <IconButton
-                onClick={(e) => { handleDeny(cellValues.id) }}
-              >
-                <CancelIcon sx={{ color: "#FF0000" }} />
-              </IconButton>
-            </Tooltip>
-          </Stack>
-        )
-      }
-
-    },
   ]
+
 
   const [users, setUsers] = useState([]);
 

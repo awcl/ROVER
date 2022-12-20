@@ -168,17 +168,13 @@ const MemberDetails = () => {
 
     const handleMemberUpdate = async (e) => {
         e.preventDefault();
-        console.log(`${API_URL}/member/updatemember/${id}`)
+        console.log(`${API_URL}/member/updatecert/${id}`)
         try {
-            const response = await fetch(`${API_URL}/member/updatemember/${id}`, {
+            const response = await fetch(`${API_URL}/member/updatecert/${id}`, {
                 method: 'PATCH',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    first_name: firstName,
-                    last_name: lastName,
-                    rank: rank,
-                    email: email,
-                    organization_id: organization,
+
                     admin: admin,
                     is_van_cert: van_cert,
                     is_sedan_cert: sedan_cert,
