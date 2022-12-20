@@ -22,7 +22,11 @@
 .MuiListItemButton-root {
   background-color: #E09F3E;
   color: #FFFFFF;
-  font-size: calc(6px + 1vmin);
+  font-size: calc(7px + 1vmin);
+}
+
+.MuiList-root .MuiButtonBase-root {
+  height:9.95vh; /*TODO Math to max page, remember btn borders exist*/
 }
 
 .MuiDataGrid-row:nth-child(odd) {

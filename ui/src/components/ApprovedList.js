@@ -17,7 +17,7 @@ import { margin } from "@mui/system";
 import { Container } from '@mui/material';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-const AllReservations = () => {
+const ReservationList = () => {
   let navigate = useNavigate();
   const handleApprove = async (id) => {
     console.log('approved: ', id);
@@ -59,6 +59,7 @@ const AllReservations = () => {
   function CustomToolbar() {
     return (
       <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        console.log('hello')
         <GridToolbarExport />
       </GridToolbarContainer>
     );

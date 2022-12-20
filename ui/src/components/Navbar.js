@@ -9,7 +9,6 @@ import Typography from '@mui/material/Typography';
 import Divider from '@mui/material/Divider';
 import { ListItemButton } from '@mui/material';
 import List from '@mui/material/List';
-
 import { useNavigate } from 'react-router';
 
 
@@ -22,6 +21,7 @@ const Navbar = () => {
         <div className="navContainer">
             <List disablePadding>
                 <Divider />
+                <ListItemButton/>{/*fake top button*/}
                 <ListItemButton
                     sx={{
                         justifyContent: 'center',

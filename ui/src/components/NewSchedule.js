@@ -77,7 +77,7 @@ const Schedule = () => {
             <GridToolbarExport />
           </GridToolbarContainer>
         );
-  }
+  };
 
     const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
     const [tablePageSize, setTablePageSize] = useState(15);

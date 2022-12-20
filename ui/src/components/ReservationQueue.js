@@ -56,10 +56,9 @@ const ReservationQueue = () => {
   }, [reservations])
 
 
-  function CustomToolbar() {
+  const CustomToolbar = () => {
     return (
       <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
-        console.log('hello')
         <GridToolbarExport />
       </GridToolbarContainer>
     );
