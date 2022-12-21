@@ -2,10 +2,5 @@
   "scripts": {
     "unroll": "cd ui && npm i && cd ../api && npm i",
     "help": "# npm run unroll will run npm i in target subdirs"
-  },
-  "dependencies": {
-    "@devexpress/dx-react-scheduler": "^4.0.0",
-    "@devexpress/dx-react-scheduler-material-ui": "^4.0.0",
-    "bcryptjs": "^2.4.3",
-    "moment": "^2.29.4"
   }
+}

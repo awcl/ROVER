@@ -8,19 +8,17 @@ body {
 }
 
 
-h1{
-    background: linear-gradient(
-      to right, 
-      hsl(270 100% 62%), 
-      hsl(204 100% 59%)
-    );
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    text-align: center;
-    align-content: center;
-    font: "Oxygen";
-    font-size: 5vmin;
-    line-height: 1.1;
+h1 {
+  background: linear-gradient(to right,
+      hsl(270 100% 62%),
+      hsl(204 100% 59%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  align-content: center;
+  font: "Oxygen";
+  font-size: 5vmin;
+  line-height: 1.1;
 }
 
 .App {
@@ -44,7 +42,7 @@ h1{
   font-size: calc(8px + 2vmin);
   color: #FFFFFF;
   opacity: 85%;
-  
+
 }
 
 .Result-Table,
@@ -127,7 +125,7 @@ h1{
   display: block;
   clear: both;
   background-color: #606f7425;
-  font-size: calc(8px + 2vmin);
+  font-size: calc(3px + 2vmin);
 }
 
 .Outlet,
@@ -213,8 +211,19 @@ video {
 }
 
 .alertBox {
+  background-color: rgb(245, 245, 245);
   width: 80%;
-  border: 1px solid red;
+  border: 1px groove rgb(178, 63, 255);
+  border-radius: 5px;
   padding: 50px;
   margin: 30px auto;
+  font-size: calc(3px + 2vmin);
 }
+
+
+
+/* .notificationButton:hover {
+
+  background-color: orange;
+  font-weight: 400;
+} */
