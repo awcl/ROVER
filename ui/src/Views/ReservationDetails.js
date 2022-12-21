@@ -57,12 +57,12 @@ function ReservationDetails() {
                     width: '80%', margin: '20px auto',
                 }}>
                 <CardHeader />
-                <Typography variant="h5">Reservation Details</Typography>
+                <Typography variant="h5"><h1>Reservation Details</h1></Typography>
                 <div className='Top'
                     style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
                 >
                     <div className='Left'>
-                        <CardContent>
+                        <CardContent style={{textAlign: 'left' }}>
                             <Typography variant="h6">Reservation ID: {details && <>{details.id}</>}</Typography>
                             <Typography variant="h6">Vehicle ID: {details && <>{details.vehicle_id}</>}</Typography>
                             <Typography variant="h6">Vehicle Type: {details && <>{details.vehicle_type}</>}</Typography>
@@ -79,6 +79,7 @@ function ReservationDetails() {
                         {/* once we get the details squared away, condition to display T-F value
                          ? <>✅</> : <>❌</>
                         */}
+                        <CardContent style={{textAlign: 'left' }} >
                         <Typography variant="h6">Van Cert: {details.is_van_cert === true ? <>✅</> : <>❌</>}</Typography>
                         <Typography variant="h6">Truck Cert: {details.is_truck_cert === true ? <>✅</> : <>❌</>}</Typography>
                         <Typography variant="h6">Sedan Cert: {details.is_sedan_cert === true ? <>✅</> : <>❌</>}</Typography>
@@ -91,7 +92,7 @@ function ReservationDetails() {
                         <Typography variant="h6">Semi Cert: {details.is_semitruck_cert === true ? <>✅</> : <>❌</>}</Typography>
                         <Typography variant="h6">Landrover Cert: {details.is_landrover_cert === true ? <>✅</> : <>❌</>}</Typography>
                         <Typography variant="h6">Forklift Cert: {details.is_forklift_cert === true ? <>✅</> : <>❌</>}</Typography>
-                    </div>
+                    </CardContent></div>
                 </div>
                 <div className='Bottom' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
                 >
