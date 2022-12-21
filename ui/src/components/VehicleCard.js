@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Card, CardContent, CardHeader, CardMedia, Typography, IconButton } from '@mui/material';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import Context from './Context';
 
 const VehicleCard = ({ vehicle }) => {
@@ -16,7 +16,7 @@ const VehicleCard = ({ vehicle }) => {
                             <CalendarMonthTwoToneIcon
                                 sx={{ color: '#1976d2' }}
                             />
-                        </IconButton> : <button onClick={()=>{navigate('/login')}}>Login 👀</button>
+                        </IconButton> : <Link to={'/Login'}>Login to Reserve</Link>
                     }
                     title={vehicle.vehicle_type}
                     subheader={vehicle.plate_number}

@@ -12,10 +12,11 @@ import {
   FormControl,
 } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers';
-import dayjs from 'dayjs';
+import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import config from '../config';
+import TextareaAutosize from '@mui/base/TextareaAutosize';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 // const useStyles = makeStyles(theme => ({
@@ -33,27 +34,28 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const IncidentReport = () => {
   const [incidentType, setIncidentType] = useState('');
   const [incidentLocation, setIncidentLocation] = useState('');
-  const [incidentDate, setIncidentDate] = useState('');
+  const [incidentDate, setIncidentDate] = useState(dayjs(new Date()));
+  const [value, setValue] = useState(dayjs(new Date()));
   const [incidentTime, setIncidentTime] = useState('');
   const [vehicleId, setVehicleId] = useState('');
   const [incidentDescription, setIncidentDescription] = useState('');
   const navigate = useNavigate();
   const [vehicleIDs, setVehicleIDs] = useState([]);
-  useEffect(()=>{
+  useEffect(() => {
     fetch(`${API_URL}/vehicle/ids`)
       .then(res => res.json())
       .then(data => {
-        let working=[]
-        data.forEach(x=>working.push(x.id))
+        let working = []
+        data.forEach(x => working.push(x.id))
         setVehicleIDs(working)
         console.log(working)
       })
-  },[])
+  }, [])
 
   //handle form submit
   const handleSubmit = async (event) => {
-      event.preventDefault();
-     try {
+    event.preventDefault();
+    try {
       var res = await fetch(`${API_URL}/incident_report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -84,11 +86,12 @@ const IncidentReport = () => {
   //     "member_id": 1
   //   }
 
+
   return (
     <>
       <form onSubmit={handleSubmit}>
         <Grid container rowSpacing={2}
-         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+          columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           direction="row"
           justifyContent="center"
           alignItems="center">
@@ -114,23 +117,27 @@ const IncidentReport = () => {
                 margin='normal'
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DateTimePicker
-                          label="Incident Time and Date"
-                          onChange={(picked) => {
-                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                              console.log(picked)
-                              setIncidentDate(`${picked.$y}-${picked.$M + 1}-${picked.$D}`)
-                              setIncidentTime(`${picked.$H}-${picked.$m}`)
-                            }
-                          }}
-                          renderInput={(params) => <TextField fullWidth {...params} />}
-                        />
-                      </LocalizationProvider>
-              <TextField
+                <DateTimePicker
+                  label="Incident Time and Date"
+                  value={value}
+                  onChange={(picked) => {
+                    if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                      setValue(picked);
+                      console.log(value)
+                      setIncidentDate(`${picked.$y}-${picked.$M + 1}-${picked.$D}`)
+                      console.log(picked)
+                      console.log(incidentDate)
+                      console.log(incidentTime)
+                    }
+                  }}
+                  renderInput={(params) => <TextField fullWidth {...params} />}
+                />
+              </LocalizationProvider>
+              {/* <TextField
                 variant="outlined"
                 label="Incident Date"
                 value={incidentDate}
-                onChange={event => setIncidentDate(event.target.value)}
+                //onChange={event => setIncidentDate(event.target.value)}
                 fullWidth
                 margin='normal'
               />
@@ -138,54 +145,56 @@ const IncidentReport = () => {
                 variant="outlined"
                 label="Incident Time"
                 value={incidentTime}
-                onChange={event => setIncidentTime(event.target.value)}
+                //onChange={event => setIncidentTime(event.target.value)}
                 fullWidth
                 margin='normal'
-              />
+              /> */}
               <Grid container
                 direction="column"
                 justifyContent="center"
                 alignItems="center">
 
-              <Grid item xs={6}>
-                <TextField select size='small' sx={{ m: 1, minWidth: 225 }}
-                  label="Vehicle ID"
-                  id="select"
-                  value={vehicleId}
-                  onChange={event => setVehicleId(event.target.value)}
+                <Grid item xs={6}>
+                  <TextField select size='small' sx={{ m: 1, minWidth: 225 }}
+                    label="Vehicle ID"
+                    id="select"
+                    value={vehicleId}
+                    onChange={event => setVehicleId(event.target.value)}
+                    fullWidth
+                    margin='normal'
+                  >
+                    {vehicleIDs.map((id) => (
+                      <MenuItem key={id} value={id}>{id}</MenuItem>
+                    ))}
+                  </TextField>
+                </Grid>
+
+                <TextField
+                  variant="outlined"
+                  label="Incident Description"
+                  value={incidentDescription}
+                  onChange={event => setIncidentDescription(event.target.value)}
                   fullWidth
-                  margin='normal'
-                >
-                  {vehicleIDs.map((id) => (
-                    <MenuItem key={id} value={id}>{id}</MenuItem>
-                  ))}
-                </TextField>
-              </Grid>
-
-              <TextField
-                variant="outlined"
-                label="Incident Description"
-                value={incidentDescription}
-                onChange={event => setIncidentDescription(event.target.value)}
-                fullWidth
-              />
-              <div>
-                <Button
-                  variant="contained"
-                  color="primary"
-                  type="submit"
+                  multiline
+                  rows={3}
+                />
+                <div>
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    type="submit"
                   >
-                  Submit
-                </Button>
-                <Button
-                  variant="contained"
-                  color="secondary"
-                  type="reset"
+                    Submit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    type="reset"
                   >
-                  Reset
-                </Button>
+                    Reset
+                  </Button>
 
-              </div>
+                </div>
               </Grid>
             </Paper>
           </Grid>

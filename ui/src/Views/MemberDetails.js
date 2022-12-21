@@ -192,6 +192,7 @@ const MemberDetails = () => {
             } else {
                 console.log('Saved')
                 window.alert(`The Member Information Has Been Updated!`);
+                navigate('/ManageUsers')
             }
         } catch (e) { console.log(e) }
     }
@@ -273,7 +274,6 @@ return (
                                         fullWidth
                                         type="submit"
                                         variant="contained"
-                                        // onClick={() => navigate('/ManageUsers')}
                                     >
                                         Save
                                     </Button>
