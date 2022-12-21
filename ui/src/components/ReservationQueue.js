@@ -45,7 +45,15 @@ const ReservationQueue = () => {
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
     { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
     { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
-    { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 },
+    {
+      field: 'status', headerName: 'Status', flex: .3, minWidth: 100,
+      renderCell:
+        (params) => (
+          <div>
+            {params.value === 'pending' ? <div style={{ fontWeight: "bold", color: 'orange' }}>Pending</div> : <div style={{ color: 'green' }}>Approved</div>}
+          </div>
+        )
+    },
   ]
 
   const [reservations, setReservations] = useState([]);
@@ -60,7 +68,7 @@ const ReservationQueue = () => {
   const CustomToolbar = () => {
     return (
       <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
-        <GridToolbarExport/>
+        <GridToolbarExport />
       </GridToolbarContainer>
     );
   }
@@ -72,8 +80,8 @@ const ReservationQueue = () => {
     <div className="content">
       Pending Reservations
       <DataGrid
-      components={{
-        Toolbar: CustomToolbar
+        components={{
+          Toolbar: CustomToolbar
         }}
         align="left"
         className="Result-Table"

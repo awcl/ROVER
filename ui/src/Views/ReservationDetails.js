@@ -17,8 +17,16 @@ function ReservationDetails() {
         fetch(`${API_URL}/reservation/merged/${id}`)
             .then((response) => response.json())
             .then((data) => {
-                setDetails(data[0]);
-                console.log(data[0]);
+                console.log(data[0])
+                // if (data[0].start_date) {
+                //     data[0].start_date = details.start_date.split('T')[0]
+                //     data[0].end_date = details.start_date.split('T')[0]
+                //     data[0].first_name = data[0].first_name.toUpperCase();
+                //     data[0].last_name = data[0].last_name.toUpperCase();
+                //     data[0].vehicle_type = data[0].vehicle_type.toUpperCase();
+                //     data[0].email = data[0].email.toUpperCase();
+                // }
+                setDetails(data[0])
             });
     }, []);
 
@@ -54,31 +62,24 @@ function ReservationDetails() {
             <Card elevation={3}
                 sx={{
                     width: '80%', margin: '20px auto',
-
-
-                }}
-
-            >
+                }}>
                 <CardHeader />
                 <Typography variant="h5">Reservation Details</Typography>
                 <div className='Top'
                     style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
-
                 >
-                    <div className='Left'
-                    //add color contrast and and justify left. 
-                    >
+                    <div className='Left'>
                         <CardContent>
-                            <Typography variant="h6">Reservation ID: {details.id}</Typography>
-                            <Typography variant="h6">Vehicle ID: {details.vehicle_id}</Typography>
-                            <Typography variant="h6">Vehicle Type: {details.vehicle_type}</Typography>
-                            <Typography variant="h6">Start Date: {details.start_date}</Typography>
-                            <Typography variant="h6">End Date: {details.end_date}</Typography>
-                            <Typography variant="h6">First Name: {details.first_name}</Typography>
-                            <Typography variant="h6">Last Name: {details.last_name}</Typography>
-                            <Typography variant="h6">Email: {details.email}</Typography>
+                            <Typography variant="h6">Reservation ID: {details && <>{details.id}</>}</Typography>
+                            <Typography variant="h6">Vehicle ID: {details && <>{details.vehicle_id}</>}</Typography>
+                            <Typography variant="h6">Vehicle Type: {details && <>{details.vehicle_type}</>}</Typography>
+                            <Typography variant="h6">Start Date: {details && <>{details.start_date}</>}</Typography>
+                            <Typography variant="h6">End Date: {details && <>{details.end_date}</>}</Typography>
+                            <Typography variant="h6">First Name: {details && <>{details.first_name}</>}</Typography>
+                            <Typography variant="h6">Last Name: {details && <>{details.last_name}</>}</Typography>
+                            <Typography variant="h6">Email: {details && <>{details.email}</>}</Typography>
+                            <Typography variant="h6">Current Status: {details && <>{details.status}</>}</Typography>
                         </CardContent>
-
                     </div>
                     <div className='Right'>
                         {/* once we get the details squared away, condition to display T-F value
@@ -96,28 +97,17 @@ function ReservationDetails() {
                         <Typography variant="h6">Semi Cert: {details.is_semitruck_cert === true ? <>✅</> : <>❌</>}</Typography>
                         <Typography variant="h6">Landrover Cert: {details.is_landrover_cert === true ? <>✅</> : <>❌</>}</Typography>
                         <Typography variant="h6">Forklift Cert: {details.is_forklift_cert === true ? <>✅</> : <>❌</>}</Typography>
-
-
                     </div>
                 </div>
-                <div className='Bottom'>
-                    <Select
-                        labelId="status"
-                        id="status"
-                        value={status}
-                        label="Status"
-                        onChange={(e) => setStatus(e.target.value)}
-                    >
-                        <MenuItem value="approved">Approved</MenuItem>
-                        <MenuItem value="denied">Denied</MenuItem>
-                        <MenuItem value="pending">Pending</MenuItem>
-                    </Select>
+                <div className='Bottom' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
+                >
+
                     <TextField id="remark" label="Remarks" onChange={(e) => setRemark(e.target.value)} onBlur={(e) => { e.target.value = e.target.value.trim() }} defaultValue={details.description}></TextField>
-                    <Button onClick={() => { handleApprove() }}>APPROVE</Button>
-                    <Button onClick={() => { handleDeny() }}>DENY</Button>
+                    <div><Button sx={{ width: "49%" }} variant="contained" color="success" margin="normal" onClick={() => { handleApprove() }}>APPROVE</Button>&nbsp;
+                        <Button sx={{ width: "49%" }} variant="contained" color="error" margin="normal" onClick={() => { handleDeny() }}>DENY</Button></div>
                 </div>
             </Card>
-        </div>
+        </div >
     )
 }
 

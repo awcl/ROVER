@@ -45,7 +45,14 @@ const ApprovedList = () => {
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
     { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
     { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
-    { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 },
+    {
+      field: 'status', headerName: 'Status', flex: .3, minWidth: 100,
+      renderCell: (params) => (
+        <div>
+          {params.value === 'approved' ? <CheckCircleIcon style={{ color: 'green' }} /> : <CancelIcon style={{ color: 'red' }} />}
+        </div>
+      )
+    },
   ]
 
   const [reservations, setReservations] = useState([]);
@@ -90,8 +97,6 @@ const ApprovedList = () => {
         sortModel={sortModel}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
-        autoHeight
-
         //autoPageSize
         onCellClick={(params, event) => {
           console.log(params.row)

@@ -18,7 +18,7 @@ const VehicleCard = ({ vehicle }) => {
                             />
                         </IconButton> : <Link to={'/Login'}>Login to Reserve</Link>
                     }
-                    title={vehicle.vehicle_type}
+                    title={vehicle.vehicle_type.toUpperCase()}
                     subheader={vehicle.plate_number}
                 />
                 <CardMedia
