@@ -57,40 +57,43 @@ function ReservationDetails() {
                     width: '80%', margin: '20px auto',
                 }}>
                 <CardHeader />
-                <Typography variant="h5">Reservation Details</Typography>
+                <h1>Reservation Details</h1>
                 <div className='Top'
                     style={{ display: 'flex', flexDirection: 'row', justifyContent: 'center' }}
                 >
                     <div className='Left'>
-                        <CardContent>
-                            <Typography variant="h6">Reservation ID: {details && <>{details.id}</>}</Typography>
+                        <CardContent sx={{ alignContent: "space-between" }}>
+
+                            <Typography variant="h6">Reservation ID: <span>{details && <>{details.id}</>}</span></Typography>
                             <Typography variant="h6">Vehicle ID: {details && <>{details.vehicle_id}</>}</Typography>
-                            <Typography variant="h6">Vehicle Type: {details && <>{details.vehicle_type}</>}</Typography>
-                            <Typography variant="h6">Start Date: {details && <>{details.start_date}</>}</Typography>
-                            <Typography variant="h6">End Date: {details && <>{details.end_date}</>}</Typography>
-                            <Typography variant="h6">First Name: {details && <>{details.first_name}</>}</Typography>
-                            <Typography variant="h6">Last Name: {details && <>{details.last_name}</>}</Typography>
-                            <Typography variant="h6">Email: {details && <>{details.email}</>}</Typography>
-                            <Typography variant="h6">Username: {details && <>{details.username}</>}</Typography>
-                            <Typography variant="h6">Current Status: {details && <>{details.status}</>}</Typography>
+                            <Typography variant="h6">Vehicle Type: {details && <>{details.vehicle_type?.toUpperCase()}</>}</Typography>
+                            <Typography variant="h6">Start Date: {details && <>{details.start_date?.slice(0, 10)}</>}</Typography>
+                            <Typography variant="h6">End Date: {details && <>{details.end_date?.slice(0, 10)}</>}</Typography>
+                            <Typography variant="h6">First Name: {details && <>{details.first_name?.toUpperCase()}</>}</Typography>
+                            <Typography variant="h6">Last Name:{details && <>{details.last_name?.toUpperCase()}</>}</Typography>
+                            <Typography variant="h6">Email: {details && <>{details.email?.toUpperCase()}</>}</Typography>
+                            <Typography variant="h6">Username: {details && <>{details.username?.toUpperCase()}</>}</Typography>
+                            <Typography variant="h6">Current Status: {details && <>{details.status?.toUpperCase()}</>}</Typography>
                         </CardContent>
                     </div>
                     <div className='Right'>
-                        {/* once we get the details squared away, condition to display T-F value
+                        <CardContent sx={{ textAlign: 'right' }}>
+                            {/* once we get the details squared away, condition to display T-F value
                          ? <>✅</> : <>❌</>
                         */}
-                        <Typography variant="h6">Van Cert: {details.is_van_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Truck Cert: {details.is_truck_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Sedan Cert: {details.is_sedan_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">5-Ton Cert: {details.is_5_ton_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">AMRAP Cert: {details.is_amrap_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">HMMWV Cert: {details.is_hmmwv_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Mobilizer Cert: {details.is_mobilizer_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Patrol Cert: {details.is_patrol_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Tank Cert: {details.is_tank_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Semi Cert: {details.is_semitruck_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Landrover Cert: {details.is_landrover_cert === true ? <>✅</> : <>❌</>}</Typography>
-                        <Typography variant="h6">Forklift Cert: {details.is_forklift_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Van Cert: {details.is_van_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Truck Cert: {details.is_truck_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Sedan Cert: {details.is_sedan_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">5-Ton Cert: {details.is_5_ton_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">AMRAP Cert: {details.is_amrap_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">HMMWV Cert: {details.is_hmmwv_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Mobilizer Cert: {details.is_mobilizer_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Patrol Cert: {details.is_patrol_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Tank Cert: {details.is_tank_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Semi Cert: {details.is_semitruck_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Landrover Cert: {details.is_landrover_cert === true ? <>✅</> : <>❌</>}</Typography>
+                            <Typography variant="h6">Forklift Cert: {details.is_forklift_cert === true ? <>✅</> : <>❌</>}</Typography>
+                        </CardContent>
                     </div>
                 </div>
                 <div className='Bottom' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}

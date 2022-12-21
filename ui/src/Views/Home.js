@@ -76,9 +76,21 @@ const Home = () => {
         <><div className="user">
           ACCOUNT: USER
           Pending Reservations
-          {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
-            Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}>{notifications[0].status}</span> with the admin remark "{notifications[0].description}"
-            <Button sx={{ width: "50%" }} variant="error" color="error" margin="normal" onClick={() => setAlertOpen(false)}>Mark as Read</Button></div>}
+          {notifications.length && (
+
+
+            <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
+              <div>
+                <div>
+                  Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}>{notifications[0].status}</span> with the admin remark:
+                </div>
+
+
+                <div style={{ color: "#292929" }}>"{notifications[0].description}"</div>
+              </div>
+              <center><br /><Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>Mark as Read</Button></center>
+            </div>
+          )}
           <DataGrid
             components={{
               Toolbar: CustomToolbar
@@ -111,7 +123,7 @@ const Home = () => {
             }
           />
         </div></>}
-    </div>
+    </div >
   )
 }
 
