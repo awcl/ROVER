@@ -11,12 +11,19 @@
 }
 
 .Result-Table,
+
 .MuiDataGrid-columnHeaders {
   /* margin: 2em; */
   background-color: #606f740f;
   font-size: calc(8px + 2vmin);
   color: #FFFFFF;
   opacity: 85%;
+}
+.Result-Table,
+.MuiDataGrid-root {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;   
 }
 
 /* .MuiListItemButton-root {
@@ -130,12 +137,14 @@ video {
 .bodyFlip {
   width: 85vw;
   display : inline-block;
-  
+
 
 }
 
 .MuiGrid-container {
   justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
 }
 
 .MuiList-root {

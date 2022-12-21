@@ -87,11 +87,14 @@ const IncidentReport = () => {
   return (
     <>
       <form onSubmit={handleSubmit}>
-        <Grid container rowSpacing={2} columnSpacing={{ xs: 1, sm: 2, md: 3 }}
+        <Grid container rowSpacing={2}
+         columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           direction="row"
           justifyContent="center"
           alignItems="center">
-          <Grid item xs={6}>
+          <Grid item xs={6}
+            gap={2}
+          >
             <Paper elevation={3} sx={{ p: 5 }}>
               <h1>Incident Report</h1>
               <TextField
@@ -100,6 +103,7 @@ const IncidentReport = () => {
                 value={incidentType}
                 onChange={event => setIncidentType(event.target.value)}
                 fullWidth
+                margin='normal'
               />
               <TextField
                 variant="outlined"
@@ -107,6 +111,7 @@ const IncidentReport = () => {
                 value={incidentLocation}
                 onChange={event => setIncidentLocation(event.target.value)}
                 fullWidth
+                margin='normal'
               />
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                         <DateTimePicker
@@ -127,6 +132,7 @@ const IncidentReport = () => {
                 value={incidentDate}
                 onChange={event => setIncidentDate(event.target.value)}
                 fullWidth
+                margin='normal'
               />
               <TextField
                 variant="outlined"
@@ -134,6 +140,7 @@ const IncidentReport = () => {
                 value={incidentTime}
                 onChange={event => setIncidentTime(event.target.value)}
                 fullWidth
+                margin='normal'
               />
               <Grid container
                 direction="column"
@@ -147,6 +154,7 @@ const IncidentReport = () => {
                   value={vehicleId}
                   onChange={event => setVehicleId(event.target.value)}
                   fullWidth
+                  margin='normal'
                 >
                   {vehicleIDs.map((id) => (
                     <MenuItem key={id} value={id}>{id}</MenuItem>
