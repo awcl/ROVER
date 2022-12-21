@@ -52,13 +52,13 @@ const Vehicles = () => {
             </Grid>
 
 
-            {/* <FormGroup>
+         {/* <FormGroup>
             <Stack direction="row" spacing={1} alignItems="center">
         <Typography>All Vehicles</Typography>
         <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
         <Typography>My Org's Vehicles</Typography>
       </Stack>
-    </FormGroup> */}
+    </FormGroup>  */}
         </div>
 
 

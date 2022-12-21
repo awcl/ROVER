@@ -68,7 +68,7 @@ const Schedule = () => {
       fetch(`${API_URL}/reservation/merged`)
         .then((res) => res.json())
         .then((data) => setReservations(data));
-    }, [reservations])
+    }, [])
 
 
   function CustomToolbar(){
