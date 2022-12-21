@@ -38,7 +38,7 @@ const Schedule = () => {
       { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
       // { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
       // { field: 'description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
-      // { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
+      { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
       // { field: 'location', headerName: 'Parking Spot', flex: .3, minWidth: 50 },
       { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
       { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
@@ -84,7 +84,7 @@ const Schedule = () => {
 
     return (
       <div className="content">
-      Approved Reservations
+      <h1>Approved Reservations</h1>
           <DataGrid
             align="left"
             className="Result-Table"
