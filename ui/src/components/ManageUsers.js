@@ -59,7 +59,7 @@ const ManageUsers = () => {
 
   return (
     <div className="content">
-      Manage Users
+      <h1>Manage Users</h1>
       <DataGrid
         align="left"
         className="Result-Table"
