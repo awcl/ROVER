@@ -7,6 +7,22 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+
+h1{
+    background: linear-gradient(
+      to right, 
+      hsl(270 100% 62%), 
+      hsl(204 100% 59%)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-align: center;
+    align-content: center;
+    font: "Oxygen";
+    font-size: 5vmin;
+    line-height: 1.1;
+}
+
 .App {
   text-align: center;
   background-color: #FFFFFF;
@@ -23,10 +39,12 @@ body {
 
 .MuiDataGrid-columnHeaders {
   /* margin: 2em; */
+  font-weight: bold;
   background-color: #606f740f;
   font-size: calc(8px + 2vmin);
   color: #FFFFFF;
   opacity: 85%;
+  
 }
 
 .Result-Table,
@@ -64,6 +82,7 @@ body {
   max-height: none;
 }
 
+
 .page {
   flex-direction: row;
   display: flex;
@@ -85,7 +104,7 @@ body {
   border-right-width: 1px; */
   font-size: calc(7px + 1vmin);
   --size: 0.8em;
-  --color: #9c27b0;
+  --color: rgb(178, 63, 255);
   color: #98a5b3;
   padding-bottom: var(--s);
   background:

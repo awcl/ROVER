@@ -70,7 +70,7 @@ const Home = () => {
 
   return (
     <div className="content">
-      Pending Reservations
+      <h1>Pending Reservations</h1>
       <DataGrid
       components={{
         Toolbar: CustomToolbar

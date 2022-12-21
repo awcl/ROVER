@@ -36,6 +36,7 @@ const ApprovedList = () => {
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
     { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
+    { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
     // { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
     // { field: 'vehicle_description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
     // { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
@@ -77,7 +78,7 @@ const ApprovedList = () => {
 
   return (
     <div className="content">
-      Approved Reservations
+      <h1>Approved Reservations</h1>
       <DataGrid
         components={{
           Toolbar: CustomToolbar

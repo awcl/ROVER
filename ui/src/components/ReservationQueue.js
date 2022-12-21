@@ -15,7 +15,11 @@ import Tooltip from '@mui/material/Tooltip';
 import config from '../config';
 import { margin } from "@mui/system";
 import { Container } from '@mui/material';
+import Box from '@mui/material/Box';
+
+
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
+
 
 const ReservationQueue = () => {
   let navigate = useNavigate();
@@ -34,7 +38,7 @@ const ReservationQueue = () => {
   }
 
   const columns = [
-    { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
+    { field: 'id', headerName: 'Res ID', flex: .2, width: 50},
     { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
     // { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
     // { field: 'vehicle_description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
@@ -78,7 +82,11 @@ const ReservationQueue = () => {
 
   return (
     <div className="content">
-      Pending Reservations
+      <h1 >Pending Reservations</h1>
+      <Box
+      sx={{fontWeight: "bold",
+      fontFamily: "Arial"}}
+      >
       <DataGrid
         components={{
           Toolbar: CustomToolbar
@@ -109,7 +117,7 @@ const ReservationQueue = () => {
           }
         }
         }
-      />
+      /></Box>
     </div>
   )
 }

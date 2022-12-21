@@ -32,7 +32,7 @@ const IncidentReports = () => {
 
   return (
     <div className="content">
-      All Incidents
+      <h1>All Incidents</h1>
       <DataGrid
         align="left"
         className="Result-Table"

@@ -16,10 +16,11 @@ const VehicleCard = ({ vehicle }) => {
                             <CalendarMonthTwoToneIcon
                                 sx={{ color: '#1976d2' }}
                             />
-                        </IconButton> : <Link to={'/Login'}>Login to Reserve</Link>
+                        </IconButton> : <Link to={'/Login'} sx={{ color: '#1976d2' }}>Login to Reserve</Link>
                     }
                     title={vehicle.vehicle_type.toUpperCase()}
                     subheader={vehicle.plate_number}
+                    sx={{ color: 'rgb(92, 50, 230)', font:'Roboto'}}
                 />
                 <CardMedia
                     component="img"

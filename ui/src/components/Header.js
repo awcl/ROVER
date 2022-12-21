@@ -9,8 +9,8 @@ const Header = () => {
 
 
     return (
-        <div className="headerContent">&nbsp;ROVER{session.username && <> ➡️ Hello "{session.username}" 🙂 You're {!session.admin && <>not</>} an admin</>}
-        </div>
+        <h1 className="headerContent"> ➡️  ROVER ➡️  {session.username && <> Hello "{session.username}" You're {!session.admin && <>not</>} an Admin</>}
+        </h1>
     )
 }
 
