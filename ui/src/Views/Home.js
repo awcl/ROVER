@@ -1,59 +1,107 @@
-import React, { useState, useEffect, useContext } from 'react';
-import Vehicles from '../components/Vehicles';
-import Context from '../components/Context';
+import { useNavigate } from "react-router";
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
+import IconButton from '@mui/material/IconButton';
+import AccountCircleIcon from '@mui/icons-material/AccountCircle';
+import Stack from '@mui/material/Stack';
+import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import EditIcon from '@mui/icons-material/Edit';
+import AddCircleIcon from '@mui/icons-material/AddCircle';
+import Context from "../components/Context";
+import { useSubmit } from "react-router-dom";
+import CheckCircleIcon from '@mui/icons-material/CheckCircle';
+import CancelIcon from '@mui/icons-material/Cancel';
+import Tooltip from '@mui/material/Tooltip';
 import config from '../config';
+import { margin } from "@mui/system";
+import { Container } from '@mui/material';
+import { useState, useEffect } from 'react';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
-
-
-//implement cards for reservations of user
-
-
-
-
 const Home = () => {
-  // const [details, setDetails] = useState({});
-  // const { session } = useContext(Context);
-  // localhost:3000/home/X
+  let navigate = useNavigate();
+  const handleApprove = async (id) => {
+    console.log('approved: ', id);
+    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
+      .then(navigate('/reservations'))
+      .catch(e => console.log(e));
+  }
 
-  // useEffect(() => {
-  //   session && fetch(`${API_URL}/reservation/merged/${session.id}`)
-  //     .then(response => response.json())
-  //     .then(data => setDetails(data[0]));
-  // }, [session]);
+  const handleDeny = async (id) => {
+    console.log('denied: ', id);
+    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
+      .then(navigate('/reservations'))
+      .catch(e => console.log(e));
+  }
+
+  const columns = [
+    { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
+    { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
+    // { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
+    // { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
+    // { field: 'location', headerName: 'Parking Spot', flex: .3, minWidth: 50 },
+    { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
+    { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
+    { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
+    { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
+    { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
+    { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 },
+  ]
+
+  const [reservations, setReservations] = useState([]);
+
+  useEffect(() => {
+    fetch(`${API_URL}/reservation/merged`)
+      .then((res) => res.json())
+      .then((data) => setReservations(data));
+  }, [reservations])
+
+
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
+
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
+  const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
     <div className="content">
-      <h1> Notification's<br/>¯\_(ツ)_/¯</h1>
-      {/* <div>
-        <h2>{details.reservation_id}</h2>
-        <h2>{details.vehicle_id}</h2>
-        <h2>{details.start_date}</h2>
-        <h2>{details.end_date}</h2>
-        <h2>{details.description}</h2>
-      </div> */}
+      Something
+      {/* All Reservations
+      <DataGrid
+        components={{
+          Toolbar: CustomToolbar
+        }}
+        align="left"
+        className="Result-Table"
+        rows={reservations.filter(x=>x.status==='pending')}
+        columns={columns}
+        pageSize={tablePageSize}
+        // initialState={{ pagination: { pageSize: tablePageSize } }}
+        onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
+        rowsPerPageOptions={[5, 10, 25, 50, 100]}
+        onSortModelChange={(model) => setSortModel(model)}
+        sortModel={sortModel}
+        pagination
+        autoHeight
+        {...reservations.filter(x=>x.status==='pending')}
+        getRowHeight={() => 'auto'}
+        disableSelectionOnClick
+        //autoPageSize
+        onCellClick={(params, event) => {
+          console.log(params.row)
+          if (!event.ctrlKey) {
+            event.defaultMuiPrevented = true;
+            navigate(`/reservationdetails/${params.row.id}`)
+          }
+        }
+        }
+      /> */}
     </div>
   )
 }
 
 export default Home;
-
-// return (
-//     <div className="content">
-//         <h1>Request Details</h1>
-//         <div>
-//             <h1>{details.reservation_id}</h1>
-//             <h1>{details.vehicle_id}</h1>
-//             <h1>{details.start_date}</h1>
-//             <h1>{details.end_date}</h1>
-//             <h1>{details.first_name}</h1>
-//             <h1>{details.last_name}</h1>
-//             <h1>{details.email}</h1>
-//             <label for="remark">IM A LABEL</label>
-//             <input id="remark" type="text" placeholder="Remarks" onChange={(e)=> setRemark(e.target.value)} onBlur={(e) => {e.target.value=e.target.value.trim()}} defaultValue={details.description}></input>
-//             <button onClick={()=>{handleApprove()}}>APPROVE</button>
-//             <button onClick={()=>{handleDeny()}}>DENY</button>
-//         </div>
-//     </div>
-// )
-// }

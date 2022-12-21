@@ -11,30 +11,34 @@
 }
 
 .Result-Table,
+
 .MuiDataGrid-columnHeaders {
   /* margin: 2em; */
-  background-color: #335C67;
+  background-color: #606f740f;
   font-size: calc(8px + 2vmin);
   color: #FFFFFF;
   opacity: 85%;
 }
+.Result-Table,
+.MuiDataGrid-root {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 2rem;   
+}
 
-.MuiListItemButton-root {
+/* .MuiListItemButton-root {
   background-color: #E09F3E;
   color: #FFFFFF;
   font-size: calc(7px + 1vmin);
-}
+} */
 
-.MuiList-root .MuiButtonBase-root {
-  height:9vh; /*TODO Math to max page, remember btn borders exist*/
-}
 
 .MuiDataGrid-row:nth-child(odd) {
-  background-color: #FFF3B0;
+  background-color: #ffffff;
 }
 
 .MuiDataGrid-row:nth-child(even) {
-  background-color: #335C67;
+  background-color: #ffffff;
 }
 
 .MuiDataGrid-cellContent,
@@ -49,13 +53,25 @@
 .page {
   flex-direction: row;
   display: flex;
+  
 }
 
 .navContainer {
-  background-color: #335C67;
-  color: black;
+  background-color: #f9fafb;
   width: 15vw;
   height: 100vh;
+  font-weight: 600;
+  color: #98a5b3;
+  
+}
+
+.MuiList-root .MuiButtonBase-root {
+  height:9vh; /*TODO Math to max page, remember btn borders exist*/
+  font-size: calc(7px + 1vmin);
+  color: #98a5b3;
+  border-right: #dee3e8;
+  border-right-style: dashed;
+  border-right-width: 1px;  
 }
 
 .Header,
@@ -65,7 +81,7 @@
   height: 5vh;
   display: block;
   clear: both;
-  background-color: #335C67;
+  background-color: #606f7425;
   font-size: calc(8px + 2vmin);
 }
 
@@ -122,14 +138,18 @@ video {
   width: 85vw;
   display : inline-block;
 
+
 }
 
 .MuiGrid-container {
   justify-content: center;
+  padding-top: 3rem;
+  padding-bottom: 5rem;
 }
 
 .MuiList-root {
   height:25vh;
+  
 }
 
 .MuiList-root .MuiMenuItem-root {

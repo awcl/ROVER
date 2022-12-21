@@ -133,7 +133,7 @@ const ReservationPage = () => {
                           value={start}
                           onChange={(picked) => {
                             if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                              console.log(console.log(picked))
+                              console.log(picked)
                               setStart(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
                             }
                           }}

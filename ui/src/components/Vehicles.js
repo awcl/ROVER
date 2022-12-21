@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { useEffect, useState, useContext } from 'react';
 import { Grid, Container } from '@mui/material';
+
 import VehicleCard from './VehicleCard';
 import config from '../config';
 
@@ -49,7 +50,18 @@ const Vehicles = () => {
                     </Grid>
                 ))}
             </Grid>
+
+
+            {/* <FormGroup>
+            <Stack direction="row" spacing={1} alignItems="center">
+        <Typography>All Vehicles</Typography>
+        <AntSwitch defaultChecked inputProps={{ 'aria-label': 'ant design' }} />
+        <Typography>My Org's Vehicles</Typography>
+      </Stack>
+    </FormGroup> */}
         </div>
+
+
     );
 }
 

@@ -36,10 +36,10 @@ const AllReservations = () => {
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
     { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
-    { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
-    { field: 'vehicle_description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
-    { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
-    { field: 'location', headerName: 'Parking Spot', flex: .3, minWidth: 50 },
+    // { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
+    // { field: 'vehicle_description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
+    // { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
+    // { field: 'location', headerName: 'Parking Spot', flex: .3, minWidth: 50 },
     { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
     { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
@@ -70,14 +70,14 @@ const AllReservations = () => {
 
   return (
     <div className="content">
-      All Reservations
+      All Resolved Reservations
       <DataGrid
-      components={{
-        Toolbar: CustomToolbar
+        components={{
+          Toolbar: CustomToolbar
         }}
         align="left"
         className="Result-Table"
-        rows={reservations}
+        rows={reservations.filter(x => x.status !== 'pending')}
         columns={columns}
         pageSize={tablePageSize}
         // initialState={{ pagination: { pageSize: tablePageSize } }}
@@ -87,7 +87,7 @@ const AllReservations = () => {
         sortModel={sortModel}
         pagination
         autoHeight
-        {...reservations}
+        {...reservations.filter(x => x.status !== 'pending')}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         autoHeight
