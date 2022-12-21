@@ -5,6 +5,7 @@ import IconButton from '@mui/material/IconButton';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import Stack from '@mui/material/Stack';
 import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
+import PendingActionsRoundedIcon from '@mui/icons-material/PendingActionsRounded';
 import EditIcon from '@mui/icons-material/Edit';
 import AddCircleIcon from '@mui/icons-material/AddCircle';
 import Context from "./Context";
@@ -45,7 +46,54 @@ const AllReservations = () => {
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
     { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
     { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
-    { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 },
+    {
+      field: 'status', headerName: 'Status', flex: .3, minWidth: 100,
+      renderCell: (params) => (
+        <div>
+          {params.value === 'pending' ? (
+            <div>
+              <Tooltip title="Approve">
+                <IconButton>
+                  <CheckCircleIcon style={{ color: 'green' }} />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title="Deny">
+                <IconButton>
+                  <CancelIcon style={{ color: 'red' }} />
+                </IconButton>
+              </Tooltip>
+            </div>
+          ) : (params.value === 'approved' ? (
+            <div>
+              <Tooltip title="Approved">
+                <IconButton>
+                  <CheckCircleIcon style={{ color: 'green' }} />
+                </IconButton>
+              </Tooltip>
+            </div>
+          ) : (params.value === 'denied' ? (
+            <div>
+              <Tooltip title="Denied">
+                <IconButton>
+                  <CancelIcon style={{ color: 'red' }} />
+                </IconButton>
+              </Tooltip>
+            </div>
+          ) : (
+            <div>
+              <Tooltip title="Pending">
+                <IconButton>
+                  <PendingActionsRoundedIcon style={{ color: 'orange' }} />
+                </IconButton>
+              </Tooltip>
+            </div>
+          )))}
+        </div>
+      )
+
+
+
+    },
   ]
 
   const [reservations, setReservations] = useState([]);
@@ -90,7 +138,6 @@ const AllReservations = () => {
         {...reservations.filter(x => x.status !== 'pending')}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
-        autoHeight
 
         //autoPageSize
         onCellClick={(params, event) => {

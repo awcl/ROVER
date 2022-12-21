@@ -18,34 +18,36 @@ const Navbar = () => {
     const { session, setSession } = useContext(Context);
 
     return (
-        <div className="navContainer">      
+        <div className="navContainer">
             <List disablePadding>
                 <Divider />
                 <ListItemButton
                     sx={{
                         color: 'text.secondary',
-                        justifyContent: 'center',}}
+                        justifyContent: 'center',
+                    }}
                     onClick={() => navigate(`/home`)}>
                     Home
                 </ListItemButton>
                 <ListItemButton
                     sx={{
-                        justifyContent: 'center', }}
+                        justifyContent: 'center',
+                    }}
                     onClick={() => navigate('/vehicles')}>
                     Vehicles
                 </ListItemButton>
                 {session.admin && <ListItemButton sx={{
                     justifyContent: 'center'
                 }}
-                    onClick={() => navigate(`/reservationqueue`)}>Queue</ListItemButton>}
+                    onClick={() => navigate(`/reservationqueue`)}>Pending</ListItemButton>}
                 {session.admin && <ListItemButton sx={{
                     justifyContent: 'center'
                 }}
-                    onClick={() => navigate(`/approvedreservations`)}>Approved Res's</ListItemButton>}
+                    onClick={() => navigate(`/approvedreservations`)}>Approved</ListItemButton>}
                 {session.admin && <ListItemButton sx={{
                     justifyContent: 'center'
                 }}
-                    onClick={() => navigate(`/reservations`)}>All Res's</ListItemButton>}
+                    onClick={() => navigate(`/reservations`)}>Resolved</ListItemButton>}
                 {session.admin && <ListItemButton sx={{
                     justifyContent: 'center'
                 }}

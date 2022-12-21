@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useEffect, useState, useContext } from 'react';
-import { Grid, Container } from '@mui/material';
+import { Grid, Container, Button } from '@mui/material';
 
 import VehicleCard from './VehicleCard';
 import config from '../config';
@@ -41,8 +41,8 @@ const Vehicles = () => {
 
     return (
         <div className="content">
-            <button onClick={() => { all() }}>All Vehicles</button>
-            <button onClick={() => { filter() }}>My Org's Vehicles</button><br /><br />
+            <br /><Button variant="contained" color="secondary" margin="normal" onClick={() => { all() }}>All Vehicles</Button>
+            {session.organization_id && <>&nbsp;<Button variant="contained" color="secondary" margin="normal" onClick={() => { filter() }}>Org {session.organization_id} Vehicles</Button></>}
             <Grid container spacing={3}>
                 {display.map(vehicle => (
                     <Grid item key={vehicle.id} xs={10} md={4} lg={5}>
