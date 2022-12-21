@@ -195,7 +195,8 @@ video {
 
 .alertBox {
   width: 80%;
-  border: 1px solid red;
+  border: 5px groove red;
+  border-radius: 3rem;
   padding: 50px;
   margin: 30px auto;
 }
