@@ -61,7 +61,7 @@ const ApprovedList = () => {
     fetch(`${API_URL}/reservation/merged`)
       .then((res) => res.json())
       .then((data) => setReservations(data));
-  }, [reservations])
+  }, [])
 
 
   function CustomToolbar() {
@@ -97,6 +97,7 @@ const ApprovedList = () => {
         sortModel={sortModel}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
+
         //autoPageSize
         onCellClick={(params, event) => {
           console.log(params.row)

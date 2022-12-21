@@ -51,7 +51,7 @@ app.delete('/merged/:id', (req, res) => {
   // http://localhost:8080/reservation/merged/1
 })
 
-// GET Reservation by Member ID
+// GET Reservation by Member ID -- USE THIS ONE FOR NOTIFICATIONS ON HOME PAGE FOR USER LOGIN
 app.get('/member/:id', (req, res) => {
   let { id } = req.params;
   knex('reservation')

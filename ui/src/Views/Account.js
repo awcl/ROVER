@@ -32,7 +32,7 @@ const Account = () => {
         setConfirmPassword(session.confirmPassword)
     },[session])
 
-
+console.log(session)
 const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
 };

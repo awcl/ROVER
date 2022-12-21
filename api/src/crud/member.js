@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express.Router();
 module.exports = app;
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const { hash, compare } = bcrypt;
 const SALTS = 12;
 const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || 'development']);
