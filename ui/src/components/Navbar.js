@@ -26,7 +26,9 @@ const Navbar = () => {
                         color: 'text.secondary',
                         justifyContent: 'center',
                     }}
-                    onClick={() => navigate(`/home`)}>
+                    onClick={() => {
+                        navigate(`/home`)
+                    }}>
                     Home
                 </ListItemButton>
                 <ListItemButton
@@ -76,9 +78,9 @@ const Navbar = () => {
                     justifyContent: 'center'
                 }}
                     onClick={() => {
+                        navigate(`/home`);
                         document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
                         setSession({});
-                        navigate('/Home');
                     }}>Log Out</ListItemButton>}
                 {!session.username && <ListItemButton
                     sx={{

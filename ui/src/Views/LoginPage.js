@@ -55,7 +55,7 @@ const LoginPage = () => {
                         setSession(data)
                         console.log(data)
                         document.cookie = `ROVERid=${data.id}; Path=/;`
-                        navigate('/Home')
+                        navigate('/home')
                     } else {
                         console.log('Connectivity Issues 🤬')
                         setSession({})
