@@ -1,8 +1,8 @@
-import React, { useState, useEffect, } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import config from '../config';
 import { TextField, Button, Card, CardHeader, CardContent, Typography, MenuItem, Select } from '@mui/material';
-// import Context from '../components/Context';
+import Context from '../components/Context';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 function ReservationDetails() {
@@ -11,23 +11,17 @@ function ReservationDetails() {
     const [status, setStatus] = useState('');
     let { id } = useParams();
     const navigate = useNavigate();
-
+    const { session } = useContext(Context);
     // fetch details of a single merged reservation
-    useEffect(() => {
+    const getFetch = () => {
         fetch(`${API_URL}/reservation/merged/${id}`)
             .then((response) => response.json())
-            .then((data) => {
-                console.log(data[0])
-                // if (data[0].start_date) {
-                //     data[0].start_date = details.start_date.split('T')[0]
-                //     data[0].end_date = details.start_date.split('T')[0]
-                //     data[0].first_name = data[0].first_name.toUpperCase();
-                //     data[0].last_name = data[0].last_name.toUpperCase();
-                //     data[0].vehicle_type = data[0].vehicle_type.toUpperCase();
-                //     data[0].email = data[0].email.toUpperCase();
-                // }
-                setDetails(data[0])
-            });
+            .then((data) => setDetails(data[0]))
+            .catch(e => console.log(e));
+    }
+
+    useEffect(() => {
+        getFetch();
     }, []);
 
     const handleApprove = async () => {
@@ -35,13 +29,12 @@ function ReservationDetails() {
         fetch(`${API_URL}/reservation/approve/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ description: remark }) })
             .catch(e => console.log(e));
         navigate('/reservationqueue')
-        // navigate to reservation queue page
-
     }
 
     const handleDeny = async () => {
         console.log('denied :  ', id);
         fetch(`${API_URL}/reservation/deny/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ description: remark }) })
+            .then(data => getFetch())
             .catch(e => console.log(e));
         navigate('/reservationqueue')
     }
@@ -78,6 +71,7 @@ function ReservationDetails() {
                             <Typography variant="h6">First Name: {details && <>{details.first_name}</>}</Typography>
                             <Typography variant="h6">Last Name: {details && <>{details.last_name}</>}</Typography>
                             <Typography variant="h6">Email: {details && <>{details.email}</>}</Typography>
+                            <Typography variant="h6">Username: {details && <>{details.username}</>}</Typography>
                             <Typography variant="h6">Current Status: {details && <>{details.status}</>}</Typography>
                         </CardContent>
                     </div>
@@ -102,9 +96,11 @@ function ReservationDetails() {
                 <div className='Bottom' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}
                 >
 
-                    <TextField id="remark" label="Remarks" onChange={(e) => setRemark(e.target.value)} onBlur={(e) => { e.target.value = e.target.value.trim() }} defaultValue={details.description}></TextField>
-                    <div><Button sx={{ width: "49%" }} variant="contained" color="success" margin="normal" onClick={() => { handleApprove() }}>APPROVE</Button>&nbsp;
-                        <Button sx={{ width: "49%" }} variant="contained" color="error" margin="normal" onClick={() => { handleDeny() }}>DENY</Button></div>
+                    <TextField id="remark" label="Remarks" onChange={(e) => setRemark(e.target.value)} onBlur={(e) => { e.target.value = e.target.value.trim() }} defaultValue={details.description}></TextField> {/* res details button spawn on either myID for JUST delete OR admin for both*/}
+                    <div>
+
+                        {session.admin && <Button sx={{ width: "50%" }} variant="contained" color="success" margin="normal" onClick={() => { handleApprove() }}>APPROVE REQUEST</Button>}
+                        {(session.admin || session.id === details.id) && <Button sx={{ width: "50%" }} variant="contained" color="error" margin="normal" onClick={() => { handleDeny() }}>DENY/CANCEL REQUEST</Button>}</div>
                 </div>
             </Card>
         </div >

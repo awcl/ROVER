@@ -22,6 +22,8 @@ import IncidentReport from './components/IncidentReport';
 import IncidentReports from './components/IncidentReports';
 import MemberDetails from './Views/MemberDetails';
 import ApprovedList from './components/ApprovedList'
+import UserHome from './components/UserHome';
+
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -43,30 +45,30 @@ function App() {
     <>
       <Context.Provider value={{ session, setSession }}>
         <div className="App">
-            <Routes>
-              <Route element={<LandingLayout />}>
-                <Route path="/" element={<LandingPage />} />
-              </Route>
-              <Route element={<ContentLayout />} >
-                <Route path="/login" element={<LoginPage />} />
-                <Route path="/register" element={<RegisterPage />} />
-                <Route path="/home" element={<Home />} />
-                <Route path="/vehicles" element={<Vehicles />} />
-                {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
-                {session.admin && <Route path="/approvedreservations" element={<ApprovedList />} />}
-                {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
-                {session.admin && <Route path="/reservations" element={<AllReservations />} />}
-                <Route path="/reservations/added" element={<AddedReservation />} />
-                <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
-                <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
-                {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
-                <Route path="/schedule" element={<Schedule />} />
-                {session.id && <Route path="/account" element={<Account />} />}
-                <Route path="/IncidentReport" element={<IncidentReport/>}/>
-                <Route path="/IncidentReports" element={<IncidentReports/>}/>
-                {/* <Route path="/Incident/:id" element={<IncidentReports/>}/> */}
-              </Route>
-            </Routes>
+          <Routes>
+            <Route element={<LandingLayout />}>
+              <Route path="/" element={<LandingPage />} />
+            </Route>
+            <Route element={<ContentLayout />} >
+              <Route path="/login" element={<LoginPage />} />
+              <Route path="/register" element={<RegisterPage />} />
+              <Route path="/home" element={<Home />} />
+              <Route path="/vehicles" element={<Vehicles />} />
+              {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
+              {session.admin && <Route path="/approvedreservations" element={<ApprovedList />} />}
+              {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
+              {session.admin && <Route path="/reservations" element={<AllReservations />} />}
+              <Route path="/reservations/added" element={<AddedReservation />} />
+              <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
+              <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
+              {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
+              <Route path="/schedule" element={<Schedule />} />
+              {session.id && <Route path="/account" element={<Account />} />}
+              <Route path="/IncidentReport" element={<IncidentReport />} />
+              <Route path="/IncidentReports" element={<IncidentReports />} />
+              {/* <Route path="/Incident/:id" element={<IncidentReports/>}/> */}
+            </Route>
+          </Routes>
         </div>
       </Context.Provider>
     </>
