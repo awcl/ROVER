@@ -19,11 +19,12 @@
   color: #FFFFFF;
   opacity: 85%;
 }
+
 .Result-Table,
 .MuiDataGrid-root {
   margin-left: 2rem;
   margin-right: 2rem;
-  margin-top: 2rem;   
+  margin-top: 2rem;
 }
 
 /* .MuiListItemButton-root {
@@ -48,12 +49,14 @@
 .MuiDataGrid-selectedRowCount {
   color: #000000;
   font-size: calc(6px + 1vmin);
+  min-height: 5vh;
+  max-height: none;
 }
 
 .page {
   flex-direction: row;
   display: flex;
-  
+
 }
 
 .navContainer {
@@ -62,19 +65,20 @@
   height: 100vh;
   font-weight: 600;
   color: #98a5b3;
-  
+
 }
 
 .MuiList-root .MuiButtonBase-root {
-  height:9vh; /*TODO Math to max page, remember btn borders exist*/
+  height: 9vh;
+  /*TODO Math to max page, remember btn borders exist*/
   font-size: calc(7px + 1vmin);
   color: #98a5b3;
   border-right: #dee3e8;
   border-right-style: dashed;
-  border-right-width: 1px;  
+  border-right-width: 1px;
 }
 
-.Header,
+. .Header,
 .headerContent {
   width: 85vw;
   justify-content: left;
@@ -94,6 +98,7 @@
   right: 0px;
   bottom: 0px;
   display: block;
+  background-color: lightgray;
 }
 
 .landContent {
@@ -127,7 +132,7 @@ video {
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0,0,0,.4);
+  background-color: rgba(0, 0, 0, .4);
 }
 
 .Container {
@@ -136,7 +141,7 @@ video {
 
 .bodyFlip {
   width: 85vw;
-  display : inline-block;
+  display: inline-block;
 
 
 }
@@ -148,10 +153,15 @@ video {
 }
 
 .MuiList-root {
-  height:25vh;
-  
+  height: 25vh;
+
 }
 
 .MuiList-root .MuiMenuItem-root {
-  height:4vh;
+  height: 4vh;
+}
+
+.Left,
+.Right {
+  width: 40%;
 }
