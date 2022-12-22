@@ -32,7 +32,7 @@ const Navbar = () => {
                 {session.admin &&
                 <ListItemButton sx={{ justifyContent: 'center' }}
                     onClick={() => navigate(`/reservations`)}>Resolved</ListItemButton>}
-                {session.id &&
+                {session.admin &&
                 <ListItemButton sx={{ justifyContent: 'center' }}
                     onClick={() => navigate(`/ManageUsers`)}>Manage Users</ListItemButton>}
                 {session.admin &&
