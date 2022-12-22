@@ -99,6 +99,7 @@ const Account = () => {
                                         <TextField
                                             fullWidth
                                             variant="outlined"
+                                            type="number"
                                             defaultValue={session.organization_id}
                                             placeholder={`${session.organization_id}`}
                                             onBlur={(e) => setOrganization(e.target.value)}

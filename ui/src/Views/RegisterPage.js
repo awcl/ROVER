@@ -100,6 +100,7 @@ const RegisterPage = () => {
                                             fullWidth
                                             label="Organization"
                                             variant="outlined"
+                                            type="number"
                                             value={organization}
                                             onChange={(e) => setOrganization(e.target.value)}
                                         />
