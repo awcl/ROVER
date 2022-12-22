@@ -87,7 +87,7 @@ h1 {
 .MuiList-root .MuiButtonBase-root {
   height: 9.07vh;
   font-size: calc(7px + 1vmin);
-  --size: 0.8em;
+  --size: 0.4em;
   --color: rgb(178, 63, 255);
   color: #98a5b3;
   padding-bottom: var(--s);

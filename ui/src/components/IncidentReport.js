@@ -87,7 +87,7 @@ const IncidentReport = () => {
                       setValue(picked);
                       console.log(value)
                       setIncidentDate(`${picked.$y}-${picked.$M + 1}-${picked.$D}`)
-                      setIncidentTime(`${picked.$H}${picked.$m}`)
+                      setIncidentTime(`${picked.$H}:${picked.$m}`)
                       console.log(picked)
                       console.log(incidentDate)
                       console.log(incidentTime)
