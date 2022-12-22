@@ -32,12 +32,13 @@ const Navbar = () => {
                 {session.admin &&
                 <ListItemButton sx={{ justifyContent: 'center' }}
                     onClick={() => navigate(`/reservations`)}>Resolved</ListItemButton>}
-                {session.admin &&
+                {session.id &&
                 <ListItemButton sx={{ justifyContent: 'center' }}
                     onClick={() => navigate(`/ManageUsers`)}>Manage Users</ListItemButton>}
+                {session.admin &&
                 <ListItemButton
                     sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>
+                    onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>}
                 <ListItemButton
                     sx={{ justifyContent: 'center' }}
                     onClick={() => navigate(`/incidentreport`)}>New Incident</ListItemButton>
