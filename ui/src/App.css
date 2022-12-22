@@ -34,9 +34,7 @@ h1 {
 }
 
 .Result-Table,
-
 .MuiDataGrid-columnHeaders {
-  /* margin: 2em; */
   font-weight: bold;
   background-color: #606f740f;
   font-size: calc(8px + 2vmin);
@@ -51,13 +49,6 @@ h1 {
   margin-right: 2rem;
   margin-top: 2rem;
 }
-
-/* .MuiListItemButton-root {
-  background-color: #E09F3E;
-  color: #FFFFFF;
-  font-size: calc(7px + 1vmin);
-} */
-
 
 .MuiDataGrid-row:nth-child(odd) {
   background-color: #ffffff;
@@ -80,7 +71,6 @@ h1 {
   max-height: none;
 }
 
-
 .page {
   flex-direction: row;
   display: flex;
@@ -96,10 +86,6 @@ h1 {
 
 .MuiList-root .MuiButtonBase-root {
   height: 9.07vh;
-  /* color: #98a5b3;
-  border-right: #dee3e8;
-  border-right-style: dashed;
-  border-right-width: 1px; */
   font-size: calc(7px + 1vmin);
   --size: 0.8em;
   --color: rgb(178, 63, 255);
@@ -181,8 +167,6 @@ video {
 .bodyFlip {
   width: 85vw;
   display: inline-block;
-
-
 }
 
 .MuiGrid-container {
@@ -219,11 +203,3 @@ video {
   margin: 30px auto;
   font-size: calc(3px + 2vmin);
 }
-
-
-
-/* .notificationButton:hover {
-
-  background-color: orange;
-  font-weight: 400;
-} */
