@@ -64,7 +64,6 @@ const MemberDetails = () => {
                 defaultValue={admin}
                 label="Admin Access"
                 control={<Checkbox checked={admin} onChange={handleChangeAdmin} />}
-
             />
         </Box>
 

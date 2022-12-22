@@ -47,7 +47,6 @@ const LoginPage = () => {
                     'Content-Type': 'application/json'
                 },
                 body: JSON.stringify({ username: username, password: password })
-                // , credentials: 'include'
             }).then(res => res.json())
                 .then(data => {
                     if (data.username) {
