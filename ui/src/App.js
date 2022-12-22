@@ -10,7 +10,7 @@ import Schedule from './components/NewSchedule';
 import Context from './components/Context';
 import ReservationQueue from "./components/ReservationQueue";
 import AllReservations from './components/AllReservations'
-import React, { useState, useContext, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import ContentLayout from './components/ContentLayout';
 import LandingLayout from './components/LandingLayout';
 import config from './config';
@@ -22,8 +22,6 @@ import IncidentReport from './components/IncidentReport';
 import IncidentReports from './components/IncidentReports';
 import MemberDetails from './Views/MemberDetails';
 import ApprovedList from './components/ApprovedList'
-import UserHome from './components/UserHome';
-
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 

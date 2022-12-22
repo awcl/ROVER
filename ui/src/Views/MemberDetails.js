@@ -1,12 +1,8 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { useState } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import { Container, Button, Grid, Paper, TextField, IconButton, InputAdornment } from "@mui/material";
-import VisibilityIcon from "@mui/icons-material/Visibility";
-import VisibilityOffIcon from "@mui/icons-material/VisibilityOff";
+import { Container, Button, Grid, Paper, TextField } from "@mui/material";
 import config from '../config';
-import Context from '../components/Context';
-import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import Box from '@mui/material/Box';
@@ -14,7 +10,6 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const MemberDetails = () => {
     let { id } = useParams();
-    const [username, setUsername] = useState('');
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [rank, setRank] = useState('');
@@ -31,7 +26,7 @@ const MemberDetails = () => {
     const [mobilizer_cert, setMobilizerCert] = useState('');
     const [amrap_cert, setAmrapCert] = useState('');
     const [patrol_cert, setPatrolCert] = useState('');
-    const [checked, setChecked] = React.useState('');
+    const [checked, setChecked] = useState('');
 
 
     useEffect(() => {

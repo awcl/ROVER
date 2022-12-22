@@ -1,12 +1,6 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import {
-  Typography,
-  TextField,
-  Checkbox,
-  FormControlLabel,
-  Button
-} from '@material-ui/core';
+import { Typography, TextField, Checkbox, FormControlLabel, Button } from '@material-ui/core';
 
 const useStyles = makeStyles(theme => ({
   root: {
@@ -51,9 +45,7 @@ export default function CheckInForm() {
             label="Pick-Up Date"
             type="date"
             defaultValue="2020-01-01"
-            InputLabelProps={{
-              shrink: true,
-            }}
+            InputLabelProps={{ shrink: true }}
           />
         </div>
         <FormControlLabel

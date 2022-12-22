@@ -1,23 +1,14 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
-import IconButton from '@mui/material/IconButton';
-import AccountCircleIcon from '@mui/icons-material/AccountCircle';
-import Stack from '@mui/material/Stack';
-import DeleteForeverOutlinedIcon from '@mui/icons-material/DeleteForeverOutlined';
-import EditIcon from '@mui/icons-material/Edit';
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import Context from "./Context";
-import { useSubmit } from "react-router-dom";
-import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import CancelIcon from '@mui/icons-material/Cancel';
-import Tooltip from '@mui/material/Tooltip';
+import { DataGrid } from '@mui/x-data-grid';
 import config from '../config';
-import { margin } from "@mui/system";
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const ManageUsers = () => {
   let navigate = useNavigate();
+  const [users, setUsers] = useState([]);
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
+  const [tablePageSize, setTablePageSize] = useState(15);
 
   const handleApprove = async (id) => {
     console.log('admin: ', id);
@@ -43,19 +34,11 @@ const ManageUsers = () => {
     { field: 'admin', headerName: 'Admin?', flex: .3, minWidth: 50 },
   ]
 
-
-  const [users, setUsers] = useState([]);
-
   useEffect(() => {
     fetch(`${API_URL}/member`)
       .then((res) => res.json())
       .then((data) => setUsers(data));
   }, [])
-
-
-
-  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
-  const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
     <div className="content">
@@ -66,7 +49,6 @@ const ManageUsers = () => {
         rows={users}
         columns={columns}
         pageSize={tablePageSize}
-        // initialState={{ pagination: { pageSize: tablePageSize } }}
         onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         pagination

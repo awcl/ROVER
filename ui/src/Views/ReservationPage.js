@@ -13,20 +13,20 @@ const ReservationPage = () => {
   let { id } = useParams();
   // define initial state
   const [date, setDate] = useState('');
-  const [time, setTime] = useState('');
+  // const [time, setTime] = useState('');
   const [guests, setGuests] = useState(0);
   const [type, setType] = useState('');
   const [errorMessage, setErrorMessage] = useState('');
-  const [username, setUsername] = useState('');
-  const [firstName, setFirstName] = useState('');
-  const [lastName, setLastName] = useState('');
-  const [rank, setRank] = useState('');
-  const [email, setEmail] = useState('');
+  // const [username, setUsername] = useState('');
+  // const [firstName, setFirstName] = useState('');
+  // const [lastName, setLastName] = useState('');
+  // const [rank, setRank] = useState('');
+  // const [email, setEmail] = useState('');
   const [start, setStart] = useState(dayjs(new Date()));
   const [end, setEnd] = useState(dayjs(new Date()));
-  const [organization, setOrganization] = useState('');
-  const [passengers, setpassengers] = useState('');
-  const [notes, setNotes] = useState();
+  // const [organization, setOrganization] = useState('');
+  // const [passengers, setpassengers] = useState('');
+  // const [notes, setNotes] = useState();
   const { session } = useContext(Context);
   const navigate = useNavigate()
 

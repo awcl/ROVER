@@ -1,35 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import {
-  Grid,
-  TextField,
-  Button,
-  Paper,
-  Select,
-  MenuItem,
-  FormHelperText,
-  InputLabel,
-  FormControl,
-} from '@mui/material';
+import { Grid, TextField, Button, Paper, MenuItem } from '@mui/material';
 import { DateTimePicker } from '@mui/x-date-pickers';
 import dayjs, { Dayjs } from 'dayjs';
 import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
 import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
 import config from '../config';
-import TextareaAutosize from '@mui/base/TextareaAutosize';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
-// const useStyles = makeStyles(theme => ({
-//   root: {
-//     '& .MuiTextField-root': {
-//       margin: theme.spacing(1),
-//       width: 200,
-//     },
-//   },
-// }));
-
-//use effect post to api to submit form
-
 
 const IncidentReport = () => {
   const [incidentType, setIncidentType] = useState('');
@@ -41,6 +18,7 @@ const IncidentReport = () => {
   const [incidentDescription, setIncidentDescription] = useState('');
   const navigate = useNavigate();
   const [vehicleIDs, setVehicleIDs] = useState([]);
+
   useEffect(() => {
     fetch(`${API_URL}/vehicle/ids`)
       .then(res => res.json())
@@ -52,11 +30,10 @@ const IncidentReport = () => {
       })
   }, [])
 
-  //handle form submit
-  const handleSubmit = async (event) => {
-    event.preventDefault();
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     try {
-      var res = await fetch(`${API_URL}/incident_report`, {
+      await fetch(`${API_URL}/incident_report`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -73,31 +50,15 @@ const IncidentReport = () => {
     navigate('/home')
   }
 
-
-
-
-  // {
-  //     "incident_type": "totaled",
-  //     "incident_location": "on-base",
-  //     "incident_date": "Jan 5th, 2022",
-  //     "incident_time": "req.body.incident_time",
-  //     "incident_description" : "I got in an accident",
-  //     "vehicle_id": 1,
-  //     "member_id": 1
-  //   }
-
-
   return (
-    <>
+    <div className="content">
       <form onSubmit={handleSubmit}>
         <Grid container rowSpacing={2}
           columnSpacing={{ xs: 1, sm: 2, md: 3 }}
           direction="row"
           justifyContent="center"
           alignItems="center">
-          <Grid item xs={6}
-            gap={2}
-          >
+          <Grid item xs={6} gap={2}>
             <Paper elevation={3} sx={{ p: 5 }}>
               <h1>Incident Report</h1>
               <TextField
@@ -133,27 +94,10 @@ const IncidentReport = () => {
                   renderInput={(params) => <TextField fullWidth {...params} />}
                 />
               </LocalizationProvider>
-              {/* <TextField
-                variant="outlined"
-                label="Incident Date"
-                value={incidentDate}
-                //onChange={event => setIncidentDate(event.target.value)}
-                fullWidth
-                margin='normal'
-              />
-              <TextField
-                variant="outlined"
-                label="Incident Time"
-                value={incidentTime}
-                //onChange={event => setIncidentTime(event.target.value)}
-                fullWidth
-                margin='normal'
-              /> */}
               <Grid container
                 direction="column"
                 justifyContent="center"
                 alignItems="center">
-
                 <Grid item xs={6}>
                   <TextField select size='small' sx={{ m: 1, minWidth: 225 }}
                     label="Vehicle ID"
@@ -168,7 +112,6 @@ const IncidentReport = () => {
                     ))}
                   </TextField>
                 </Grid>
-
                 <TextField
                   variant="outlined"
                   label="Incident Description"
@@ -179,35 +122,20 @@ const IncidentReport = () => {
                   rows={3}
                 />
                 <div>
-                  <Button
-                    variant="contained"
-                    color="primary"
-                    type="submit"
-                  >
+                  <Button variant="contained" color="primary" type="submit" >
                     Submit
                   </Button>
-                  <Button
-                    variant="contained"
-                    color="secondary"
-                    type="reset"
-                  >
+                  <Button variant="contained" color="secondary" type="reset" >
                     Reset
                   </Button>
-
                 </div>
               </Grid>
             </Paper>
           </Grid>
         </Grid>
       </form>
-    </>
-
+    </div>
   )
 }
 
-
-
-
-
 export default IncidentReport;
-
