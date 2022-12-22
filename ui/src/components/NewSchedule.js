@@ -36,9 +36,9 @@ const Schedule = () => {
       valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")
     },
     {
-      field: 'Delete', flex: .4, renderCell: (cellValues) => {
+      field: 'Cancel', flex: .4, renderCell: (cellValues) => {
         return (
-          <Tooltip title="Delete">
+          <Tooltip title="Cancel">
             <IconButton
               onClick={(e) => { handleDelete(cellValues.id) }}
             >
