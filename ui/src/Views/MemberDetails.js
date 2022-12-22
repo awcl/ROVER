@@ -28,9 +28,7 @@ const MemberDetails = () => {
     const [patrol_cert, setPatrolCert] = useState('');
     const [checked, setChecked] = useState('');
 
-
     useEffect(() => {
-
         fetch(`${API_URL}/member/${id}`)
             .then((response) => response.json())
             .then((data) => {
@@ -67,8 +65,6 @@ const MemberDetails = () => {
         console.log(event)
         setAdmin(checked[0])
     };
-
-
 
     const AssignAdmin = (
         <Box sx={{ display: 'flex', flexDirection: 'column', ml: 3 }}>
