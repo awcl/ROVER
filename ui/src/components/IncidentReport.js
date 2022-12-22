@@ -91,12 +91,7 @@ const IncidentReport = () => {
                   renderInput={(params) => <TextField fullWidth {...params} />}
                 />
               </LocalizationProvider>
-              <Grid container
-                direction="column"
-                justifyContent="center"
-                alignItems="center">
-                <Grid item xs={6}>
-                  <TextField select size='small' sx={{ m: 1, minWidth: 225 }}
+              <TextField select size='small' sx={{ m: 1, minWidth: 225, width: "100%"}}
                     label="Vehicle ID"
                     id="select"
                     value={vehicleId}
@@ -108,7 +103,10 @@ const IncidentReport = () => {
                       <MenuItem key={id} value={id}>{id}</MenuItem>
                     ))}
                   </TextField>
-                </Grid>
+              <Grid container
+                direction="column"
+                justifyContent="center"
+                alignItems="center">
                 <TextField
                   variant="outlined"
                   label="Incident Description"
