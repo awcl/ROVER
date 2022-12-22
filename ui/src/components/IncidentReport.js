@@ -95,8 +95,8 @@ const IncidentReport = () => {
                 direction="column"
                 justifyContent="center"
                 alignItems="center">
-                <Grid item xs={6}>
-                  <TextField select size='small' sx={{ m: 1, minWidth: 225 }}
+                <Grid item xs={4}>
+                  <TextField select size='medium' sx={{ mb: 1, minWidth: 225 }}
                     label="Vehicle ID"
                     id="select"
                     value={vehicleId}
