@@ -80,12 +80,14 @@ const IncidentReport = () => {
               <LocalizationProvider dateAdapter={AdapterDayjs}>
                 <DateTimePicker
                   label="Incident Time and Date"
+                  views={['year', 'day', 'hours', 'minutes', 'seconds']}
                   value={value}
                   onChange={(picked) => {
                     if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
                       setValue(picked);
                       console.log(value)
                       setIncidentDate(`${picked.$y}-${picked.$M + 1}-${picked.$D}`)
+                      setIncidentTime(`${picked.$H}${picked.$m}`)
                       console.log(picked)
                       console.log(incidentDate)
                       console.log(incidentTime)
