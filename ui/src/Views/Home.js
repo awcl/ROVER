@@ -56,27 +56,27 @@ const Home = () => {
     <div className="content">
       {session.admin ? <div className="admin">
         <h1>ACCOUNT: ADMIN</h1>
-        ADMINS CAN ONLY SEE THIS PAGE<br/>
-        ADMIN STUFF GOES HERE<br/>
+        ADMINS CAN ONLY SEE THIS PAGE<br />
+        ADMIN STUFF GOES HERE<br />
         👀
       </div>
         : session.id ? <div className="user">
           <h1>ACCOUNT: USER</h1>
           Pending Reservations
           {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
-              <div>
-                {notifications.map(x =>
-                (<><div>
-                  Reservation #{x.id} has been <span style={x.status === 'denied' ? { color: "red" } : { color: "green" }}> {x.status}</span> with the admin remark:
-                </div>
-                <div style={{ color: "#292929" }}>"{x.description}"</div><br/></>))}
+            <div>
+              {notifications.map(x =>
+              (<><div>
+                Reservation #{x.id} has been <span style={x.status === 'denied' ? { color: "red" } : { color: "green" }}> {x.status}</span> with the admin remark:
               </div>
-              <center><br/>
-                <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
-                  Mark as Read
-                </Button>
-              </center>
+                <div style={{ color: "#292929" }}>"{x.description}"</div><br /></>))}
             </div>
+            <center><br />
+              <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
+                Mark as Read
+              </Button>
+            </center>
+          </div>
           }
           <DataGrid
             components={{ Toolbar: CustomToolbar }}
@@ -95,7 +95,6 @@ const Home = () => {
             getRowHeight={() => 'auto'}
             disableSelectionOnClick
             onCellClick={(params, event) => {
-              console.log(params.row)
               if (!event.ctrlKey) {
                 event.defaultMuiPrevented = true;
                 navigate(`/reservationdetails/${params.row.id}`)
@@ -104,11 +103,11 @@ const Home = () => {
             }
           />
         </div> :
-        <div className='content' style={{overflow: "hidden"}}>
+          <div className='content' style={{ overflow: "hidden" }}>
             <div className="overlay"></div>
-            <video src={nonauth} autoPlay loop muted poster={nonauthP}/>
+            <video src={nonauth} autoPlay loop muted poster={nonauthP} />
             <div className="landContent"><h1>You're Not Logged In</h1></div>
-        </div>}
+          </div>}
     </div>
   )
 }

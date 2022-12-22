@@ -24,14 +24,12 @@ function ReservationDetails() {
     }, []);
 
     const handleApprove = async () => {
-        console.log('approved :  ', id);
         fetch(`${API_URL}/reservation/approve/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ description: remark }) })
             .catch(e => console.log(e));
         navigate('/reservationqueue')
     }
 
     const handleDeny = async () => {
-        console.log('denied :  ', id);
         fetch(`${API_URL}/reservation/deny/${id}`, { method: 'PATCH', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ description: remark }) })
             .then(data => getFetch())
             .catch(e => console.log(e));
@@ -77,7 +75,7 @@ function ReservationDetails() {
                     </div>
                 </div>
                 <div className='Bottom' style={{ display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                    <TextField id="remark" label="Remarks" onChange={(e) => setRemark(e.target.value)} onBlur={(e) => { e.target.value = e.target.value.trim() }} defaultValue={details.description}/>
+                    <TextField id="remark" label="Remarks" onChange={(e) => setRemark(e.target.value)} onBlur={(e) => { e.target.value = e.target.value.trim() }} defaultValue={details.description} />
                     <div>
                         {session.admin && <Button sx={{ width: "50%" }} variant="contained" color="success" margin="normal" onClick={() => { handleApprove() }}>APPROVE REQUEST</Button>}
                         {(session.admin || session.id === details.id) && <Button sx={{ width: "50%" }} variant="contained" color="error" margin="normal" onClick={() => { handleDeny() }}>DENY/CANCEL REQUEST</Button>}</div>

@@ -13,8 +13,10 @@ const IncidentReports = () => {
     { field: 'id', headerName: 'ID', flex: .2, width: 50 },
     { field: 'incident_type', headerName: 'Type', flex: .2, minWidth: 50 },
     { field: 'Incident_location', headerName: 'Location', flex: .2, minWidth: 50 },
-    { field: 'incident_date', headerName: 'Date', flex: .5, minWidth: 50,
-      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
+    {
+      field: 'incident_date', headerName: 'Date', flex: .5, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")
+    },
     { field: 'incident_time', headerName: 'Time', flex: .3, minWidth: 50 },
     { field: 'incident_description', headerName: 'Description', flex: .3, minWidth: 50 },
     { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, width: 130 },
@@ -25,7 +27,7 @@ const IncidentReports = () => {
     fetch(`${API_URL}/incident_report`)
       .then((res) => res.json())
       .then((data) => setIncidents(data))
-      .catch(e=>console.log(e))
+      .catch(e => console.log(e))
   }, [incidents])
 
   return (

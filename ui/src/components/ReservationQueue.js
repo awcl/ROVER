@@ -15,13 +15,11 @@ const ReservationQueue = () => {
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
   const [tablePageSize, setTablePageSize] = useState(15);
   // const handleApprove = async (id) => {
-  //   console.log('approved: ', id);
   //   fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
   //     .then(navigate('/reservations'))
   //     .catch(e => console.log(e));
   // }
   // const handleDeny = async (id) => {
-  //   console.log('denied: ', id);
   //   fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
   //     .then(navigate('/reservations'))
   //     .catch(e => console.log(e));
@@ -33,10 +31,14 @@ const ReservationQueue = () => {
     { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
     { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
-    { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50,
-      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
-    { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50,
-      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
+    {
+      field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")
+    },
+    {
+      field: 'end_date', headerName: 'End', flex: .3, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")
+    },
     {
       field: 'status', headerName: 'Status', flex: .3, minWidth: 100,
       renderCell:
@@ -65,7 +67,7 @@ const ReservationQueue = () => {
   return (
     <div className="content">
       <h1>Pending Reservations</h1>
-      <Box sx={{ fontWeight: "bold", fontFamily: "Arial"}}>
+      <Box sx={{ fontWeight: "bold", fontFamily: "Arial" }}>
         <DataGrid
           components={{ Toolbar: CustomToolbar }}
           align="left"
@@ -83,7 +85,6 @@ const ReservationQueue = () => {
           getRowHeight={() => 'auto'}
           disableSelectionOnClick
           onCellClick={(params, event) => {
-            console.log(params.row)
             if (!event.ctrlKey) {
               event.defaultMuiPrevented = true;
               navigate(`/reservationdetails/${params.row.id}`)

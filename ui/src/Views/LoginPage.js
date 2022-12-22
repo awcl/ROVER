@@ -51,9 +51,8 @@ const LoginPage = () => {
             }).then(res => res.json())
                 .then(data => {
                     if (data.username) {
-                        console.log('SUCCESS 🥳')
                         setSession(data)
-                        console.log(data)
+                        console.log('SUCCESS 🥳', data)
                         document.cookie = `ROVERid=${data.id}; Path=/;`
                         navigate('/home')
                     } else {
@@ -62,7 +61,7 @@ const LoginPage = () => {
                     }
                 })
                 .catch(err => {
-                    console.log('Wrong 🤬')
+                    console.log('WRONG 🤬')
                     setSession({})
                 });
         }

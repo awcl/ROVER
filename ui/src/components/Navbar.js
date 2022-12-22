@@ -24,43 +24,43 @@ const Navbar = () => {
                     Vehicles
                 </ListItemButton>
                 {session.admin &&
-                <ListItemButton sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/reservationqueue`)}>Pending</ListItemButton>}
+                    <ListItemButton sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/reservationqueue`)}>Pending</ListItemButton>}
                 {session.admin &&
-                <ListItemButton sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/approvedreservations`)}>Approved</ListItemButton>}
+                    <ListItemButton sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/approvedreservations`)}>Approved</ListItemButton>}
                 {session.admin &&
-                <ListItemButton sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/reservations`)}>Resolved</ListItemButton>}
+                    <ListItemButton sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/reservations`)}>Resolved</ListItemButton>}
                 {session.admin &&
-                <ListItemButton sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/ManageUsers`)}>Manage Users</ListItemButton>}
+                    <ListItemButton sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/ManageUsers`)}>Manage Users</ListItemButton>}
                 {session.admin &&
-                <ListItemButton
-                    sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>}
+                    <ListItemButton
+                        sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>}
                 <ListItemButton
                     sx={{ justifyContent: 'center' }}
                     onClick={() => navigate(`/incidentreport`)}>New Incident</ListItemButton>
                 {session.admin &&
-                <ListItemButton
-                    sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate(`/incidentreports`)}>All Incidents</ListItemButton>}
+                    <ListItemButton
+                        sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/incidentreports`)}>All Incidents</ListItemButton>}
                 <Divider />
                 {session.username &&
-                <ListItemButton sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate('/account')}>Account</ListItemButton>}
+                    <ListItemButton sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate('/account')}>Account</ListItemButton>}
                 {session.username &&
-                <ListItemButton sx={{ justifyContent: 'center' }}
-                    onClick={() => {
-                        navigate(`/home`);
-                        document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
-                        setSession({});
-                    }}>Log Out</ListItemButton>}
+                    <ListItemButton sx={{ justifyContent: 'center' }}
+                        onClick={() => {
+                            navigate(`/home`);
+                            document.cookie = `ROVERid=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;`;
+                            setSession({});
+                        }}>Log Out</ListItemButton>}
                 {!session.username &&
-                <ListItemButton
-                    sx={{ justifyContent: 'center' }}
-                    onClick={() => navigate('/login')}>Log In</ListItemButton>}
+                    <ListItemButton
+                        sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate('/login')}>Log In</ListItemButton>}
             </List>
         </div>
     );

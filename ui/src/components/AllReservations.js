@@ -33,10 +33,14 @@ const AllReservations = () => {
     { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
     { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
-    { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50,
-      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
-    { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50,
-      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
+    {
+      field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")
+    },
+    {
+      field: 'end_date', headerName: 'End', flex: .3, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")
+    },
     {
       field: 'status', headerName: 'Status', flex: .3, minWidth: 100,
       renderCell: (params) => (
@@ -132,7 +136,6 @@ const AllReservations = () => {
 
         //autoPageSize
         onCellClick={(params, event) => {
-          console.log(params.row)
           if (!event.ctrlKey) {
             event.defaultMuiPrevented = true;
             navigate(`/reservationdetails/${params.row.id}`)

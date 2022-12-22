@@ -26,7 +26,6 @@ const IncidentReport = () => {
         let working = []
         data.forEach(x => working.push(x.id))
         setVehicleIDs(working)
-        console.log(working)
       })
   }, [])
 
