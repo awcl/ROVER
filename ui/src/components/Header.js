@@ -4,7 +4,10 @@ import Context from './Context';
 const Header = () => {
     const { session } = useContext(Context);
     return (
-        <h1 className="headerContent">&nbsp;ROVER</h1>
+        <div className="Header">
+            <h1 className="headerContent" style={{ textAlign: "left" }}>&emsp;ROVER</h1>
+            {session.username && <h1 className="headerContent" style={{ textAlign: "right" }}>Hello "{session.username}"&emsp;</h1>}
+        </div>
     )
 }
 

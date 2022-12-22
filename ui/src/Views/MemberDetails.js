@@ -64,7 +64,6 @@ const MemberDetails = () => {
                 defaultValue={admin}
                 label="Admin Access"
                 control={<Checkbox checked={admin} onChange={handleChangeAdmin} />}
-
             />
         </Box>
 
@@ -177,7 +176,6 @@ const MemberDetails = () => {
         } catch (e) { console.log(e) }
     }
 
-
     return (
         <div className="content">
             <Container maxWidth="sm">
@@ -244,7 +242,6 @@ const MemberDetails = () => {
                                         <div>
                                             Certifications
                                         </div>
-
                                         {Certifications}
                                     </Grid>
                                     <Grid item xs={12}>

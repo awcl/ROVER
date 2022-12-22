@@ -104,14 +104,17 @@ h1 {
   --_pos: 100%
 }
 
-.Header,
-.headerContent {
+.Header {
   text-align: left;
+  margin-right: auto;
   width: 85vw;
   height: 5vh;
-  display: block;
-  clear: both;
   background-color: #606f7425;
+}
+
+.headerContent {
+  width: 50%;
+  display: inline-block;
   font-size: calc(3px + 2vmin);
 }
 

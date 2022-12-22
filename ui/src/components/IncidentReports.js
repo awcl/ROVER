@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import config from '../config';
 import dayjs from 'dayjs';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
@@ -8,6 +8,14 @@ const IncidentReports = () => {
   const [incidents, setIncidents] = useState([]);
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
   const [tablePageSize, setTablePageSize] = useState(15);
+
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
 
   const columns = [
     { field: 'id', headerName: 'ID', flex: .2, width: 50 },
@@ -34,6 +42,9 @@ const IncidentReports = () => {
     <div className="content">
       <h1>All Incidents</h1>
       <DataGrid
+        components={{
+          Toolbar: CustomToolbar
+        }}
         align="left"
         className="Result-Table"
         rows={incidents}

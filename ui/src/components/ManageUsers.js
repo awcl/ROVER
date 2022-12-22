@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
-import { DataGrid } from '@mui/x-data-grid';
+import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import config from '../config';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -9,6 +9,14 @@ const ManageUsers = () => {
   const [users, setUsers] = useState([]);
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
   const [tablePageSize, setTablePageSize] = useState(15);
+
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
 
   const columns = [
     { field: 'id', headerName: 'User ID', flex: .2, width: 50 },
@@ -30,6 +38,9 @@ const ManageUsers = () => {
     <div className="content">
       <h1>Manage Users</h1>
       <DataGrid
+        components={{
+          Toolbar: CustomToolbar
+        }}
         align="left"
         className="Result-Table"
         rows={users}

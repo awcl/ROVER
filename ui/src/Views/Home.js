@@ -3,14 +3,12 @@ import React, { useState, useEffect, useContext } from "react";
 import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import Context from "../components/Context";
 import config from '../config';
-import { Button, Grid, Container, Typography } from '@mui/material';
+import { Button, Grid, Container } from '@mui/material';
 import nonauth from '../assets/nonauth.mp4';
 import nonauthP from '../assets/nonauth.png';
 import AppWidgetSummary from "../components/AppWidgetSummary";
 import PendingActionsIcon from '@mui/icons-material/PendingActions';
-
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
-
 
 const Home = () => {
   const { session } = useContext(Context);
@@ -56,9 +54,6 @@ const Home = () => {
       .catch(e => console.log(e))
   }, [])
 
-
-
-
   useEffect(() => {
     if (reservations.length) {
       let filteredReservations = reservations.filter(x => (x.username === session.username) && x.description)
@@ -81,11 +76,8 @@ const Home = () => {
   return (
     <div className="content">
       {session.admin ? <div className="admin">
-        <h1>ACCOUNT: ADMIN</h1>
-
+        <h1>ACCOUNT TYPE: ADMIN</h1>
         <Container maxWidth="xl">
-
-
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
               <AppWidgetSummary title="Pending Reservations" total={pendingReservations?.length} icon={PendingActionsIcon} />
@@ -98,25 +90,13 @@ const Home = () => {
             <Grid item xs={12} sm={6} md={3}>
               <AppWidgetSummary title="Incident Reports" total={incidents.length} color="warning" icon={PendingActionsIcon} />
             </Grid>
-
-
             <Grid item xs={12} md={6} lg={8}>
-
-
-
-
-
             </Grid>
           </Grid>
         </Container>
-
-
-
-
-
       </div>
         : session.id ? <div className="user">
-          <h1>ACCOUNT: USER</h1>
+          <h1>ACCOUNT TYPE: USER</h1>
           Pending Reservations
           {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
             <div>
@@ -154,8 +134,7 @@ const Home = () => {
                 event.defaultMuiPrevented = true;
                 navigate(`/reservationdetails/${params.row.id}`)
               }
-            }
-            }
+            }}
           />
         </div> :
           <div className='content' style={{ overflow: "hidden" }}>
