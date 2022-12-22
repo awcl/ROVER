@@ -63,19 +63,20 @@ const Home = () => {
         : session.id ? <div className="user">
           <h1>ACCOUNT: USER</h1>
           Pending Reservations
-          {notifications.length  && (<div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
+          {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
               <div>
-                <div>
-                  Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}> {notifications[0].status}</span> with the admin remark:
+                {notifications.map(x =>
+                (<><div>
+                  Reservation #{x.id} has been <span style={x.status === 'denied' ? { color: "red" } : { color: "green" }}> {x.status}</span> with the admin remark:
                 </div>
-                <div style={{ color: "#292929" }}>"{notifications[0].description}"</div>
+                <div style={{ color: "#292929" }}>"{x.description}"</div><br/></>))}
               </div>
-              <center>
+              <center><br/>
                 <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
                   Mark as Read
                 </Button>
               </center>
-            </div>)
+            </div>
           }
           <DataGrid
             components={{ Toolbar: CustomToolbar }}
