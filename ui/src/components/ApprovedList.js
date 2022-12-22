@@ -12,18 +12,14 @@ const ApprovedList = () => {
   const [reservations, setReservations] = useState([]);
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
   const [tablePageSize, setTablePageSize] = useState(15);
-  // const handleApprove = async (id) => {
-  //   console.log('approved: ', id);
-  //   fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
-  //     .then(navigate('/reservations'))
-  //     .catch(e => console.log(e));
-  // }
-  // const handleDeny = async (id) => {
-  //   console.log('denied: ', id);
-  //   fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
-  //     .then(navigate('/reservations'))
-  //     .catch(e => console.log(e));
-  // }
+
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
 
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
@@ -55,14 +51,6 @@ const ApprovedList = () => {
       .then((res) => res.json())
       .then((data) => setReservations(data));
   }, [])
-
-  function CustomToolbar() {
-    return (
-      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
-        <GridToolbarExport />
-      </GridToolbarContainer>
-    );
-  }
 
   return (
     <div className="content">

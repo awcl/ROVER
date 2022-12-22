@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import { Card, CardContent, CardHeader, CardMedia, Typography, IconButton, Button } from '@mui/material';
 import CalendarMonthTwoToneIcon from '@mui/icons-material/CalendarMonthTwoTone';
-import { useNavigate, Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const VehicleCard = ({ vehicle }) => {
     const navigate = useNavigate();

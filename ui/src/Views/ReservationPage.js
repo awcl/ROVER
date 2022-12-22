@@ -84,8 +84,6 @@ const ReservationPage = () => {
                       variant="outlined"
                       value={session.first_name}
                       disabled
-
-
                     />
                   </Grid>
                   <Grid item xs={12}>

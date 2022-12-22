@@ -177,7 +177,6 @@ const MemberDetails = () => {
         } catch (e) { console.log(e) }
     }
 
-
     return (
         <div className="content">
             <Container maxWidth="sm">
@@ -244,7 +243,6 @@ const MemberDetails = () => {
                                         <div>
                                             Certifications
                                         </div>
-
                                         {Certifications}
                                     </Grid>
                                     <Grid item xs={12}>

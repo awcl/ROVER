@@ -39,14 +39,14 @@ const Navbar = () => {
                     <ListItemButton
                         sx={{ justifyContent: 'center' }}
                         onClick={() => navigate(`/schedule`)}>Schedule</ListItemButton>}
-                {session.id &&
-                    <ListItemButton
-                        sx={{ justifyContent: 'center' }}
-                        onClick={() => navigate(`/incidentreport`)}>New Incident</ListItemButton>}
                 {session.admin &&
                     <ListItemButton
                         sx={{ justifyContent: 'center' }}
                         onClick={() => navigate(`/incidentreports`)}>All Incidents</ListItemButton>}
+                {session.id &&
+                    <ListItemButton
+                        sx={{ justifyContent: 'center' }}
+                        onClick={() => navigate(`/incidentreport`)}>New Incident</ListItemButton>}
                 <Divider />
                 {session.username &&
                     <ListItemButton sx={{ justifyContent: 'center' }}

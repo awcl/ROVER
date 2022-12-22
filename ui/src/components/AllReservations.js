@@ -12,18 +12,22 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const AllReservations = () => {
   let navigate = useNavigate();
-  const handleApprove = async (id) => {
-    console.log('approved: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
+  const [reservations, setReservations] = useState([]);
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
+  const [tablePageSize, setTablePageSize] = useState(15);
 
-  const handleDeny = async (id) => {
-    console.log('denied: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
+  useEffect(() => {
+    fetch(`${API_URL}/reservation/merged`)
+      .then((res) => res.json())
+      .then((data) => setReservations(data));
+  }, [])
+
+  function CustomToolbar() {
+    return (
+      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
   }
 
   const columns = [
@@ -85,31 +89,8 @@ const AllReservations = () => {
           )))}
         </div>
       )
-
-
-
     },
   ]
-
-  const [reservations, setReservations] = useState([]);
-
-  useEffect(() => {
-    fetch(`${API_URL}/reservation/merged`)
-      .then((res) => res.json())
-      .then((data) => setReservations(data));
-  }, [])
-
-
-  function CustomToolbar() {
-    return (
-      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
-        <GridToolbarExport />
-      </GridToolbarContainer>
-    );
-  }
-
-  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
-  const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
     <div className="content">
@@ -123,7 +104,6 @@ const AllReservations = () => {
         rows={reservations.filter(x => x.status !== 'pending')}
         columns={columns}
         pageSize={tablePageSize}
-        // initialState={{ pagination: { pageSize: tablePageSize } }}
         onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
         rowsPerPageOptions={[5, 10, 25, 50, 100]}
         onSortModelChange={(model) => setSortModel(model)}
@@ -133,8 +113,6 @@ const AllReservations = () => {
         {...reservations.filter(x => x.status !== 'pending')}
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
-
-        //autoPageSize
         onCellClick={(params, event) => {
           if (!event.ctrlKey) {
             event.defaultMuiPrevented = true;

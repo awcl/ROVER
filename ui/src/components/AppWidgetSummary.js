@@ -1,11 +1,6 @@
-// @mui
 import PropTypes from 'prop-types';
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
-// utils
-// components
-
-// ----------------------------------------------------------------------
 
 const StyledIcon = styled('div')(({ theme }) => ({
     margin: 'auto',
@@ -18,11 +13,9 @@ const StyledIcon = styled('div')(({ theme }) => ({
     marginBottom: theme.spacing(3),
 }));
 
-// ----------------------------------------------------------------------
-
 AppWidgetSummary.propTypes = {
     color: PropTypes.string,
-    icon: PropTypes.string,
+    //icon: PropTypes.string,
     title: PropTypes.string.isRequired,
     total: PropTypes.number.isRequired,
     sx: PropTypes.object,
@@ -47,15 +40,12 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
                     backgroundImage: (theme) =>
                         `linear-gradient(135deg, ${alpha(theme.palette[color].dark, 0)} 0%, ${alpha(
                             theme.palette[color].dark,
-                            0.24
+                            0.69421
                         )} 100%)`,
                 }}
             >
-
             </StyledIcon>
-
             <Typography variant="h3">{total}</Typography>
-
             <Typography variant="subtitle2" sx={{ opacity: 0.72 }}>
                 {title}
             </Typography>
