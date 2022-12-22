@@ -91,18 +91,18 @@ const IncidentReport = () => {
                   renderInput={(params) => <TextField fullWidth {...params} />}
                 />
               </LocalizationProvider>
-              <TextField select size='small' sx={{ m: 1, minWidth: 225, width: "100%"}}
-                    label="Vehicle ID"
-                    id="select"
-                    value={vehicleId}
-                    onChange={event => setVehicleId(event.target.value)}
-                    fullWidth
-                    margin='normal'
-                  >
-                    {vehicleIDs.map((id) => (
-                      <MenuItem key={id} value={id}>{id}</MenuItem>
-                    ))}
-                  </TextField>
+              <TextField select size='small' sx={{ m: 1, minWidth: 225, width: "100%" }}
+                label="Vehicle ID"
+                id="select"
+                value={vehicleId}
+                onChange={event => setVehicleId(event.target.value)}
+                fullWidth
+                margin='normal'
+              >
+                {vehicleIDs.map((id) => (
+                  <MenuItem key={id} value={id}>{id}</MenuItem>
+                ))}
+              </TextField>
               <Grid container
                 direction="column"
                 justifyContent="center"
