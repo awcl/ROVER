@@ -4,6 +4,8 @@ import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-g
 import Context from "../components/Context";
 import config from '../config';
 import { Button } from '@mui/material';
+import nonauth from '../assets/nonauth.mp4';
+import nonauthP from '../assets/nonauth.png';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Home = () => {
@@ -53,15 +55,15 @@ const Home = () => {
   return (
     <div className="content">
       {session.admin ? <div className="admin">
-        ACCOUNT: ADMIN<br/>
+        <h1>ACCOUNT: ADMIN</h1>
         ADMINS CAN ONLY SEE THIS PAGE<br/>
         ADMIN STUFF GOES HERE<br/>
         👀
       </div>
         : session.id ? <div className="user">
-          ACCOUNT: USER<br/>
+          <h1>ACCOUNT: USER</h1>
           Pending Reservations
-          {notifications.length  && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
+          {notifications.length  && (<div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
               <div>
                 <div>
                   Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}> {notifications[0].status}</span> with the admin remark:
@@ -73,7 +75,7 @@ const Home = () => {
                   Mark as Read
                 </Button>
               </center>
-            </div>
+            </div>)
           }
           <DataGrid
             components={{ Toolbar: CustomToolbar }}
@@ -100,7 +102,12 @@ const Home = () => {
             }
             }
           />
-        </div> : <div className="content">Please Login</div>}
+        </div> :
+        <div className='content' style={{overflow: "hidden"}}>
+            <div className="overlay"></div>
+            <video src={nonauth} autoPlay loop muted poster={nonauthP}/>
+            <div className="landContent"><h1>Hey, You're Not Logged In</h1></div>
+        </div>}
     </div>
   )
 }
