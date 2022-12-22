@@ -16,7 +16,7 @@ const VehicleCard = ({ vehicle }) => {
                     }
                     title={vehicle.vehicle_type.toUpperCase()}
                     subheader={vehicle.plate_number}
-                    sx={{ color: 'rgb(92, 50, 230)', font:'Roboto'}}
+                    sx={{ color: 'rgb(92, 50, 230)', font: 'Roboto' }}
                 />
                 <CardMedia
                     component="img"

@@ -56,14 +56,14 @@ function App() {
               {session.admin && <Route path="/approvedreservations" element={<ApprovedList />} />}
               {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
               {session.admin && <Route path="/reservations" element={<AllReservations />} />}
-              <Route path="/reservations/added" element={<AddedReservation />} />
-              <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />
-              <Route path="/reservationdetails/:id" element={<ReservationDetails />} />
+              {session.id && <Route path="/reservations/added" element={<AddedReservation />} />}
+              {session.id && <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />}
+              {session.id && <Route path="/reservationdetails/:id" element={<ReservationDetails />} />}
               {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
-              <Route path="/schedule" element={<Schedule />} />
+              {session.id && <Route path="/schedule" element={<Schedule />} />}
               {session.id && <Route path="/account" element={<Account />} />}
-              <Route path="/IncidentReport" element={<IncidentReport />} />
-              <Route path="/IncidentReports" element={<IncidentReports />} />
+              {session.id && <Route path="/IncidentReport" element={<IncidentReport />} />}
+              {session.id && <Route path="/IncidentReports" element={<IncidentReports />} />}
               {/* <Route path="/Incident/:id" element={<IncidentReports/>}/> */}
             </Route>
           </Routes>

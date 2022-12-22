@@ -17,7 +17,6 @@ const knex = require('knex')(require('../../knexfile')[process.env.NODE_ENV || '
 //     const isMatch = await bcrypt.compare(password, hash);
 //     return isMatch;
 //   } catch (error) {
-//     console.log(error)
 //     throw "Error comparing password";
 //   }
 
@@ -86,7 +85,6 @@ app.post('/new', async (req, res) => {
 app.patch('/updatemember/:id', async (req, res) => {
 
   try {
-    console.log('e')
     let hashed = await hash(req.body.password, SALTS)
     knex('member')
       .where('id', req.params.id)
@@ -118,9 +116,7 @@ app.patch('/updatemember/:id', async (req, res) => {
 });
 
 app.patch('/updatecert/:id', async (req, res) => {
-
   try {
-    console.log('e')
     knex('member')
       .where('id', req.params.id)
       .update(

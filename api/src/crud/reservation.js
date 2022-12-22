@@ -75,7 +75,6 @@ app.get('/vehicle/:id', (req, res) => {
 
 //Post method that will be used to create a reservation
 app.post('/', async (req, res) => {
-  console.log('Reservation add called');
   let num = (await knex('reservation').max('id as max').first()).max + 1;
   try {
     await knex('reservation').insert({
@@ -94,9 +93,6 @@ app.post('/', async (req, res) => {
 
 //Patch method for Admin users to approve pending reservations
 app.patch('/approve/:id', async (req, res) => {
-  console.log('Reservation patch has been called');
-  // console.log('Reservation Patch Requested: Patched Reservation');
-  // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
     await knex('reservation').where('id', req.params.id).update({ description: req.body.description, status: 'approved' }).then(data =>
       res.status(200).end()
@@ -106,9 +102,6 @@ app.patch('/approve/:id', async (req, res) => {
 
 //Deny reservation with description
 app.patch('/deny/:id', async (req, res) => {
-  console.log('Reservation patch has been called');
-  // console.log('Reservation Patch Requested: Patched Reservation');
-  // console.log('Reservation Patch Requested: Patched Reservation', updatedReservation);
   try {
     await knex('reservation').where('id', req.params.id).update({ description: req.body.description, status: 'denied' }).then(data =>
       res.status(200).end()

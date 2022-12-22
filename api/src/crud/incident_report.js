@@ -27,7 +27,6 @@ app.get('/vehicle/:id', (req, res) => {
 
 //Post method that will be used to create an incident report
 app.post('/', async (req, res) => {
-  console.log('Incident report add called');
   let num = (await knex('incident_report').max('id as max').first()).max + 1;
   try {
     await knex('incident_report').insert({

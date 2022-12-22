@@ -45,11 +45,11 @@ const ManageUsers = () => {
         getRowHeight={() => 'auto'}
         disableSelectionOnClick
         onCellClick={(params, event) => {
-          console.log(params.row)
           if (!event.ctrlKey) {
             event.defaultMuiPrevented = true;
             navigate(`/memberdetails/${params.row.id}`)
-          }}}
+          }
+        }}
       />
     </div>
   )

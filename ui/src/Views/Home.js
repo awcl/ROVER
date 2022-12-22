@@ -150,7 +150,6 @@ const Home = () => {
             getRowHeight={() => 'auto'}
             disableSelectionOnClick
             onCellClick={(params, event) => {
-              console.log(params.row)
               if (!event.ctrlKey) {
                 event.defaultMuiPrevented = true;
                 navigate(`/reservationdetails/${params.row.id}`)

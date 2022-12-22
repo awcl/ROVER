@@ -49,10 +49,8 @@ const ReservationPage = () => {
   // handle form submission
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // send reservation details to server or database
-    console.log("vehID", id)
     try {
-       await fetch(`${API_URL}/reservation`, {
+      await fetch(`${API_URL}/reservation`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
@@ -67,48 +65,48 @@ const ReservationPage = () => {
   }
 
   return (
-      <div className="content">
-        <Container maxWidth="sm">
-          <Grid container spacing={2}
-            direction="column"
-            justifyContent="center"
-            alignItems="center">
-            <Grid item xs={12}>
-              <Paper elevation={3} sx={{ p: 5 }}>
-                <form onSubmit={handleSubmit}>
-                  <h1>Create Reservation</h1>
-                  {errorMessage && <div className='failed'>{errorMessage}</div>}
-                  <Grid container spacing={2}>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="First Name"
-                        variant="outlined"
-                        value={session.first_name}
-                        disabled
+    <div className="content">
+      <Container maxWidth="sm">
+        <Grid container spacing={2}
+          direction="column"
+          justifyContent="center"
+          alignItems="center">
+          <Grid item xs={12}>
+            <Paper elevation={3} sx={{ p: 5 }}>
+              <form onSubmit={handleSubmit}>
+                <h1>Create Reservation</h1>
+                {errorMessage && <div className='failed'>{errorMessage}</div>}
+                <Grid container spacing={2}>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label="First Name"
+                      variant="outlined"
+                      value={session.first_name}
+                      disabled
 
 
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="Last Name"
-                        variant="outlined"
-                        value={session.last_name}
-                        disabled
-                      />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="Rank"
-                        variant="outlined"
-                        value={session.rank}
-                        disabled
-                      />
-                    </Grid>
-                    {/* <Grid item xs={12}>
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label="Last Name"
+                      variant="outlined"
+                      value={session.last_name}
+                      disabled
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label="Rank"
+                      variant="outlined"
+                      value={session.rank}
+                      disabled
+                    />
+                  </Grid>
+                  {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Organization"
@@ -117,46 +115,44 @@ const ReservationPage = () => {
                       disabled
                     />
                   </Grid> */}
-                    <Grid item xs={12}>
-                      <TextField
-                        fullWidth
-                        label="POC Email"
-                        variant="outlined"
-                        value={session.email}
-                        disabled
+                  <Grid item xs={12}>
+                    <TextField
+                      fullWidth
+                      label="POC Email"
+                      variant="outlined"
+                      value={session.email}
+                      disabled
+                    />
+                  </Grid>
+                  <Grid item xs={12}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DesktopDatePicker
+                        label="Start Date"
+                        value={start}
+                        onChange={(picked) => {
+                          if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                            setStart(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
+                          }
+                        }}
+                        renderInput={(params) => <TextField fullWidth {...params} />}
                       />
-                    </Grid>
-                    <Grid item xs={12}>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DesktopDatePicker
-                          label="Start Date"
-                          value={start}
-                          onChange={(picked) => {
-                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                              console.log(picked)
-                              setStart(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
-                            }
-                          }}
-                          renderInput={(params) => <TextField fullWidth {...params} />}
-                        />
-                      </LocalizationProvider>
-                    </Grid>
-                    <Grid item xs={12}>
-                      <LocalizationProvider dateAdapter={AdapterDayjs}>
-                        <DesktopDatePicker
-                          label="End Date"
-                          value={end}
-                          onChange={(picked) => {
-                            if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
-                              console.log(picked)
-                              setEnd(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
-                            }
-                          }}
-                          renderInput={(params) => <TextField fullWidth {...params} />}
-                        />
-                      </LocalizationProvider>
-                    </Grid>
-                    {/* <Grid item xs={12}>
+                    </LocalizationProvider>
+                  </Grid>
+                  <Grid item xs={12}>
+                    <LocalizationProvider dateAdapter={AdapterDayjs}>
+                      <DesktopDatePicker
+                        label="End Date"
+                        value={end}
+                        onChange={(picked) => {
+                          if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
+                            setEnd(`${picked.$y}-${picked.$M + 1}-${picked.$D}`);
+                          }
+                        }}
+                        renderInput={(params) => <TextField fullWidth {...params} />}
+                      />
+                    </LocalizationProvider>
+                  </Grid>
+                  {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Status"
@@ -165,7 +161,7 @@ const ReservationPage = () => {
                       disabled
                     />
                   </Grid> */}
-                    {/* <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <TextField
                       fullWidth
                       label="Additional Notes/Justification"
@@ -174,25 +170,25 @@ const ReservationPage = () => {
                       onChange={(e) => { }}
                     />
                   </Grid> */}
-                    <Grid item xs={12}>
-                      <Button
-                        fullWidth
-                        variant="contained"
-                        type="submit"
-                      // disabled={!username || !password || password !== confirmPassword}
-                      >
-                        Submit
-                      </Button>
-                    </Grid>
-                    <Grid item xs={12}>
-                    </Grid>
+                  <Grid item xs={12}>
+                    <Button
+                      fullWidth
+                      variant="contained"
+                      type="submit"
+                    // disabled={!username || !password || password !== confirmPassword}
+                    >
+                      Submit
+                    </Button>
                   </Grid>
-                </form>
-              </Paper>
-            </Grid>
+                  <Grid item xs={12}>
+                  </Grid>
+                </Grid>
+              </form>
+            </Paper>
           </Grid>
-        </Container>
-      </div>
+        </Grid>
+      </Container>
+    </div>
   );
 };
 export default ReservationPage;

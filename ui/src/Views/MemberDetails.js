@@ -46,15 +46,8 @@ const MemberDetails = () => {
                 setMobilizerCert(data[0].is_mobilizer_cert)
                 setAmrapCert(data[0].is_amrap_cert)
                 setPatrolCert(data[0].is_patrol_cert)
-                console.log(data[0]);
             });
     }, [id]);
-
-    console.log(admin)
-    console.log(van_cert)
-    console.log(sedan_cert)
-    console.log(ton_cert)
-    console.log(amrap_cert)
 
     // const handleChange1 = (event) => {
     //     setChecked([event.target.checked, event.target.checked]);
@@ -62,7 +55,6 @@ const MemberDetails = () => {
 
     const handleChangeAdmin = (event) => {
         setChecked([event.target.checked]);
-        console.log(event)
         setAdmin(checked[0])
     };
 
@@ -79,7 +71,6 @@ const MemberDetails = () => {
     );
 
     const handleChangeVanCert = (event) => {
-        console.log('vancert', event.target.checked)
         setChecked([event.target.checked]);
         setVanCert(checked[0])
     };
@@ -159,7 +150,6 @@ const MemberDetails = () => {
 
     const handleMemberUpdate = async (e) => {
         e.preventDefault();
-        console.log(`${API_URL}/member/updatecert/${id}`)
         try {
             const response = await fetch(`${API_URL}/member/updatecert/${id}`, {
                 method: 'PATCH',
@@ -170,18 +160,17 @@ const MemberDetails = () => {
                     is_van_cert: van_cert,
                     is_sedan_cert: sedan_cert,
                     is_truck_cert: truck_cert,
-                     is_5_Ton_cert: ton_cert,
-                     is_AMRAP_cert: amrap_cert,
-                     is_HMMWV_cert: hmmwv_cert,
-                     is_Mobilizer_cert: mobilizer_cert,
-                     is_patrol_cert: patrol_cert
-                    })
+                    is_5_Ton_cert: ton_cert,
+                    is_AMRAP_cert: amrap_cert,
+                    is_HMMWV_cert: hmmwv_cert,
+                    is_Mobilizer_cert: mobilizer_cert,
+                    is_patrol_cert: patrol_cert
+                })
             });
 
             if (response.status !== 204) {
                 console.log(response.status)
             } else {
-                console.log('Saved')
                 window.alert(`The Member Information Has Been Updated!`);
                 navigate('/ManageUsers')
             }
@@ -189,94 +178,92 @@ const MemberDetails = () => {
     }
 
 
-return (
-    <div className="content">
-        <Container maxWidth="sm">
-            <Grid container spacing={2}
-                direction="column"
-                justifyContent="center"
-                alignItems="center">
-                <Grid item xs={12}>
-                    <Paper elevation={3} sx={{ p: 5 }}>
-                        <form
-                        onSubmit={handleMemberUpdate}
-                        >
-                            <h1>Account Information</h1>
-                            {errorMessage && <div className='failed'>{errorMessage}</div>}
-                            <Grid container spacing={2}>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        variant="outlined"
-                                        value={firstName}
-                                        // placeholder={firstName}
-                                        onBlur={(e) => setFirstName(e.target.value)}
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        variant="outlined"
-                                        value={lastName}
-                                        // placeholder={lastName}
-                                        onBlur={(e) => setLastName(e.target.value)}
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        variant="outlined"
-                                        value={rank}
-                                        // placeholder={rank}
-                                        onBlur={(e) => setRank(e.target.value)}
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        variant="outlined"
-                                        value={organization}
-                                        // placeholder={`${organization}`}
-                                        onBlur={(e) => setOrganization(e.target.value)}
-                                    />
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <TextField
-                                        fullWidth
-                                        variant="outlined"
-                                        value={email}
-                                        // placeholder={`${email}`}
-                                        onBlur={(e) => setEmail(e.target.value)}
-                                    >{email}</TextField>
-                                </Grid>
-                                <Grid item xs={12}>
-                                    <div>
-                                        Assign Admin Access
-                                        {AssignAdmin}
-                                    </div>
-                                    <div>
-                                        Certifications
-                                    </div>
+    return (
+        <div className="content">
+            <Container maxWidth="sm">
+                <Grid container spacing={2}
+                    direction="column"
+                    justifyContent="center"
+                    alignItems="center">
+                    <Grid item xs={12}>
+                        <Paper elevation={3} sx={{ p: 5 }}>
+                            <form onSubmit={handleMemberUpdate}>
+                                <h1>Account Information</h1>
+                                {errorMessage && <div className='failed'>{errorMessage}</div>}
+                                <Grid container spacing={2}>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            value={firstName}
+                                            // placeholder={firstName}
+                                            onBlur={(e) => setFirstName(e.target.value)}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            value={lastName}
+                                            // placeholder={lastName}
+                                            onBlur={(e) => setLastName(e.target.value)}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            value={rank}
+                                            // placeholder={rank}
+                                            onBlur={(e) => setRank(e.target.value)}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            value={organization}
+                                            // placeholder={`${organization}`}
+                                            onBlur={(e) => setOrganization(e.target.value)}
+                                        />
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <TextField
+                                            fullWidth
+                                            variant="outlined"
+                                            value={email}
+                                            // placeholder={`${email}`}
+                                            onBlur={(e) => setEmail(e.target.value)}
+                                        >{email}</TextField>
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <div>
+                                            Assign Admin Access
+                                            {AssignAdmin}
+                                        </div>
+                                        <div>
+                                            Certifications
+                                        </div>
 
-                                    {Certifications}
+                                        {Certifications}
+                                    </Grid>
+                                    <Grid item xs={12}>
+                                        <Button
+                                            fullWidth
+                                            type="submit"
+                                            variant="contained"
+                                        >
+                                            Save
+                                        </Button>
+                                    </Grid>
                                 </Grid>
-                                <Grid item xs={12}>
-                                    <Button
-                                        fullWidth
-                                        type="submit"
-                                        variant="contained"
-                                    >
-                                        Save
-                                    </Button>
-                                </Grid>
-                            </Grid>
-                        </form>
-                    </Paper>
+                            </form>
+                        </Paper>
+                    </Grid>
                 </Grid>
-            </Grid>
-        </Container>
-    </div>
-)
+            </Container>
+        </div>
+    )
 }
 
 export default MemberDetails;
