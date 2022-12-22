@@ -38,7 +38,7 @@ const IncidentReport = () => {
         body: JSON.stringify({
           vehicle_id: vehicleId,
           incident_type: incidentType,
-          incident_location: incidentLocation,
+          Incident_location: incidentLocation,
           incident_date: incidentDate,
           incident_time: incidentTime,
           incident_description: incidentDescription,
