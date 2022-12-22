@@ -91,7 +91,7 @@ const IncidentReport = () => {
                   renderInput={(params) => <TextField fullWidth {...params} />}
                 />
               </LocalizationProvider>
-              <TextField select size='small' sx={{ m: 1, minWidth: 225, width: "100%" }}
+              <TextField select size='small' sx={{ width: "100%" }}
                 label="Vehicle ID"
                 id="select"
                 value={vehicleId}
@@ -103,28 +103,25 @@ const IncidentReport = () => {
                   <MenuItem key={id} value={id}>{id}</MenuItem>
                 ))}
               </TextField>
-              <Grid container
-                direction="column"
-                justifyContent="center"
-                alignItems="center">
-                <TextField
-                  variant="outlined"
-                  label="Incident Description"
-                  value={incidentDescription}
-                  onChange={event => setIncidentDescription(event.target.value)}
-                  fullWidth
-                  multiline
-                  rows={3}
-                />
-                <div>
-                  <Button variant="contained" color="primary" type="submit" >
-                    Submit
-                  </Button>
-                  <Button variant="contained" color="secondary" type="reset" >
-                    Reset
-                  </Button>
-                </div>
-              </Grid>
+
+              <TextField
+                variant="outlined"
+                label="Incident Description"
+                value={incidentDescription}
+                onChange={event => setIncidentDescription(event.target.value)}
+                fullWidth
+                multiline
+                rows={3}
+              />
+              <div>
+                <Button variant="contained" color="primary" type="submit" >
+                  Submit
+                </Button>
+                <Button variant="contained" color="secondary" type="reset" >
+                  Reset
+                </Button>
+              </div>
+
             </Paper>
           </Grid>
         </Grid>
