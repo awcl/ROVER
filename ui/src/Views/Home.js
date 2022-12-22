@@ -3,10 +3,14 @@ import React, { useState, useEffect, useContext } from "react";
 import { DataGrid, GridToolbarContainer, GridToolbarExport } from '@mui/x-data-grid';
 import Context from "../components/Context";
 import config from '../config';
-import { Button } from '@mui/material';
+import { Button, Grid, Container, Typography } from '@mui/material';
 import nonauth from '../assets/nonauth.mp4';
 import nonauthP from '../assets/nonauth.png';
+import AppWidgetSummary from "../components/AppWidgetSummary";
+import PendingActionsIcon from '@mui/icons-material/PendingActions';
+
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
+
 
 const Home = () => {
   const { session } = useContext(Context);
@@ -16,6 +20,9 @@ const Home = () => {
   const [tablePageSize, setTablePageSize] = useState(15);
   const [notifications, setNotifications] = useState([]);
   const [alertOpen, setAlertOpen] = useState(false);
+  const [vehicles, setVehicles] = useState([]);
+  const [incidents, setIncidents] = useState([]);
+  const [pendingReservations, setPendingReservations] = useState([]);
 
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
@@ -34,9 +41,28 @@ const Home = () => {
       .then((data) => setReservations(data));
   }, [])
 
+  // use effect that checks total vehicles
+  useEffect(() => {
+    fetch(`${API_URL}/vehicle`)
+      .then((res) => res.json())
+      .then((data) => setVehicles(data));
+  }, [])
+
+  // use effect that checks for incident reports
+  useEffect(() => {
+    fetch(`${API_URL}/incident_report`)
+      .then((res) => res.json())
+      .then((data) => setIncidents(data))
+      .catch(e => console.log(e))
+  }, [])
+
+
+
+
   useEffect(() => {
     if (reservations.length) {
       let filteredReservations = reservations.filter(x => (x.username === session.username) && x.description)
+      setPendingReservations(reservations.filter(x => (x.status === 'pending')))
       if (filteredReservations.length) {
         setNotifications(filteredReservations);
         setAlertOpen(true);
@@ -56,27 +82,56 @@ const Home = () => {
     <div className="content">
       {session.admin ? <div className="admin">
         <h1>ACCOUNT: ADMIN</h1>
-        ADMINS CAN ONLY SEE THIS PAGE<br/>
-        ADMIN STUFF GOES HERE<br/>
-        👀
+
+        <Container maxWidth="xl">
+
+
+          <Grid container spacing={3}>
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Pending Reservations" total={pendingReservations?.length} icon={PendingActionsIcon} />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Total Vehicles" total={vehicles.length} color="info" icon={PendingActionsIcon} />
+            </Grid>
+
+            <Grid item xs={12} sm={6} md={3}>
+              <AppWidgetSummary title="Incident Reports" total={incidents.length} color="warning" icon={PendingActionsIcon} />
+            </Grid>
+
+
+            <Grid item xs={12} md={6} lg={8}>
+
+
+
+
+
+            </Grid>
+          </Grid>
+        </Container>
+
+
+
+
+
       </div>
         : session.id ? <div className="user">
           <h1>ACCOUNT: USER</h1>
           Pending Reservations
           {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
-              <div>
-                {notifications.map(x =>
-                (<><div>
-                  Reservation #{x.id} has been <span style={x.status === 'denied' ? { color: "red" } : { color: "green" }}> {x.status}</span> with the admin remark:
-                </div>
-                <div style={{ color: "#292929" }}>"{x.description}"</div><br/></>))}
+            <div>
+              {notifications.map(x =>
+              (<><div>
+                Reservation #{x.id} has been <span style={x.status === 'denied' ? { color: "red" } : { color: "green" }}> {x.status}</span> with the admin remark:
               </div>
-              <center><br/>
-                <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
-                  Mark as Read
-                </Button>
-              </center>
+                <div style={{ color: "#292929" }}>"{x.description}"</div><br /></>))}
             </div>
+            <center><br />
+              <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
+                Mark as Read
+              </Button>
+            </center>
+          </div>
           }
           <DataGrid
             components={{ Toolbar: CustomToolbar }}
@@ -104,11 +159,11 @@ const Home = () => {
             }
           />
         </div> :
-        <div className='content' style={{overflow: "hidden"}}>
+          <div className='content' style={{ overflow: "hidden" }}>
             <div className="overlay"></div>
-            <video src={nonauth} autoPlay loop muted poster={nonauthP}/>
+            <video src={nonauth} autoPlay loop muted poster={nonauthP} />
             <div className="landContent"><h1>You're Not Logged In</h1></div>
-        </div>}
+          </div>}
     </div>
   )
 }
