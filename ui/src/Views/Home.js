@@ -147,7 +147,7 @@ const Home = () => {
           <div className='content' style={{ overflow: "hidden" }}>
             <div className="overlay"></div>
             <video src={nonauth} autoPlay loop muted poster={nonauthP} />
-            <div className="landContent"><h1>You're Not Logged In</h1></div>
+            <div className="landContent"><h1>Goodbye</h1></div>
           </div>}
     </div>
   )
