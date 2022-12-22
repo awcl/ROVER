@@ -83,7 +83,6 @@ const Home = () => {
   return (
     <div className="content">
       {session.admin ? <div className="admin">
-        <h1>ACCOUNT TYPE: ADMIN</h1>
         <Container maxWidth="xl">
           <Grid container spacing={3}>
             <Grid item xs={12} sm={6} md={3}>
@@ -103,7 +102,6 @@ const Home = () => {
         </Container>
       </div>
         : session.id ? <div className="user">
-          <h1>ACCOUNT TYPE: USER</h1>
           Pending Reservations
           {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
             <div>
