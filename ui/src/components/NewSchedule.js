@@ -9,13 +9,12 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const Schedule = () => {
     let navigate = useNavigate();
-    const handleApprove = async (id) => {
-      console.log('approved: ', id);
-      fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
-        .then(navigate('/reservations'))
-        .catch(e => console.log(e));
-    }
-
+    // const handleApprove = async (id) => {
+    //   console.log('approved: ', id);
+    //   fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
+    //     .then(navigate('/reservations'))
+    //     .catch(e => console.log(e));
+    // }
     const handleDelete = async (id) => {
       console.log('denied: ', id);
       fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
@@ -26,10 +25,7 @@ const Schedule = () => {
     const columns = [
       { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
       { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, minWidth: 50 },
-      // { field: 'plate_number', headerName: 'Plate', flex: .2, minWidth: 50 },
-      // { field: 'description', headerName: 'Vehicle Description', flex: .5, minWidth: 50 },
       { field: 'vehicle_type', headerName: 'Vehicle Type', flex: .3, minWidth: 50 },
-      // { field: 'location', headerName: 'Parking Spot', flex: .3, minWidth: 50 },
       { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
       { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
       { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },

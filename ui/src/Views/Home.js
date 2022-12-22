@@ -9,19 +9,11 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const Home = () => {
   const { session } = useContext(Context);
   let navigate = useNavigate();
-  const handleApprove = async (id) => {
-    console.log('approved: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
-
-  const handleDeny = async (id) => {
-    console.log('denied: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
+  const [reservations, setReservations] = useState([]);
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
+  const [tablePageSize, setTablePageSize] = useState(15);
+  const [notifications, setNotifications] = useState([]);
+  const [alertOpen, setAlertOpen] = useState(false);
 
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
@@ -34,26 +26,11 @@ const Home = () => {
     { field: 'status', headerName: 'Status', flex: .3, minWidth: 100 }
   ]
 
-  const [reservations, setReservations] = useState([]);
-
   useEffect(() => {
     fetch(`${API_URL}/reservation/merged`)
       .then((res) => res.json())
       .then((data) => setReservations(data));
   }, [])
-
-  const CustomToolbar = () => {
-    return (
-      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
-        <GridToolbarExport />
-      </GridToolbarContainer>
-    );
-  }
-
-  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
-  const [tablePageSize, setTablePageSize] = useState(15);
-  const [notifications, setNotifications] = useState([]);
-  const [alertOpen, setAlertOpen] = useState(false);
 
   useEffect(() => {
     if (reservations.length) {
@@ -65,53 +42,64 @@ const Home = () => {
     }
   }, [reservations])
 
+  const CustomToolbar = () => {
+    return (
+      <GridToolbarContainer sx={{ backgroundColor: '#1f2024' }} >
+        <GridToolbarExport />
+      </GridToolbarContainer>
+    );
+  }
+
   return (
     <div className="content">
-      {session.admin ? <><div className="admin">
-        ACCOUNT: ADMIN
+      {session.admin ? <div className="admin">
+        ACCOUNT: ADMIN<br/>
+        ADMINS CAN ONLY SEE THIS PAGE<br/>
+        ADMIN STUFF GOES HERE<br/>
+        👀
 
-      </div></>
+
+
+
+
+
+
+      </div>
         :
-        <><div className="user">
-          ACCOUNT: USER
+        <div className="user">
+          ACCOUNT: USER<br/>
           Pending Reservations
           {notifications.length && (
-
-
             <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
               <div>
                 <div>
-                  Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}>{notifications[0].status}</span> with the admin remark:
+                  Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}> {notifications[0].status}</span> with the admin remark:
                 </div>
-
-
                 <div style={{ color: "#292929" }}>"{notifications[0].description}"</div>
               </div>
-              <center><br /><Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>Mark as Read</Button></center>
+              <center><br />
+                <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
+                  Mark as Read
+                </Button>
+              </center>
             </div>
           )}
           <DataGrid
-            components={{
-              Toolbar: CustomToolbar
-            }}
+            components={{ Toolbar: CustomToolbar }}
             align="left"
             className="Result-Table"
             rows={reservations.filter(x => x.username === session.username)}
-            // rows={reservations.filter(x => !x.approved)}
             columns={columns}
             pageSize={tablePageSize}
-            // initialState={{ pagination: { pageSize: tablePageSize } }}
             onPageSizeChange={(newPageSize) => setTablePageSize(newPageSize)}
             rowsPerPageOptions={[5, 10, 25, 50, 100]}
             pagination
             autoHeight
-            // {...reservations.filter(x => !x.approved)}
             {...reservations.filter(x => x.username === session.username)}
             onSortModelChange={(model) => setSortModel(model)}
             sortModel={sortModel}
             getRowHeight={() => 'auto'}
             disableSelectionOnClick
-            //autoPageSize
             onCellClick={(params, event) => {
               console.log(params.row)
               if (!event.ctrlKey) {
@@ -121,7 +109,7 @@ const Home = () => {
             }
             }
           />
-        </div></>}
+        </div>}
     </div >
   )
 }

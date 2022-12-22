@@ -10,19 +10,21 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const ReservationQueue = () => {
   let navigate = useNavigate();
-  const handleApprove = async (id) => {
-    console.log('approved: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
-
-  const handleDeny = async (id) => {
-    console.log('denied: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
+  const [reservations, setReservations] = useState([]);
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
+  const [tablePageSize, setTablePageSize] = useState(15);
+  // const handleApprove = async (id) => {
+  //   console.log('approved: ', id);
+  //   fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
+  //     .then(navigate('/reservations'))
+  //     .catch(e => console.log(e));
+  // }
+  // const handleDeny = async (id) => {
+  //   console.log('denied: ', id);
+  //   fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
+  //     .then(navigate('/reservations'))
+  //     .catch(e => console.log(e));
+  // }
 
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
@@ -40,17 +42,14 @@ const ReservationQueue = () => {
             {params.value === 'pending' ? <div style={{ fontWeight: "bold", color: 'orange' }}>Pending</div> : <div style={{ color: 'green' }}>Approved</div>}
           </div>
         )
-    },
+    }
   ]
-
-  const [reservations, setReservations] = useState([]);
 
   useEffect(() => {
     fetch(`${API_URL}/reservation/merged`)
       .then((res) => res.json())
       .then((data) => setReservations(data));
   }, [])
-
 
   const CustomToolbar = () => {
     return (
@@ -59,9 +58,6 @@ const ReservationQueue = () => {
       </GridToolbarContainer>
     );
   }
-
-  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
-  const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
     <div className="content">

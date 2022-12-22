@@ -10,20 +10,6 @@ const ManageUsers = () => {
   const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
   const [tablePageSize, setTablePageSize] = useState(15);
 
-  const handleApprove = async (id) => {
-    console.log('admin: ', id);
-    fetch(`${API_URL}/member/admin/${id}`, { method: 'PATCH' })
-      .then(navigate('/ManageUsers'))
-      .catch(e => console.log(e));
-  }
-
-  const handleDeny = async (id) => {
-    console.log('unadmin: ', id);
-    fetch(`${API_URL}/member/unadmin/${id}`, { method: 'PATCH' })
-      .then(navigate('/ManageUsers'))
-      .catch(e => console.log(e));
-  }
-
   const columns = [
     { field: 'id', headerName: 'User ID', flex: .2, width: 50 },
     { field: 'rank', headerName: 'Rank', flex: .2, width: 50 },
