@@ -4,10 +4,7 @@ import { Typography, TextField, Checkbox, FormControlLabel, Button } from '@mate
 
 const useStyles = makeStyles(theme => ({
   root: {
-    '& .MuiTextField-root': {
-      margin: theme.spacing(1),
-      width: 200,
-    },
+    '& .MuiTextField-root': { margin: theme.spacing(1), width: 200 },
   },
 }));
 

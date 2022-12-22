@@ -9,20 +9,20 @@ const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 const ApprovedList = () => {
   let navigate = useNavigate();
   const [reservations, setReservations] = useState([]);
-
-  const handleApprove = async (id) => {
-    console.log('approved: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
-
-  const handleDeny = async (id) => {
-    console.log('denied: ', id);
-    fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
-      .then(navigate('/reservations'))
-      .catch(e => console.log(e));
-  }
+  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
+  const [tablePageSize, setTablePageSize] = useState(15);
+  // const handleApprove = async (id) => {
+  //   console.log('approved: ', id);
+  //   fetch(`${API_URL}/reservation/${id}`, { method: 'PATCH' })
+  //     .then(navigate('/reservations'))
+  //     .catch(e => console.log(e));
+  // }
+  // const handleDeny = async (id) => {
+  //   console.log('denied: ', id);
+  //   fetch(`${API_URL}/reservation/${id}`, { method: 'DELETE' })
+  //     .then(navigate('/reservations'))
+  //     .catch(e => console.log(e));
+  // }
 
   const columns = [
     { field: 'id', headerName: 'Res ID', flex: .2, width: 50 },
@@ -43,14 +43,11 @@ const ApprovedList = () => {
     },
   ]
 
-
-
   useEffect(() => {
     fetch(`${API_URL}/reservation/merged`)
       .then((res) => res.json())
       .then((data) => setReservations(data));
   }, [])
-
 
   function CustomToolbar() {
     return (
@@ -59,9 +56,6 @@ const ApprovedList = () => {
       </GridToolbarContainer>
     );
   }
-
-  const [sortModel, setSortModel] = useState([{ field: "id", sort: "asc" }]);
-  const [tablePageSize, setTablePageSize] = useState(15);
 
   return (
     <div className="content">
@@ -88,8 +82,7 @@ const ApprovedList = () => {
             event.defaultMuiPrevented = true;
             navigate(`/reservationdetails/${params.row.id}`)
           }
-        }
-        }
+        }}
       />
     </div>
   )
