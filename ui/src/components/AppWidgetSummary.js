@@ -1,6 +1,11 @@
 import PropTypes from 'prop-types';
 import { alpha, styled } from '@mui/material/styles';
 import { Card, Typography } from '@mui/material';
+// utils
+
+// components
+
+// ----------------------------------------------------------------------
 
 const StyledIcon = styled('div')(({ theme }) => ({
     margin: 'auto',
@@ -25,6 +30,7 @@ export default function AppWidgetSummary({ title, total, icon, color = 'primary'
     return (
         <Card
             sx={{
+                borderRadius: 5,
                 py: 5,
                 boxShadow: 0,
                 textAlign: 'center',

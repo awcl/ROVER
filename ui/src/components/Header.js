@@ -6,7 +6,7 @@ const Header = () => {
     return (
         <div className="Header">
             <h1 className="headerContent" style={{ textAlign: "left" }}>&emsp;ROVER</h1>
-            {session.username && <h1 className="headerContent" style={{ textAlign: "right" }}>Hello "{session.username}"&emsp;</h1>}
+            {session.username && <h1 className="headerContent" style={{ textAlign: "right" }}>Hello {session.rank}{session.last_name}&emsp;</h1>}
         </div>
     )
 }

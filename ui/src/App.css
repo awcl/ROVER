@@ -37,7 +37,7 @@ h1 {
 .MuiDataGrid-columnHeaders {
   font-weight: bold;
   background-color: #606f740f;
-  font-size: calc(8px + 2vmin);
+  font-size: calc(6px + 2vmin);
   color: #FFFFFF;
   opacity: 85%;
 
@@ -66,9 +66,15 @@ h1 {
   font-family: 'Roboto', 'Helvetica', 'Arial', sans-serif;
   font-weight: 500;
   color: #000000;
-  font-size: calc(6px + 1vmin);
+  font-size: calc(8px + 1vmin);
   min-height: 5vh;
   max-height: none;
+  text-align: center;
+}
+
+.MuiSvgIcon-root {
+  color: gray;
+  font-size: larger;
 }
 
 .page {

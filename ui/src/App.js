@@ -22,6 +22,7 @@ import IncidentReport from './components/IncidentReport';
 import IncidentReports from './components/IncidentReports';
 import MemberDetails from './Views/MemberDetails';
 import ApprovedList from './components/ApprovedList'
+import ThemeProvider from './theme';
 
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
@@ -41,34 +42,36 @@ function App() {
 
   return (
     <>
-      <Context.Provider value={{ session, setSession }}>
-        <div className="App">
-          <Routes>
-            <Route element={<LandingLayout />}>
-              <Route path="/" element={<LandingPage />} />
-            </Route>
-            <Route element={<ContentLayout />} >
-              <Route path="/login" element={<LoginPage />} />
-              <Route path="/register" element={<RegisterPage />} />
-              <Route path="/home" element={<Home />} />
-              <Route path="/vehicles" element={<Vehicles />} />
-              {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
-              {session.admin && <Route path="/approvedreservations" element={<ApprovedList />} />}
-              {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
-              {session.admin && <Route path="/reservations" element={<AllReservations />} />}
-              {session.id && <Route path="/reservations/added" element={<AddedReservation />} />}
-              {session.id && <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />}
-              {session.id && <Route path="/reservationdetails/:id" element={<ReservationDetails />} />}
-              {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
-              {session.id && <Route path="/schedule" element={<Schedule />} />}
-              {session.id && <Route path="/account" element={<Account />} />}
-              {session.id && <Route path="/IncidentReport" element={<IncidentReport />} />}
-              {session.id && <Route path="/IncidentReports" element={<IncidentReports />} />}
-              {/* <Route path="/Incident/:id" element={<IncidentReports/>}/> */}
-            </Route>
-          </Routes>
-        </div>
-      </Context.Provider>
+      <ThemeProvider>
+        <Context.Provider value={{ session, setSession }}>
+          <div className="App">
+            <Routes>
+              <Route element={<LandingLayout />}>
+                <Route path="/" element={<LandingPage />} />
+              </Route>
+              <Route element={<ContentLayout />} >
+                <Route path="/login" element={<LoginPage />} />
+                <Route path="/register" element={<RegisterPage />} />
+                <Route path="/home" element={<Home />} />
+                <Route path="/vehicles" element={<Vehicles />} />
+                {session.admin && <Route path="/reservationqueue" element={<ReservationQueue />} />}
+                {session.admin && <Route path="/approvedreservations" element={<ApprovedList />} />}
+                {session.admin && <Route path="/memberdetails/:id" element={<MemberDetails />} />}
+                {session.admin && <Route path="/reservations" element={<AllReservations />} />}
+                {session.id && <Route path="/reservations/added" element={<AddedReservation />} />}
+                {session.id && <Route path="/reservations/vehicle/:id" element={<ReservationPage />} />}
+                {session.id && <Route path="/reservationdetails/:id" element={<ReservationDetails />} />}
+                {session.admin && <Route path="/ManageUsers" element={<ManageUsers />} />}
+                {session.id && <Route path="/schedule" element={<Schedule />} />}
+                {session.id && <Route path="/account" element={<Account />} />}
+                {session.id && <Route path="/IncidentReport" element={<IncidentReport />} />}
+                {session.id && <Route path="/IncidentReports" element={<IncidentReports />} />}
+                {/* <Route path="/Incident/:id" element={<IncidentReports/>}/> */}
+              </Route>
+            </Routes>
+          </div>
+        </Context.Provider>
+      </ThemeProvider>
     </>
   );
 }
