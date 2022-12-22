@@ -103,7 +103,7 @@ const Home = () => {
       </div>
         : session.id ? <div className="user">
           Pending Reservations
-          {notifications.length && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
+          {notifications.length > 0 && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
             <div>
               {notifications.map(x =>
               (<><div>
