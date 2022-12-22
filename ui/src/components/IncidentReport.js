@@ -85,12 +85,8 @@ const IncidentReport = () => {
                   onChange={(picked) => {
                     if (picked && !isNaN(picked.$y) && !isNaN(picked.$M) && !isNaN(picked.$D)) {
                       setValue(picked);
-                      console.log(value)
                       setIncidentDate(`${picked.$y}-${picked.$M + 1}-${picked.$D}`)
                       setIncidentTime(`${picked.$H}:${picked.$m}`)
-                      console.log(picked)
-                      console.log(incidentDate)
-                      console.log(incidentTime)
                     }
                   }}
                   renderInput={(params) => <TextField fullWidth {...params} />}
