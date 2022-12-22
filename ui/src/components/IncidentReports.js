@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { DataGrid } from '@mui/x-data-grid';
 import config from '../config';
+import dayjs from 'dayjs';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const IncidentReports = () => {
@@ -12,7 +13,8 @@ const IncidentReports = () => {
     { field: 'id', headerName: 'ID', flex: .2, width: 50 },
     { field: 'incident_type', headerName: 'Type', flex: .2, minWidth: 50 },
     { field: 'Incident_location', headerName: 'Location', flex: .2, minWidth: 50 },
-    { field: 'incident_date', headerName: 'Date', flex: .5, minWidth: 50 },
+    { field: 'incident_date', headerName: 'Date', flex: .5, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
     { field: 'incident_time', headerName: 'Time', flex: .3, minWidth: 50 },
     { field: 'incident_description', headerName: 'Description', flex: .3, minWidth: 50 },
     { field: 'vehicle_id', headerName: 'Veh ID', flex: .2, width: 130 },

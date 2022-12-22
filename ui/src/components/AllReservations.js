@@ -7,6 +7,7 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import CancelIcon from '@mui/icons-material/Cancel';
 import Tooltip from '@mui/material/Tooltip';
 import config from '../config';
+import dayjs from 'dayjs';
 const API_URL = config[process.env.REACT_APP_NODE_ENV || "development"].apiUrl;
 
 const AllReservations = () => {
@@ -32,8 +33,10 @@ const AllReservations = () => {
     { field: 'rank', headerName: 'Rank', flex: .2, width: 130 },
     { field: 'first_name', headerName: 'First', flex: .3, minWidth: 50 },
     { field: 'last_name', headerName: 'Last', flex: .3, minWidth: 50 },
-    { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50 },
-    { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50 },
+    { field: 'start_date', headerName: 'Start', flex: .3, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
+    { field: 'end_date', headerName: 'End', flex: .3, minWidth: 50,
+      valueFormatter: params => dayjs(params?.value).format("YYYY-MM-DD")},
     {
       field: 'status', headerName: 'Status', flex: .3, minWidth: 100,
       renderCell: (params) => (
