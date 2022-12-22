@@ -10,8 +10,8 @@ const LandingPage = () => {
             <video src={landingBG} autoPlay loop muted poster={landingBGP}/>
             <div className="landContent">
                 <h1>ROVER : NOW</h1>
-                <p>ROVER is a platform that allows you to connect with your friends and family in real time. </p>
-                <Button variant="contained" color="primary" href="/login">Login</Button>
+                <p>Real-time Overhead Vehicle Exchange Repository. </p>
+                <Button variant="contained" color="primary" href="/login">Enter</Button>
             </div>
         </div>
       )
