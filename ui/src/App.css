@@ -69,6 +69,7 @@ h1 {
   font-size: calc(6px + 1vmin);
   min-height: 5vh;
   max-height: none;
+  text-align: center;
 }
 
 .page {
