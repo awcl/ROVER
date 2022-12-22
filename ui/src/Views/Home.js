@@ -57,33 +57,24 @@ const Home = () => {
         ADMINS CAN ONLY SEE THIS PAGE<br/>
         ADMIN STUFF GOES HERE<br/>
         👀
-
-
-
-
-
-
-
       </div>
-        :
-        <div className="user">
+        : session.id ? <div className="user">
           ACCOUNT: USER<br/>
           Pending Reservations
-          {notifications.length && (
-            <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
+          {notifications.length  && <div className="alertBox" style={alertOpen ? { display: "block" } : { display: "none" }}>
               <div>
                 <div>
                   Reservation #{notifications[0].id} has been <span style={notifications[0].status === 'denied' ? { color: "red" } : { color: "green" }}> {notifications[0].status}</span> with the admin remark:
                 </div>
                 <div style={{ color: "#292929" }}>"{notifications[0].description}"</div>
               </div>
-              <center><br />
+              <center>
                 <Button className="notificationButton" sx={{ width: "50%" }} variant="contained" color="secondary" margin="normal" onClick={() => setAlertOpen(false)}>
                   Mark as Read
                 </Button>
               </center>
             </div>
-          )}
+          }
           <DataGrid
             components={{ Toolbar: CustomToolbar }}
             align="left"
@@ -109,8 +100,8 @@ const Home = () => {
             }
             }
           />
-        </div>}
-    </div >
+        </div> : <div className="content">Please Login</div>}
+    </div>
   )
 }
 
